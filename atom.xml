@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-01-18T18:56:55-07:00</updated>
+  <updated>2012-01-18T19:22:34-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
-    
+    <name><![CDATA[Jerad Bitner]]></name>
+    <email><![CDATA[jbitner@jeradbitner.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
