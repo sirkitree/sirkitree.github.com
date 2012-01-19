@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-01-18T19:22:34-07:00</updated>
+  <updated>2012-01-18T20:08:34-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -18,7 +18,21 @@
     <link href="http://sirkitree.github.com/blog/2012/01/18/conversion/"/>
     <updated>2012-01-18T18:54:00-07:00</updated>
     <id>http://sirkitree.github.com/blog/2012/01/18/conversion</id>
-    <content type="html"><![CDATA[<p>Playing around with octopress.</p>
+    <content type="html"><![CDATA[<p>Working on using <a href="http://octopress.org">Octopress</a> for my blog. Tired of Drupal
+security updates for something I already spend so little time on. Just cutting
+out one more thing to maintain in my life. Especially with the baby coming soon.</p>
+
+<p>With Octopress setup, I have a static site with no concern for security or users
+and and updating is as easy as:
+<code>
+$> rake new_post["title"]
+</code>
+then edit in my favorite editor, <a href="http://www.sublimetext.com/2">Sublime Text 2</a>,
+<code>
+$> rake generate
+$> rake deploy
+</code>
+sextastic.</p>
 ]]></content>
   </entry>
   
