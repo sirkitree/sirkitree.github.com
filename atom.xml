@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
+  <link href="http://sirkitree.github.com/"/>
+  <updated>2012-01-18T18:56:55-07:00</updated>
+  <id>http://sirkitree.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[conversion]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/01/18/conversion/"/>
+    <updated>2012-01-18T18:54:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/01/18/conversion</id>
+    <content type="html"><![CDATA[<p>Playing around with octopress.</p>
+]]></content>
+  </entry>
+  
+</feed>
