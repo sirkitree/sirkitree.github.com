@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-01-29T13:36:39-07:00</updated>
+  <updated>2012-01-29T13:55:24-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -395,17 +395,20 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
     <link href="http://sirkitree.github.com/poems/swept-away"/>
     <updated>2008-04-13T00:00:00-06:00</updated>
     <id>http://sirkitree.github.com/poems/swept-away</id>
-    <content type="html"><![CDATA[<p>Swept away are the remnants of old, smaller dreams thought too impossible now become reality, even though torn
+    <content type="html"><![CDATA[<pre>
+Swept away are the remnants of old, smaller dreams thought too impossible now become reality, even though torn
 Reality torn asunder, pulling back the curtain to reveal the secrets of life lived fully, unhindered by shame
 Shameful regrets, swept away, replaced by a new reality, revealed through conscious will and positive karmic energy
 Positive energies flow through willful projections when unhindered by fear, guided by respect and discipline
-Respect being key, replaces that which eats at everyones soul of late, fear and the assumption of security, apathy</p>
+Respect being key, replaces that which eats at everyones soul of late, fear and the assumption of security, apathy
 
-<p>Swept away and free to dream, your life becomes clay in which to mold a destiny, in harmony with the lines which exist
-See the lines, look ahead down that path which your decision may take you to make a wise choice&#8230; prosper
+Swept away and free to dream, your life becomes clay in which to mold a destiny, in harmony with the lines which exist
+See the lines, look ahead down that path which your decision may take you to make a wise choice... prosper
 Fear and doubt be swept away, leaving assured security molded by discipline and experience, always increasing, improving
 Constant reshaping of thoughts and patterns of reasoning, learning to optimize, conceptualize, visualize
-Look forward to what is to come, and what will be swept away</p>
+Look forward to what is to come, and what will be swept away
+</pre>
+
 ]]></content>
   </entry>
   
