@@ -92,32 +92,34 @@
 
 <div class="entry-content"><p>I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)</p>
 
-<p><code>
+<pre>
 $(document).ready( function() {
-  $('a#select_all').click( function() {</p>
-
-<pre><code>$('input:checkbox').each( function() {
-  this.checked = !this.checked;
+  $('a#select_all').click( function() {
+    $('input:checkbox').each( function() {
+      this.checked = !this.checked;
+    });
+    return false;
+  });
 });
-return false;
-</code></pre>
+</pre>
 
-<p>  });
-});
-</code></p>
 
-<p>The first item to note is that jQuery created pseudo classes for input.
-<code>
+<p>The first item to note is that jQuery created pseudo classes for input.</p>
+
+<pre>
 $('input:checkbox');
 ...
 $('input:textbox');
 ... etc.
-</code></p>
+</pre>
 
-<p>The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it&#8217;s current value.
-<code>
+
+<p>The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it&#8217;s current value.</p>
+
+<pre>
 this.checked = !this.checked;
-</code></p>
+</pre>
+
 
 <p>Works great and it&#8217;s short and sweet. Who loves jQuery?</p>
 </div>
@@ -144,6 +146,12 @@ this.checked = !this.checked;
 
 <time datetime="2007-06-06T00:00:00-06:00" pubdate data-updated="true">Jun 6<span>th</span>, 2007</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/jquery/'>jquery</a>
+  
+</span>
 
 
     </p>
@@ -183,19 +191,19 @@ this.checked = !this.checked;
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/23/poems/">Poems</a>
+        <a href="/poems">Poems</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/23/beauty/">Beauty.</a>
+        <a href="/poems/beauty">Beauty.</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/21/trail-of-blood/">Trail of Blood</a>
+        <a href="/short-stories/trail-of-blood">Trail of Blood</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/20/story-fragments/">Story Fragments</a>
+        <a href="/short-stories/drakens-battle">Draken's battle</a>
       </li>
     
   </ul>

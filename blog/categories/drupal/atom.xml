@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: drupal | Jerad Bitner]]></title>
+  <link href="http://sirkitree.github.com/blog/categories/drupal/atom.xml" rel="self"/>
+  <link href="http://sirkitree.github.com/"/>
+  <updated>2012-01-29T12:55:22-07:00</updated>
+  <id>http://sirkitree.github.com/</id>
+  <author>
+    <name><![CDATA[Jerad Bitner]]></name>
+    <email><![CDATA[jbitner@jeradbitner.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Theming CCK in Drupal]]></title>
+    <link href="http://sirkitree.github.com/content/theming-cck-drupal"/>
+    <updated>2007-03-07T00:00:00-07:00</updated>
+    <id>http://sirkitree.github.com/content/theming-cck-in-drupal</id>
+    <content type="html"><![CDATA[<p>I recently had a friend ask me how to be able to give CCK fields more user-friendly class names so that they could be styled a little easier. I actually needed to do this myself with a project at work, so I had time to really sit down and figure out a good way to do this.</p>
+
+<h3>CCK</h3>
+
+
+<p>The <a href="http://drupal.org/project/cck">Content Creation Kit (CCK)</a> is a great way to add different fields to any particular content type within Drupal. When you first start learning Drupal, you'll see that it ships with two main content types: Page and Story. The fields that these two content types have by default are the Title and the Body. These are respectively a single line text field, and a multi-line text field of which you can choose an input format. This is great and very useful for basic content, but what if I would like another text field other then just Title and Body? CCK allows you to add this. But instead of trying to explain the power and awe of CCK here, please take a look at the <a href="http://drupal.org/node/101723">CCK handbook</a> where this is explained in much greater detail.</p>
+
+<h3>Stepping Stones</h3>
+
+
+<p>Now adding CCK fields to a content type is all fine and dandy, but what if I want to make them <em>look</em> better by perhaps changing around the order in which they appear when viewed, or perhaps target that specific element with my CSS in order to specify the exact look and feel of the content it holds? This is where you want to start theming. However, sometimes theming in Drupal can be a pretty complex concept to grok at first. Not because it is very hard, but because without any stepping stones to how theming actually works, you can very easily fall into a dangerous quagmire of code, arrays and objects that you have no idea are even available to you.</p>
+
+<h3>Contemplate this my friend</h3>
+
+
+<p>This is where <a href="http://www.lullabot.com/about/jeffrobbins">Jeff Robbins</a> of the <a href="http://www.lullabot.com">Lullabot</a> crew has come to our rescue with a great module called <a href="http://drupal.org/project/contemplate">Content Templates (contemplate)</a>. I believe this module is an incredible stepping stone in learning how to bridge the gap that exists between CCK and the way CCK fields are presented (themed). Installing this module will add a new menu item under Content Mangement in your Administration panel called 'Content templates', and also a templates tab inside of your 'Content types' page of your Admin section. Once you create a template for any given content type, you can effectually customize the look and feel of not just the content type's node view (labeled Body in contemplate), but also the Teaser and the RSS!</p>
+
+<h3>Commercial break</h3>
+
+
+<p>BUT WAIT, THERE'S MORE! Each fieldset (teaser, body, and rss) has not just a text field to edit the template in, but also inserts a default view of what Drupal spits out, ready to edit. And if that isn't exciting enough for you, there is (<strong>IMHO the most useful feature of this module</strong>) a rich text-field next to that which lists every object available to you for templating! There's even some neato javascript that allows you to click on an object and insert the php to print that object into the template field. This is just good stuff man. Fun times. Act now while supplies last. Void where prohibited.</p>
+
+<h3>Ok, time for a downer</h3>
+
+
+<p>Finding such a gem is really very great, but the excitement starts to wear off after about an hour of trying to template a complete content type inside of that teeny, tiny, little box. Even the javascript insertion of the box next to it begins to feel like a sticky piece of candy that's lost it's flavor. I'd like to take this opportunity to mention that the <a href="http://drupal.org/project/devel">devel module</a> provides you with a feature quite similar to this little javascript flavored object reference box, but unless you're already very familiar with how to work with these field objects in PHP, the devel module is next to useless. So, again as a stepping stone, the contemplate module really comes in handy for referencing what objects are available to theme, and will give you a little insight as to how to work with them in PHP.</p>
+
+<p>So what do we do about the teeny, tiny, little text box that we're supposed to put all of our theming code into? Well, fortunately Drupal's main theming engine, phptemplate, has already taken care of this. Listen carefully now, 'cuz this is important and I don't want to lose you now. We've already come so far. <strong>Each content type can have it's very own template file within your theme.</strong></p>
+
+<h3>Theming a content type</h3>
+
+
+<p>You can actually accomplish this very easily. The first step is to create a file within your theme directory named <strong>node-content_type.tpl.php</strong> <em>replacing <strong>content_type</strong> with the machine readable name you've given your content type</em>. So if your content type is named <strong>forum</strong>, you'll want the file to be named node-<strong>forum</strong>.tpl.php. For almost all of my work lately I've been using a <a href="http://drupal.org/project/zen">theme called zen</a>. It's written by the Lullabot crew once again, and is probably the best theme out there to teach you anything about a theme. This theme has a file that is a custom themed content type already specific to the forum module. The file is node-forum.tpl.php. I've used this on multiple occasions as a template on how to start a new custom theme file for a content type. If you use this file, you'll notice that, among other things, it prints out the $content variable. All of our CCK fields can be found inside of this variable, along with the default theming of them that you find in the contemplate module's teeny, tiny, little box for the template code. So you can take the code that is generated by default in the contemplate module, and insert all of that where you see the $content variable being printed in the tpl file. From there, you can do all of your editing in the editor of your choice without having to strain your back trying to bend closer to your monitor to see what's inside of the teeny, tiny, little box.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hey, you gotta start somewhere right?]]></title>
+    <link href="http://sirkitree.github.com/content/rolechanger"/>
+    <updated>2007-02-25T00:00:00-07:00</updated>
+    <id>http://sirkitree.github.com/content/hey-you-gotta-start-somewhere-right</id>
+    <content type="html"><![CDATA[<p>So my first commit to the Drupal contributions has been made! WooHoo! I partied hard that night :) No, it's really not that big of a deal, but I'm excited as it takes me one step further into Drupal development and being more involved in the Drupal community.</p>
+
+<p>The module is called <a href="http://drupal.org/projects/rolechanger">rolechanger</a>, and came about when there was a need on a new site I'm building for work that needs to have a menu's links change based upon a chosen role. The roles are created in the main Drupal interface and then you tell rolechanger which roles from that list you would like your users to be able to choose from. Nothing really happens once one of those roles is chosen, at least from a traditional programmatic standpoint since I'll be using javascript for the functionality of changing the menu items. The module is somewhat limited in this respect, but I've included a rolechanger.js file in the module's directory for this purpose and anyone can edit this to define what happens on change using drupal's built in jQuery library. It's really more of a widget I suppose, developed for a specific purpose and probably will not have a whole lot of use to anyone other then my current project, but I contributed it anyway just for the purpose of doing so and gaining the experience of committing code through CVS to Drupal's repository. Hey, you gotta start somewhere right?</p>
+
+<p>Update: <a href="http://jeradbitner.com/node/16">Also, see my post on using some jQuery code with this module.</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Drupal Theme Loader]]></title>
+    <link href="http://sirkitree.github.com/content/theme-loader"/>
+    <updated>2007-02-13T00:00:00-07:00</updated>
+    <id>http://sirkitree.github.com/content/drupal-theme-loader</id>
+    <content type="html"><![CDATA[<p>I've started a project on <a href="drupal.org">drupal.org</a> to contribute a module that will allow loading of new themes into Drupal from a compressed file (zip, gzip) that is either on your local hard drive, or from a web URL (curl support required?). <a href="http://drupal.org/project/theme-loader">View Project on drupal.org</a></p>
+
+<p>It's a basic idea and I'm hoping to get some feedback from the Drupal community on how best to execute this. The idea came about when <a href="http://improving-home.com">a friend of mine</a> mentioned that he had introduced <a href="http://www.commandtoclient.com/">his brother</a> (a Joomla user) to Drupal and got some feedback from him on what he thought Drupal was lacking.</p>
+
+<p>The first thing mentioned was the weight system. Joomla uses a system similar to that which is implemented in the Views module where you can hit and up or down arrow to resort content. I heard mention that <a href="http://drupal.org/node/91039">someone has been working on a module to do sortables</a> with Drupal's new <a href="jQuery.com">jQuery</a> library, but it looks to be a 4.7 implementation so far.</p>
+
+<p>I've not really seen much discussion on drupal.org about a theme installation interface, so I figure since it would help convert users and there is some good interest at least outside the drupal community, it may take some hold.</p>
+
+<p><strong>Update:</strong>
+Due to more <a href="http://thevineyardvoice.com">commitments</a> then I have time, I've discontinued any work on this module. My regrets.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[In the beginning... there was no Drupal.]]></title>
+    <link href="http://sirkitree.github.com/content/drupal-beginner"/>
+    <updated>2006-12-06T00:00:00-07:00</updated>
+    <id>http://sirkitree.github.com/content/in-the-beginning-there-was-no-drupal</id>
+    <content type="html"><![CDATA[<p>Don't cry, it's true. But let me tell you about how I first came about <a href="drupal.org" target="_blank">my savior</a>.</p>
+
+<p>My first Drupal child was a project we call the Resource Center. When I say we, I mean Shawn Priesz, Kevin Poust, and me. I started off with writing a login system for a project Shawn had built that takes registered users from our main company's website (<a href='http://www.c-sgroup.com' target='_blank' title='Construction Specialties, Inc - USA'>c-sgroup.com</a>) and gives our sales representatives the information of those users, that live in their respective area, along with what product details they were downloading. I know what you're thinking, 'Big Brother type stuff, eh?'. Well maybe a little, but these are our <strong>REGISTERED</strong> users and they know that their information is kept within the company. Or at least that's what helps <em>me</em> sleep at night. In any case, we needed a way for our sales reps to log in before they could see the information so that it was not readily available to just anyone.</p>
+
+<p>So I worked for a while on a login script and built it around this reporting program (after converting it from ASP to PHP) and finally had a working system when alas, I found Drupal. Praise be. A system that already did what I was looking to do <strong><em>AND MORE</em></strong>.</p>
+
+<p>I devoured it, finding that not only was it free, but there were literally a TON of developers using and developing for Drupal. The modules came into site after my first initial shock wore off at all of the already prepackaged features, and then I started in on my own development.</p>
+
+<p>Well, I really had no idea at first of how to develop a module, and quite frankly was a tad bit intimidated to try something of the like, so I resorted to inserted PHP code within custom pages and linking around ever so sloppily. But hey, we all start somewhere right? I was a beginner DrupalHEAD and I have the scars to prove it. Mainly mental scars that you can't really see unless you sit beside me while I rework old code from a month or so ago. Then you hear a lot of 'Daaang it!'s with Nepoleon Dynamite's inflection. I had this folder in the Drupal root I called 'myblocks' and stuck all of my PHP code in there with a few links to scripts I would throw into the root/scripts/ folder... I'm a bit embarrassed of all this by now, but I really have no shame.</p>
+
+<p>Between here and there I came across Ajax, and all of it's wonders and took a bit of a break from the daily Drupal grind to relearn all of the javascript I had started out with almost 9 years ago. But you can <a href="http://www.thethisorthat.com/ajax-app-development" target="_blank">read about that</a> over at <a href="http://thethisorthat.com" target="_blank">thethisorthat.com</a>, one of my subsites run by my good friend <a href="http://blog.linkworth.com/pubcon-linkworth-happy-hour-a-success/" target="_blank">INSANE Dave</a>.</p>
+
+<p>But then came a point where I really wanted to start a fresh module and get my hands dripping red (blue?) in Drupal's inner core. I had gotten this email from a guy at work who thought it would be a good idea to display internal job openings on the Resource Center, so I got together with Human Resources and start hacking out a module. I started by reading the <a href="http://drupal.org/node/508" target="_blank">Module developer's guide</a> and tore apart a simple module (don't remember which one) and it went form there like wildfire. I couldn't get enough. Everything went into a module. I redeveloped all of the 'myblocks' crap into modules after I finished the iPost module (will post it later, this is the internal job listings module I made for HR). During the redevelopment of those, I we started wanting to put other sites into Drupal. Namely, <a href='http://www.grand-entrance.com'>Grand Entrance,</a>, which is like a sub company of ours that sells our products.</p>
+
+<p>From there we knew it was going to expand even more because of the ease of use and management that Drupal provides. So while I did research into Drupal multisite functionality, Shawn was busy learning and setting up everything for subversion. I'll post sometime on my experience with that, but for now suffice to say, that if you are a developer, and you have not begun using subversion, DO IT! DO IT NOW! I seriously do not know what I did before subversion came into my life. This has been more a passion of Shawn's, but I've reaped many of the benefits. Even if you don't use it the correct way, which I'm still not sure I do entirely, for backup purposes alone it is a must.</p>
+
+<p>But enough ranting on that, I'm focusing on Drupal multisites now. The basis of a drupal multisite is this: you have a domain, in fact, multiple domains, that point to the same core Drupal install. Drupal then routes the request to it's /sites folder and looks for a folder with the requested uri. This folder, contains a settings.php which defines the database in which the site runs, and wala! That's really all there is too it. One Drupal install, multiple database, multiple sites. So simple, yet so ingenious it makes me emotional.... well not really emotional, more sexually... no that's not it either... nevermind.</p>
+
+<p>So what have we learned here today boys and ... well I doubt if you're a girl you've made it this far 'cuz I don't know hardly any girls that speak techbabble.</p>
+
+<ol>
+  <li>Drupal is the lord your god in code format.</li>
+  <li>If you can't find a Drupal module to do it for you, start by developing a real Drupal module and not trying to 'just get by' on mashed up code.</li>
+  <li>Multisite Drupal installs are an easy thing to learn, and well worth the time, (1-2 minutes) to setup if you have multiple sites that you want to run through Drupal.</li>
+  <li>This Jerad guy probably never gets a date.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Interesting note on login]]></title>
+    <link href="http://sirkitree.github.com/content/interesting-note-login"/>
+    <updated>2006-11-30T00:00:00-07:00</updated>
+    <id>http://sirkitree.github.com/content/interesting-note-on-login</id>
+    <content type="html"><![CDATA[<p>For a while, I've been annoyed by the default way Drupal displays it's login box automatically if you're not signed in. So I usually just put a link in the footer or primary links to 'user' after enabling clean urls. This works great, but when I did it with Drupal 5, I found that the link that should be entitled <em>Login</em>, was changed to <em>My account</em>!</p>
+]]></content>
+  </entry>
+  
+</feed>

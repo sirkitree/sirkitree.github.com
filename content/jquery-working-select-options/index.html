@@ -92,88 +92,84 @@
 
 <div class="entry-content"><p>Following my <a href="/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
 
-<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here&#8217;s the resulting code for the IE portion:
-<code></p>
+<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here&#8217;s the resulting code for the IE portion:</p>
 
-<pre><code>// ie doesn't pick up the option.click, so we'll have to use the select.change
-$('#edit-role-changer').change(function(){
+<pre>
+    // ie doesn't pick up the option.click, so we'll have to use the select.change
+    $('#edit-role-changer').change(function(){
 
-// get rid of select box
-$('#edit-role-changer').hide();
+    // get rid of select box
+    $('#edit-role-changer').hide();
 
-    // show the chosen role as static text
-   // NOTE: FF doesn't pick up [@selected]
-  $('#role').html($(this).children("[@selected]").text()).show();    
+        // show the chosen role as static text
+       // NOTE: FF doesn't pick up [@selected]
+      $('#role').html($(this).children("[@selected]").text()).show();
 
-  // provide a change link
-  $('#role-change-back').show();
+      // provide a change link
+      $('#role-change-back').show();
 
-});
-</code></pre>
+    });
+</pre>
 
-<p></code></p>
 
-<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:
-<code></p>
+<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:</p>
 
-<pre><code>// provide action for an option change
-$('#edit-role-changer option').click(function(){      
+<pre>
+    // provide action for an option change
+    $('#edit-role-changer option').click(function(){
 
-  // get rid of select box
-  $('#edit-role-changer').hide();
+      // get rid of select box
+      $('#edit-role-changer').hide();
 
-  // show the chosen role as static text
-  $('#role').html($(this).text()).show();    
+      // show the chosen role as static text
+      $('#role').html($(this).text()).show();
 
-  // provide a change link
-  $('#role-change-back').show();
+      // provide a change link
+      $('#role-change-back').show();
 
-});
-</code></pre>
+    });
+</pre>
 
-<p></code></p>
 
-<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:
-<code>
+<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:</p>
+
+<pre>
   // see which browser we're working with
-  if ($.browser.msie) {</p>
+  if ($.browser.msie) {
 
-<pre><code>// ie doesn't pick up the option.click, so we'll have to use the select.change
-$('#edit-role-changer').change(function(){
+    // ie doesn't pick up the option.click, so we'll have to use the select.change
+    $('#edit-role-changer').change(function(){
 
-  // get rid of select box
-  $('#edit-role-changer').hide();
+      // get rid of select box
+      $('#edit-role-changer').hide();
 
-  // show the chosen role as static text
-  // NOTE: FF doesn't pick up [@selected]
-  $('#role').html($(this).children("[@selected]").text()).show();    
+      // show the chosen role as static text
+      // NOTE: FF doesn't pick up [@selected]
+      $('#role').html($(this).children("[@selected]").text()).show();
 
-  // provide a change link
-  $('#role-change-back').show();
+      // provide a change link
+      $('#role-change-back').show();
 
-});
-</code></pre>
+    });
+  }
+  else {
 
-<p>  }
-  else {</p>
+    // provide action for an option change
+    $('#edit-role-changer option').click(function(){
 
-<pre><code>// provide action for an option change
-$('#edit-role-changer option').click(function(){      
+      // get rid of select box
+      $('#edit-role-changer').hide();
 
-  // get rid of select box
-  $('#edit-role-changer').hide();
+      // show the chosen role as static text
+      $('#role').html($(this).text()).show();
 
-  // show the chosen role as static text
-  $('#role').html($(this).text()).show();    
+      // provide a change link
+      $('#role-change-back').show();
 
-  // provide a change link
-  $('#role-change-back').show();
+    });
+  }
+</pre>
 
-});
-</code></pre>
-
-<p>  }
-</code></p>
 
 <p>Happy jQuerying!</p>
 </div>
@@ -201,6 +197,12 @@ $('#edit-role-changer option').click(function(){
 <time datetime="2007-02-27T00:00:00-07:00" pubdate data-updated="true">Feb 27<span>th</span>, 2007</time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/jquery/'>jquery</a>
+  
+</span>
+
 
     </p>
     
@@ -217,7 +219,7 @@ $('#edit-role-changer option').click(function(){
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/rolechanger" title="Previous Post: Hey, you gotta start somewhere right?">&laquo; Hey, you gotta start somewhere right?</a>
+        <a class="basic-alignment left" href="/content/rolechanger" title="Previous Post: Hey, you gotta start somewhere right?">&laquo; Hey, you gotta start somewhere right?</a>
       
       
         <a class="basic-alignment right" href="/content/theming-cck-drupal" title="next Post: Theming CCK in Drupal">Theming CCK in Drupal &raquo;</a>
@@ -239,19 +241,19 @@ $('#edit-role-changer option').click(function(){
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/23/poems/">Poems</a>
+        <a href="/poems">Poems</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/23/beauty/">Beauty.</a>
+        <a href="/poems/beauty">Beauty.</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/21/trail-of-blood/">Trail of Blood</a>
+        <a href="/short-stories/trail-of-blood">Trail of Blood</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/20/story-fragments/">Story Fragments</a>
+        <a href="/short-stories/drakens-battle">Draken's battle</a>
       </li>
     
   </ul>

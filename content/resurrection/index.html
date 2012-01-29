@@ -97,11 +97,11 @@
 
 <ol>
 <li>Edited the page-front.tpl.php and inserted a little logic to give the #preface-wrapper a different background-image property.
-<code>
+<pre>
 <div id="preface-wrapper" class="clearfix" <?php if ($flickr): ?>style="background-image: url(<?php print $flickr; ?>);"<?php endif; ?>>
-</code></li>
+</pre></li>
 <li>Wrote a custom function based off of the flickr_block.module&#8217;s flickr_block_photoset_random() function. The function returns just the flickr farm url instead of running through the theme functions.
-<?php
+<pre>
 function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id) {
   // Get information about the photoset, including the owner.
   $info = flickr_photoset_get_info($photoset_id);
@@ -113,8 +113,8 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   $response = flickr_request('flickr.photosets.getPhotos',
     array(
       'photoset_id' => $photoset_id,
-      &#8216;per_page&#8217; => 500, // get as many images as possible
-      &#8216;extras&#8217; => &#8216;owner&#8217;,
+      'per_page' => 500, // get as many images as possible
+      'extras' => 'owner',
     )
   );
   if (!$response) {
@@ -122,19 +122,19 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   }
 
   // Randomly display $show_n of them
-  $photos = $response[&#8216;photoset&#8217;][&#8216;photo&#8217;];
+  $photos = $response['photoset']['photo'];
   shuffle($photos);
 
   $output = flickr_photo_img($photos[0], $size);
 
   return $output;
 }
-?></li>
+</pre></li>
 <li>Set the result of this new function, called with hardcoded arguments, to a theme variable within template.php&#8217;s phptemplate_preprocess_page() function.
-<?php
+<pre>
   // get a flickr image for the front page background
   $vars['flickr'] = acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id);
-?>
+</pre>
 </li>
 </ol>
 
@@ -167,6 +167,12 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
 <time datetime="2009-11-12T00:00:00-07:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code/'>code</a>
+  
+</span>
+
 
     </p>
     
@@ -183,7 +189,7 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/xml-test" title="Previous Post: xml">&laquo; xml</a>
+        <a class="basic-alignment left" href="/poems/rust" title="Previous Post: Rust">&laquo; Rust</a>
       
       
         <a class="basic-alignment right" href="/content/trip-austin" title="next Post: Trip to Austin">Trip to Austin &raquo;</a>
@@ -205,19 +211,19 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/23/poems/">Poems</a>
+        <a href="/poems">Poems</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/23/beauty/">Beauty.</a>
+        <a href="/poems/beauty">Beauty.</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/21/trail-of-blood/">Trail of Blood</a>
+        <a href="/short-stories/trail-of-blood">Trail of Blood</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/20/story-fragments/">Story Fragments</a>
+        <a href="/short-stories/drakens-battle">Draken's battle</a>
       </li>
     
   </ul>
