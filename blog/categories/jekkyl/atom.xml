@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jekkyl | Jerad Bitner]]></title>
+  <link href="http://sirkitree.github.com/blog/categories/jekkyl/atom.xml" rel="self"/>
+  <link href="http://sirkitree.github.com/"/>
+  <updated>2012-01-29T16:31:23-07:00</updated>
+  <id>http://sirkitree.github.com/</id>
+  <author>
+    <name><![CDATA[Jerad Bitner]]></name>
+    <email><![CDATA[jbitner@jeradbitner.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using Node.js to convert Drupal to Jekkyl]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
+    <updated>2012-01-29T15:54:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
+    <content type="html"><![CDATA[<p>I've gone and revamped my blog again.</p>
+
+<p>The current new hotness has been <a href="https://github.com/mojombo/jekyll/wiki">Jekkyl</a> of late, ever since GitHub came out with it's <a href="http://pages.github.com/">Pages</a> feature. My first awareness of it was around September 2011 when <a href="http://developmentseed.org/">DevelopmentSeed</a> converted their .org page to Jekkly and <a href="http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/">wrote about it</a>. I started playing with it almost immediately when I had downtime during <a href="http://www.lullabot.com">Lullabot</a>'s <a href="http://2011.doitwithdrupal.com">Do it with Drupal</a> conference. Sacreligious? Whatever, it was something new to learn.</p>
+
+<p>Then quite recently <a href="http://walkah.net/blog/new-year-new-blog/">Walkah.net</a> moved to Jekkyl and renewed my interest when he released the <a href="https://github.com/walkah/walkah.net/blob/master/_import/drupal.rb">Ruby script</a> he used to convert his simple Drupal blog into YAML for use with Jekkly. That looked interesting so I put it in my backlog.</p>
+
+<p>Shortly after, I started getting some <a href="https://twitter.com/#!/mikl/status/159634667702722562">flak</a> from <a href="https://twitter.com/#!/mikl">@mikl</a> for not paying attention to my Drupal.org issue queue for the <a href="http://drupal.org/project/flag_friend">Flag Friend</a> module and as I interacted with and him, found that he was using <a href="http://octopress.org/">Octopress</a> for <a href="http://mikkel.hoegh.org/">his personal blog</a>. Octopress is a quick way to get started using Jekkly, and I like quick.</p>
+
+<p>So I put these two sources of inspiration together and it gave me reason to revisit Walkah's Ruby script. After a few hours of trying to get the MySQL Ruby Gem working with the version of MySQL I have that comes with MAMP, I gave up and decided to just <a href="https://github.com/sirkitree/sirkitree.github.com/blob/master/_import/drupal.js">rewrite the script into Node.js</a>, which I've been trying to learn more about lately.</p>
+
+<p>The end result is all of my posts from JeradBitner.com converted into YAML format for use with the Octopress system which uses Jekkyl to generate your pages and can be convieniently hooked up to GitHub Pages in order to quickly create content with a few simple commands. (Whew! Try saying that to your wife without sounding bat-shit crazy!)</p>
+
+<pre><code>$&gt; rake new_post['Title of your post']
+</code></pre>
+
+<p>  Then write your post of course.</p>
+
+<pre><code>$&gt; rake generate
+</code></pre>
+
+<p>  Which runs Jekkly and converts all of your YAML to HTML and puts the files in the correct place.</p>
+
+<pre><code>$&gt; rake preview
+</code></pre>
+
+<p>  This starts up a local server so you can see your new post at localhost:4000.</p>
+
+<pre><code>$&gt; rake deploy
+</code></pre>
+
+<p>  Which commits the generated files to your GitHub repository and pushes them.</p>
+]]></content>
+  </entry>
+  
+</feed>

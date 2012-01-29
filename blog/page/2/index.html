@@ -9,9 +9,7 @@
   <meta name="author" content="Jerad Bitner">
 
   
-  <meta name="description" content="The cold hard rain dripped down my face, erasing the warmth
-&nbsp;&nbsp;only remembrance remained. So used to the shielding when heat returned
-&nbsp &hellip;">
+  <meta name="description" content="Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +70,95 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/content/resurrection">Resurrection</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00-07:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+         | <a href="/content/resurrection#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module&#8217;s API. Here&#8217;s a couple quick steps I took:</p>
+
+<!--break-->
+
+
+<ol>
+<li>Edited the page-front.tpl.php and inserted a little logic to give the #preface-wrapper a different background-image property.
+<pre>
+<div id="preface-wrapper" class="clearfix" <?php if ($flickr): ?>style="background-image: url(<?php print $flickr; ?>);"<?php endif; ?>>
+</pre></li>
+<li>Wrote a custom function based off of the flickr_block.module&#8217;s flickr_block_photoset_random() function. The function returns just the flickr farm url instead of running through the theme functions.
+<pre>
+function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id) {
+  // Get information about the photoset, including the owner.
+  $info = flickr_photoset_get_info($photoset_id);
+  if (!$info) {
+    return;
+  }
+
+  // Get a list of "all" the photos in the photoset. This is cached.
+  $response = flickr_request('flickr.photosets.getPhotos',
+    array(
+      'photoset_id' => $photoset_id,
+      'per_page' => 500, // get as many images as possible
+      'extras' => 'owner',
+    )
+  );
+  if (!$response) {
+    return;
+  }
+
+  // Randomly display $show_n of them
+  $photos = $response['photoset']['photo'];
+  shuffle($photos);
+
+  $output = flickr_photo_img($photos[0], $size);
+
+  return $output;
+}
+</pre></li>
+<li>Set the result of this new function, called with hardcoded arguments, to a theme variable within template.php&#8217;s phptemplate_preprocess_page() function.
+<pre>
+  // get a flickr image for the front page background
+  $vars['flickr'] = acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id);
+</pre>
+</li>
+</ol>
+
+
+<p>The one thing I couldn&#8217;t find was a block setting when looking at the flickr_block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc&#8217;s flickr_photo_img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply &#8216;b_d&#8217; for large.</p>
+
+<p>Fun stuff!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/poems/rust">Rust</a></h1>
     
     
@@ -89,6 +176,8 @@
 
 
 <time datetime="2008-12-05T00:00:00-07:00" pubdate data-updated="true">Dec 5<span>th</span>, 2008</time>
+        
+         | <a href="/poems/rust#disqus_thread">Comments</a>
         
       </p>
     
@@ -143,6 +232,8 @@
 
 <time datetime="2008-10-26T00:00:00-06:00" pubdate data-updated="true">Oct 26<span>th</span>, 2008</time>
         
+         | <a href="/content/startups-and-our-economy-what-are-you-going-do-about-it#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -189,6 +280,8 @@
 
 <time datetime="2008-07-31T00:00:00-06:00" pubdate data-updated="true">Jul 31<span>st</span>, 2008</time>
         
+         | <a href="/content/californication#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -233,6 +326,8 @@
 
 <time datetime="2008-07-22T00:00:00-06:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2008</time>
         
+         | <a href="/content/new-tattoo#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -270,6 +365,8 @@
 
 <time datetime="2008-07-18T00:00:00-06:00" pubdate data-updated="true">Jul 18<span>th</span>, 2008</time>
         
+         | <a href="/content/what-right#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -306,6 +403,8 @@
 
 <time datetime="2008-07-11T00:00:00-06:00" pubdate data-updated="true">Jul 11<span>th</span>, 2008</time>
         
+         | <a href="/content/much-needed-vacation#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -341,6 +440,8 @@
 
 
 <time datetime="2008-04-14T00:00:00-06:00" pubdate data-updated="true">Apr 14<span>th</span>, 2008</time>
+        
+         | <a href="/content/needs-and-wants#disqus_thread">Comments</a>
         
       </p>
     
@@ -386,6 +487,8 @@
 
 
 <time datetime="2008-04-13T00:00:00-06:00" pubdate data-updated="true">Apr 13<span>th</span>, 2008</time>
+        
+         | <a href="/poems/swept-away#disqus_thread">Comments</a>
         
       </p>
     
@@ -436,6 +539,8 @@ Look forward to what is to come, and what will be swept away</p>
 
 <time datetime="2008-03-20T00:00:00-06:00" pubdate data-updated="true">Mar 20<span>th</span>, 2008</time>
         
+         | <a href="/drupalmao/drupalcon-boston-2008-wrap-up#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -444,44 +549,6 @@ Look forward to what is to come, and what will be swept away</p>
   <div class="entry-content"><p>Sit down with me and Dave as they kick back some Johnny Walker Green label for St. Patrick&#8217;s Day and talk about our impressions of DrupalCon Boston 2008!</p>
 
 <p><a href="http://drupalmao.com/drupalcon-boston-2008-wrap-up">DrupalCon Boston 2008 Wrap-up</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008">DrupaLMAO: Earl Miles Interview - DrupalCon MIT 2008</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-03-17T00:00:00-06:00" pubdate data-updated="true">Mar 17<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The fifth release of DrupaLMAO&#8217;s coverage of DrupalCon 2008. Listen as we sit down with Earl Miles to get his reactions to DrupalCon Boston and to talk about Views 2, Views in core, and Panels 2.</p>
-
-<p><a href="http://drupalmao.com/earl-miles-interview">Earl Miles Interview</a></p>
 </div>
   
   
@@ -506,6 +573,10 @@ Look forward to what is to come, and what will be swept away</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">Using Node.js to convert Drupal to Jekkyl</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/04/25/images/">Images</a>
       </li>
     
@@ -519,10 +590,6 @@ Look forward to what is to come, and what will be swept away</p>
     
       <li class="post">
         <a href="/short-stories/trail-of-blood">Trail of Blood</a>
-      </li>
-    
-      <li class="post">
-        <a href="/short-stories/drakens-battle">Draken&#8217;s battle</a>
       </li>
     
   </ul>
@@ -600,7 +667,7 @@ Look forward to what is to come, and what will be swept away</p>
   
 
 <script type="text/javascript">
-      var disqus_shortname = 'sirkitree';
+      var disqus_shortname = 'jbitner';
       
         
         var disqus_script = 'count.js';

@@ -9,7 +9,7 @@
   <meta name="author" content="Jerad Bitner">
 
   
-  <meta name="description" content="These are from high school. Guess you&#8217;d call that about the height of my creativity - or at least when I had the time to do all of this instead &hellip;">
+  <meta name="description" content="I&#8217;ve gone and revamped my blog again. The current new hotness has been Jekkyl of late, ever since GitHub came out with it&#8217;s Pages feature &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +70,74 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">Using Node.js to Convert Drupal to Jekkyl</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-29T15:54:00-07:00" pubdate data-updated="true">Jan 29<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve gone and revamped my blog again.</p>
+
+<p>The current new hotness has been <a href="https://github.com/mojombo/jekyll/wiki">Jekkyl</a> of late, ever since GitHub came out with it&#8217;s <a href="http://pages.github.com/">Pages</a> feature. My first awareness of it was around September 2011 when <a href="http://developmentseed.org/">DevelopmentSeed</a> converted their .org page to Jekkly and <a href="http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/">wrote about it</a>. I started playing with it almost immediately when I had downtime during <a href="http://www.lullabot.com">Lullabot</a>&#8217;s <a href="http://2011.doitwithdrupal.com">Do it with Drupal</a> conference. Sacreligious? Whatever, it was something new to learn.</p>
+
+<p>Then quite recently <a href="http://walkah.net/blog/new-year-new-blog/">Walkah.net</a> moved to Jekkyl and renewed my interest when he released the <a href="https://github.com/walkah/walkah.net/blob/master/_import/drupal.rb">Ruby script</a> he used to convert his simple Drupal blog into YAML for use with Jekkly. That looked interesting so I put it in my backlog.</p>
+
+<p>Shortly after, I started getting some <a href="https://twitter.com/#!/mikl/status/159634667702722562">flak</a> from <a href="https://twitter.com/#!/mikl">@mikl</a> for not paying attention to my Drupal.org issue queue for the <a href="http://drupal.org/project/flag_friend">Flag Friend</a> module and as I interacted with and him, found that he was using <a href="http://octopress.org/">Octopress</a> for <a href="http://mikkel.hoegh.org/">his personal blog</a>. Octopress is a quick way to get started using Jekkly, and I like quick.</p>
+
+<p>So I put these two sources of inspiration together and it gave me reason to revisit Walkah&#8217;s Ruby script. After a few hours of trying to get the MySQL Ruby Gem working with the version of MySQL I have that comes with MAMP, I gave up and decided to just <a href="https://github.com/sirkitree/sirkitree.github.com/blob/master/_import/drupal.js">rewrite the script into Node.js</a>, which I&#8217;ve been trying to learn more about lately.</p>
+
+<p>The end result is all of my posts from JeradBitner.com converted into YAML format for use with the Octopress system which uses Jekkyl to generate your pages and can be convieniently hooked up to GitHub Pages in order to quickly create content with a few simple commands. (Whew! Try saying that to your wife without sounding bat-shit crazy!)</p>
+
+<pre><code>$&gt; rake new_post['Title of your post']
+</code></pre>
+
+<p>  Then write your post of course.</p>
+
+<pre><code>$&gt; rake generate
+</code></pre>
+
+<p>  Which runs Jekkly and converts all of your YAML to HTML and puts the files in the correct place.</p>
+
+<pre><code>$&gt; rake preview
+</code></pre>
+
+<p>  This starts up a local server so you can see your new post at localhost:4000.</p>
+
+<pre><code>$&gt; rake deploy
+</code></pre>
+
+<p>  Which commits the generated files to your GitHub repository and pushes them.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2011/04/25/images/">Images</a></h1>
     
     
@@ -87,6 +155,8 @@
 
 
 <time datetime="2011-04-25T00:00:00-06:00" pubdate data-updated="true">Apr 25<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/04/25/images/#disqus_thread">Comments</a>
         
       </p>
     
@@ -127,6 +197,8 @@
 
 <time datetime="2011-04-23T00:00:00-06:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
         
+         | <a href="/poems#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -162,6 +234,8 @@
 
 
 <time datetime="2011-04-23T00:00:00-06:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
+        
+         | <a href="/poems/beauty#disqus_thread">Comments</a>
         
       </p>
     
@@ -227,6 +301,8 @@ Comprehend...
 
 <time datetime="2011-04-21T00:00:00-06:00" pubdate data-updated="true">Apr 21<span>st</span>, 2011</time>
         
+         | <a href="/short-stories/trail-of-blood#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -274,6 +350,8 @@ Comprehend...
 
 
 <time datetime="2011-04-20T00:00:00-06:00" pubdate data-updated="true">Apr 20<span>th</span>, 2011</time>
+        
+         | <a href="/short-stories/drakens-battle#disqus_thread">Comments</a>
         
       </p>
     
@@ -327,6 +405,8 @@ Comprehend...
 
 <time datetime="2011-04-20T00:00:00-06:00" pubdate data-updated="true">Apr 20<span>th</span>, 2011</time>
         
+         | <a href="/short-stories#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -364,6 +444,8 @@ Comprehend...
 
 
 <time datetime="2010-09-17T00:00:00-06:00" pubdate data-updated="true">Sep 17<span>th</span>, 2010</time>
+        
+         | <a href="/content/another-time-another-place#disqus_thread">Comments</a>
         
       </p>
     
@@ -411,6 +493,8 @@ Comprehend...
 
 
 <time datetime="2010-01-09T00:00:00-07:00" pubdate data-updated="true">Jan 9<span>th</span>, 2010</time>
+        
+         | <a href="/content/vampire-dream#disqus_thread">Comments</a>
         
       </p>
     
@@ -480,6 +564,8 @@ Comprehend...
 
 <time datetime="2009-12-13T00:00:00-07:00" pubdate data-updated="true">Dec 13<span>th</span>, 2009</time>
         
+         | <a href="/content/trip-austin#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -517,93 +603,6 @@ Comprehend...
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/content/resurrection">Resurrection</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-12T00:00:00-07:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module&#8217;s API. Here&#8217;s a couple quick steps I took:</p>
-
-<!--break-->
-
-
-<ol>
-<li>Edited the page-front.tpl.php and inserted a little logic to give the #preface-wrapper a different background-image property.
-<pre>
-<div id="preface-wrapper" class="clearfix" <?php if ($flickr): ?>style="background-image: url(<?php print $flickr; ?>);"<?php endif; ?>>
-</pre></li>
-<li>Wrote a custom function based off of the flickr_block.module&#8217;s flickr_block_photoset_random() function. The function returns just the flickr farm url instead of running through the theme functions.
-<pre>
-function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id) {
-  // Get information about the photoset, including the owner.
-  $info = flickr_photoset_get_info($photoset_id);
-  if (!$info) {
-    return;
-  }
-
-  // Get a list of "all" the photos in the photoset. This is cached.
-  $response = flickr_request('flickr.photosets.getPhotos',
-    array(
-      'photoset_id' => $photoset_id,
-      'per_page' => 500, // get as many images as possible
-      'extras' => 'owner',
-    )
-  );
-  if (!$response) {
-    return;
-  }
-
-  // Randomly display $show_n of them
-  $photos = $response['photoset']['photo'];
-  shuffle($photos);
-
-  $output = flickr_photo_img($photos[0], $size);
-
-  return $output;
-}
-</pre></li>
-<li>Set the result of this new function, called with hardcoded arguments, to a theme variable within template.php&#8217;s phptemplate_preprocess_page() function.
-<pre>
-  // get a flickr image for the front page background
-  $vars['flickr'] = acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id);
-</pre>
-</li>
-</ol>
-
-
-<p>The one thing I couldn&#8217;t find was a block setting when looking at the flickr_block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc&#8217;s flickr_photo_img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply &#8216;b_d&#8217; for large.</p>
-
-<p>Fun stuff!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -619,6 +618,10 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">Using Node.js to convert Drupal to Jekkyl</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2011/04/25/images/">Images</a>
       </li>
     
@@ -632,10 +635,6 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
     
       <li class="post">
         <a href="/short-stories/trail-of-blood">Trail of Blood</a>
-      </li>
-    
-      <li class="post">
-        <a href="/short-stories/drakens-battle">Draken&#8217;s battle</a>
       </li>
     
   </ul>
@@ -713,7 +712,7 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
 
 <script type="text/javascript">
-      var disqus_shortname = 'sirkitree';
+      var disqus_shortname = 'jbitner';
       
         
         var disqus_script = 'count.js';
