@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-01-28T22:50:59-07:00</updated>
+  <updated>2012-01-29T10:43:45-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -161,9 +161,9 @@
   
   <entry>
     <title type="html"><![CDATA[Another time, another place...]]></title>
-    <link href="http://sirkitree.github.comcontent/another-time-another-place"/>
+    <link href="http://sirkitree.github.com/content/another-time-another-place"/>
     <updated>2010-09-17T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/another-time-another-place</id>
+    <id>http://sirkitree.github.com/content/another-time-another-place</id>
     <content type="html"><![CDATA[<p>Jenney and I moved from Austin to Carolina Beach, North Carolina and the past three.5 months have been amazing! It&#8217;s been like a working vacation. We were right on the beach, with beautiful views, and a personal walkway to the beach which was in a premo-spot. Not a ton of people, lots of waves, and lots of sunshine. We both worked hard, and played hard. It was great and I can honestly say I&#8217;ve lived my &#8216;beach life&#8217; dream for at least a while. Chalk another dream up to &#8216;accomplished&#8217;!</p>
 
 <p>Today marks the start of ANOTHER adventure. We packed up our life once more and left beautiful Carolina Beach behind. Tonight we wait at Jenney&#8217;s best friend&#8217;s (and Maid of Honor&#8217;s) house before our flight tomorrow for San Diego where we will be for a week, staying at her mother&#8217;s house before we are wed on Saturday, September 25th. We&#8217;re both so so so excited to see our friends and family and to celebrate what we&#8217;ve held true in our hearts for the last year; our commitment and love for each other.</p>
@@ -181,9 +181,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vampire dream]]></title>
-    <link href="http://sirkitree.github.comcontent/vampire-dream"/>
+    <link href="http://sirkitree.github.com/content/vampire-dream"/>
     <updated>2010-01-09T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.comcontent/vampire-dream</id>
+    <id>http://sirkitree.github.com/content/vampire-dream</id>
     <content type="html"><![CDATA[<p>I had a pretty in depth adventure in my dreams last night so I downloaded <a href="http://www.ommwriter.com/en/">ommwriter</a> to capture them in the wee morning hours as soon as I awoke. Ommwriter is pretty nice, the music and the interface really helped for this kind of writing and I think would inspire me to write more poetry. I&#8217;m still listening to the music as I type this up in my blog. Anyway, here are some notes on the things I remember from the dream. Should turn this into a short story.</p>
 
 <ul>
@@ -222,9 +222,9 @@
   
   <entry>
     <title type="html"><![CDATA[Trip to Austin]]></title>
-    <link href="http://sirkitree.github.comcontent/trip-austin"/>
+    <link href="http://sirkitree.github.com/content/trip-austin"/>
     <updated>2009-12-13T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.comcontent/trip-to-austin</id>
+    <id>http://sirkitree.github.com/content/trip-to-austin</id>
     <content type="html"><![CDATA[<p>What an adventure! <a href="http://jenneymarie.net">Jenney</a> got a contract in Austin Texas for her next position doing traveling Occupational Therapy, so we packed up the new Subaru Forester (new to us) and started the long trek from Grand Junction, Colorado to Austin, Texas.</p>
 
 <p>Now it hadn&#8217;t snowed much at all in Colorado while we were there, but wouldn&#8217;t it so happen that the day we decide to leave, a huge storm is forecasted to come through! So we set out as early Monday morning as we could (still had a little cleaning to do) and started on our way. It was too far outside of GJ that it started to flurry, and before we arrived in Ouray, we had passed through some areas with some pretty substantial snowfall. But Ouray there was not much of anything on the ground, and the highway pass through the Redridge Mountains was not closed. So even though there was a sign that commercial vehicles were required to have chains, we went against our better judgement and started up the mountain pass instead of staying in Ouray, at the hotspring hotel, like we should have.</p>
@@ -255,9 +255,9 @@
   
   <entry>
     <title type="html"><![CDATA[Resurrection]]></title>
-    <link href="http://sirkitree.github.comcontent/resurrection"/>
+    <link href="http://sirkitree.github.com/content/resurrection"/>
     <updated>2009-11-12T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.comcontent/resurrection</id>
+    <id>http://sirkitree.github.com/content/resurrection</id>
     <content type="html"><![CDATA[<p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module&#8217;s API. Here&#8217;s a couple quick steps I took:</p>
 
 <!--break-->
@@ -315,18 +315,18 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
   <entry>
     <title type="html"><![CDATA[xml]]></title>
-    <link href="http://sirkitree.github.comxml-test"/>
+    <link href="http://sirkitree.github.com/xml-test"/>
     <updated>2009-03-26T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com./xml</id>
+    <id>http://sirkitree.github.com/xml</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Rust]]></title>
-    <link href="http://sirkitree.github.comcontent/rust"/>
+    <link href="http://sirkitree.github.com/content/rust"/>
     <updated>2008-12-05T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.comcontent/rust</id>
+    <id>http://sirkitree.github.com/content/rust</id>
     <content type="html"><![CDATA[<p>The cold hard rain dripped down my face, erasing the warmth<br />
 &nbsp;&nbsp;only remembrance remained.</p>
 
@@ -350,9 +350,9 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
   <entry>
     <title type="html"><![CDATA[Startups and our economy - what are YOU going to do about it?]]></title>
-    <link href="http://sirkitree.github.comcontent/startups-and-our-economy-what-are-you-going-do-about-it"/>
+    <link href="http://sirkitree.github.com/content/startups-and-our-economy-what-are-you-going-do-about-it"/>
     <updated>2008-10-26T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/startups-and-our-economy-what-are-you-going-to-do-about-it</id>
+    <id>http://sirkitree.github.com/content/startups-and-our-economy-what-are-you-going-to-do-about-it</id>
     <content type="html"><![CDATA[<p>A couple months ago (right after I made a big move) I started hearing thing about the financial crisis and banks going under. Talking with my friend who travels a lot, I came to hear that when America sneezes, the rest of the world gets a cold. Another friend of mine introduced me to a film called &#8220;Zeitgeist&#8221;. With the uncertainty of living in a new area, trying to gain respect at a new job, and making new friends, I started worrying. Actually worrying is an understatement, but I&#8217;ll not be dramatic.</p>
 
 <p>However, after hearing about Lullabot&#8217;s new venture, and especially Ed Sussman&#8217;s blog post, &#8221;<a href="http://www.lullabot.com/blog/edward-sussman-why-start-now">Why Start (Up) Now?</a>&#8221; I gained a little hope. Then I got a <a href="http://twitter.com/kevinrose/statuses/975842840">twitter from Kevin Rose</a> today where he talked about Paul Graham&#8217;s post, &#8221;<a href="http://www.paulgraham.com/badeconomy.html">Why to Start a Startup in a Bad Economy</a>&#8221;. I must say that I&#8217;m feeling better. Again an understatement, but dramatics really aren&#8217;t my thing.</p>
@@ -369,9 +369,9 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
   <entry>
     <title type="html"><![CDATA[Californication]]></title>
-    <link href="http://sirkitree.github.comcontent/californication"/>
+    <link href="http://sirkitree.github.com/content/californication"/>
     <updated>2008-07-31T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/californication</id>
+    <id>http://sirkitree.github.com/content/californication</id>
     <content type="html"><![CDATA[<p>Drupal, you&#8217;ve done it again&#8230; become the vector of change in my life by presenting me with opportunities that are seemingly too good to be true. Last year it was New York and Sony BMG. This year it&#8217;s San Francisco and a start-up called ParentsClick Network. Just when I thought things couldn&#8217;t get any better and that maybe I&#8217;ve hit the height of reaching my dreams in life, another one comes within my grasp, and giving in to my free spirit, I jump at the chance to make a dream a reality.</p>
 
 <p><a href="http://tedserbinski.com/">Ted Serbinski</a> is a guy whose progress I&#8217;ve followed since that first <a href="http://jeradbitner.com/node/11">Lullabot class in Rhode island</a>, less than two years ago (1/15/07) when the world of Drupal really opened up to me. He was a Lullabot at the time, teaching theming and some jQuery. He <a href="http://tedserbinski.com/2007/05/24/i-have-left-lullabot">left Lullabot</a> later that year to start a journey into entrepreneurship (and <a href="http://tedserbinski.com/tags/mothersclick">MothersClick</a>) that has started to pan out nicely. I&#8217;ve great respect for his coding skills and believe in his business sense. So when he approached me about a job working with him in San Francisco, a place I&#8217;ve always wanted to live, I was very excited.</p>
@@ -386,9 +386,9 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
   <entry>
     <title type="html"><![CDATA[New Tattoo]]></title>
-    <link href="http://sirkitree.github.comcontent/new-tattoo"/>
+    <link href="http://sirkitree.github.com/content/new-tattoo"/>
     <updated>2008-07-22T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/new-tattoo</id>
+    <id>http://sirkitree.github.com/content/new-tattoo</id>
     <content type="html"><![CDATA[<p>Here&#8217;s the new one!
 <img src="http://farm4.static.flickr.com/3151/2694083801_bcba323a65_m.jpg" /></p>
 ]]></content>
@@ -396,27 +396,27 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
   <entry>
     <title type="html"><![CDATA[What is right?]]></title>
-    <link href="http://sirkitree.github.comcontent/what-right"/>
+    <link href="http://sirkitree.github.com/content/what-right"/>
     <updated>2008-07-18T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/what-is-right</id>
+    <id>http://sirkitree.github.com/content/what-is-right</id>
     <content type="html"><![CDATA[<p>There&#8217;s an ideal of late that I&#8217;ve seen repeated within literature and movies that intrigues me. It is that of the men and women who have ideals. Ideals that they do whatever it takes to uphold. I find this a respectable character trait that I find myself wanting to mimic. To uphold.<br /><br />When you see wrong being done what do you do?<br /><br />When you see something happening that you do not agree with, what do you do?<br /><br />When there are ideals being upheld by the populace that you do not agree with, not becuase you are bias or jaded or just plain sick of, but because you KNOW beyond a shadow of a doubt that they are absolutely wrong, what do you do?<br /><br />Some choose to do more, some choose to hide, some choose to reason that they&#8217;re not the one who can do anything about those things that hide in the dark of the mind and pervert the perception of those that would stand for what is right. But YOU know what is RIGHT. You KNOW what is WRONG. And even though you doubt yourself and how you feel about the subject of the matter, you KNOW in that inner most place that is untainted, unforgettable, unmoving&#8230; you KNOW.<br /><br />So do something about it! And the world will recognize as well, because they know as well, even though they may ignore it, even though they may reason it away&#8230; they know. And will support you if you are the one who champions the cause of WHAT IS RIGHT!<br /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[A much needed vacation]]></title>
-    <link href="http://sirkitree.github.comcontent/much-needed-vacation"/>
+    <link href="http://sirkitree.github.com/content/much-needed-vacation"/>
     <updated>2008-07-11T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/a-much-needed-vacation</id>
+    <id>http://sirkitree.github.com/content/a-much-needed-vacation</id>
     <content type="html"><![CDATA[<p>This weekend I&#8217;m leaving for PA for a week long vacation of nature, family and friends. Saturday I hope to be going to the Lycoming County Fair, Sunday going to see Wall-E with a friend. I&#8217;ll also be using my spare time over the weekend to get everything ready for a three day backpacking trip through the mountains where I grew up. I&#8217;ve not been out there by myself in years and I really want to just take my time hiking through the mountains around Rose Valley Lake where I grew up.<br /><br />When I return from that, I&#8217;ll be heading out to the family cabin in Belleville where a family reunion is taking place, full of family on my mother&#8217;s side. Great Aunts and Uncles and hopefully time enough to talk with them all to glean what wisdom I may from them. I&#8217;ve come to think that you have to know where you come from in order to figure out where to go next in life. And that&#8217;s the big question I ask myself every so often, so hopefully some time alone, and then with family and friends will help me figure that one out.<br /><br />Next weekend I&#8217;ll be home at my mother&#8217;s then, visiting with her, my brothers and my father&#8217;s parents who will be visiting. I think we&#8217;re planning on going to Ricket&#8217;s Glen where there is some nice camping, a good place to hike some waterfalls, and a beach on the lake for swimming.<br /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Needs and Wants]]></title>
-    <link href="http://sirkitree.github.comcontent/needs-and-wants"/>
+    <link href="http://sirkitree.github.com/content/needs-and-wants"/>
     <updated>2008-04-14T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/needs-and-wants</id>
+    <id>http://sirkitree.github.com/content/needs-and-wants</id>
     <content type="html"><![CDATA[<p>For a long time I&#8217;ve thought that a major distinction in life that people must try to make is the difference between needs and wants. I&#8217;ve told many of my friends that if they just try to make this distinction in their own life, they will live a much happier, balanced life.</p>
 
 <p>I was going through an old hard drive today and found many of my old writings on lots of different topics, but this one just jumped out at me as it is probably one of the most profound truths and holds some of the most engaging questions of life. The entry is dated 1-11-07:</p>
@@ -432,9 +432,9 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
   <entry>
     <title type="html"><![CDATA[Swept Away]]></title>
-    <link href="http://sirkitree.github.comcontent/swept-away"/>
+    <link href="http://sirkitree.github.com/content/swept-away"/>
     <updated>2008-04-13T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.comcontent/swept-away</id>
+    <id>http://sirkitree.github.com/content/swept-away</id>
     <content type="html"><![CDATA[<p>Swept away are the remnants of old, smaller dreams thought too impossible now become reality, even though torn
 Reality torn asunder, pulling back the curtain to reveal the secrets of life lived fully, unhindered by shame
 Shameful regrets, swept away, replaced by a new reality, revealed through conscious will and positive karmic energy

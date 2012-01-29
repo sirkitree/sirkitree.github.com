@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jacob redding | Jerad Bitner]]></title>
+  <link href="http://sirkitree.github.com/blog/categories/jacob-redding/atom.xml" rel="self"/>
+  <link href="http://sirkitree.github.com/"/>
+  <updated>2012-01-29T10:43:45-07:00</updated>
+  <id>http://sirkitree.github.com/</id>
+  <author>
+    <name><![CDATA[Jerad Bitner]]></name>
+    <email><![CDATA[jbitner@jeradbitner.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[DrupaLMAO: Jacob Redding Interview - DrupalCon MIT 2008]]></title>
+    <link href="http://sirkitree.github.com/content/drupalmao-jacob-redding-interview-drupalcon-mit-2008"/>
+    <updated>2008-03-11T00:00:00-06:00</updated>
+    <id>http://sirkitree.github.com/content/drupalmao-jacob-redding-interview-drupalcon-mit-2008</id>
+    <content type="html"><![CDATA[<p>The first release in DrupaLMAO's Coverage of DrupalCon Boston 2008! Sorry for the jump, we'll get DrupaLMAO.com into the planet agg soon! Promise!</p>
+
+<p><a href="http://drupalmao.com/node/8">Jacob Redding Interview</a></p>
+]]></content>
+  </entry>
+  
+</feed>

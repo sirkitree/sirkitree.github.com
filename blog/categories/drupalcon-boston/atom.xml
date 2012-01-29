@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: drupalcon boston | Jerad Bitner]]></title>
+  <link href="http://sirkitree.github.com/blog/categories/drupalcon-boston/atom.xml" rel="self"/>
+  <link href="http://sirkitree.github.com/"/>
+  <updated>2012-01-29T10:43:45-07:00</updated>
+  <id>http://sirkitree.github.com/</id>
+  <author>
+    <name><![CDATA[Jerad Bitner]]></name>
+    <email><![CDATA[jbitner@jeradbitner.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[DrupaLMAO: DrupalCon Boston 2008 Wrap-up]]></title>
+    <link href="http://sirkitree.github.com/drupalcon-boston-2008-wrap-up"/>
+    <updated>2008-03-20T00:00:00-06:00</updated>
+    <id>http://sirkitree.github.com/drupalmao-drupalcon-boston-2008-wrap-up</id>
+    <content type="html"><![CDATA[<p>Sit down with me and Dave as they kick back some Johnny Walker Green label for St. Patrick's Day and talk about our impressions of DrupalCon Boston 2008!</p>
+
+<p><a href="http://drupalmao.com/drupalcon-boston-2008-wrap-up">DrupalCon Boston 2008 Wrap-up</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DrupaLMAO: Earl Miles Interview - DrupalCon MIT 2008]]></title>
+    <link href="http://sirkitree.github.com/content/drupalmao-earl-miles-interview-drupalcon-mit-2008"/>
+    <updated>2008-03-17T00:00:00-06:00</updated>
+    <id>http://sirkitree.github.com/content/drupalmao-earl-miles-interview-drupalcon-mit-2008</id>
+    <content type="html"><![CDATA[<p>The fifth release of DrupaLMAO's coverage of DrupalCon 2008. Listen as we sit down with Earl Miles to get his reactions to DrupalCon Boston and to talk about Views 2, Views in core, and Panels 2.</p>
+
+<p><a href="http://drupalmao.com/earl-miles-interview">Earl Miles Interview</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DrupaLMAO: Moshe Weitzman Interview - DrupalCon MIT 2008]]></title>
+    <link href="http://sirkitree.github.com/content/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008"/>
+    <updated>2008-03-16T00:00:00-06:00</updated>
+    <id>http://sirkitree.github.com/content/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008</id>
+    <content type="html"><![CDATA[<p>So it's really late/early and we've had a great time tonight with some fun girls from Philly and hanging out with Ted Serbinski... AND we're releasing our interview with Moshe Weitzman from DrupalCon! Check out DrupaLMAO's 4 installation of their coverage of DrupalCon Boston 2008!</p>
+
+<p><a href="http://drupalmao.com/moshe-weitzman-inteview">Moshe Weitzman Interview</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DrupaLMAO: Robert Douglass Interview - DrupalCon MIT 2008]]></title>
+    <link href="http://sirkitree.github.com/content/drupalmao-robert-douglass-interview-drupalcon-mit-2008"/>
+    <updated>2008-03-13T00:00:00-06:00</updated>
+    <id>http://sirkitree.github.com/content/drupalmao-robert-douglass-interview-drupalcon-mit-2008</id>
+    <content type="html"><![CDATA[<p>The third release of DrupaLMAO's coverage of DrupalCon Boston 2008! Listen while <a href="http://robshouse.net">Robert Douglass</a> talks about the first DrupalCon, DrupalCon Boston 2008, and what the future holds for <a href="http://acquia.com">Acquia</a>! Oh, and the <strong>best</strong> video still of all the interviews!</p>
+
+<p><a href="http://drupalmao.com/robert-douglass-interview">Robert Douglass Interview</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DrupaLMAO: Roger Lopez Interview - DrupalCon MIT 2008]]></title>
+    <link href="http://sirkitree.github.com/content/drupalmao-roger-lopez-interview-drupalcon-mit-2008"/>
+    <updated>2008-03-12T00:00:00-06:00</updated>
+    <id>http://sirkitree.github.com/content/drupalmao-roger-lopez-interview-drupalcon-mit-2008</id>
+    <content type="html"><![CDATA[<p>The second release of DrupaLMAO's coverage of DrupalCon Boston 2008. Roger is the maintainer of the Asset module which I blogged about over at <a href="http://sirkitree.net/node/2">http://sirkitree.net</a> back in December so I was glad to get to meet him. Listen while Dave sits down to get a developer's perspective on DrupalCon.</p>
+
+<p><a href="http://drupalmao.com/node/11">Roger Lopez Interview</a></p>
+]]></content>
+  </entry>
+  
+</feed>
