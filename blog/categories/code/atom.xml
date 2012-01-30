@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-01-29T16:41:10-07:00</updated>
+  <updated>2012-01-30T09:46:33-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HTML5 Photoboot]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/01/30/html5-photoboot/"/>
+    <updated>2012-01-30T09:36:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/01/30/html5-photoboot</id>
+    <content type="html"><![CDATA[<p>After reading an <a href="http://arstechnica.com/business/news/2012/01/hands-on-building-an-html5-photo-booth-with-chromes-new-webcam-api.ars">article</a> about the experimental support for WebRTC getting put into the latest version of browsers, my buddy <a href="https://plus.google.com/102577299588201077107/about">David Burns</a> was inspired to write a quick app called <a href="http://html5photobooth.com/">HTML5 Photobooth</a>.</p>
+
+<p>Code can be found here: https://github.com/davexoxide/HTML5-Photobooth</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Node.js to convert Drupal to Jekkyl]]></title>
