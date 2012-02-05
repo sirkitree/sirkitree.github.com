@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-05T10:44:13-07:00</updated>
+  <updated>2012-02-05T13:48:29-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[New blog command and some style updates]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
+    <updated>2012-02-05T13:39:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
+    <content type="html"><![CDATA[<p>I love Github. The more I use it, the more I love it. As a form of endearment, I&#8217;ve updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.</p>
+
+<p>I&#8217;ve also been looking for a quicker way to blog on a whim, and having to switch into my octopress directory, and then type <code>new_post["title of my post"]</code> was still just two steps too much. So I pulled up my <code>.bash_profile</code> and started scripting. Here&#8217;s what I came up with:</p>
+
+<div><script src='https://gist.github.com/1747860.js?file='></script>
+<noscript><pre><code>###########
+## Blogging
+function new_post {
+  cd /Users/sirkitree/github/octopress
+  rake new_post[&quot;$1&quot;]
+}
+alias blog=&quot;new_post&quot;</code></pre></noscript></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[HTML5 Photobooth]]></title>
@@ -437,28 +458,6 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
 <cite>Can we tell by ourselves what is needed, or is it defined by those around us? Should it be defined by those around us, or by something greater? If by something greater, then what is that greater something? If by those around us, then whom?</cite></p>
 
 <p>I&#8217;ve pondered on these things most of my conscious life, and still look for the answers. I doubt I will ever stop.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Swept Away]]></title>
-    <link href="http://sirkitree.github.com/poems/swept-away"/>
-    <updated>2008-04-13T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/poems/swept-away</id>
-    <content type="html"><![CDATA[<p>Swept away are the remnants of old, smaller dreams thought too impossible now become reality, even though torn<br/>
-Reality torn asunder, pulling back the curtain to reveal the secrets of life lived fully, unhindered by shame<br/>
-Shameful regrets, swept away, replaced by a new reality, revealed through conscious will and positive karmic energy<br/>
-Positive energies flow through willful projections when unhindered by fear, guided by respect and discipline<br/>
-Respect being key, replaces that which eats at everyones soul of late, fear and the assumption of security, apathy</br></p>
-
-<br/>
-
-
-<p>Swept away and free to dream, your life becomes clay in which to mold a destiny, in harmony with the lines which exist<br/>
-See the lines, look ahead down that path which your decision may take you to make a wise choice&#8230; prosper<br/>
-Fear and doubt be swept away, leaving assured security molded by discipline and experience, always increasing, improving<br/>
-Constant reshaping of thoughts and patterns of reasoning, learning to optimize, conceptualize, visualize<br/>
-Look forward to what is to come, and what will be swept away</p>
 ]]></content>
   </entry>
   

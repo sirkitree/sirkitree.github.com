@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-05T10:44:13-07:00</updated>
+  <updated>2012-02-05T13:48:29-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[New blog command and some style updates]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
+    <updated>2012-02-05T13:39:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
+    <content type="html"><![CDATA[<p>I love Github. The more I use it, the more I love it. As a form of endearment, I've updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.</p>
+
+<p>I've also been looking for a quicker way to blog on a whim, and having to switch into my octopress directory, and then type <code>new_post["title of my post"]</code> was still just two steps too much. So I pulled up my <code>.bash_profile</code> and started scripting. Here's what I came up with:</p>
+
+<p><div><script src='https://gist.github.com/1747860.js?file='></script>
+<noscript><pre><code>###########
+## Blogging
+function new_post {
+  cd /Users/sirkitree/github/octopress
+  rake new_post[&quot;$1&quot;]
+}
+alias blog=&quot;new_post&quot;</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[HTML5 Photobooth]]></title>
@@ -160,96 +181,6 @@ this.checked = !this.checked;
 
 
 <p>Works great and it's short and sweet. Who loves jQuery?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[jQuery: working with select options]]></title>
-    <link href="http://sirkitree.github.com/content/jquery-working-select-options"/>
-    <updated>2007-02-27T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/jquery-working-with-select-options</id>
-    <content type="html"><![CDATA[<p>Following my <a href="http://sirkitree.github.com/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
-
-<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here's the resulting code for the IE portion:</p>
-
-<pre>
-    // ie doesn't pick up the option.click, so we'll have to use the select.change
-    $('#edit-role-changer').change(function(){
-
-    // get rid of select box
-    $('#edit-role-changer').hide();
-
-        // show the chosen role as static text
-       // NOTE: FF doesn't pick up [@selected]
-      $('#role').html($(this).children("[@selected]").text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-</pre>
-
-
-<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:</p>
-
-<pre>
-    // provide action for an option change
-    $('#edit-role-changer option').click(function(){
-
-      // get rid of select box
-      $('#edit-role-changer').hide();
-
-      // show the chosen role as static text
-      $('#role').html($(this).text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-</pre>
-
-
-<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:</p>
-
-<pre>
-  // see which browser we're working with
-  if ($.browser.msie) {
-
-    // ie doesn't pick up the option.click, so we'll have to use the select.change
-    $('#edit-role-changer').change(function(){
-
-      // get rid of select box
-      $('#edit-role-changer').hide();
-
-      // show the chosen role as static text
-      // NOTE: FF doesn't pick up [@selected]
-      $('#role').html($(this).children("[@selected]").text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-  }
-  else {
-
-    // provide action for an option change
-    $('#edit-role-changer option').click(function(){
-
-      // get rid of select box
-      $('#edit-role-changer').hide();
-
-      // show the chosen role as static text
-      $('#role').html($(this).text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-  }
-</pre>
-
-
-<p>Happy jQuerying!</p>
 ]]></content>
   </entry>
   
