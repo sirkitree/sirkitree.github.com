@@ -9,7 +9,7 @@
   <meta name="author" content="Jerad Bitner">
 
   
-  <meta name="description" content="I love Github. The more I use it, the more I love it. As a form of endearment, I&#8217;ve updated the style of this blog to look a little more like &hellip;">
+  <meta name="description" content="I&#8217;ve long had a quick shell script that was a simple todo list based on Jerod Santo&#8217;s Minimally Awesome Todos. It&#8217;s very minimal, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/">Todo List in node.js and Geektool</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-05T13:59:00-07:00" pubdate data-updated="true">Feb 5<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve long had a quick shell script that was a simple todo list based on Jerod Santo&#8217;s <a href="http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/">Minimally Awesome Todos</a>. It&#8217;s very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
+
+<p>Then I stumbled onto a <a href="https://github.com/vesln/todo">Node.js version</a> of a todo list and thought I&#8217;d give it a shot. I got it setup, but when I wanted to try to display the output through GeekTool, I failed. So I delved into todo list code a bit more and learned quite a lot!</p>
+
+<p>My <a href="https://github.com/vesln/todo/pull/3">first attempt</a> was to simply write the output of the <code>todo ls</code> command to a file. I got an immediate response from the maintainer, <a href="https://github.com/vesln">Veselin Todorov</a> and was encouraged to change the command from <code>write</code> to <code>export</code> and write up a test for the new command as well.</p>
+
+<p>I succeeded in <a href="https://github.com/vesln/todo/pull/4">converting the <code>write</code> command to <code>export</code></a>, and fixed up a small bug with the path of the file I was writing to by default, but thus far have completely failed at writing a test to confirm that the file was written.</p>
+
+<p>The project is currently using <a href="http://sinonjs.org/">Sinon.JS</a> for testing, and even though the API seems pretty robust, and the examples coherent, I&#8217;m simply failing at figuring out how to test file creation with it. So far all I have is a stub:</p>
+
+<div><script src='https://gist.github.com/1747985.js?file='></script>
+<noscript><pre><code>  describe('.export()', function(done) {
+    it('should write todos to a file', function(done) {
+
+    });
+  });</code></pre></noscript></div>
+
+
+<p>However, it is working well without a test at this point, and I have a pretty todo list on my desktop! :)</p>
+
+<p><img src="https://img.skitch.com/20120205-q32piq2918kutm1autmh6yby4m.png" alt="GeekTool Todos" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -513,55 +571,6 @@ Comprehend...
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/content/another-time-another-place">Another Time, Another Place&#8230;</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-17T00:00:00-06:00" pubdate data-updated="true">Sep 17<span>th</span>, 2010</time>
-        
-         | <a href="/content/another-time-another-place#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Jenney and I moved from Austin to Carolina Beach, North Carolina and the past three.5 months have been amazing! It&#8217;s been like a working vacation. We were right on the beach, with beautiful views, and a personal walkway to the beach which was in a premo-spot. Not a ton of people, lots of waves, and lots of sunshine. We both worked hard, and played hard. It was great and I can honestly say I&#8217;ve lived my &#8216;beach life&#8217; dream for at least a while. Chalk another dream up to &#8216;accomplished&#8217;!</p>
-
-<p>Today marks the start of ANOTHER adventure. We packed up our life once more and left beautiful Carolina Beach behind. Tonight we wait at Jenney&#8217;s best friend&#8217;s (and Maid of Honor&#8217;s) house before our flight tomorrow for San Diego where we will be for a week, staying at her mother&#8217;s house before we are wed on Saturday, September 25th. We&#8217;re both so so so excited to see our friends and family and to celebrate what we&#8217;ve held true in our hearts for the last year; our commitment and love for each other.</p>
-
-<p>After the wedding we&#8217;ll be flying back to North Carolina to pick up our belonging and drive to Colorado Springs where we will continue our life together. Jenney took the opportunity for a Pediatric job in her field of Occupational Therapy and will be doing more of what she loves. She went to school specifically for pediatrics, but the job market has, until now, dictate she work in Geriatrics instead. As you can imagine, the field of Geriatrics is a bit more sobering than getting to play with children all day, which is part of what she&#8217;ll be able to do at her new job. The new job is not quite as lucrative as a traveling position, but we will still be doing fine and loving our life.</p>
-
-<p>My past year with Jenney has been the best year of my life, and I&#8217;m so looking forward to many, many more with her by my side. &#8211; guess I better write my vows ;)</p>
-
-<p>For some of the great pictures we took on our travel this far, check out our photostreams on Flickr.</p>
-
-<p><a href="http://www.flickr.com/photos/43114238@N03/">Jenney&#8217;s Photostream</a>
-<a href="http://www.flickr.com/photos/sirkitree/">Jerad&#8217;s Photostream</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -577,6 +586,10 @@ Comprehend...
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/">todo list in node.js and geektool</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/02/05/new-blog-command-and-some-style-updates/">New blog command and some style updates</a>
       </li>
     
@@ -590,10 +603,6 @@ Comprehend...
     
       <li class="post">
         <a href="/blog/2011/04/25/images/">Images</a>
-      </li>
-    
-      <li class="post">
-        <a href="/poems">Poems</a>
       </li>
     
   </ul>

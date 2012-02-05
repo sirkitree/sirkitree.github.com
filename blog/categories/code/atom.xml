@@ -4,7 +4,7 @@
   <title><![CDATA[Category: code | Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-05T13:48:29-07:00</updated>
+  <updated>2012-02-05T14:25:20-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[todo list in node.js and geektool]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
+    <updated>2012-02-05T13:59:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
+    <content type="html"><![CDATA[<p>I've long had a quick shell script that was a simple todo list based on Jerod Santo's <a href="http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/">Minimally Awesome Todos</a>. It's very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
+
+<p>Then I stumbled onto a <a href="https://github.com/vesln/todo">Node.js version</a> of a todo list and thought I'd give it a shot. I got it setup, but when I wanted to try to display the output through GeekTool, I failed. So I delved into todo list code a bit more and learned quite a lot!</p>
+
+<p>My <a href="https://github.com/vesln/todo/pull/3">first attempt</a> was to simply write the output of the <code>todo ls</code> command to a file. I got an immediate response from the maintainer, <a href="https://github.com/vesln">Veselin Todorov</a> and was encouraged to change the command from <code>write</code> to <code>export</code> and write up a test for the new command as well.</p>
+
+<p>I succeeded in <a href="https://github.com/vesln/todo/pull/4">converting the <code>write</code> command to <code>export</code></a>, and fixed up a small bug with the path of the file I was writing to by default, but thus far have completely failed at writing a test to confirm that the file was written.</p>
+
+<p>The project is currently using <a href="http://sinonjs.org/">Sinon.JS</a> for testing, and even though the API seems pretty robust, and the examples coherent, I'm simply failing at figuring out how to test file creation with it. So far all I have is a stub:</p>
+
+<p><div><script src='https://gist.github.com/1747985.js?file='></script>
+<noscript><pre><code>  describe('.export()', function(done) {
+    it('should write todos to a file', function(done) {
+
+    });
+  });</code></pre></noscript></div>
+</p>
+
+<p>However, it is working well without a test at this point, and I have a pretty todo list on my desktop! :)</p>
+
+<p><img src="https://img.skitch.com/20120205-q32piq2918kutm1autmh6yby4m.png" alt="GeekTool Todos" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[New blog command and some style updates]]></title>
@@ -141,46 +170,6 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
 <p>The one thing I couldn't find was a block setting when looking at the flickr_block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc's flickr_photo_img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply 'b_d' for large.</p>
 
 <p>Fun stuff!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[jQuery checkbox goodness]]></title>
-    <link href="http://sirkitree.github.com/content/jquery-checkbox-goodness"/>
-    <updated>2007-06-06T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/jquery-checkbox-goodness</id>
-    <content type="html"><![CDATA[<p>I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)</p>
-
-<pre>
-$(document).ready( function() {
-  $('a#select_all').click( function() {
-    $('input:checkbox').each( function() {
-      this.checked = !this.checked;
-    });
-    return false;
-  });
-});
-</pre>
-
-
-<p>The first item to note is that jQuery created pseudo classes for input.</p>
-
-<pre>
-$('input:checkbox');
-...
-$('input:textbox');
-... etc.
-</pre>
-
-
-<p>The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it's current value.</p>
-
-<pre>
-this.checked = !this.checked;
-</pre>
-
-
-<p>Works great and it's short and sweet. Who loves jQuery?</p>
 ]]></content>
   </entry>
   

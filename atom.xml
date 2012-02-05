@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-05T13:48:29-07:00</updated>
+  <updated>2012-02-05T14:25:20-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[todo list in node.js and geektool]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
+    <updated>2012-02-05T13:59:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve long had a quick shell script that was a simple todo list based on Jerod Santo&#8217;s <a href="http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/">Minimally Awesome Todos</a>. It&#8217;s very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
+
+<p>Then I stumbled onto a <a href="https://github.com/vesln/todo">Node.js version</a> of a todo list and thought I&#8217;d give it a shot. I got it setup, but when I wanted to try to display the output through GeekTool, I failed. So I delved into todo list code a bit more and learned quite a lot!</p>
+
+<p>My <a href="https://github.com/vesln/todo/pull/3">first attempt</a> was to simply write the output of the <code>todo ls</code> command to a file. I got an immediate response from the maintainer, <a href="https://github.com/vesln">Veselin Todorov</a> and was encouraged to change the command from <code>write</code> to <code>export</code> and write up a test for the new command as well.</p>
+
+<p>I succeeded in <a href="https://github.com/vesln/todo/pull/4">converting the <code>write</code> command to <code>export</code></a>, and fixed up a small bug with the path of the file I was writing to by default, but thus far have completely failed at writing a test to confirm that the file was written.</p>
+
+<p>The project is currently using <a href="http://sinonjs.org/">Sinon.JS</a> for testing, and even though the API seems pretty robust, and the examples coherent, I&#8217;m simply failing at figuring out how to test file creation with it. So far all I have is a stub:</p>
+
+<div><script src='https://gist.github.com/1747985.js?file='></script>
+<noscript><pre><code>  describe('.export()', function(done) {
+    it('should write todos to a file', function(done) {
+
+    });
+  });</code></pre></noscript></div>
+
+
+<p>However, it is working well without a test at this point, and I have a pretty todo list on my desktop! :)</p>
+
+<p><img src="https://img.skitch.com/20120205-q32piq2918kutm1autmh6yby4m.png" alt="GeekTool Todos" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[New blog command and some style updates]]></title>
@@ -440,24 +469,6 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
     <updated>2008-07-11T00:00:00-06:00</updated>
     <id>http://sirkitree.github.com/content/a-much-needed-vacation</id>
     <content type="html"><![CDATA[<p>This weekend I&#8217;m leaving for PA for a week long vacation of nature, family and friends. Saturday I hope to be going to the Lycoming County Fair, Sunday going to see Wall-E with a friend. I&#8217;ll also be using my spare time over the weekend to get everything ready for a three day backpacking trip through the mountains where I grew up. I&#8217;ve not been out there by myself in years and I really want to just take my time hiking through the mountains around Rose Valley Lake where I grew up.<br /><br />When I return from that, I&#8217;ll be heading out to the family cabin in Belleville where a family reunion is taking place, full of family on my mother&#8217;s side. Great Aunts and Uncles and hopefully time enough to talk with them all to glean what wisdom I may from them. I&#8217;ve come to think that you have to know where you come from in order to figure out where to go next in life. And that&#8217;s the big question I ask myself every so often, so hopefully some time alone, and then with family and friends will help me figure that one out.<br /><br />Next weekend I&#8217;ll be home at my mother&#8217;s then, visiting with her, my brothers and my father&#8217;s parents who will be visiting. I think we&#8217;re planning on going to Ricket&#8217;s Glen where there is some nice camping, a good place to hike some waterfalls, and a beach on the lake for swimming.<br /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Needs and Wants]]></title>
-    <link href="http://sirkitree.github.com/content/needs-and-wants"/>
-    <updated>2008-04-14T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/needs-and-wants</id>
-    <content type="html"><![CDATA[<p>For a long time I&#8217;ve thought that a major distinction in life that people must try to make is the difference between needs and wants. I&#8217;ve told many of my friends that if they just try to make this distinction in their own life, they will live a much happier, balanced life.</p>
-
-<p>I was going through an old hard drive today and found many of my old writings on lots of different topics, but this one just jumped out at me as it is probably one of the most profound truths and holds some of the most engaging questions of life. The entry is dated 1-11-07:</p>
-
-<p><cite>We&#8217;ve got to stop thinking that we are the only ones that matter.</cite>
-<cite>Where does one find the strength to accomplish such a feat? What is the formula for molding one&#8217;s self unto this task? We all want something greater than what we already experience in this life, but we must learn to separate that which we want, from that which is needed. </cite>
-<cite>Define what is needed.</cite>
-<cite>Can we tell by ourselves what is needed, or is it defined by those around us? Should it be defined by those around us, or by something greater? If by something greater, then what is that greater something? If by those around us, then whom?</cite></p>
-
-<p>I&#8217;ve pondered on these things most of my conscious life, and still look for the answers. I doubt I will ever stop.</p>
 ]]></content>
   </entry>
   
