@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-06T18:36:30-07:00</updated>
+  <updated>2012-02-07T14:38:16-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Darkness &amp; Light]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/07/darkness-and-light/"/>
+    <updated>2012-02-07T14:36:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/07/darkness-and-light</id>
+    <content type="html"><![CDATA[<p><img src="http://f.cl.ly/items/2d0g2v3H3i0V0o1t2O0d/light-dark.png" alt="Dark &amp; Light" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Angel of fire]]></title>
@@ -42,7 +51,7 @@
 </span><span class='line'>  Caress my lips, set me on fire
 </span><span class='line'>
 </span><span class='line'>Angel of fire, eyes so bright
-</span><span class='line'>  See through my sould, feel the fright
+</span><span class='line'>  See through my soul, feel the fright
 </span><span class='line'>  Singe my heart and look for the liar
 </span><span class='line'>  Scar on my sould cleanse with your fire
 </span><span class='line'>  Transcendance lost on the blackening shame
@@ -501,15 +510,6 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
     <id>http://sirkitree.github.com/content/new-tattoo</id>
     <content type="html"><![CDATA[<p>Here&#8217;s the new one!
 <img src="http://farm4.static.flickr.com/3151/2694083801_bcba323a65_m.jpg" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What is right?]]></title>
-    <link href="http://sirkitree.github.com/content/what-right"/>
-    <updated>2008-07-18T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/what-is-right</id>
-    <content type="html"><![CDATA[<p>There&#8217;s an ideal of late that I&#8217;ve seen repeated within literature and movies that intrigues me. It is that of the men and women who have ideals. Ideals that they do whatever it takes to uphold. I find this a respectable character trait that I find myself wanting to mimic. To uphold.<br /><br />When you see wrong being done what do you do?<br /><br />When you see something happening that you do not agree with, what do you do?<br /><br />When there are ideals being upheld by the populace that you do not agree with, not becuase you are bias or jaded or just plain sick of, but because you KNOW beyond a shadow of a doubt that they are absolutely wrong, what do you do?<br /><br />Some choose to do more, some choose to hide, some choose to reason that they&#8217;re not the one who can do anything about those things that hide in the dark of the mind and pervert the perception of those that would stand for what is right. But YOU know what is RIGHT. You KNOW what is WRONG. And even though you doubt yourself and how you feel about the subject of the matter, you KNOW in that inner most place that is untainted, unforgettable, unmoving&#8230; you KNOW.<br /><br />So do something about it! And the world will recognize as well, because they know as well, even though they may ignore it, even though they may reason it away&#8230; they know. And will support you if you are the one who champions the cause of WHAT IS RIGHT!<br /></p>
 ]]></content>
   </entry>
   

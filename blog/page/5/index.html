@@ -9,7 +9,7 @@
   <meta name="author" content="Jerad Bitner">
 
   
-  <meta name="description" content="So my first commit to the Drupal contributions has been made! WooHoo! I partied hard that night :) No, it&#8217;s really not that big of a deal, but &hellip;">
+  <meta name="description" content="Following my recent post on my rolechanger module, I started delving into how to provide functionality with the resulting dropdown box that the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,125 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/content/jquery-working-select-options">jQuery: Working With Select Options</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-02-27T00:00:00-07:00" pubdate data-updated="true">Feb 27<span>th</span>, 2007</time>
+        
+         | <a href="/content/jquery-working-select-options#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following my <a href="/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
+
+<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here&#8217;s the resulting code for the IE portion:</p>
+
+<pre>
+    // ie doesn't pick up the option.click, so we'll have to use the select.change
+    $('#edit-role-changer').change(function(){
+
+    // get rid of select box
+    $('#edit-role-changer').hide();
+
+        // show the chosen role as static text
+       // NOTE: FF doesn't pick up [@selected]
+      $('#role').html($(this).children("[@selected]").text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+</pre>
+
+
+<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:</p>
+
+<pre>
+    // provide action for an option change
+    $('#edit-role-changer option').click(function(){
+
+      // get rid of select box
+      $('#edit-role-changer').hide();
+
+      // show the chosen role as static text
+      $('#role').html($(this).text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+</pre>
+
+
+<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:</p>
+
+<pre>
+  // see which browser we're working with
+  if ($.browser.msie) {
+
+    // ie doesn't pick up the option.click, so we'll have to use the select.change
+    $('#edit-role-changer').change(function(){
+
+      // get rid of select box
+      $('#edit-role-changer').hide();
+
+      // show the chosen role as static text
+      // NOTE: FF doesn't pick up [@selected]
+      $('#role').html($(this).children("[@selected]").text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+  }
+  else {
+
+    // provide action for an option change
+    $('#edit-role-changer option').click(function(){
+
+      // get rid of select box
+      $('#edit-role-changer').hide();
+
+      // show the chosen role as static text
+      $('#role').html($(this).text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+  }
+</pre>
+
+
+<p>Happy jQuerying!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -475,48 +594,6 @@ Due to more <a href="http://thevineyardvoice.com">commitments</a> then I have ti
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/content/remembrance-our-father">In Remembrance of Our Father</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-12-05T00:00:00-07:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
-        
-         | <a href="/content/remembrance-our-father#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So my brothers and I have wanted to get a tattoo for a while now that is in remembrance of our father who died one month ago today. Here is a preliminary sketch I did in Illustrator. We&#8217;re going to have this the basis of the tattoo and have the artist get more creative with it, personalize each one.</p>
-
-<p>I want mine to have better knots in it&#8230; I&#8217;m not very good at designing Celtic knots. The initials probably a little bigger &#8230; maybe just my dad&#8217;s initials bigger. Anyway, I know mine is going on my left arm as a shield because my dad was left handed. It&#8217;s also where the cancer attacked him.</p>
-
-<p>But I&#8217;ll be sure to post pics of all of our tattoos once we get them.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -534,6 +611,10 @@ Due to more <a href="http://thevineyardvoice.com">commitments</a> then I have ti
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/02/07/darkness-and-light/">Darkness &amp; Light</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/02/06/angel-of-fire/">Angel of fire</a>
       </li>
     
@@ -547,10 +628,6 @@ Due to more <a href="http://thevineyardvoice.com">commitments</a> then I have ti
     
       <li class="post">
         <a href="/blog/2012/01/30/html5-photoboot/">HTML5 Photobooth</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">Using Node.js to convert Drupal to Jekkyl</a>
       </li>
     
   </ul>

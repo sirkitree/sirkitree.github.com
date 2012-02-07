@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Using Node.js to convert Drupal to Jekkyl - Jerad Bitner</title>
+  <title>Darkness &amp; Light - Jerad Bitner</title>
   <meta name="author" content="Jerad Bitner">
 
   
-  <meta name="description" content="I&#8217;ve gone and revamped my blog again. The current new hotness has been Jekkyl of late, ever since GitHub came out with it&#8217;s Pages feature &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl">
+  <link rel="canonical" href="http://sirkitree.github.com/blog/2012/02/07/darkness-and-light">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -68,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">Using Node.js to Convert Drupal to Jekkyl</h1>
+      <h1 class="entry-title">Darkness &amp; Light</h1>
     
     
       <p class="meta">
@@ -84,7 +85,7 @@
   
 
 
-<time datetime="2012-01-29T15:54:00-07:00" pubdate data-updated="true">Jan 29<span>th</span>, 2012</time>
+<time datetime="2012-02-07T14:36:00-07:00" pubdate data-updated="true">Feb 7<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -93,37 +94,7 @@
   </header>
 
 
-<div class="entry-content"><p>I&#8217;ve gone and revamped my blog again.</p>
-
-<p>The current new hotness has been <a href="https://github.com/mojombo/jekyll/wiki">Jekkyl</a> of late, ever since GitHub came out with it&#8217;s <a href="http://pages.github.com/">Pages</a> feature. My first awareness of it was around September 2011 when <a href="http://developmentseed.org/">DevelopmentSeed</a> converted their .org page to Jekkly and <a href="http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/">wrote about it</a>. I started playing with it almost immediately when I had downtime during <a href="http://www.lullabot.com">Lullabot</a>&#8217;s <a href="http://2011.doitwithdrupal.com">Do it with Drupal</a> conference. Sacreligious? Whatever, it was something new to learn.</p>
-
-<p>Then quite recently <a href="http://walkah.net/blog/new-year-new-blog/">Walkah.net</a> moved to Jekkyl and renewed my interest when he released the <a href="https://github.com/walkah/walkah.net/blob/master/_import/drupal.rb">Ruby script</a> he used to convert his simple Drupal blog into YAML for use with Jekkly. That looked interesting so I put it in my backlog.</p>
-
-<p>Shortly after, I started getting some <a href="https://twitter.com/#!/mikl/status/159634667702722562">flak</a> from <a href="https://twitter.com/#!/mikl">@mikl</a> for not paying attention to my Drupal.org issue queue for the <a href="http://drupal.org/project/flag_friend">Flag Friend</a> module and as I interacted with and him, found that he was using <a href="http://octopress.org/">Octopress</a> for <a href="http://mikkel.hoegh.org/">his personal blog</a>. Octopress is a quick way to get started using Jekkly, and I like quick.</p>
-
-<p>So I put these two sources of inspiration together and it gave me reason to revisit Walkah&#8217;s Ruby script. After a few hours of trying to get the MySQL Ruby Gem working with the version of MySQL I have that comes with MAMP, I gave up and decided to just <a href="https://github.com/sirkitree/sirkitree.github.com/blob/master/_import/drupal.js">rewrite the script into Node.js</a>, which I&#8217;ve been trying to learn more about lately.</p>
-
-<p>The end result is all of my posts from JeradBitner.com converted into YAML format for use with the Octopress system which uses Jekkyl to generate your pages and can be convieniently hooked up to GitHub Pages in order to quickly create content with a few simple commands. (Whew! Try saying that to your wife without sounding bat-shit crazy!)</p>
-
-<pre><code>$&gt; rake new_post['Title of your post']
-</code></pre>
-
-<p>  Then write your post of course.</p>
-
-<pre><code>$&gt; rake generate
-</code></pre>
-
-<p>  Which runs Jekkly and converts all of your YAML to HTML and puts the files in the correct place.</p>
-
-<pre><code>$&gt; rake preview
-</code></pre>
-
-<p>  This starts up a local server so you can see your new post at localhost:4000.</p>
-
-<pre><code>$&gt; rake deploy
-</code></pre>
-
-<p>  Which commits the generated files to your GitHub repository and pushes them.</p>
+<div class="entry-content"><p><img src="http://f.cl.ly/items/2d0g2v3H3i0V0o1t2O0d/light-dark.png" alt="Dark &amp; Light" /></p>
 </div>
 
 
@@ -146,21 +117,15 @@
   
 
 
-<time datetime="2012-01-29T15:54:00-07:00" pubdate data-updated="true">Jan 29<span>th</span>, 2012</time>
+<time datetime="2012-02-07T14:36:00-07:00" pubdate data-updated="true">Feb 7<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/drupal/'>drupal</a>, <a class='category' href='/blog/categories/jekkyl/'>jekkyl</a>, <a class='category' href='/blog/categories/node-js/'>node.js</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/" data-via="sirkitree" data-counturl="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://sirkitree.github.com/blog/2012/02/07/darkness-and-light/" data-via="sirkitree" data-counturl="http://sirkitree.github.com/blog/2012/02/07/darkness-and-light/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -171,10 +136,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/04/25/images/" title="Previous Post: Images">&laquo; Images</a>
+        <a class="basic-alignment left" href="/blog/2012/02/06/angel-of-fire/" title="Previous Post: Angel of fire">&laquo; Angel of fire</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/01/30/html5-photoboot/" title="next Post: HTML5 Photobooth">HTML5 Photobooth &raquo;</a>
       
     </p>
   </footer>
@@ -294,8 +257,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/';
-        var disqus_url = 'http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/';
+        var disqus_identifier = 'http://sirkitree.github.com/blog/2012/02/07/darkness-and-light/';
+        var disqus_url = 'http://sirkitree.github.com/blog/2012/02/07/darkness-and-light/';
         var disqus_script = 'embed.js';
       
     (function () {
