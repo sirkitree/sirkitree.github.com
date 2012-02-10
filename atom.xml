@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
   <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-07T14:38:16-07:00</updated>
+  <updated>2012-02-09T17:57:50-07:00</updated>
   <id>http://sirkitree.github.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Nginx: do not cache logged in Drupal or WordPress users]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
+    <updated>2012-02-09T17:29:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
+    <content type="html"><![CDATA[<p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife&#8217;s WordPress site</a>.</p>
+
+<p>However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.</p>
+
+<p>Again, James to the rescue! He pointed me in the right direction and I got it working. Here&#8217;s what I did.</p>
+
+<p>One of the relevant pieces of James&#8217; setup, is this line within his <a href="https://github.com/q0rban/nginx-drupal/blob/master/nginx.conf#L63"><code>/etc/nginx/nginx.conf</code></a>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>http {
+</span><span class='line'>...
+</span><span class='line'>  ##
+</span><span class='line'>  # Virtual Host Configs
+</span><span class='line'>  ##
+</span><span class='line'>
+</span><span class='line'>  include /etc/nginx/conf.d/*.conf;
+</span><span class='line'>  include /etc/nginx/sites-enabled/*;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then within <a href="https://github.com/q0rban/nginx-drupal/blob/master/conf.d/session_cookie.conf"><code>/etc/nginx/conf.d/session_cookie.conf</code></a> he searches for the cookie that Drupal sets when you log in:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Determine if a Drupal session cookie is present
+</span><span class='line'>map $http_cookie $logged_in {
+</span><span class='line'>    default 0;
+</span><span class='line'>    ~SESS 1; # Drupal session cookie
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To this, I added a search for the wordpress cookie as well:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Determine if a Drupal session cookie is present
+</span><span class='line'>map $http_cookie $logged_in {
+</span><span class='line'>    default 0;
+</span><span class='line'>    ~SESS 1; # Drupal session cookie
+</span><span class='line'>    ~wordpress_logged_in 1; # Wordpress session cookie
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The last piece is telling your site to bypass the cache if <code>$http_cookie</code> is set:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>location / {
+</span><span class='line'>  ...
+</span><span class='line'>  # If client is logged in we bypass cache
+</span><span class='line'>  fastcgi_cache_bypass $logged_in;
+</span><span class='line'>  fastcgi_no_cache $logged_in;
+</span><span class='line'>  ...
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A quick <code>sudo service nginx restart</code> and our WordPress site is working much better!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Darkness &amp; Light]]></title>
@@ -500,16 +585,6 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
 <p>My last day at Sony BMG is August 7th, 2008. I&#8217;ll be heading back to PA to spend some more time with my family and friends and then back to Jersey to take care of getting rid of as much of my worldly possessions as possible. Then the week of the 18th Dave and I will be taking a cross country trip to San Francisco along RT 80. We&#8217;re still looking for good places to stop along the way, so if you have any suggestions that would be wonderful! I&#8217;m also still looking for a temporary place to crash in San Fran while I get the lay of the land and figure out where it makes sense to park myself for a year (read: sign a lease).</p>
 
 <p>All in all, I&#8217;m very optimistic and I really feel this is the right move. Not only because I can live one of my dreams, but also to learn about starting a business, and everything that entails. Not to mention becoming a better programmer under the tutelage of a master! Wish me luck!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[New Tattoo]]></title>
-    <link href="http://sirkitree.github.com/content/new-tattoo"/>
-    <updated>2008-07-22T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/new-tattoo</id>
-    <content type="html"><![CDATA[<p>Here&#8217;s the new one!
-<img src="http://farm4.static.flickr.com/3151/2694083801_bcba323a65_m.jpg" /></p>
 ]]></content>
   </entry>
   

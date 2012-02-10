@@ -9,7 +9,7 @@
   <meta name="author" content="Jerad Bitner">
 
   
-  <meta name="description" content="We&#8217;ve got some good interviews at the Friday&#8217;s code sprint hosted by MIT in Boston this week. We&#8217;re in the process of doing some &hellip;">
+  <meta name="description" content="The first release in DrupaLMAO&#8217;s Coverage of DrupalCon Boston 2008! Sorry for the jump, we&#8217;ll get DrupaLMAO.com into the planet agg soon &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/drupalmao/drupalmao-jacob-redding-interview-drupalcon-mit-2008">DrupaLMAO: Jacob Redding Interview - DrupalCon MIT 2008</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-03-11T00:00:00-06:00" pubdate data-updated="true">Mar 11<span>th</span>, 2008</time>
+        
+         | <a href="/drupalmao/drupalmao-jacob-redding-interview-drupalcon-mit-2008#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The first release in DrupaLMAO&#8217;s Coverage of DrupalCon Boston 2008! Sorry for the jump, we&#8217;ll get DrupaLMAO.com into the planet agg soon! Promise!</p>
+
+<p><a href="http://drupalmao.com/node/8">Jacob Redding Interview</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -462,76 +502,6 @@ this.checked = !this.checked;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/content/theming-cck-drupal">Theming CCK in Drupal</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-03-07T00:00:00-07:00" pubdate data-updated="true">Mar 7<span>th</span>, 2007</time>
-        
-         | <a href="/content/theming-cck-drupal#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently had a friend ask me how to be able to give CCK fields more user-friendly class names so that they could be styled a little easier. I actually needed to do this myself with a project at work, so I had time to really sit down and figure out a good way to do this.</p>
-
-<h3>CCK</h3>
-
-
-<p>The <a href="http://drupal.org/project/cck">Content Creation Kit (CCK)</a> is a great way to add different fields to any particular content type within Drupal. When you first start learning Drupal, you&#8217;ll see that it ships with two main content types: Page and Story. The fields that these two content types have by default are the Title and the Body. These are respectively a single line text field, and a multi-line text field of which you can choose an input format. This is great and very useful for basic content, but what if I would like another text field other then just Title and Body? CCK allows you to add this. But instead of trying to explain the power and awe of CCK here, please take a look at the <a href="http://drupal.org/node/101723">CCK handbook</a> where this is explained in much greater detail.</p>
-
-<h3>Stepping Stones</h3>
-
-
-<p>Now adding CCK fields to a content type is all fine and dandy, but what if I want to make them <em>look</em> better by perhaps changing around the order in which they appear when viewed, or perhaps target that specific element with my CSS in order to specify the exact look and feel of the content it holds? This is where you want to start theming. However, sometimes theming in Drupal can be a pretty complex concept to grok at first. Not because it is very hard, but because without any stepping stones to how theming actually works, you can very easily fall into a dangerous quagmire of code, arrays and objects that you have no idea are even available to you.</p>
-
-<h3>Contemplate this my friend</h3>
-
-
-<p>This is where <a href="http://www.lullabot.com/about/jeffrobbins">Jeff Robbins</a> of the <a href="http://www.lullabot.com">Lullabot</a> crew has come to our rescue with a great module called <a href="http://drupal.org/project/contemplate">Content Templates (contemplate)</a>. I believe this module is an incredible stepping stone in learning how to bridge the gap that exists between CCK and the way CCK fields are presented (themed). Installing this module will add a new menu item under Content Mangement in your Administration panel called &#8216;Content templates&#8217;, and also a templates tab inside of your &#8216;Content types&#8217; page of your Admin section. Once you create a template for any given content type, you can effectually customize the look and feel of not just the content type&#8217;s node view (labeled Body in contemplate), but also the Teaser and the RSS!</p>
-
-<h3>Commercial break</h3>
-
-
-<p>BUT WAIT, THERE&#8217;S MORE! Each fieldset (teaser, body, and rss) has not just a text field to edit the template in, but also inserts a default view of what Drupal spits out, ready to edit. And if that isn&#8217;t exciting enough for you, there is (<strong>IMHO the most useful feature of this module</strong>) a rich text-field next to that which lists every object available to you for templating! There&#8217;s even some neato javascript that allows you to click on an object and insert the php to print that object into the template field. This is just good stuff man. Fun times. Act now while supplies last. Void where prohibited.</p>
-
-<h3>Ok, time for a downer</h3>
-
-
-<p>Finding such a gem is really very great, but the excitement starts to wear off after about an hour of trying to template a complete content type inside of that teeny, tiny, little box. Even the javascript insertion of the box next to it begins to feel like a sticky piece of candy that&#8217;s lost it&#8217;s flavor. I&#8217;d like to take this opportunity to mention that the <a href="http://drupal.org/project/devel">devel module</a> provides you with a feature quite similar to this little javascript flavored object reference box, but unless you&#8217;re already very familiar with how to work with these field objects in PHP, the devel module is next to useless. So, again as a stepping stone, the contemplate module really comes in handy for referencing what objects are available to theme, and will give you a little insight as to how to work with them in PHP.</p>
-
-<p>So what do we do about the teeny, tiny, little text box that we&#8217;re supposed to put all of our theming code into? Well, fortunately Drupal&#8217;s main theming engine, phptemplate, has already taken care of this. Listen carefully now, &#8216;cuz this is important and I don&#8217;t want to lose you now. We&#8217;ve already come so far. <strong>Each content type can have it&#8217;s very own template file within your theme.</strong></p>
-
-<h3>Theming a content type</h3>
-
-
-<p>You can actually accomplish this very easily. The first step is to create a file within your theme directory named <strong>node-content_type.tpl.php</strong> <em>replacing <strong>content_type</strong> with the machine readable name you&#8217;ve given your content type</em>. So if your content type is named <strong>forum</strong>, you&#8217;ll want the file to be named node-<strong>forum</strong>.tpl.php. For almost all of my work lately I&#8217;ve been using a <a href="http://drupal.org/project/zen">theme called zen</a>. It&#8217;s written by the Lullabot crew once again, and is probably the best theme out there to teach you anything about a theme. This theme has a file that is a custom themed content type already specific to the forum module. The file is node-forum.tpl.php. I&#8217;ve used this on multiple occasions as a template on how to start a new custom theme file for a content type. If you use this file, you&#8217;ll notice that, among other things, it prints out the $content variable. All of our CCK fields can be found inside of this variable, along with the default theming of them that you find in the contemplate module&#8217;s teeny, tiny, little box for the template code. So you can take the code that is generated by default in the contemplate module, and insert all of that where you see the $content variable being printed in the tpl file. From there, you can do all of your editing in the editor of your choice without having to strain your back trying to bend closer to your monitor to see what&#8217;s inside of the teeny, tiny, little box.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -549,6 +519,10 @@ this.checked = !this.checked;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/">Nginx: do not cache logged in Drupal or WordPress users</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/02/07/darkness-and-light/">Darkness &amp; Light</a>
       </li>
     
@@ -562,10 +536,6 @@ this.checked = !this.checked;
     
       <li class="post">
         <a href="/blog/2012/02/05/new-blog-command-and-some-style-updates/">New blog command and some style updates</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/30/html5-photoboot/">HTML5 Photobooth</a>
       </li>
     
   </ul>

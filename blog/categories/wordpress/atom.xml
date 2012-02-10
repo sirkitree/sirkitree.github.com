@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: wordpress | Jerad Bitner]]></title>
+  <link href="http://sirkitree.github.com/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://sirkitree.github.com/"/>
+  <updated>2012-02-09T17:57:50-07:00</updated>
+  <id>http://sirkitree.github.com/</id>
+  <author>
+    <name><![CDATA[Jerad Bitner]]></name>
+    <email><![CDATA[jbitner@jeradbitner.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Nginx: do not cache logged in Drupal or WordPress users]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
+    <updated>2012-02-09T17:29:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
+    <content type="html"><![CDATA[<p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife's WordPress site</a>.</p>
+
+<p>However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.</p>
+
+<p>Again, James to the rescue! He pointed me in the right direction and I got it working. Here's what I did.</p>
+
+<p>One of the relevant pieces of James' setup, is this line within his <a href="https://github.com/q0rban/nginx-drupal/blob/master/nginx.conf#L63"><code>/etc/nginx/nginx.conf</code></a>:</p>
+
+<p>```
+http {
+...
+  ##
+  # Virtual Host Configs
+  ##</p>
+
+<p>  include /etc/nginx/conf.d/<em>.conf;
+  include /etc/nginx/sites-enabled/</em>;
+}
+```</p>
+
+<p>And then within <a href="https://github.com/q0rban/nginx-drupal/blob/master/conf.d/session_cookie.conf"><code>/etc/nginx/conf.d/session_cookie.conf</code></a> he searches for the cookie that Drupal sets when you log in:</p>
+
+<p>```</p>
+
+<h1>Determine if a Drupal session cookie is present</h1>
+
+<p>map $http_cookie $logged_in {</p>
+
+<pre><code>default 0;
+~SESS 1; # Drupal session cookie
+</code></pre>
+
+<p>}
+```</p>
+
+<p>To this, I added a search for the wordpress cookie as well:</p>
+
+<p>```</p>
+
+<h1>Determine if a Drupal session cookie is present</h1>
+
+<p>map $http_cookie $logged_in {</p>
+
+<pre><code>default 0;
+~SESS 1; # Drupal session cookie
+~wordpress_logged_in 1; # Wordpress session cookie
+</code></pre>
+
+<p>}
+```</p>
+
+<p>The last piece is telling your site to bypass the cache if <code>$http_cookie</code> is set:</p>
+
+<p><code>
+location / {
+  ...
+  # If client is logged in we bypass cache
+  fastcgi_cache_bypass $logged_in;
+  fastcgi_no_cache $logged_in;
+  ...
+}
+</code></p>
+
+<p>A quick <code>sudo service nginx restart</code> and our WordPress site is working much better!</p>
+]]></content>
+  </entry>
+  
+</feed>
