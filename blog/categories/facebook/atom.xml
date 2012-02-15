@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: facebook | Jerad Bitner]]></title>
+  <link href="http://sirkitree.github.com/blog/categories/facebook/atom.xml" rel="self"/>
+  <link href="http://sirkitree.github.com/"/>
+  <updated>2012-02-14T17:17:10-07:00</updated>
+  <id>http://sirkitree.github.com/</id>
+  <author>
+    <name><![CDATA[Jerad Bitner]]></name>
+    <email><![CDATA[jbitner@jeradbitner.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Migrate Flickr or Facebook photos to Picasa/Google+ easily]]></title>
+    <link href="http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily/"/>
+    <updated>2012-02-14T16:33:00-07:00</updated>
+    <id>http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily</id>
+    <content type="html"><![CDATA[<p>I found a great way to transfer photos from <a href="http://www.flickr.com/">Flickr</a> or <a href="http://www.facebook.com/">Facebook</a> to Picasa/<a href="http://plus.google.com">Google+</a> quickly and easily, keeping albums intact using Mac OS X iPhoto '11.</p>
+
+<p><strong>Step 1:</strong><br>
+Download and install the <a href="http://picasa.google.com/mac_tools.html">Picasa Web Albums Uploader</a>.</p>
+
+<p><strong>Step 2:</strong><br>
+Within iPhoto, select iPhoto > Preferences and then the Accounts tab to connect to your Flickr account.<br>
+<img src="https://img.skitch.com/20120215-epm1hsd8fm9jy44ame3aaaytdh.png"></p>
+
+<p><strong>Step 3:</strong><br>
+Within iPhoto, select the Flickr icon in your sidebar.<br>
+<img src="https://img.skitch.com/20120215-bc5xsu5q1259gftmdkceq3yfy6.png"></p>
+
+<p><strong>Step 4:</strong><br>
+Within iPhoto, select the Flickr album you want to move and double click to open in order to make sure iPhoto retrieves all of the photos.<br>
+<img src="https://img.skitch.com/20120215-k4re65p6j4s14py52k8x9d5ath.png"></p>
+
+<p><strong>Step 5:</strong><br>
+Within iPhoto, select File > Export and use the "Picasa Web Albums" tab to export your selected Flickr album right into Picasa.<br>
+<img src="https://img.skitch.com/20120215-xfpx814n6d5xtwc6jphe1rja2d.png"></p>
+
+<p>Upon signing into your Google Plus account, and viewing your albums, you should now see the exported album available.
+<img src="https://img.skitch.com/20120215-ejkj42q1xyqf5q5ju4jnegthy.png"></p>
+]]></content>
+  </entry>
+  
+</feed>
