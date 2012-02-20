@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tattoo | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/tattoo/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/tattoo/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[New Tattoo]]></title>
-    <link href="http://sirkitree.github.com/content/new-tattoo"/>
+    <link href="http://jeradbitner.com/content/new-tattoo"/>
     <updated>2008-07-22T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/new-tattoo</id>
+    <id>http://jeradbitner.com/content/new-tattoo</id>
     <content type="html"><![CDATA[<p>Here's the new one!
 <img src="http://farm4.static.flickr.com/3151/2694083801_bcba323a65_m.jpg" /></p>
 ]]></content>

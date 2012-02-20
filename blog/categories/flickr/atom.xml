@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: flickr | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/flickr/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/flickr/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Migrate Flickr or Facebook photos to Picasa/Google+ easily]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/14/migrate-flickr-to-picasa-easily/"/>
     <updated>2012-02-14T16:33:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily</id>
+    <id>http://jeradbitner.com/blog/2012/02/14/migrate-flickr-to-picasa-easily</id>
     <content type="html"><![CDATA[<p>I found a great way to transfer photos from <a href="http://www.flickr.com/">Flickr</a> or <a href="http://www.facebook.com/">Facebook</a> to Picasa/<a href="http://plus.google.com">Google+</a> quickly and easily, keeping albums intact using Mac OS X iPhoto '11.</p>
 
 <p><strong>Step 1:</strong><br>

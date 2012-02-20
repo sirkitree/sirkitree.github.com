@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: photos | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/photos/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/photos/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Migrate Flickr or Facebook photos to Picasa/Google+ easily]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/14/migrate-flickr-to-picasa-easily/"/>
     <updated>2012-02-14T16:33:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily</id>
+    <id>http://jeradbitner.com/blog/2012/02/14/migrate-flickr-to-picasa-easily</id>
     <content type="html"><![CDATA[<p>I found a great way to transfer photos from <a href="http://www.flickr.com/">Flickr</a> or <a href="http://www.facebook.com/">Facebook</a> to Picasa/<a href="http://plus.google.com">Google+</a> quickly and easily, keeping albums intact using Mac OS X iPhoto '11.</p>
 
 <p><strong>Step 1:</strong><br>
@@ -46,9 +46,9 @@ Within iPhoto, select File > Export and use the "Picasa Web Albums" tab to expor
   
   <entry>
     <title type="html"><![CDATA[Marti Gras Weekend]]></title>
-    <link href="http://sirkitree.github.com/content/marti-gras-weekend"/>
+    <link href="http://jeradbitner.com/content/marti-gras-weekend"/>
     <updated>2007-02-19T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/marti-gras-weekend</id>
+    <id>http://jeradbitner.com/content/marti-gras-weekend</id>
     <content type="html"><![CDATA[<div style="float:left; margin-right:10px;"><div style="text-align:center;width:194px;font-family:arial,sans-serif;font-size:83%"><div style="height:194px;background:url('http://picasaweb.google.com/f/img/transparent_album_background.gif') no-repeat left"><a href="http://picasaweb.google.com/sirkitree/PhotoboothFunOnMartiGras"><img src="http://lh6.google.com/image/sirkitree/RdmoxEtxMTE/AAAAAAAAAHo/eoQXIJmK_p0/s160-c/PhotoboothFunOnMartiGras.jpg" width="160" height="160" style="border:none;padding:0px;margin-top:16px;"></a></div><a href="http://picasaweb.google.com/sirkitree/PhotoboothFunOnMartiGras"><div style="color:#4D4D4D;font-weight:bold;text-decoration:none;">Photobooth fun on Marti Gras</div></a><div style="color:#808080"></div></div></div>
 
 
@@ -58,9 +58,9 @@ Within iPhoto, select File > Export and use the "Picasa Web Albums" tab to expor
   
   <entry>
     <title type="html"><![CDATA[come walk with me]]></title>
-    <link href="http://sirkitree.github.com/content/come-walk-me"/>
+    <link href="http://jeradbitner.com/content/come-walk-me"/>
     <updated>2007-01-29T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/come-walk-with-me</id>
+    <id>http://jeradbitner.com/content/come-walk-with-me</id>
     <content type="html"><![CDATA[<div style="text-align:center;width:194px;font-family:arial,sans-serif;font-size:83%;float:left;margin-right:10px;">
   <div style="height:194px;background:url('http://picasaweb.google.com/f/img/transparent_album_background.gif') no-repeat left">
     <a href="http://picasaweb.google.com/sirkitree/TakeAWalkWithMe"><img src="http://lh3.google.com/image/sirkitree/Rb0ig9Sj63E/AAAAAAAAAFo/HRwybLGba_U/s160-c/TakeAWalkWithMe.jpg" width="160" height="160" style="border:none;padding:0px;margin-top:16px;"></a>

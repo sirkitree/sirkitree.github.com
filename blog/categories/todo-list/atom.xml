@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: todo-list | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/todo-list/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/todo-list/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[todo list in node.js and geektool]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
     <updated>2012-02-05T13:59:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
+    <id>http://jeradbitner.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
     <content type="html"><![CDATA[<p>I've long had a quick shell script that was a simple todo list based on Jerod Santo's <a href="http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/">Minimally Awesome Todos</a>. It's very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
 
 <p>Then I stumbled onto a <a href="https://github.com/vesln/todo">Node.js version</a> of a todo list and thought I'd give it a shot. I got it setup, but when I wanted to try to display the output through GeekTool, I failed. So I delved into todo list code a bit more and learned quite a lot!</p>

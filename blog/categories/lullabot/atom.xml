@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: lullabot | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/lullabot/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/lullabot/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,19 +15,19 @@
   
   <entry>
     <title type="html"><![CDATA[lullabytes.net]]></title>
-    <link href="http://sirkitree.github.com/content/lullabytesnet"/>
+    <link href="http://jeradbitner.com/content/lullabytesnet"/>
     <updated>2007-10-11T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/lullabytes-net</id>
+    <id>http://jeradbitner.com/content/lullabytes-net</id>
     <content type="html"><![CDATA[<p>This site came about while listening to the latest <a href="http://www.lullabot.com/audiocast/podcast-48-taxonomy-taxonomy-taxonomy">Lullabot podcast: Episode 48</a>, when <a href="http://www.lullabot.com/about/jeffeaton">eaton</a> made the profound statement, "What are you, like, some kind of taxonomy nazi?". This got me to thinking that I'd like that for a sound on my iPhone... wouldn't it be cool to have some sound bytes from all the crazy things eaton says on those podcasts? How about eatonbytes.com? Why stop there? How about lullabytes.com? Unfortunately lullabytes.com was taken, but lullabytes.net wasn't! ;) Check it out, upload some of your favs and share some ideas for the site here. Thanks!</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[oh Lullabot]]></title>
-    <link href="http://sirkitree.github.com/content/oh-lullabot"/>
+    <link href="http://jeradbitner.com/content/oh-lullabot"/>
     <updated>2007-01-28T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/oh-lullabot</id>
-    <content type="html"><![CDATA[<p><img src="http://sirkitree.github.com/sites/jeradbitner.com/files/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" /></p>
+    <id>http://jeradbitner.com/content/oh-lullabot</id>
+    <content type="html"><![CDATA[<p><img src="http://jeradbitner.com/sites/jeradbitner.com/files/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" /></p>
 
 <h3>The family side</h3>
 

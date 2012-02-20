@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ted Serbinski | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/ted-serbinski/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/ted-serbinski/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Californication]]></title>
-    <link href="http://sirkitree.github.com/content/californication"/>
+    <link href="http://jeradbitner.com/content/californication"/>
     <updated>2008-07-31T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/californication</id>
+    <id>http://jeradbitner.com/content/californication</id>
     <content type="html"><![CDATA[<p>Drupal, you've done it again... become the vector of change in my life by presenting me with opportunities that are seemingly too good to be true. Last year it was New York and Sony BMG. This year it's San Francisco and a start-up called ParentsClick Network. Just when I thought things couldn't get any better and that maybe I've hit the height of reaching my dreams in life, another one comes within my grasp, and giving in to my free spirit, I jump at the chance to make a dream a reality.</p>
 
 <p><a href="http://tedserbinski.com/">Ted Serbinski</a> is a guy whose progress I've followed since that first <a href="http://jeradbitner.com/node/11">Lullabot class in Rhode island</a>, less than two years ago (1/15/07) when the world of Drupal really opened up to me. He was a Lullabot at the time, teaching theming and some jQuery. He <a href="http://tedserbinski.com/2007/05/24/i-have-left-lullabot">left Lullabot</a> later that year to start a journey into entrepreneurship (and <a href="http://tedserbinski.com/tags/mothersclick">MothersClick</a>) that has started to pan out nicely. I've great respect for his coding skills and believe in his business sense. So when he approached me about a job working with him in San Francisco, a place I've always wanted to live, I was very excited.</p>

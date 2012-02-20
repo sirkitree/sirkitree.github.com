@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: work | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/work/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/work/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Try, Learn, Know and then Teach]]></title>
-    <link href="http://sirkitree.github.com/content/try-learn-know-and-then-teach"/>
+    <link href="http://jeradbitner.com/content/try-learn-know-and-then-teach"/>
     <updated>2007-08-18T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/try-learn-know-and-then-teach</id>
+    <id>http://jeradbitner.com/content/try-learn-know-and-then-teach</id>
     <content type="html"><![CDATA[<p>I make cool stuff at work. I learn something every day that makes me excited and in awe that I get paid to learn, and use, while being taught by the most <a href="http://lullabot.com">enigmatic geniuses</a> that I could even call friend, after a month or so of work comradere. Darkness turns to light with the slightest of gestures from the hands of such as these, that one might stop... and wonders how they, <em>themselves</em> could become something of such magnitude... if only they try, learn, know and then teach.</p>
 
 <h3>Try, Learn, Know and then Teach.</h3>

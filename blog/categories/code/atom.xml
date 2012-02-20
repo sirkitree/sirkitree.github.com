@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: code | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/code/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/code/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Nginx: do not cache logged in Drupal or WordPress users]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
     <updated>2012-02-09T17:29:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
+    <id>http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
     <content type="html"><![CDATA[<p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife's WordPress site</a>.</p>
 
 <p>However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.</p>
@@ -87,9 +87,9 @@ location / {
   
   <entry>
     <title type="html"><![CDATA[todo list in node.js and geektool]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
     <updated>2012-02-05T13:59:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
+    <id>http://jeradbitner.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
     <content type="html"><![CDATA[<p>I've long had a quick shell script that was a simple todo list based on Jerod Santo's <a href="http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/">Minimally Awesome Todos</a>. It's very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
 
 <p>Then I stumbled onto a <a href="https://github.com/vesln/todo">Node.js version</a> of a todo list and thought I'd give it a shot. I got it setup, but when I wanted to try to display the output through GeekTool, I failed. So I delved into todo list code a bit more and learned quite a lot!</p>
@@ -116,9 +116,9 @@ location / {
   
   <entry>
     <title type="html"><![CDATA[New blog command and some style updates]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
     <updated>2012-02-05T13:39:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
+    <id>http://jeradbitner.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
     <content type="html"><![CDATA[<p>I love Github. The more I use it, the more I love it. As a form of endearment, I've updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.</p>
 
 <p>I've also been looking for a quicker way to blog on a whim, and having to switch into my octopress directory, and then type <code>new_post["title of my post"]</code> was still just two steps too much. So I pulled up my <code>.bash_profile</code> and started scripting. Here's what I came up with:</p>
@@ -137,9 +137,9 @@ alias blog=&quot;new_post&quot;</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[HTML5 Photobooth]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/01/30/html5-photoboot/"/>
+    <link href="http://jeradbitner.com/blog/2012/01/30/html5-photoboot/"/>
     <updated>2012-01-30T09:36:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/01/30/html5-photoboot</id>
+    <id>http://jeradbitner.com/blog/2012/01/30/html5-photoboot</id>
     <content type="html"><![CDATA[<p>After reading an <a href="http://arstechnica.com/business/news/2012/01/hands-on-building-an-html5-photo-booth-with-chromes-new-webcam-api.ars">article</a> about the experimental support for WebRTC getting put into the latest version of browsers, my buddy <a href="https://plus.google.com/102577299588201077107/about">David Burns</a> was inspired to write a quick app called <a href="http://html5photobooth.com/">HTML5 Photobooth</a>.</p>
 
 <p>Code can be found here: https://github.com/davexoxide/HTML5-Photobooth</p>
@@ -148,9 +148,9 @@ alias blog=&quot;new_post&quot;</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Using Node.js to convert Drupal to Jekkyl]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
+    <link href="http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
     <updated>2012-01-29T15:54:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
+    <id>http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
     <content type="html"><![CDATA[<p>I've gone and revamped my blog again.</p>
 
 <p>The current new hotness has been <a href="https://github.com/mojombo/jekyll/wiki">Jekkyl</a> of late, ever since GitHub came out with it's <a href="http://pages.github.com/">Pages</a> feature. My first awareness of it was around September 2011 when <a href="http://developmentseed.org/">DevelopmentSeed</a> converted their .org page to Jekkly and <a href="http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/">wrote about it</a>. I started playing with it almost immediately when I had downtime during <a href="http://www.lullabot.com">Lullabot</a>'s <a href="http://2011.doitwithdrupal.com">Do it with Drupal</a> conference. Sacreligious? Whatever, it was something new to learn.</p>

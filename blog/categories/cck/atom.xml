@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cck | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/cck/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/cck/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Theming CCK in Drupal]]></title>
-    <link href="http://sirkitree.github.com/content/theming-cck-drupal"/>
+    <link href="http://jeradbitner.com/content/theming-cck-drupal"/>
     <updated>2007-03-07T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/theming-cck-in-drupal</id>
+    <id>http://jeradbitner.com/content/theming-cck-in-drupal</id>
     <content type="html"><![CDATA[<p>I recently had a friend ask me how to be able to give CCK fields more user-friendly class names so that they could be styled a little easier. I actually needed to do this myself with a project at work, so I had time to really sit down and figure out a good way to do this.</p>
 
 <h3>CCK</h3>

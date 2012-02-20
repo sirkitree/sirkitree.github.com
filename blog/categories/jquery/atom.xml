@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jquery | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/jquery/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[jQuery checkbox goodness]]></title>
-    <link href="http://sirkitree.github.com/content/jquery-checkbox-goodness"/>
+    <link href="http://jeradbitner.com/content/jquery-checkbox-goodness"/>
     <updated>2007-06-06T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/jquery-checkbox-goodness</id>
+    <id>http://jeradbitner.com/content/jquery-checkbox-goodness</id>
     <content type="html"><![CDATA[<p>I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)</p>
 
 <pre>
@@ -55,10 +55,10 @@ this.checked = !this.checked;
   
   <entry>
     <title type="html"><![CDATA[jQuery: working with select options]]></title>
-    <link href="http://sirkitree.github.com/content/jquery-working-select-options"/>
+    <link href="http://jeradbitner.com/content/jquery-working-select-options"/>
     <updated>2007-02-27T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/jquery-working-with-select-options</id>
-    <content type="html"><![CDATA[<p>Following my <a href="http://sirkitree.github.com/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
+    <id>http://jeradbitner.com/content/jquery-working-with-select-options</id>
+    <content type="html"><![CDATA[<p>Following my <a href="http://jeradbitner.com/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
 
 <p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here's the resulting code for the IE portion:</p>
 

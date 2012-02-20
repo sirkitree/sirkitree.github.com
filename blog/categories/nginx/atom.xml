@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: nginx | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/nginx/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/nginx/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Nginx: do not cache logged in Drupal or WordPress users]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
     <updated>2012-02-09T17:29:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
+    <id>http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
     <content type="html"><![CDATA[<p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife's WordPress site</a>.</p>
 
 <p>However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Migrate Flickr or Facebook photos to Picasa/Google+ easily]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/14/migrate-flickr-to-picasa-easily/"/>
     <updated>2012-02-14T16:33:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/14/migrate-flickr-to-picasa-easily</id>
+    <id>http://jeradbitner.com/blog/2012/02/14/migrate-flickr-to-picasa-easily</id>
     <content type="html"><![CDATA[<p>I found a great way to transfer photos from <a href="http://www.flickr.com/">Flickr</a> or <a href="http://www.facebook.com/">Facebook</a> to Picasa/<a href="http://plus.google.com">Google+</a> quickly and easily, keeping albums intact using Mac OS X iPhoto &#8216;11.</p>
 
 <p><strong>Step 1:</strong><br>
@@ -46,9 +46,9 @@ Within iPhoto, select File > Export and use the &#8220;Picasa Web Albums&#8221; 
   
   <entry>
     <title type="html"><![CDATA[Baby Day! (Act I)]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/10/baby-day-act-i/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/10/baby-day-act-i/"/>
     <updated>2012-02-10T17:27:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/10/baby-day-act-i</id>
+    <id>http://jeradbitner.com/blog/2012/02/10/baby-day-act-i</id>
     <content type="html"><![CDATA[<p>2.9.12 - 11:45pm
 Jenny wakes me up with, &#8220;I think my water broke!&#8221;
 I groggily look over at her and ask, &#8220;Are you sure?&#8221;
@@ -95,9 +95,9 @@ So we turned around at Manitou Springs and headed back to the house, about 25 mi
   
   <entry>
     <title type="html"><![CDATA[Nginx: do not cache logged in Drupal or WordPress users]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
     <updated>2012-02-09T17:29:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
+    <id>http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
     <content type="html"><![CDATA[<p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife&#8217;s WordPress site</a>.</p>
 
 <p>However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.</p>
@@ -180,18 +180,18 @@ So we turned around at Manitou Springs and headed back to the house, about 25 mi
   
   <entry>
     <title type="html"><![CDATA[Darkness &amp; Light]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/07/darkness-and-light/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/07/darkness-and-light/"/>
     <updated>2012-02-07T14:36:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/07/darkness-and-light</id>
+    <id>http://jeradbitner.com/blog/2012/02/07/darkness-and-light</id>
     <content type="html"><![CDATA[<p><img src="http://f.cl.ly/items/2d0g2v3H3i0V0o1t2O0d/light-dark.png" alt="Dark &amp; Light" /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Angel of fire]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/06/angel-of-fire/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/06/angel-of-fire/"/>
     <updated>2012-02-06T18:33:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/06/angel-of-fire</id>
+    <id>http://jeradbitner.com/blog/2012/02/06/angel-of-fire</id>
     <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -239,9 +239,9 @@ So we turned around at Manitou Springs and headed back to the house, about 25 mi
   
   <entry>
     <title type="html"><![CDATA[todo list in node.js and geektool]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool/"/>
     <updated>2012-02-05T13:59:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
+    <id>http://jeradbitner.com/blog/2012/02/05/todo-list-in-node-dot-js-and-geektool</id>
     <content type="html"><![CDATA[<p>I&#8217;ve long had a quick shell script that was a simple todo list based on Jerod Santo&#8217;s <a href="http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/">Minimally Awesome Todos</a>. It&#8217;s very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
 
 <p>Then I stumbled onto a <a href="https://github.com/vesln/todo">Node.js version</a> of a todo list and thought I&#8217;d give it a shot. I got it setup, but when I wanted to try to display the output through GeekTool, I failed. So I delved into todo list code a bit more and learned quite a lot!</p>
@@ -268,9 +268,9 @@ So we turned around at Manitou Springs and headed back to the house, about 25 mi
   
   <entry>
     <title type="html"><![CDATA[New blog command and some style updates]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
     <updated>2012-02-05T13:39:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
+    <id>http://jeradbitner.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
     <content type="html"><![CDATA[<p>I love Github. The more I use it, the more I love it. As a form of endearment, I&#8217;ve updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.</p>
 
 <p>I&#8217;ve also been looking for a quicker way to blog on a whim, and having to switch into my octopress directory, and then type <code>new_post["title of my post"]</code> was still just two steps too much. So I pulled up my <code>.bash_profile</code> and started scripting. Here&#8217;s what I came up with:</p>
@@ -289,9 +289,9 @@ alias blog=&quot;new_post&quot;</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[HTML5 Photobooth]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/01/30/html5-photoboot/"/>
+    <link href="http://jeradbitner.com/blog/2012/01/30/html5-photoboot/"/>
     <updated>2012-01-30T09:36:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/01/30/html5-photoboot</id>
+    <id>http://jeradbitner.com/blog/2012/01/30/html5-photoboot</id>
     <content type="html"><![CDATA[<p>After reading an <a href="http://arstechnica.com/business/news/2012/01/hands-on-building-an-html5-photo-booth-with-chromes-new-webcam-api.ars">article</a> about the experimental support for WebRTC getting put into the latest version of browsers, my buddy <a href="https://plus.google.com/102577299588201077107/about">David Burns</a> was inspired to write a quick app called <a href="http://html5photobooth.com/">HTML5 Photobooth</a>.</p>
 
 <p>Code can be found here: https://github.com/davexoxide/HTML5-Photobooth</p>
@@ -300,9 +300,9 @@ alias blog=&quot;new_post&quot;</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Using Node.js to convert Drupal to Jekkyl]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
+    <link href="http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
     <updated>2012-01-29T15:54:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
+    <id>http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
     <content type="html"><![CDATA[<p>I&#8217;ve gone and revamped my blog again.</p>
 
 <p>The current new hotness has been <a href="https://github.com/mojombo/jekyll/wiki">Jekkyl</a> of late, ever since GitHub came out with it&#8217;s <a href="http://pages.github.com/">Pages</a> feature. My first awareness of it was around September 2011 when <a href="http://developmentseed.org/">DevelopmentSeed</a> converted their .org page to Jekkly and <a href="http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/">wrote about it</a>. I started playing with it almost immediately when I had downtime during <a href="http://www.lullabot.com">Lullabot</a>&#8217;s <a href="http://2011.doitwithdrupal.com">Do it with Drupal</a> conference. Sacreligious? Whatever, it was something new to learn.</p>
@@ -339,9 +339,9 @@ alias blog=&quot;new_post&quot;</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Images]]></title>
-    <link href="http://sirkitree.github.com/blog/2011/04/25/images/"/>
+    <link href="http://jeradbitner.com/blog/2011/04/25/images/"/>
     <updated>2011-04-25T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/blog/2011/04/25/images</id>
+    <id>http://jeradbitner.com/blog/2011/04/25/images</id>
     <content type="html"><![CDATA[<p>These are from high school. Guess you&#8217;d call that about the height of my creativity - or at least when I had the time to do all of this instead of worrying about a paycheck.</p>
 
 <iframe align="center" src="http://www.flickr.com/slideShow/index.gne?set_id=72057594056358798&" frameBorder="0" width="690" scrolling="no" height="690"></iframe>
@@ -351,18 +351,18 @@ alias blog=&quot;new_post&quot;</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Poems]]></title>
-    <link href="http://sirkitree.github.com/poems"/>
+    <link href="http://jeradbitner.com/poems"/>
     <updated>2011-04-23T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/poems</id>
+    <id>http://jeradbitner.com/poems</id>
     <content type="html"><![CDATA[<p>These are also all pretty old and come from the angst and passions of a teenager. I&#8217;ve grow less intense, it seems, over the years as I don&#8217;t seem to have the knack of this anymore - if ever I really did. Some of it I still find pretty fun, though it&#8217;s a bit harder to appreciate in a digital medium since part of what made these so interesting was in the way I wrote them. Strange spacings, capitalization&#8217;s, and pictographs along with the structure were all part of my art form.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Beauty.]]></title>
-    <link href="http://sirkitree.github.com/poems/beauty"/>
+    <link href="http://jeradbitner.com/poems/beauty"/>
     <updated>2011-04-23T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/poems/beauty</id>
+    <id>http://jeradbitner.com/poems/beauty</id>
     <content type="html"><![CDATA[<pre>
            In the eye of the beholder?
   Maybe.                                                    Not?
@@ -397,9 +397,9 @@ Comprehend...
   
   <entry>
     <title type="html"><![CDATA[Trail of Blood]]></title>
-    <link href="http://sirkitree.github.com/short-stories/trail-of-blood"/>
+    <link href="http://jeradbitner.com/short-stories/trail-of-blood"/>
     <updated>2011-04-21T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/short-stories/trail-of-blood</id>
+    <id>http://jeradbitner.com/short-stories/trail-of-blood</id>
     <content type="html"><![CDATA[<p>The young appearing warrior elf moved with gentle but fierce and deadly grace. He swooped around to my left and right with his ever-glowing sky blue sword. I swung around to face him at each turn, then suddenly shifted my great sword to my right hand and took an expert chop at the small bright-eyed elf. He jumped over me and with a fleeting glance at my defenseless back, sliced at the belt on my loincloth, which subsequently fell to my knees.</p>
 
 <p>Although I had thought that the elf and I were alone, I heard a gruff snickering coming from behind the bushes and trees surrounding us. I tried to look and see where exactly the laughter might be coming from but the elf and my loincloth took up most of my attention. It was sort of drafty without my loincloth and the hysterical elf made matters worse, so I bent over to pick it up when I was suddenly pounced upon from behind by strong but short beings; dwarves. I hate dwarves. Probably more than this elf, my he burn in the underworld. Before I could get the creatures off my back, I was covered with a thick black net and being wrapped up tight, was rendered helpless though I struggled with my sword. My left hand was still stuck somewhere in the vicinity of my knee.</p>
@@ -418,9 +418,9 @@ Comprehend...
   
   <entry>
     <title type="html"><![CDATA[Draken's battle]]></title>
-    <link href="http://sirkitree.github.com/short-stories/drakens-battle"/>
+    <link href="http://jeradbitner.com/short-stories/drakens-battle"/>
     <updated>2011-04-20T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/short-stories/drakens-battle</id>
+    <id>http://jeradbitner.com/short-stories/drakens-battle</id>
     <content type="html"><![CDATA[<p>Darkness quivered in the back of Draken&#8217;s mind, threatening to disperse his current spell, still held in his commanding thoughts. He could feel the attack coming before it hit and struggled to get enough mana harnessed in order cast the protective one that he now held in preparation.</p>
 
 <p>&#8220;Just a little more&#8221;, he thought to himself. Then just as the darkness was about to overwhelm him, he case his spell, feeling forces gather around him and cling to his mind, shielding it. A sharp gong sounded as his head reeled from the mental force of the impact from the blast he had just barely been able to sheild himself from.</p>
@@ -443,9 +443,9 @@ Comprehend...
   
   <entry>
     <title type="html"><![CDATA[Creation]]></title>
-    <link href="http://sirkitree.github.com/short-stories"/>
+    <link href="http://jeradbitner.com/short-stories"/>
     <updated>2011-04-20T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/creation</id>
+    <id>http://jeradbitner.com/creation</id>
     <content type="html"><![CDATA[<p>Here is a collection from my younger days. Without code to write, I wrote stories instead, sometimes poetry, and I loved to draw. I&#8217;m still a firm believer that stories and words can program a mind, and in many ways are much more valuable than programming a computer. I also hope that by writing down more of my old material here, it will re-awaken some of those distant chords. I&#8217;ll probably revise some of these as I go as well, I can&#8217;t help refactoring it seems.</p>
 
 <p>I also have no copyright on these.  I would ask that you credit me if you use them, but if you don&#8217;t I&#8217;m not going to sue anyone. It&#8217;s probably not good enough for re-use anyway. ;) Most of them are scenes and not complete stories anyway.</p>
@@ -454,9 +454,9 @@ Comprehend...
   
   <entry>
     <title type="html"><![CDATA[Another time, another place...]]></title>
-    <link href="http://sirkitree.github.com/content/another-time-another-place"/>
+    <link href="http://jeradbitner.com/content/another-time-another-place"/>
     <updated>2010-09-17T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/another-time-another-place</id>
+    <id>http://jeradbitner.com/content/another-time-another-place</id>
     <content type="html"><![CDATA[<p>Jenney and I moved from Austin to Carolina Beach, North Carolina and the past three.5 months have been amazing! It&#8217;s been like a working vacation. We were right on the beach, with beautiful views, and a personal walkway to the beach which was in a premo-spot. Not a ton of people, lots of waves, and lots of sunshine. We both worked hard, and played hard. It was great and I can honestly say I&#8217;ve lived my &#8216;beach life&#8217; dream for at least a while. Chalk another dream up to &#8216;accomplished&#8217;!</p>
 
 <p>Today marks the start of ANOTHER adventure. We packed up our life once more and left beautiful Carolina Beach behind. Tonight we wait at Jenney&#8217;s best friend&#8217;s (and Maid of Honor&#8217;s) house before our flight tomorrow for San Diego where we will be for a week, staying at her mother&#8217;s house before we are wed on Saturday, September 25th. We&#8217;re both so so so excited to see our friends and family and to celebrate what we&#8217;ve held true in our hearts for the last year; our commitment and love for each other.</p>
@@ -474,9 +474,9 @@ Comprehend...
   
   <entry>
     <title type="html"><![CDATA[Vampire dream]]></title>
-    <link href="http://sirkitree.github.com/content/vampire-dream"/>
+    <link href="http://jeradbitner.com/content/vampire-dream"/>
     <updated>2010-01-09T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/vampire-dream</id>
+    <id>http://jeradbitner.com/content/vampire-dream</id>
     <content type="html"><![CDATA[<p>I had a pretty in depth adventure in my dreams last night so I downloaded <a href="http://www.ommwriter.com/en/">ommwriter</a> to capture them in the wee morning hours as soon as I awoke. Ommwriter is pretty nice, the music and the interface really helped for this kind of writing and I think would inspire me to write more poetry. I&#8217;m still listening to the music as I type this up in my blog. Anyway, here are some notes on the things I remember from the dream. Should turn this into a short story.</p>
 
 <ul>
@@ -515,9 +515,9 @@ Comprehend...
   
   <entry>
     <title type="html"><![CDATA[Trip to Austin]]></title>
-    <link href="http://sirkitree.github.com/content/trip-austin"/>
+    <link href="http://jeradbitner.com/content/trip-austin"/>
     <updated>2009-12-13T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/trip-to-austin</id>
+    <id>http://jeradbitner.com/content/trip-to-austin</id>
     <content type="html"><![CDATA[<p>What an adventure! <a href="http://jenneymarie.net">Jenney</a> got a contract in Austin Texas for her next position doing traveling Occupational Therapy, so we packed up the new Subaru Forester (new to us) and started the long trek from Grand Junction, Colorado to Austin, Texas.</p>
 
 <p>Now it hadn&#8217;t snowed much at all in Colorado while we were there, but wouldn&#8217;t it so happen that the day we decide to leave, a huge storm is forecasted to come through! So we set out as early Monday morning as we could (still had a little cleaning to do) and started on our way. It was too far outside of GJ that it started to flurry, and before we arrived in Ouray, we had passed through some areas with some pretty substantial snowfall. But Ouray there was not much of anything on the ground, and the highway pass through the Redridge Mountains was not closed. So even though there was a sign that commercial vehicles were required to have chains, we went against our better judgement and started up the mountain pass instead of staying in Ouray, at the hotspring hotel, like we should have.</p>
@@ -548,9 +548,9 @@ Comprehend...
   
   <entry>
     <title type="html"><![CDATA[Resurrection]]></title>
-    <link href="http://sirkitree.github.com/content/resurrection"/>
+    <link href="http://jeradbitner.com/content/resurrection"/>
     <updated>2009-11-12T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/resurrection</id>
+    <id>http://jeradbitner.com/content/resurrection</id>
     <content type="html"><![CDATA[<p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module&#8217;s API. Here&#8217;s a couple quick steps I took:</p>
 
 <!--break-->
@@ -608,9 +608,9 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
   
   <entry>
     <title type="html"><![CDATA[Rust]]></title>
-    <link href="http://sirkitree.github.com/poems/rust"/>
+    <link href="http://jeradbitner.com/poems/rust"/>
     <updated>2008-12-05T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/poems/rust</id>
+    <id>http://jeradbitner.com/poems/rust</id>
     <content type="html"><![CDATA[<p>The cold hard rain dripped down my face, erasing the warmth<br />
 &nbsp;&nbsp;only remembrance remained.</p>
 

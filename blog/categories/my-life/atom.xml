@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: my life | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/my-life/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/my-life/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Another time, another place...]]></title>
-    <link href="http://sirkitree.github.com/content/another-time-another-place"/>
+    <link href="http://jeradbitner.com/content/another-time-another-place"/>
     <updated>2010-09-17T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/another-time-another-place</id>
+    <id>http://jeradbitner.com/content/another-time-another-place</id>
     <content type="html"><![CDATA[<p>Jenney and I moved from Austin to Carolina Beach, North Carolina and the past three.5 months have been amazing! It's been like a working vacation. We were right on the beach, with beautiful views, and a personal walkway to the beach which was in a premo-spot. Not a ton of people, lots of waves, and lots of sunshine. We both worked hard, and played hard. It was great and I can honestly say I've lived my 'beach life' dream for at least a while. Chalk another dream up to 'accomplished'!</p>
 
 <p>Today marks the start of ANOTHER adventure. We packed up our life once more and left beautiful Carolina Beach behind. Tonight we wait at Jenney's best friend's (and Maid of Honor's) house before our flight tomorrow for San Diego where we will be for a week, staying at her mother's house before we are wed on Saturday, September 25th. We're both so so so excited to see our friends and family and to celebrate what we've held true in our hearts for the last year; our commitment and love for each other.</p>
@@ -35,9 +35,9 @@
   
   <entry>
     <title type="html"><![CDATA[Trip to Austin]]></title>
-    <link href="http://sirkitree.github.com/content/trip-austin"/>
+    <link href="http://jeradbitner.com/content/trip-austin"/>
     <updated>2009-12-13T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/trip-to-austin</id>
+    <id>http://jeradbitner.com/content/trip-to-austin</id>
     <content type="html"><![CDATA[<p>What an adventure! <a href="http://jenneymarie.net">Jenney</a> got a contract in Austin Texas for her next position doing traveling Occupational Therapy, so we packed up the new Subaru Forester (new to us) and started the long trek from Grand Junction, Colorado to Austin, Texas.</p>
 
 <p>Now it hadn't snowed much at all in Colorado while we were there, but wouldn't it so happen that the day we decide to leave, a huge storm is forecasted to come through! So we set out as early Monday morning as we could (still had a little cleaning to do) and started on our way. It was too far outside of GJ that it started to flurry, and before we arrived in Ouray, we had passed through some areas with some pretty substantial snowfall. But Ouray there was not much of anything on the ground, and the highway pass through the Redridge Mountains was not closed. So even though there was a sign that commercial vehicles were required to have chains, we went against our better judgement and started up the mountain pass instead of staying in Ouray, at the hotspring hotel, like we should have.</p>
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[Californication]]></title>
-    <link href="http://sirkitree.github.com/content/californication"/>
+    <link href="http://jeradbitner.com/content/californication"/>
     <updated>2008-07-31T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/californication</id>
+    <id>http://jeradbitner.com/content/californication</id>
     <content type="html"><![CDATA[<p>Drupal, you've done it again... become the vector of change in my life by presenting me with opportunities that are seemingly too good to be true. Last year it was New York and Sony BMG. This year it's San Francisco and a start-up called ParentsClick Network. Just when I thought things couldn't get any better and that maybe I've hit the height of reaching my dreams in life, another one comes within my grasp, and giving in to my free spirit, I jump at the chance to make a dream a reality.</p>
 
 <p><a href="http://tedserbinski.com/">Ted Serbinski</a> is a guy whose progress I've followed since that first <a href="http://jeradbitner.com/node/11">Lullabot class in Rhode island</a>, less than two years ago (1/15/07) when the world of Drupal really opened up to me. He was a Lullabot at the time, teaching theming and some jQuery. He <a href="http://tedserbinski.com/2007/05/24/i-have-left-lullabot">left Lullabot</a> later that year to start a journey into entrepreneurship (and <a href="http://tedserbinski.com/tags/mothersclick">MothersClick</a>) that has started to pan out nicely. I've great respect for his coding skills and believe in his business sense. So when he approached me about a job working with him in San Francisco, a place I've always wanted to live, I was very excited.</p>
@@ -85,9 +85,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jerad goes to New York]]></title>
-    <link href="http://sirkitree.github.com/content/jerad-goes-new-york"/>
+    <link href="http://jeradbitner.com/content/jerad-goes-new-york"/>
     <updated>2007-07-29T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/jerad-goes-to-new-york</id>
+    <id>http://jeradbitner.com/content/jerad-goes-to-new-york</id>
     <content type="html"><![CDATA[<p>So it's been a long time since I've posted, and there has been so much going on in my life. I've moved to New York City to work with Sony BMG making websites for rockstars. I gotta say, it's been a HUGE change for me. My calm, collected country life where I lived all alone in the woods with the ability to go camping in my back yard was replaced by the hustle and bustle of New York City, staying in a studio apartment next to the Empire State building.</p>
 
 <p>I've been searching for an apartment, and there are lots available, but nothing seems to be what I really want and everything is just so expensive. There is one in Hoboken I'm going to be looking at this week and hopefully that will be it, but there is another one close to Hoboken, next to Washington Park, that Dave and I looked at today that was perfect. It's a little more expensive and there is a brokers fee so I may have to borrow from family to get into the place. I really don't want to do that, and would rather have the place in Hoboken so that I can feel like I'm doing it all on my own, but then my bank account still hasn't received my first paycheck from Sony and I'm worried that they haven't setup my direct deposit yet. That means they've mailed my check and I won't get it until Monday or Tuesday, then I have to get it deposited into my account back home. Only after that will i be able to setup the rent.com escrow account in order to get the keys form the guy who owns the place in Hoboken. He's living in Athens Greece, so we have to do it this way. So as you can imagine, with only 9 days or so to get moved and into a place, I'm stressing.</p>

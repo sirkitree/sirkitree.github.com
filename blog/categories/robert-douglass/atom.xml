@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: robert douglass | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/robert-douglass/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/robert-douglass/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[DrupaLMAO: Robert Douglass Interview - DrupalCon MIT 2008]]></title>
-    <link href="http://sirkitree.github.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008"/>
+    <link href="http://jeradbitner.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008"/>
     <updated>2008-03-13T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008</id>
+    <id>http://jeradbitner.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008</id>
     <content type="html"><![CDATA[<p>The third release of DrupaLMAO's coverage of DrupalCon Boston 2008! Listen while <a href="http://robshouse.net">Robert Douglass</a> talks about the first DrupalCon, DrupalCon Boston 2008, and what the future holds for <a href="http://acquia.com">Acquia</a>! Oh, and the <strong>best</strong> video still of all the interviews!</p>
 
 <p><a href="http://drupalmao.com/robert-douglass-interview">Robert Douglass Interview</a></p>

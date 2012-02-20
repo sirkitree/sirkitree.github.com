@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: drupal | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/drupal/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/drupal/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Nginx: do not cache logged in Drupal or WordPress users]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/"/>
     <updated>2012-02-09T17:29:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
+    <id>http://jeradbitner.com/blog/2012/02/09/nginx-do-not-cache-logged-in-drupal-or-wordpress-users</id>
     <content type="html"><![CDATA[<p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife's WordPress site</a>.</p>
 
 <p>However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.</p>
@@ -87,9 +87,9 @@ location / {
   
   <entry>
     <title type="html"><![CDATA[Using Node.js to convert Drupal to Jekkyl]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
+    <link href="http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
     <updated>2012-01-29T15:54:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
+    <id>http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
     <content type="html"><![CDATA[<p>I've gone and revamped my blog again.</p>
 
 <p>The current new hotness has been <a href="https://github.com/mojombo/jekyll/wiki">Jekkyl</a> of late, ever since GitHub came out with it's <a href="http://pages.github.com/">Pages</a> feature. My first awareness of it was around September 2011 when <a href="http://developmentseed.org/">DevelopmentSeed</a> converted their .org page to Jekkly and <a href="http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/">wrote about it</a>. I started playing with it almost immediately when I had downtime during <a href="http://www.lullabot.com">Lullabot</a>'s <a href="http://2011.doitwithdrupal.com">Do it with Drupal</a> conference. Sacreligious? Whatever, it was something new to learn.</p>
@@ -126,9 +126,9 @@ location / {
   
   <entry>
     <title type="html"><![CDATA[Theming CCK in Drupal]]></title>
-    <link href="http://sirkitree.github.com/content/theming-cck-drupal"/>
+    <link href="http://jeradbitner.com/content/theming-cck-drupal"/>
     <updated>2007-03-07T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/theming-cck-in-drupal</id>
+    <id>http://jeradbitner.com/content/theming-cck-in-drupal</id>
     <content type="html"><![CDATA[<p>I recently had a friend ask me how to be able to give CCK fields more user-friendly class names so that they could be styled a little easier. I actually needed to do this myself with a project at work, so I had time to really sit down and figure out a good way to do this.</p>
 
 <h3>CCK</h3>
@@ -167,9 +167,9 @@ location / {
   
   <entry>
     <title type="html"><![CDATA[Hey, you gotta start somewhere right?]]></title>
-    <link href="http://sirkitree.github.com/content/rolechanger"/>
+    <link href="http://jeradbitner.com/content/rolechanger"/>
     <updated>2007-02-25T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/hey-you-gotta-start-somewhere-right</id>
+    <id>http://jeradbitner.com/content/hey-you-gotta-start-somewhere-right</id>
     <content type="html"><![CDATA[<p>So my first commit to the Drupal contributions has been made! WooHoo! I partied hard that night :) No, it's really not that big of a deal, but I'm excited as it takes me one step further into Drupal development and being more involved in the Drupal community.</p>
 
 <p>The module is called <a href="http://drupal.org/projects/rolechanger">rolechanger</a>, and came about when there was a need on a new site I'm building for work that needs to have a menu's links change based upon a chosen role. The roles are created in the main Drupal interface and then you tell rolechanger which roles from that list you would like your users to be able to choose from. Nothing really happens once one of those roles is chosen, at least from a traditional programmatic standpoint since I'll be using javascript for the functionality of changing the menu items. The module is somewhat limited in this respect, but I've included a rolechanger.js file in the module's directory for this purpose and anyone can edit this to define what happens on change using drupal's built in jQuery library. It's really more of a widget I suppose, developed for a specific purpose and probably will not have a whole lot of use to anyone other then my current project, but I contributed it anyway just for the purpose of doing so and gaining the experience of committing code through CVS to Drupal's repository. Hey, you gotta start somewhere right?</p>
@@ -180,9 +180,9 @@ location / {
   
   <entry>
     <title type="html"><![CDATA[Drupal Theme Loader]]></title>
-    <link href="http://sirkitree.github.com/content/theme-loader"/>
+    <link href="http://jeradbitner.com/content/theme-loader"/>
     <updated>2007-02-13T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/drupal-theme-loader</id>
+    <id>http://jeradbitner.com/content/drupal-theme-loader</id>
     <content type="html"><![CDATA[<p>I've started a project on <a href="drupal.org">drupal.org</a> to contribute a module that will allow loading of new themes into Drupal from a compressed file (zip, gzip) that is either on your local hard drive, or from a web URL (curl support required?). <a href="http://drupal.org/project/theme-loader">View Project on drupal.org</a></p>
 
 <p>It's a basic idea and I'm hoping to get some feedback from the Drupal community on how best to execute this. The idea came about when <a href="http://improving-home.com">a friend of mine</a> mentioned that he had introduced <a href="http://www.commandtoclient.com/">his brother</a> (a Joomla user) to Drupal and got some feedback from him on what he thought Drupal was lacking.</p>

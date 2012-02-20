@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: viola | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/viola/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/viola/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Baby Day! (Act I)]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/10/baby-day-act-i/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/10/baby-day-act-i/"/>
     <updated>2012-02-10T17:27:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/10/baby-day-act-i</id>
+    <id>http://jeradbitner.com/blog/2012/02/10/baby-day-act-i</id>
     <content type="html"><![CDATA[<p>2.9.12 - 11:45pm
 Jenny wakes me up with, "I think my water broke!"
 I groggily look over at her and ask, "Are you sure?"

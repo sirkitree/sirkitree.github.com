@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: shell | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/shell/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/shell/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[New blog command and some style updates]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
+    <link href="http://jeradbitner.com/blog/2012/02/05/new-blog-command-and-some-style-updates/"/>
     <updated>2012-02-05T13:39:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
+    <id>http://jeradbitner.com/blog/2012/02/05/new-blog-command-and-some-style-updates</id>
     <content type="html"><![CDATA[<p>I love Github. The more I use it, the more I love it. As a form of endearment, I've updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.</p>
 
 <p>I've also been looking for a quicker way to blog on a whim, and having to switch into my octopress directory, and then type <code>new_post["title of my post"]</code> was still just two steps too much. So I pulled up my <code>.bash_profile</code> and started scripting. Here's what I came up with:</p>

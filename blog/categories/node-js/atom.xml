@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: node.js | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/node-js/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/node-js/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Node.js to convert Drupal to Jekkyl]]></title>
-    <link href="http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
+    <link href="http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/"/>
     <updated>2012-01-29T15:54:00-07:00</updated>
-    <id>http://sirkitree.github.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
+    <id>http://jeradbitner.com/blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl</id>
     <content type="html"><![CDATA[<p>I've gone and revamped my blog again.</p>
 
 <p>The current new hotness has been <a href="https://github.com/mojombo/jekyll/wiki">Jekkyl</a> of late, ever since GitHub came out with it's <a href="http://pages.github.com/">Pages</a> feature. My first awareness of it was around September 2011 when <a href="http://developmentseed.org/">DevelopmentSeed</a> converted their .org page to Jekkly and <a href="http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/">wrote about it</a>. I started playing with it almost immediately when I had downtime during <a href="http://www.lullabot.com">Lullabot</a>'s <a href="http://2011.doitwithdrupal.com">Do it with Drupal</a> conference. Sacreligious? Whatever, it was something new to learn.</p>

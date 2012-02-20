@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: earl miles | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/earl-miles/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/earl-miles/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[DrupaLMAO: Earl Miles Interview - DrupalCon MIT 2008]]></title>
-    <link href="http://sirkitree.github.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008"/>
+    <link href="http://jeradbitner.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008"/>
     <updated>2008-03-17T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008</id>
+    <id>http://jeradbitner.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008</id>
     <content type="html"><![CDATA[<p>The fifth release of DrupaLMAO's coverage of DrupalCon 2008. Listen as we sit down with Earl Miles to get his reactions to DrupalCon Boston and to talk about Views 2, Views in core, and Panels 2.</p>
 
 <p><a href="http://drupalmao.com/earl-miles-interview">Earl Miles Interview</a></p>

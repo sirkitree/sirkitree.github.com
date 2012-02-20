@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: drupalmao | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/drupalmao/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/drupalmao/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Startups and our economy - what are YOU going to do about it?]]></title>
-    <link href="http://sirkitree.github.com/content/startups-and-our-economy-what-are-you-going-do-about-it"/>
+    <link href="http://jeradbitner.com/content/startups-and-our-economy-what-are-you-going-do-about-it"/>
     <updated>2008-10-26T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/content/startups-and-our-economy-what-are-you-going-to-do-about-it</id>
+    <id>http://jeradbitner.com/content/startups-and-our-economy-what-are-you-going-to-do-about-it</id>
     <content type="html"><![CDATA[<p>A couple months ago (right after I made a big move) I started hearing thing about the financial crisis and banks going under. Talking with my friend who travels a lot, I came to hear that when America sneezes, the rest of the world gets a cold. Another friend of mine introduced me to a film called "Zeitgeist". With the uncertainty of living in a new area, trying to gain respect at a new job, and making new friends, I started worrying. Actually worrying is an understatement, but I'll not be dramatic.</p>
 
 <p>However, after hearing about Lullabot's new venture, and especially Ed Sussman's blog post, "<a href="http://www.lullabot.com/blog/edward-sussman-why-start-now">Why Start (Up) Now?</a>" I gained a little hope. Then I got a <a href="http://twitter.com/kevinrose/statuses/975842840">twitter from Kevin Rose</a> today where he talked about Paul Graham's post, "<a href="http://www.paulgraham.com/badeconomy.html">Why to Start a Startup in a Bad Economy</a>". I must say that I'm feeling better. Again an understatement, but dramatics really aren't my thing.</p>
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[DrupaLMAO: DrupalCon Boston 2008 Wrap-up]]></title>
-    <link href="http://sirkitree.github.com/drupalmao/drupalcon-boston-2008-wrap-up"/>
+    <link href="http://jeradbitner.com/drupalmao/drupalcon-boston-2008-wrap-up"/>
     <updated>2008-03-20T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/drupalmao/drupalmao-drupalcon-boston-2008-wrap-up</id>
+    <id>http://jeradbitner.com/drupalmao/drupalmao-drupalcon-boston-2008-wrap-up</id>
     <content type="html"><![CDATA[<p>Sit down with me and Dave as they kick back some Johnny Walker Green label for St. Patrick's Day and talk about our impressions of DrupalCon Boston 2008!</p>
 
 <p><a href="http://drupalmao.com/drupalcon-boston-2008-wrap-up">DrupalCon Boston 2008 Wrap-up</a></p>
@@ -45,9 +45,9 @@
   
   <entry>
     <title type="html"><![CDATA[DrupaLMAO: Earl Miles Interview - DrupalCon MIT 2008]]></title>
-    <link href="http://sirkitree.github.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008"/>
+    <link href="http://jeradbitner.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008"/>
     <updated>2008-03-17T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008</id>
+    <id>http://jeradbitner.com/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008</id>
     <content type="html"><![CDATA[<p>The fifth release of DrupaLMAO's coverage of DrupalCon 2008. Listen as we sit down with Earl Miles to get his reactions to DrupalCon Boston and to talk about Views 2, Views in core, and Panels 2.</p>
 
 <p><a href="http://drupalmao.com/earl-miles-interview">Earl Miles Interview</a></p>
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[DrupaLMAO: Moshe Weitzman Interview - DrupalCon MIT 2008]]></title>
-    <link href="http://sirkitree.github.com/drupalmao/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008"/>
+    <link href="http://jeradbitner.com/drupalmao/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008"/>
     <updated>2008-03-16T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/drupalmao/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008</id>
+    <id>http://jeradbitner.com/drupalmao/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008</id>
     <content type="html"><![CDATA[<p>So it's really late/early and we've had a great time tonight with some fun girls from Philly and hanging out with Ted Serbinski... AND we're releasing our interview with Moshe Weitzman from DrupalCon! Check out DrupaLMAO's 4 installation of their coverage of DrupalCon Boston 2008!</p>
 
 <p><a href="http://drupalmao.com/moshe-weitzman-inteview">Moshe Weitzman Interview</a></p>
@@ -67,9 +67,9 @@
   
   <entry>
     <title type="html"><![CDATA[DrupaLMAO: Robert Douglass Interview - DrupalCon MIT 2008]]></title>
-    <link href="http://sirkitree.github.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008"/>
+    <link href="http://jeradbitner.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008"/>
     <updated>2008-03-13T00:00:00-06:00</updated>
-    <id>http://sirkitree.github.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008</id>
+    <id>http://jeradbitner.com/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008</id>
     <content type="html"><![CDATA[<p>The third release of DrupaLMAO's coverage of DrupalCon Boston 2008! Listen while <a href="http://robshouse.net">Robert Douglass</a> talks about the first DrupalCon, DrupalCon Boston 2008, and what the future holds for <a href="http://acquia.com">Acquia</a>! Oh, and the <strong>best</strong> video still of all the interviews!</p>
 
 <p><a href="http://drupalmao.com/robert-douglass-interview">Robert Douglass Interview</a></p>

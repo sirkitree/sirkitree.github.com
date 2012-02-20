@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: family | Jerad Bitner]]></title>
-  <link href="http://sirkitree.github.com/blog/categories/family/atom.xml" rel="self"/>
-  <link href="http://sirkitree.github.com/"/>
-  <updated>2012-02-14T17:17:10-07:00</updated>
-  <id>http://sirkitree.github.com/</id>
+  <link href="http://jeradbitner.com/blog/categories/family/atom.xml" rel="self"/>
+  <link href="http://jeradbitner.com/"/>
+  <updated>2012-02-19T21:14:23-07:00</updated>
+  <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
     <email><![CDATA[jbitner@jeradbitner.com]]></email>
@@ -15,18 +15,18 @@
   
   <entry>
     <title type="html"><![CDATA[Another remembrance...]]></title>
-    <link href="http://sirkitree.github.com/content/another-remembrance"/>
+    <link href="http://jeradbitner.com/content/another-remembrance"/>
     <updated>2006-12-31T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/another-remembrance</id>
-    <content type="html"><![CDATA[<p><img src="http://sirkitree.github.com/files/chris_tattoo.jpg" style="width:250px; height: 188px; float:right;" /> Christopher just got his tattoo and as you can see it's almost exactly like Cody's. So I'll be getting mine as soon as I get some time and I'm going to keep the design as close to theirs as possible.</p>
+    <id>http://jeradbitner.com/content/another-remembrance</id>
+    <content type="html"><![CDATA[<p><img src="http://jeradbitner.com/files/chris_tattoo.jpg" style="width:250px; height: 188px; float:right;" /> Christopher just got his tattoo and as you can see it's almost exactly like Cody's. So I'll be getting mine as soon as I get some time and I'm going to keep the design as close to theirs as possible.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Remembrance continued...]]></title>
-    <link href="http://sirkitree.github.com/content/remembrance-continued"/>
+    <link href="http://jeradbitner.com/content/remembrance-continued"/>
     <updated>2006-12-24T00:00:00-07:00</updated>
-    <id>http://sirkitree.github.com/content/remembrance-continued</id>
+    <id>http://jeradbitner.com/content/remembrance-continued</id>
     <content type="html"><![CDATA[<p><img src="http://jeradbitner.com/files/cody_tattoo.jpg" style="float:left; width: 223px; height: 220px; margin-right:10px;" /> Here's Cody's tattoo. I'm going to schedule mine sometime this week, and Chris has his scheduled for next Saturday. I've also attached the original that Cody based his off of.</p>
 
 <p>From left to right, top to bottom, those are my initials, Bryant's initials, my Dad's initials in the center, Cody's initials, and Chris's initials.</p>
