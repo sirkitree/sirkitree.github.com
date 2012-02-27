@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://jeradbitner.com/atom.xml" rel="self"/>
   <link href="http://jeradbitner.com/"/>
-  <updated>2012-02-19T21:14:23-07:00</updated>
+  <updated>2012-02-27T04:58:16-07:00</updated>
   <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Replicate and share]]></title>
+    <link href="http://jeradbitner.com/blog/2012/02/27/replicate-and-share/"/>
+    <updated>2012-02-27T04:52:00-07:00</updated>
+    <id>http://jeradbitner.com/blog/2012/02/27/replicate-and-share</id>
+    <content type="html"><![CDATA[<p>As a child I learned how to speak. The sounds I heard my parents produce helped to form coherent thought patterns in which to relate with the world around me. No, yes; good, bad; dog, cat; hot, cold; all sounds that came to mean something to a normal human being. I replicated their sound and shared.</p>
+
+<p>As I grew, I heard birds, singing in the fields. I learned their whistles and they came to me filling me with the wonder and joy of nature. I replicated their sound and shared.</p>
+
+<p>As I grew, I heard songs at church, worshipping an ideal that was greater than oneself. I learned to sing with the choir and through my song, shared those ideals with more people. I replicated their sound and shared.</p>
+
+<p>As I grew, I heard songs on the radio. I learned them and played my instruments. I learned enough to join a band where we played the songs we had learned for people to enjoy. I replicated their sound and shared.</p>
+
+<p>As I grew, I heard songs on the internet. I learned them, learned to love them, and shared them with my friends so that they could love them too. I replicated their sound and shared.</p>
+
+<p>When I went to jail, untried by my government, for doing what has come naturally to me since I came into this world; replicating the sounds I heard, I cringed at the cries of those around me. I replicated their sound&#8230;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Migrate Flickr or Facebook photos to Picasa/Google+ easily]]></title>
@@ -603,32 +622,6 @@ function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photo
 <p>The one thing I couldn&#8217;t find was a block setting when looking at the flickr_block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc&#8217;s flickr_photo_img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply &#8216;b_d&#8217; for large.</p>
 
 <p>Fun stuff!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rust]]></title>
-    <link href="http://jeradbitner.com/poems/rust"/>
-    <updated>2008-12-05T00:00:00-07:00</updated>
-    <id>http://jeradbitner.com/poems/rust</id>
-    <content type="html"><![CDATA[<p>The cold hard rain dripped down my face, erasing the warmth<br />
-&nbsp;&nbsp;only remembrance remained.</p>
-
-
-<p>So used to the shielding when heat returned<br />
-&nbsp;&nbsp;unnoticed and without all the same.</p>
-
-
-<p>Then brightness shined, a key was found<br />
-&nbsp;&nbsp;to try that diligent construct; cold hard lock.</p>
-
-
-<p>Will it fit; turn that intricate mechanism<br />
-&nbsp;&nbsp;surrounding that which has rusted?</p>
-
-
-<p>I hope.</p>
-
 ]]></content>
   </entry>
   
