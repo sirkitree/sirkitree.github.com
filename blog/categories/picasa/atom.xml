@@ -4,7 +4,7 @@
   <title><![CDATA[Category: picasa | Jerad Bitner]]></title>
   <link href="http://jeradbitner.com/blog/categories/picasa/atom.xml" rel="self"/>
   <link href="http://jeradbitner.com/"/>
-  <updated>2012-05-06T16:56:18-06:00</updated>
+  <updated>2012-05-06T17:31:45-06:00</updated>
   <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -25,22 +25,22 @@ Download and install the <a href="http://picasa.google.com/mac_tools.html">Picas
 
 <p><strong>Step 2:</strong><br>
 Within iPhoto, select iPhoto > Preferences and then the Accounts tab to connect to your Flickr account.<br>
-{% img https://img.skitch.com/20120215-epm1hsd8fm9jy44ame3aaaytdh.png %}</p>
+<img src="https://img.skitch.com/20120215-epm1hsd8fm9jy44ame3aaaytdh.png"></p>
 
 <p><strong>Step 3:</strong><br>
 Within iPhoto, select the Flickr icon in your sidebar.<br>
-{% img https://img.skitch.com/20120215-bc5xsu5q1259gftmdkceq3yfy6.png %}</p>
+<img src="https://img.skitch.com/20120215-bc5xsu5q1259gftmdkceq3yfy6.png"></p>
 
 <p><strong>Step 4:</strong><br>
 Within iPhoto, select the Flickr album you want to move and double click to open in order to make sure iPhoto retrieves all of the photos.<br>
-{% img https://img.skitch.com/20120215-k4re65p6j4s14py52k8x9d5ath.png %}</p>
+<img src="https://img.skitch.com/20120215-k4re65p6j4s14py52k8x9d5ath.png"></p>
 
 <p><strong>Step 5:</strong><br>
 Within iPhoto, select File > Export and use the "Picasa Web Albums" tab to export your selected Flickr album right into Picasa.<br>
-{% img https://img.skitch.com/20120215-xfpx814n6d5xtwc6jphe1rja2d.png %}</p>
+<img src="https://img.skitch.com/20120215-xfpx814n6d5xtwc6jphe1rja2d.png"></p>
 
 <p>Upon signing into your Google Plus account, and viewing your albums, you should now see the exported album available.
-{% img https://img.skitch.com/20120215-ejkj42q1xyqf5q5ju4jnegthy.png %}</p>
+<img src="https://img.skitch.com/20120215-ejkj42q1xyqf5q5ju4jnegthy.png"></p>
 ]]></content>
   </entry>
   

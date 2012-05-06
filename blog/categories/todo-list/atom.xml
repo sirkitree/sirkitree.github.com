@@ -4,7 +4,7 @@
   <title><![CDATA[Category: todo-list | Jerad Bitner]]></title>
   <link href="http://jeradbitner.com/blog/categories/todo-list/atom.xml" rel="self"/>
   <link href="http://jeradbitner.com/"/>
-  <updated>2012-05-06T16:56:18-06:00</updated>
+  <updated>2012-05-06T17:31:45-06:00</updated>
   <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -28,7 +28,13 @@
 
 <p>The project is currently using <a href="http://sinonjs.org/">Sinon.JS</a> for testing, and even though the API seems pretty robust, and the examples coherent, I'm simply failing at figuring out how to test file creation with it. So far all I have is a stub:</p>
 
-<p>{% gist 1747985 %}</p>
+<p><div><script src='https://gist.github.com/1747985.js?file='></script>
+<noscript><pre><code>  describe('.export()', function(done) {
+    it('should write todos to a file', function(done) {
+
+    });
+  });</code></pre></noscript></div>
+</p>
 
 <p>However, it is working well without a test at this point, and I have a pretty todo list on my desktop! :)</p>
 
