@@ -4,7 +4,7 @@
   <title><![CDATA[Jerad Bitner]]></title>
   <link href="http://jeradbitner.com/atom.xml" rel="self"/>
   <link href="http://jeradbitner.com/"/>
-  <updated>2012-02-27T04:58:16-07:00</updated>
+  <updated>2012-05-06T16:54:33-06:00</updated>
   <id>http://jeradbitner.com/</id>
   <author>
     <name><![CDATA[Jerad Bitner]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[new-post]]></title>
+    <link href="http://jeradbitner.com/blog/2012/03/12/new-post/"/>
+    <updated>2012-03-12T20:20:00-06:00</updated>
+    <id>http://jeradbitner.com/blog/2012/03/12/new-post</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Replicate and share]]></title>
@@ -562,66 +571,6 @@ Comprehend...
 <p>We headed out around 9am, after breakfast, and got all the way to Post, Texas where we decided on another bed and breakfast. It was only a fraction more than a local chain motel and much cleaner and homey. It was a historical building and I cold work in comfort and we slept quite well.</p>
 
 <p>In the morning we got up early and were on the road by 7:30am, making it to Austin by about 1:30pm. We found a hotel as our basecamp to start the apartment hunt and after two days of exploring Austin and searching for temporary housing, we&#8217;re now staying in some guy&#8217;s camper that he keeps in his driveway. It&#8217;s clean, safe, and cheap. A much cheaper home base for now until we figure out what is going on with Jenney&#8217;s job and where we&#8217;re going to actually be for the next few months.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Resurrection]]></title>
-    <link href="http://jeradbitner.com/content/resurrection"/>
-    <updated>2009-11-12T00:00:00-07:00</updated>
-    <id>http://jeradbitner.com/content/resurrection</id>
-    <content type="html"><![CDATA[<p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module&#8217;s API. Here&#8217;s a couple quick steps I took:</p>
-
-<!--break-->
-
-
-<ol>
-<li>Edited the page-front.tpl.php and inserted a little logic to give the #preface-wrapper a different background-image property.
-<pre>
-<div id="preface-wrapper" class="clearfix" <?php if ($flickr): ?>style="background-image: url(<?php print $flickr; ?>);"<?php endif; ?>>
-</pre></li>
-<li>Wrote a custom function based off of the flickr_block.module&#8217;s flickr_block_photoset_random() function. The function returns just the flickr farm url instead of running through the theme functions.
-<pre>
-function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id) {
-  // Get information about the photoset, including the owner.
-  $info = flickr_photoset_get_info($photoset_id);
-  if (!$info) {
-    return;
-  }
-
-  // Get a list of "all" the photos in the photoset. This is cached.
-  $response = flickr_request('flickr.photosets.getPhotos',
-    array(
-      'photoset_id' => $photoset_id,
-      'per_page' => 500, // get as many images as possible
-      'extras' => 'owner',
-    )
-  );
-  if (!$response) {
-    return;
-  }
-
-  // Randomly display $show_n of them
-  $photos = $response['photoset']['photo'];
-  shuffle($photos);
-
-  $output = flickr_photo_img($photos[0], $size);
-
-  return $output;
-}
-</pre></li>
-<li>Set the result of this new function, called with hardcoded arguments, to a theme variable within template.php&#8217;s phptemplate_preprocess_page() function.
-<pre>
-  // get a flickr image for the front page background
-  $vars['flickr'] = acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id);
-</pre>
-</li>
-</ol>
-
-
-<p>The one thing I couldn&#8217;t find was a block setting when looking at the flickr_block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc&#8217;s flickr_photo_img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply &#8216;b_d&#8217; for large.</p>
-
-<p>Fun stuff!</p>
 ]]></content>
   </entry>
   

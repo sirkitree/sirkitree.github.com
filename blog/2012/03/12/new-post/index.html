@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>jQuery: working with select options - Jerad Bitner</title>
+  <title>new-post - Jerad Bitner</title>
   <meta name="author" content="Jerad Bitner">
 
   
-  <meta name="description" content="Following my recent post on my rolechanger module, I started delving into how to provide functionality with the resulting dropdown box that the &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://jeradbitner.com/content/jquery-working-select-options">
+  <link rel="canonical" href="http://jeradbitner.com/blog/2012/03/12/new-post">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">jQuery: Working With Select Options</h1>
+      <h1 class="entry-title">New-post</h1>
     
     
       <p class="meta">
@@ -83,7 +84,7 @@
   
 
 
-<time datetime="2007-02-27T00:00:00-07:00" pubdate data-updated="true">Feb 27<span>th</span>, 2007</time>
+<time datetime="2012-03-12T20:20:00-06:00" pubdate data-updated="true">Mar 12<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -92,88 +93,7 @@
   </header>
 
 
-<div class="entry-content"><p>Following my <a href="/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
-
-<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here&#8217;s the resulting code for the IE portion:</p>
-
-<pre>
-    // ie doesn't pick up the option.click, so we'll have to use the select.change
-    $('#edit-role-changer').change(function(){
-
-    // get rid of select box
-    $('#edit-role-changer').hide();
-
-        // show the chosen role as static text
-       // NOTE: FF doesn't pick up [@selected]
-      $('#role').html($(this).children("[@selected]").text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-</pre>
-
-
-<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:</p>
-
-<pre>
-    // provide action for an option change
-    $('#edit-role-changer option').click(function(){
-
-      // get rid of select box
-      $('#edit-role-changer').hide();
-
-      // show the chosen role as static text
-      $('#role').html($(this).text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-</pre>
-
-
-<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:</p>
-
-<pre>
-  // see which browser we're working with
-  if ($.browser.msie) {
-
-    // ie doesn't pick up the option.click, so we'll have to use the select.change
-    $('#edit-role-changer').change(function(){
-
-      // get rid of select box
-      $('#edit-role-changer').hide();
-
-      // show the chosen role as static text
-      // NOTE: FF doesn't pick up [@selected]
-      $('#role').html($(this).children("[@selected]").text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-  }
-  else {
-
-    // provide action for an option change
-    $('#edit-role-changer option').click(function(){
-
-      // get rid of select box
-      $('#edit-role-changer').hide();
-
-      // show the chosen role as static text
-      $('#role').html($(this).text()).show();
-
-      // provide a change link
-      $('#role-change-back').show();
-
-    });
-  }
-</pre>
-
-
-<p>Happy jQuerying!</p>
+<div class="entry-content">
 </div>
 
 
@@ -196,21 +116,15 @@
   
 
 
-<time datetime="2007-02-27T00:00:00-07:00" pubdate data-updated="true">Feb 27<span>th</span>, 2007</time>
+<time datetime="2012-03-12T20:20:00-06:00" pubdate data-updated="true">Mar 12<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/jquery/'>jquery</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jeradbitner.com/content/jquery-working-select-options" data-via="sirkitree" data-counturl="http://jeradbitner.com/content/jquery-working-select-options" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jeradbitner.com/blog/2012/03/12/new-post/" data-via="sirkitree" data-counturl="http://jeradbitner.com/blog/2012/03/12/new-post/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -221,14 +135,18 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/content/rolechanger" title="Previous Post: Hey, you gotta start somewhere right?">&laquo; Hey, you gotta start somewhere right?</a>
+        <a class="basic-alignment left" href="/blog/2012/02/27/replicate-and-share/" title="Previous Post: Replicate and share">&laquo; Replicate and share</a>
       
-      
-        <a class="basic-alignment right" href="/content/theming-cck-drupal" title="Next Post: Theming CCK in Drupal">Theming CCK in Drupal &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -337,7 +255,10 @@
       var disqus_shortname = 'jbitner';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jeradbitner.com/blog/2012/03/12/new-post/';
+        var disqus_url = 'http://jeradbitner.com/blog/2012/03/12/new-post/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
