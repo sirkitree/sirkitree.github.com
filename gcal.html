@@ -1,0 +1,59 @@
+<html lang="en" data-ng-app="app">
+  <head>
+    <title>Calendar | JeradBitner.com</title><link rel="canonical" href="http://jeradbitner.com">
+    <link href="/favicon.png" rel="icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script src="/javascripts/modernizr-2.0.js"></script>
+    <script src="/javascripts/ender.js"></script>
+    <script src="/javascripts/octopress.js" type="text/javascript"></script>
+    <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+    <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    
+    <ul>
+      <li><a href="/pst">PST</a></li>
+      <li><a href="/mst">MST</a></li>
+      <li><a href="/cst">CST</a></li>
+      <li><a href="/est">EST</a></li>
+    </ul>
+
+    <div data-ng-view></div>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+    
+    <script>
+    'use strict';
+
+    /* Config */
+
+    var app = angular.module('app', []).
+    config(function($routeProvider) {
+      $routeProvider.
+        when('/pst', {
+          templateUrl: 'ng-views/pst.html'
+        }).
+        when('/mst', {
+          templateUrl: 'ng-views/mst.html'
+        }).
+        when('/cst', {
+          templateUrl: 'ng-views/cst.html'
+        }).
+        when('/est', {
+          templateUrl: 'ng-views/est.html'
+        }).
+        otherwise({
+          redirectTo: '/est'
+        });
+    });
+
+
+    /* Controller */
+
+    /* Directive */
+    </script>
+
+  </body>
+</html>
+
