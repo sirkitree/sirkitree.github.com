@@ -17,9 +17,11 @@
       </hgroup>
     </header>
 
-    <ul class="nav nav-pills">
-      <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
-    </ul>
+    <div ng-controller="itemController">
+      <ul class="nav nav-pills">
+        <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
+      </ul>
+    </div>
 
     <div data-ng-view></div>
 
