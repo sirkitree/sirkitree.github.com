@@ -1,73 +1,79 @@
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Jerad Bitner</title>
-  <meta name="author" content="Jerad Bitner">
-  <meta name="description" content="On Sept 27th 2010 I was married to the love of my life, Jenney Marie Richards. My best man David Burns, wrote a speech that was both moving and &hellip;">
+<html lang="en" data-ng-app="app">
+  <head>
+    <title>Calendar | JeradBitner.com</title><link rel="canonical" href="http://jeradbitner.com">
+    <link href="/favicon.png" rel="icon">
+    <script src="/javascripts/modernizr-2.0.js"></script>
+    <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+    <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    <!-- Bootstrap CDN -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  </head>
+  <body ng-controller="linkController">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="canonical" href="http://jeradbitner.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/rss.xml" rel="alternate" title="Jerad Bitner" type="application/atom+xml">
-  
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    <header role="banner" class="navbar">
+      <hgroup class="navbar-inner">
+        <a href="/" class="brand"><img src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=20"> Jerad Bitner</a>
+      </hgroup>
+    </header>
 
-</head>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Timezones</a>
+        <ul class="nav">
+          <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="calendar.html#/{{item}}">{{item | uppercase}}</a></li>
+        </ul>
+      </div>
+    </div>
 
-<body>
-  
-  <header role="banner">
-    <hgroup>
-      <h1><a href="/">Jerad Bitner</a></h1>
-      <h2>...something for me</h2>
-    </hgroup>
-  </header>
-  
-  <nav role="navigation"><div class="avatar">
-    <img src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=20"><a class="name" href="/">jeradbitner.com</a>
-  </nav>
-  
-  <div id="main">
-    <div id="content">
-      
-      <div class="blog-index">
-  
-        <article>
-          <iframe src="https://www.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=jerad%40lullabot.com&amp;color=%232952A3&amp;src=lullabot.com_fuc733m7klchd39vhlkov29ml4%40group.calendar.google.com&amp;color=%23853104&amp;ctz=America%2FNew_York" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
-        </article>
-  
-      </div><!-- blog-index -->
-      
-      <aside class="sidebar">
+    <div data-ng-view></div>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+    
+    <script>
+    'use strict';
 
-        <section class="googleplus">
-          <h1>
-            <a href="https://plus.google.com/104118380060543405502?rel=author">
-              <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-              Google+
-            </a>
-          </h1>
-        </section>
-  
-      </aside>
+    /* Config */
 
-    </div><!-- content -->
-  </div><!-- main -->
+    var app = angular.module('app', []).
+    config(function($routeProvider) {
+      $routeProvider.
+        when('/pst', {
+          templateUrl: 'ng-views/pst.html'
+        }).
+        when('/mst', {
+          templateUrl: 'ng-views/mst.html'
+        }).
+        when('/cst', {
+          templateUrl: 'ng-views/cst.html'
+        }).
+        when('/est', {
+          templateUrl: 'ng-views/est.html'
+        }).
+        otherwise({
+          redirectTo: '/est'
+        });
+    });
 
-  <footer role="contentinfo"></footer>
 
-</body>
+    /* Controller */
+
+    function linkController ($scope) {
+      $scope.items = ['pst', 'mst', 'cst', 'est'];
+      $scope.selected = $scope.items[3];
+
+      $scope.select= function(item) {
+        $scope.selected = item; 
+      };
+
+      $scope.itemClass = function(item) {
+        return item === $scope.selected ? 'active' : undefined;
+      };
+    }
+
+    /* Directive */
+    </script>
+
+  </body>
 </html>
+
