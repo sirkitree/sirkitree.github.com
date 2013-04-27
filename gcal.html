@@ -17,12 +17,12 @@
       </hgroup>
     </header>
 
-    <div class="tabbable tabs-left">
-      <ul class="nav nav-tabs" ng-controller="linkController">
-        <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
-      </ul>
-      <div class="tab-content">
-        <div data-ng-view></div>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Timezones</a>
+        <ul class="nav" ng-controller="linkController">
+          <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
+        </ul>
       </div>
     </div>
     
@@ -57,7 +57,7 @@
     /* Controller */
 
     function linkController ($scope) {
-      $scope.items = ['pst', 'cst', 'mst', 'est'];
+      $scope.items = ['pst', 'mst', 'cst', 'est'];
       $scope.selected = $scope.items[3];
 
       $scope.select= function(item) {
