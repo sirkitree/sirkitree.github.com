@@ -11,15 +11,34 @@
     <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
   </head>
   <body>
-    
-    <ul>
-      <li><a href="pst">PST</a></li>
-      <li><a href="mst">MST</a></li>
-      <li><a href="cst">CST</a></li>
-      <li><a href="est">EST</a></li>
-    </ul>
 
-    <div data-ng-view></div>
+    <header role="banner">
+      <hgroup>
+        <h1><a href="/">Jerad Bitner</a></h1>
+        <h2>...something for me</h2>
+      </hgroup>
+    </header>
+
+    <nav role="navigation"><div class="avatar">
+      <img src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=20"><a class="name" href="/">jeradbitner.com</a>
+    </nav>
+
+    <div id="main">
+      <div id="content">
+        <div class="blog-index">
+    
+          <ul>
+            <li><a href="pst">PST</a></li>
+            <li><a href="mst">MST</a></li>
+            <li><a href="cst">CST</a></li>
+            <li><a href="est">EST</a></li>
+          </ul>
+
+          <div data-ng-view></div>
+
+        </div>
+      </div>
+    </div>
     
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
     
