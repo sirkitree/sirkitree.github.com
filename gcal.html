@@ -18,7 +18,7 @@
     </header>
 
     <div ng-controller="linkController">
-      <ul class="nav nav-pills">
+      <ul class="nav nav-tabs">
         <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
       </ul>
     </div>
