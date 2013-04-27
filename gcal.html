@@ -9,7 +9,7 @@
     <!-- Bootstrap CDN -->
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body ng-controller="linkController">
 
     <header role="banner" class="navbar">
       <hgroup class="navbar-inner">
@@ -20,7 +20,7 @@
     <div class="navbar">
       <div class="navbar-inner">
         <a class="brand" href="#">Timezones</a>
-        <ul class="nav" ng-controller="linkController">
+        <ul class="nav">
           <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
         </ul>
       </div>
