@@ -17,7 +17,7 @@
       </hgroup>
     </header>
 
-    <div ng-controller="itemController">
+    <div ng-controller="linkController">
       <ul class="nav nav-pills">
         <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
       </ul>
