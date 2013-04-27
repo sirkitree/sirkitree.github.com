@@ -17,14 +17,14 @@
       </hgroup>
     </header>
 
-    <div ng-controller="linkController">
-      <ul class="nav nav-tabs">
+    <div class="tabbable tabs-left">
+      <ul class="nav nav-tabs" ng-controller="linkController">
         <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
       </ul>
+      <div class="tab-content">
+        <div data-ng-view></div>
+      </div>
     </div>
-
-    <div data-ng-view></div>
-
     
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
     
