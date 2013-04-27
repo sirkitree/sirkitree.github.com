@@ -13,27 +13,16 @@
 
     <header role="banner" class="navbar">
       <hgroup class="navbar-inner">
-        <a href="/" class="brand">Jerad Bitner</a>
+        <a href="/" class="brand"><img src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=20"> Jerad Bitner</a>
       </hgroup>
     </header>
 
-    <nav role="navigation"><div class="avatar">
-      <img src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=20"><a class="name" href="/">jeradbitner.com</a>
-    </nav>
+    <ul class="nav nav-pills">
+      <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
+    </ul>
 
-    <div id="main">
-      <div id="content">
-        <div class="blog-index" ng-controller="linkController">
-    
-          <ul class="nav nav-pills">
-            <li ng-repeat="item in items" ng-click="select(item)" ng-class="itemClass(item)"><a href="gcal.html#/{{item}}"></a>{{item | uppercase}}</li>
-          </ul>
+    <div data-ng-view></div>
 
-          <div data-ng-view></div>
-
-        </div>
-      </div>
-    </div>
     
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
     
