@@ -1,0 +1,27 @@
+<html lang="en">
+  <head></head>
+  <body>
+
+    <!-- Google Sign-in Button -->
+    <span id="signinButton" style="display:none;">
+      <span class="g-signin"
+        data-callback="signinCallback"
+        data-clientid="620125449078.apps.googleusercontent.com"
+        data-cookiepolicy="single_host_origin"
+        data-requestvisibleactions="http://schemas.google.com/AddActivity"
+        data-scope="https://www.googleapis.com/auth/plus.login"
+        data-width="wide">
+      </span>
+    </span>
+
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/client:plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+    </script>
+  </body>
+</html>
