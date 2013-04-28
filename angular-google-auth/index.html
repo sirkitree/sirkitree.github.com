@@ -23,5 +23,16 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
     })();
     </script>
+
+    <script>
+    function signinCallback(authResult) {
+      if (authResult['access_token']) {
+        // The user has authorized the app, so lets see who we've got here...
+        gAPI ('/people/me');
+      } else if (authResult['error']) {
+        // User has not authorized the G+ App!
+      }
+    }
+    </script>
   </body>
 </html>
