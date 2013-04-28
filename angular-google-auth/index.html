@@ -27,7 +27,7 @@
           data-clientid="620125449078.apps.googleusercontent.com"
           data-cookiepolicy="single_host_origin"
           data-requestvisibleactions="http://schemas.google.com/AddActivity"
-          data-scope="https://www.googleapis.com/auth/plus.login"
+          data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
           data-width="wide">
         </span>
       </span>
@@ -47,14 +47,30 @@
     </script>
 
     <script>
+    // Callback for Google+ Sign-In
     function signinCallback(authResult) {
+
+      console.log(authResult);
       if (authResult['access_token']) {
-        // The user has authorized the app, so lets see who we've got here...
-        gAPI ('/people/me');
+        // User successfully authorized the G+ App!
+        // Hiding the Sign In-button (& showing API-Demo-Calls), since we are authorized...
+        $('#signinButton').hide();              
+        $('#apiCalls').show();              
+        $('#friendlist_container').show();
+
+        // Now we use a simple G+ API request /people/me to get info on the current user
+        gAPI ('/people/me', null, true);
+        gPopulateFriendlist();
+
       } else if (authResult['error']) {
         // User has not authorized the G+ App!
+
+        // Showing the Sign In-button (& hiding API-Demo-Calls), since we are authorized...
+        $('#signinButton').show();
+        $('#apiCalls').hide();              
+        $('#friendlist_container').hide();
       }
-    }
+    } 
     </script>
   </body>
 </html>
