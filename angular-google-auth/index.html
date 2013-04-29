@@ -13,16 +13,15 @@
       <div id="content">
         <div class="hero-unit">
           <h1>AngularJS Google+ Auth</h1>
-          <p>The goal of this is to create a directive for AngularJS to provide
-            Google+ Authentication.</p>
+          <p>A directive for AngularJS to provide Google+ Authentication.</p>
         </div>
       </div>
     </div>
 
     <section>
       <!-- Google Sign-in Button -->
-      <span id="signinButton" style="display:none;">
-        <span class="g-signin"
+      
+        <span
           data-callback="signinCallback"
           data-clientid="620125449078.apps.googleusercontent.com"
           data-cookiepolicy="single_host_origin"
@@ -30,7 +29,7 @@
           data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
           data-width="wide">
         </span>
-      </span>
+      
     </section>
 
 
@@ -53,22 +52,9 @@
       console.log(authResult);
       if (authResult['access_token']) {
         // User successfully authorized the G+ App!
-        // Hiding the Sign In-button (& showing API-Demo-Calls), since we are authorized...
-        $('#signinButton').hide();              
-        $('#apiCalls').show();              
-        $('#friendlist_container').show();
-
-        // Now we use a simple G+ API request /people/me to get info on the current user
-        gAPI ('/people/me', null, true);
-        gPopulateFriendlist();
 
       } else if (authResult['error']) {
         // User has not authorized the G+ App!
-
-        // Showing the Sign In-button (& hiding API-Demo-Calls), since we are authorized...
-        $('#signinButton').show();
-        $('#apiCalls').hide();              
-        $('#friendlist_container').hide();
       }
     } 
     </script>
