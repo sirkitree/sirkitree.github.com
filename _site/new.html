@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New Post | Jerad Bitner</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/foundation.min.css">
+
+    </head>
+    <body>
+
+            
+            <nav class="top-bar hide-for-small fixed">
+              <ul class="title-area">
+                <!-- Title Area -->
+                <li class="name">
+                  <h1><a href="/">Jerad Bitner</a><img class='gravatar' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=200" /></h1>
+                </li>
+              </ul>
+
+              
+              <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                  <li class="divider"></li>
+                  <li class=""><a href="/">home</a></li>
+                  <li class="divider"></li>
+                  <li class=""><a href="/archive">Archive</a></li>                  
+                </ul>
+              </section>
+            </nav>
+
+        <div class="container">
+          <div class="site">
+
+
+                <form action="https://github.com/sirkitree/sirkitree.github.com/new/master/_posts" method="get" onsubmit="determineFilename(this);">
+  <input type="hidden" name="filename" value="">
+  <div class="form-group">
+    <label for="titleInput">Title</label>
+    <input type="text" name="title" class="form-control" id="titleInput" placeholder="Title">
+  </div>
+  <div class="form-group">
+    <label for="contentsInput">Post Content</label>
+    <textarea name="value" id="contentsInput" class="form-control" rows=20></textarea>
+  </div>
+  <button type="submit" class="button">Submit</button>
+</form>
+
+<script type="text/javascript">
+function determineFilename(form) {
+  // Find the date and time in the correct formats
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1;//January is 0!`
+  var yyyy = today.getFullYear();
+  if(dd<10) dd = '0' + dd;
+  if(mm<10) mm = '0' + mm;
+  var today_nice = yyyy + '-' + mm + '-' + dd;
+  var date_time = today_nice + ' ' + today.getHours() + ':' + today.getMinutes();
+
+  // Determine the filename
+  var post_title = form.title.value;
+  var filename = today_nice + '-' + post_title.replace(/[^\w]+/g, '-').toLowerCase() + '.md';
+  form.filename.value = filename;
+
+  // Add the YAML prefix on the content
+  form.value.value = "---\nlayout: post\ntitle: \"" + post_title + "\"\ndate: " + date_time + "\ncomments: true\npublished: true\ncategories: \n---\n" + form.value.value;
+}
+</script>
+
+            <div class="footer">
+              <div class="contact">
+                <p>
+                  Jerad Bitner<br />
+                  sirkitree@gmail.com
+                </p>
+              </div>
+              <div class="contact">
+                <p>
+                  <a href="http://github.com/sirkitree/">github.com/sirkitree</a><br />
+                  <a href="http://twitter.com/sirkitree/">twitter.com/sirkitree</a><br />
+                  <a href="http://https://plus.google.com/u/0/104118380060543405502/posts">plus.google.com</a><br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>
