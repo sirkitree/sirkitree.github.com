@@ -1,0 +1,20 @@
+---
+layout : post
+title : "Trail of Blood"
+created : 1303420999
+permalink : /short-stories/trail-of-blood
+categories : ["short-stories"]
+---
+The young appearing warrior elf moved with gentle but fierce and deadly grace. He swooped around to my left and right with his ever-glowing sky blue sword. I swung around to face him at each turn, then suddenly shifted my great sword to my right hand and took an expert chop at the small bright-eyed elf. He jumped over me and with a fleeting glance at my defenseless back, sliced at the belt on my loincloth, which subsequently fell to my knees.
+
+Although I had thought that the elf and I were alone, I heard a gruff snickering coming from behind the bushes and trees surrounding us. I tried to look and see where exactly the laughter might be coming from but the elf and my loincloth took up most of my attention. It was sort of drafty without my loincloth and the hysterical elf made matters worse, so I bent over to pick it up when I was suddenly pounced upon from behind by strong but short beings; dwarves. I hate dwarves. Probably more than this elf, my he burn in the underworld. Before I could get the creatures off my back, I was covered with a thick black net and being wrapped up tight, was rendered helpless though I struggled with my sword. My left hand was still stuck somewhere in the vicinity of my knee.
+
+The elf was still laughing and finally managed to get himself under control as he said something to the dwarves in a strange tongue. Though I didn't understand the language, I knew and elf sneer when I heard one. I couldn't see through the thick netting, but I felt myself being lifted up and carried for a distance before being thrown down. Then we started moving.
+
+It was a long and bumpy trip, and many hours later until we stopped, with no rest upon the way. I was really starting to cramp in my position when the dwarves hands suddenly shot through the net and tied my hands and feet together. I managed to bite one of their fingers off before they got my hands tied though. Blood spurted all over me and the offended dwarf cursed aloud and kicked me repeated in the head. Then the net was lifted and I finally saw some sky blue light through my now blackened eyes. The light was strange, surrounding me though I couldn't tell the source. Sitting there on the wagon, observing my surroundings, the only thing I could see was a blue void all around me. No trees. No ground. No dwarves or elf. Nothing but blue and the wagon I sat upon.
+
+I knew the wagon had to be sitting on something, so I wiggled myself around to ask the elf, or perhaps the dwarves, but they were simply gone, nowhere to be found! Where could they have gone? Why would they have taken me here and tied me only to leave me. Then, I saw it. A trail of blood leading away from the wagon. How had I missed that? It must have been from the dwarf whose finger I had tasted. My hands and feet were still tied, so I couldn't just run after them. Though, something was poking me in the back. I turned to find a nail sticking from the wagon. The means of my escape!
+
+I wiggling around a bit, putting myself into position until I could get my hands near it the nail and sawed with it for what seemed like hours before the ropes finally frayed enough to give way to my strength. With my hands now free I looked around for my sword, but it was nowhere to be found. I couldn't just follow these mad creatures off into an unknown landscape without some sort of weapon, so I ripped one of the larger planks off the wagon and tore at the end until I had fashioned a splinter big enough to impale a small dragon.
+
+With my little wooden spear in in hand, sweat and blood upon my brow, and no minor headache from the blows to my face, I jumped from the wagon to follow the trail of blood, hoping that whatever held up the wagon was going to hold me as well. I had not even taken three steps when I looked back and found the wagon had disappeared into the cold blue haze. I stood there, alone and bloody, spear in hand, encompassed by blue and nothing else to see but this small trail of blood.

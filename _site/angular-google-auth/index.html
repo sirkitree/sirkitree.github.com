@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Google+ Auth</title>
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="content">
+        <div class="hero-unit">
+          <h1>AngularJS Google+ Auth</h1>
+          <p>A directive for AngularJS to provide Google+ Authentication.</p>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <!-- Google Sign-in Button -->
+      
+        <span class="g-signin"
+          data-callback="signinCallback"
+          data-clientid="620125449078.apps.googleusercontent.com"
+          data-cookiepolicy="single_host_origin"
+          data-requestvisibleactions="http://schemas.google.com/AddActivity"
+          data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
+          data-width="wide">
+        </span>
+      
+    </section>
+
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+
+    <!-- G+ SDK -->
+    <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/client:plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+    </script>
+
+    <script>
+    // Callback for Google+ Sign-In
+    function signinCallback(authResult) {
+
+      console.log(authResult);
+      if (authResult['access_token']) {
+        // User successfully authorized the G+ App!
+
+      } else if (authResult['error']) {
+        // User has not authorized the G+ App!
+      }
+    } 
+    </script>
+  </body>
+</html>

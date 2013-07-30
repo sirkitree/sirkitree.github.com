@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Jerad Bitner</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/foundation.min.css">
+
+    </head>
+    <body>
+
+            
+            <nav class="top-bar hide-for-small fixed">
+              <ul class="title-area">
+                <!-- Title Area -->
+                <li class="name">
+                  <h1><a href="/">Jerad Bitner</a><img class='gravatar' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=200" /></h1>
+                </li>
+              </ul>
+
+              
+              <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                  <li class="divider"></li>
+                  <li class=""><a href="/">home</a></li>
+                  <li class="divider"></li>
+                  <li class=""><a href="/archive">Archive</a></li>                  
+                </ul>
+              </section>
+            </nav>
+
+        <div class="container">
+          <div class="site">
+
+
+                <div id="home">
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/content/jquery-checkbox-goodness">jQuery checkbox goodness</a></h2>
+        <time pubdate="pubdate" class="meta">06 Jun 2007</time>
+      </header>
+
+      <p>I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)</p>
+
+<pre>
+$(document).ready( function() {
+  $('a#select_all').click( function() {
+    $('input:checkbox').each( function() {
+      this.checked = !this.checked;
+    });
+    return false;
+  });
+});
+</pre>
+
+<p>The first item to note is that jQuery created pseudo classes for input.
+<pre>
+$(&#39;input:checkbox&#39;);
+...
+$(&#39;input:textbox&#39;);
+... etc.
+</pre></p>
+
+<p>The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it&#39;s current value.
+<pre>
+this.checked = !this.checked;
+</pre></p>
+
+<p>Works great and it&#39;s short and sweet. Who loves jQuery?</p>
+
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/god-damn-ie">New background image</a></h2>
+        <time pubdate="pubdate" class="meta">22 Mar 2007</time>
+      </header>
+
+      <p>I&#39;ve create a new background image today and think I&#39;ll make a shirt out of it. It pretty much summarizes my day today. You can get this background image in 800x600 or 1024x768. If you want it in another size just let me know. For those of you who don&#39;t understand it, be glad. For those of you who do, &#39;nuff said.</p>
+
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/content/theming-cck-drupal">Theming CCK in Drupal</a></h2>
+        <time pubdate="pubdate" class="meta">07 Mar 2007</time>
+      </header>
+
+      <p>I recently had a friend ask me how to be able to give CCK fields more user-friendly class names so that they could be styled a little easier. I actually needed to do this myself with a project at work, so I had time to really sit down and figure out a good way to do this.</p>
+
+<h3>CCK</h3>
+
+<p>The <a href="http://drupal.org/project/cck">Content Creation Kit (CCK)</a> is a great way to add different fields to any particular content type within Drupal. When you first start learning Drupal, you&#39;ll see that it ships with two main content types: Page and Story. The fields that these two content types have by default are the Title and the Body. These are respectively a single line text field, and a multi-line text field of which you can choose an input format. This is great and very useful for basic content, but what if I would like another text field other then just Title and Body? CCK allows you to add this. But instead of trying to explain the power and awe of CCK here, please take a look at the <a href="http://drupal.org/node/101723">CCK handbook</a> where this is explained in much greater detail.</p>
+
+<h3>Stepping Stones</h3>
+
+<p>Now adding CCK fields to a content type is all fine and dandy, but what if I want to make them <em>look</em> better by perhaps changing around the order in which they appear when viewed, or perhaps target that specific element with my CSS in order to specify the exact look and feel of the content it holds? This is where you want to start theming. However, sometimes theming in Drupal can be a pretty complex concept to grok at first. Not because it is very hard, but because without any stepping stones to how theming actually works, you can very easily fall into a dangerous quagmire of code, arrays and objects that you have no idea are even available to you.</p>
+
+<h3>Contemplate this my friend</h3>
+
+<p>This is where <a href="http://www.lullabot.com/about/jeffrobbins">Jeff Robbins</a> of the <a href="http://www.lullabot.com">Lullabot</a> crew has come to our rescue with a great module called <a href="http://drupal.org/project/contemplate">Content Templates (contemplate)</a>. I believe this module is an incredible stepping stone in learning how to bridge the gap that exists between CCK and the way CCK fields are presented (themed). Installing this module will add a new menu item under Content Mangement in your Administration panel called &#39;Content templates&#39;, and also a templates tab inside of your &#39;Content types&#39; page of your Admin section. Once you create a template for any given content type, you can effectually customize the look and feel of not just the content type&#39;s node view (labeled Body in contemplate), but also the Teaser and the RSS!</p>
+
+<h3>Commercial break</h3>
+
+<p>BUT WAIT, THERE&#39;S MORE! Each fieldset (teaser, body, and rss) has not just a text field to edit the template in, but also inserts a default view of what Drupal spits out, ready to edit. And if that isn&#39;t exciting enough for you, there is (<strong>IMHO the most useful feature of this module</strong>) a rich text-field next to that which lists every object available to you for templating! There&#39;s even some neato javascript that allows you to click on an object and insert the php to print that object into the template field. This is just good stuff man. Fun times. Act now while supplies last. Void where prohibited.</p>
+
+<h3>Ok, time for a downer</h3>
+
+<p>Finding such a gem is really very great, but the excitement starts to wear off after about an hour of trying to template a complete content type inside of that teeny, tiny, little box. Even the javascript insertion of the box next to it begins to feel like a sticky piece of candy that&#39;s lost it&#39;s flavor. I&#39;d like to take this opportunity to mention that the <a href="http://drupal.org/project/devel">devel module</a> provides you with a feature quite similar to this little javascript flavored object reference box, but unless you&#39;re already very familiar with how to work with these field objects in PHP, the devel module is next to useless. So, again as a stepping stone, the contemplate module really comes in handy for referencing what objects are available to theme, and will give you a little insight as to how to work with them in PHP.</p>
+
+<p>So what do we do about the teeny, tiny, little text box that we&#39;re supposed to put all of our theming code into? Well, fortunately Drupal&#39;s main theming engine, phptemplate, has already taken care of this. Listen carefully now, &#39;cuz this is important and I don&#39;t want to lose you now. We&#39;ve already come so far. <strong>Each content type can have it&#39;s very own template file within your theme.</strong></p>
+
+<h3>Theming a content type</h3>
+
+<p>You can actually accomplish this very easily. The first step is to create a file within your theme directory named <strong>node-content<em>type.tpl.php</strong> <em>replacing <strong>content</em>type</strong> with the machine readable name you&#39;ve given your content type</em>. So if your content type is named <strong>forum</strong>, you&#39;ll want the file to be named node-<strong>forum</strong>.tpl.php. For almost all of my work lately I&#39;ve been using a <a href="http://drupal.org/project/zen">theme called zen</a>. It&#39;s written by the Lullabot crew once again, and is probably the best theme out there to teach you anything about a theme. This theme has a file that is a custom themed content type already specific to the forum module. The file is node-forum.tpl.php. I&#39;ve used this on multiple occasions as a template on how to start a new custom theme file for a content type. If you use this file, you&#39;ll notice that, among other things, it prints out the $content variable. All of our CCK fields can be found inside of this variable, along with the default theming of them that you find in the contemplate module&#39;s teeny, tiny, little box for the template code. So you can take the code that is generated by default in the contemplate module, and insert all of that where you see the $content variable being printed in the tpl file. From there, you can do all of your editing in the editor of your choice without having to strain your back trying to bend closer to your monitor to see what&#39;s inside of the teeny, tiny, little box.</p>
+
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/content/jquery-working-select-options">jQuery: working with select options</a></h2>
+        <time pubdate="pubdate" class="meta">27 Feb 2007</time>
+      </header>
+
+      <p>Following my <a href="/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
+
+<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here&#39;s the resulting code for the IE portion:
+<pre>
+    // ie doesn&#39;t pick up the option.click, so we&#39;ll have to use the select.change
+    $(&#39;#edit-role-changer&#39;).change(function(){</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// get rid of select box
+$(&#39;#edit-role-changer&#39;).hide();
+
+    // show the chosen role as static text
+   // NOTE: FF doesn&#39;t pick up [@selected]
+  $(&#39;#role&#39;).html($(this).children(&quot;[@selected]&quot;).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p></pre></p>
+
+<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:
+<pre>
+    // provide action for an option change
+    $(&#39;#edit-role-changer option&#39;).click(function(){</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">  // get rid of select box
+  $(&#39;#edit-role-changer&#39;).hide();
+
+  // show the chosen role as static text
+  $(&#39;#role&#39;).html($(this).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p></pre></p>
+
+<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:
+<pre>
+  // see which browser we&#39;re working with
+  if ($.browser.msie) {</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// ie doesn&#39;t pick up the option.click, so we&#39;ll have to use the select.change
+$(&#39;#edit-role-changer&#39;).change(function(){
+
+  // get rid of select box
+  $(&#39;#edit-role-changer&#39;).hide();
+
+  // show the chosen role as static text
+  // NOTE: FF doesn&#39;t pick up [@selected]
+  $(&#39;#role&#39;).html($(this).children(&quot;[@selected]&quot;).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p>}
+  else {</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// provide action for an option change
+$(&#39;#edit-role-changer option&#39;).click(function(){
+
+  // get rid of select box
+  $(&#39;#edit-role-changer&#39;).hide();
+
+  // show the chosen role as static text
+  $(&#39;#role&#39;).html($(this).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p>}
+</pre></p>
+
+<p>Happy jQuerying!</p>
+
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/content/rolechanger">Hey, you gotta start somewhere right?</a></h2>
+        <time pubdate="pubdate" class="meta">25 Feb 2007</time>
+      </header>
+
+      <p>So my first commit to the Drupal contributions has been made! WooHoo! I partied hard that night :) No, it&#39;s really not that big of a deal, but I&#39;m excited as it takes me one step further into Drupal development and being more involved in the Drupal community.</p>
+
+
+    </article>
+    <hr />
+  
+
+  <!-- Pagination links -->
+  <div class="pagination-centered">
+    
+      
+      <a href="/page8" class="previous">Previous</a>
+        
+    
+    
+    <span class="page_number ">Page: 9 of 12</span>
+    
+      <a href="/page10" class="next">Next</a>
+    
+  </div>
+</div>
+
+            <div class="footer">
+              <div class="contact">
+                <p>
+                  Jerad Bitner<br />
+                  sirkitree@gmail.com
+                </p>
+              </div>
+              <div class="contact">
+                <p>
+                  <a href="http://github.com/sirkitree/">github.com/sirkitree</a><br />
+                  <a href="http://twitter.com/sirkitree/">twitter.com/sirkitree</a><br />
+                  <a href="http://https://plus.google.com/u/0/104118380060543405502/posts">plus.google.com</a><br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<article class="post">
+  <header>
+    <h2 class="subheader">{{ page.title }}</h2>
+
+    <div class="breadcrumb">
+      <time pubdate="pubdate" class="meta">{{ page.date | date_to_string }}</time>
+    </div>
+    <div class="g-plusone right" data-size="medium"></div>
+        
+  </header>
+
+  <section class="content">
+  {{ content }}
+  </section>
+  
+  <section class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jbitner'; // required: replace example with your forum shortname
+
+        // Remove the trailing slash off the URL that's used to identify this page for Disqus. Also trim off the #comment-xxxxx if it's there
+        var disqus_url = window.location.href;
+        if (disqus_url.indexOf('#') >= 0) {
+          disqus_url = disqus_url.split('#')[0];
+        }
+        var last_char = disqus_url[disqus_url.length-1]
+        if (last_char == '/') {
+          disqus_url = disqus_url.substring(0, disqus_url.length-1);
+        }
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+</article>

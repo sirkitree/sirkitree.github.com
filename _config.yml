@@ -1,0 +1,15 @@
+url: http://jeradbitner.com
+name: Jerad Bitner
+author: Jerad Bitner
+
+markdown: redcarpet
+pygments: true
+paginate: 5
+
+root: /
+permalink: /:year/:month/:title/
+
+#GitHub Overrides
+safe: true
+lsi: false
+pygments: true
