@@ -7,6 +7,15 @@
 		<atom:link href="http://jeradbitner.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Jekyll Juice</title>
+				<description>&lt;p&gt;This blog is now pwered by Jekyll alone (was on Octopress).&lt;/p&gt;
+</description>
+				<pubDate>Tue, 30 Jul 2013 16:59:00 -0600</pubDate>
+				<link>http://jeradbitner.com/2013/07/jekyll-juice/</link>
+				<guid isPermaLink="true">http://jeradbitner.com/2013/07/jekyll-juice/</guid>
+			</item>
+		
+			<item>
 				<title>Best man's speech</title>
 				<description>&lt;p&gt;On Sept 27th 2010 I was married to the love of my life, Jenney Marie Richards. My best man David Burns, wrote a speech that was both moving and heartfelt. I record that now for all eternity (assuming the internet is immortal and all):&lt;/p&gt;
 
@@ -259,17 +268,6 @@ Angel of fire, cleanse me just right
 				<pubDate>Sun, 05 Feb 2012 13:39:00 -0700</pubDate>
 				<link>http://jeradbitner.com/2012/02/new-blog-command-and-some-style-updates/</link>
 				<guid isPermaLink="true">http://jeradbitner.com/2012/02/new-blog-command-and-some-style-updates/</guid>
-			</item>
-		
-			<item>
-				<title>HTML5 Photobooth</title>
-				<description>&lt;p&gt;After reading an &lt;a href=&quot;http://arstechnica.com/business/news/2012/01/hands-on-building-an-html5-photo-booth-with-chromes-new-webcam-api.ars&quot;&gt;article&lt;/a&gt; about the experimental support for WebRTC getting put into the latest version of browsers, my buddy &lt;a href=&quot;https://plus.google.com/102577299588201077107/about&quot;&gt;David Burns&lt;/a&gt; was inspired to write a quick app called &lt;a href=&quot;http://html5photobooth.com/&quot;&gt;HTML5 Photobooth&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Code can be found here: https://github.com/davexoxide/HTML5-Photobooth&lt;/p&gt;
-</description>
-				<pubDate>Mon, 30 Jan 2012 09:36:00 -0700</pubDate>
-				<link>http://jeradbitner.com/2012/01/html5-photoboot/</link>
-				<guid isPermaLink="true">http://jeradbitner.com/2012/01/html5-photoboot/</guid>
 			</item>
 		
 	</channel>
