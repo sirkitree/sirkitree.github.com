@@ -18,18 +18,50 @@ title: Jerad Bitner
   {% endfor %}
 
   <!-- Pagination links -->
-  <div class="pagination-centered">
+  <div id="post-pagination" class="pagination-centered">
+    <ul class="pagination">
     {% if paginator.previous_page %}
-      {% if paginator.previous_page == 1 %}
-      <a href="/" class="previous">Previous</a>
-      {% else %}
-      <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>
-      {% endif %}  
+      <li class="previous">
+        {% if paginator.previous_page == 1 %}
+          <a href="/">&laquo;</a>
+        {% else %}
+          <a href="{{ paginator.previous_page_path }}">&laquo;</a>
+        {% endif %}
+      </li>
+    {% else %}
+      <li class="previous disabled">
+        <span>&laquo;</span>
+      </li>
     {% endif %}
-    
-    <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+      <li class="page">
+        {% if paginator.page == 1 %}
+          <span class="current-page">1</span>
+        {% else %}
+          <a href="/">1</a>
+        {% endif %}
+      </li>
+
+      {% for count in (2..paginator.total_pages) %}
+        <li class="page">
+          {% if count == paginator.page %}
+            <span class="current">{{ count }}</span>
+          {% else %}
+            <a href="/page{{ count }}">{{ count }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+
     {% if paginator.next_page %}
-      <a href="/page{{ paginator.next_page }}" class="next">Next</a>
+      <li class="next">
+        <a href="{{ paginator.next_page_path }}">&raquo;</a>
+      </li>
+    {% else %}
+      <li class="next disabled">
+        <span>&raquo;</span>
+      </li>
     {% endif %}
-  </div>
+    </ul>
+  </div>  
+
 </div>
