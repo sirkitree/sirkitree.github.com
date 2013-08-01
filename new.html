@@ -3,37 +3,54 @@ layout: default
 title: New Post | Jerad Bitner
 ---
 
-<form action="https://github.com/sirkitree/sirkitree.github.com/new/master/_posts" method="get" onsubmit="determineFilename(this);">
-  <input type="hidden" name="filename" value="">
-  <div class="form-group">
-    <label for="titleInput">Title</label>
-    <input type="text" name="title" class="form-control" id="titleInput" placeholder="Title">
-  </div>
-  <div class="form-group">
-    <label for="contentsInput">Post Content</label>
-    <textarea name="value" id="contentsInput" class="form-control" rows=20></textarea>
-  </div>
-  <button type="submit" class="button">Submit</button>
-</form>
+<div data-ng-app='app'>
+  <div  class="wrapper" class='row'>
+    <div class="large-6 columns">
+      <form action="https://github.com/sirkitree/sirkitree.github.com/new/master/_posts" method="get">
+        <input type="hidden" name="filename" value="">
+        <div class="form-group">
+          <label for="titleInput">Title</label>
+          <input type="text" name="title" class="form-control" id="titleInput" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <label for="contentsInput">Body</label>
+          <textarea name="value" id="contentsInput" class="form-control large-12" rows=20 ng-model='form.text'></textarea>
+        </div>
+        <button type="submit" class="button" ng-click='determineFilename(this)'>Submit</button>
+      </form>
+    </div> 
+    <div class="large-6 columns panel">
+      <div id="markdown-preview" ng-bind-html-unsafe="form.text|convert"></div>
+    </div>
+  </div>  
+</div>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/marked.js"></script>
 
-<script type="text/javascript">
-function determineFilename(form) {
-  // Find the date and time in the correct formats
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1;//January is 0!`
-  var yyyy = today.getFullYear();
-  if(dd<10) dd = '0' + dd;
-  if(mm<10) mm = '0' + mm;
-  var today_nice = yyyy + '-' + mm + '-' + dd;
-  var date_time = today_nice + ' ' + today.getHours() + ':' + today.getMinutes();
+    <script>
+    'use strict';
 
-  // Determine the filename
-  var post_title = form.title.value;
-  var filename = today_nice + '-' + post_title.replace(/[^\w]+/g, '-').toLowerCase() + '.md';
-  form.filename.value = filename;
+    angular.module('app', ['app.filters']);
 
-  // Add the YAML prefix on the content
-  form.value.value = "---\nlayout: post\ntitle: \"" + post_title + "\"\ndate: " + date_time + "\ncomments: true\npublished: true\ncategories: \n---\n" + form.value.value;
-}
-</script>
+    function determineFilename (form) {
+      // Find the date and time in the correct formats
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;//January is 0!`
+      var yyyy = today.getFullYear();
+      if(dd<10) dd = '0' + dd;
+      if(mm<10) mm = '0' + mm;
+      var today_nice = yyyy + '-' + mm + '-' + dd;
+      var date_time = today_nice + ' ' + today.getHours() + ':' + today.getMinutes();
+
+      // Determine the filename
+      var post_title = form.title.value;
+      var filename = today_nice + '-' + post_title.replace(/[^\w]+/g, '-').toLowerCase() + '.md';
+      form.filename.value = filename;
+
+      // Add the YAML prefix on the content
+      form.value.value = "---\nlayout: post\ntitle: \"" + post_title + "\"\ndate: " + date_time + "\ncomments: true\npublished: true\ncategories: \n---\n" + form.value.value;
+    }
+    </script>
