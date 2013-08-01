@@ -45,7 +45,7 @@
                 <div data-ng-app='app'>
   <div  class="wrapper" class='row'>
     <div class="large-6 columns">
-      <form action="https://github.com/sirkitree/sirkitree.github.com/new/master/_posts" method="get">
+      <form action="https://github.com/sirkitree/sirkitree.github.com/new/master/_posts" method="get" onsubmit='determineFilename(this)'>
         <input type="hidden" name="filename" value="">
         <div class="form-group">
           <label for="titleInput">Title</label>
@@ -55,7 +55,7 @@
           <label for="contentsInput">Body</label>
           <textarea name="value" id="contentsInput" class="form-control large-12" rows=20 ng-model='form.text'></textarea>
         </div>
-        <button type="submit" class="button" ng-click='determineFilename(this)'>Submit</button>
+        <button type="submit" class="button">Submit</button>
       </form>
     </div> 
     <div class="large-6 columns panel">

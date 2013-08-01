@@ -8,7 +8,9 @@
 		
 			<item>
 				<title>Jekyll Juice</title>
-				<description>&lt;p&gt;This blog is now pwered by Jekyll alone (was on Octopress).&lt;/p&gt;
+				<description>&lt;p&gt;This blog is now powered by Jekyll alone (was on Octopress). &lt;a href=&quot;http://brockboland.com&quot;&gt;Brock Boland&lt;/a&gt; recently wrote about moving his blog to only Jekyll and I&amp;#39;d been wanting to do this for a while as well so I don&amp;#39;t need to worry about generators and such at all. Only took about an hour. Generate a jekyll site with &lt;code&gt;jekyll new [site]&lt;/code&gt; and then just move your posts over, tweak your settings and theme and you&amp;#39;re done.&lt;/p&gt;
+
+&lt;p&gt;Theme is built with a little bit of &lt;a href=&quot;http://foundation.zurb.com/&quot;&gt;zurb foundation&lt;/a&gt;. I typically use Bootstrap for small projects but thought I&amp;#39;d give this a try instead. So far so good.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 30 Jul 2013 16:59:00 -0600</pubDate>
 				<link>http://jeradbitner.com/2013/07/jekyll-juice/</link>
