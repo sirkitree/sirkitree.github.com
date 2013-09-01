@@ -42,6 +42,30 @@
   
     <article class="post">
       <header>
+        <h2 class='subheader'><a href="/short-stories/trail-of-blood">Trail of Blood</a></h2>
+        <time pubdate="pubdate" class="meta">21 Apr 2011</time>
+      </header>
+
+      <p>The young appearing warrior elf moved with gentle but fierce and deadly grace. He swooped around to my left and right with his ever-glowing sky blue sword. I swung around to face him at each turn, then suddenly shifted my great sword to my right hand and took an expert chop at the small bright-eyed elf. He jumped over me and with a fleeting glance at my defenseless back, sliced at the belt on my loincloth, which subsequently fell to my knees.</p>
+
+<p>Although I had thought that the elf and I were alone, I heard a gruff snickering coming from behind the bushes and trees surrounding us. I tried to look and see where exactly the laughter might be coming from but the elf and my loincloth took up most of my attention. It was sort of drafty without my loincloth and the hysterical elf made matters worse, so I bent over to pick it up when I was suddenly pounced upon from behind by strong but short beings; dwarves. I hate dwarves. Probably more than this elf, my he burn in the underworld. Before I could get the creatures off my back, I was covered with a thick black net and being wrapped up tight, was rendered helpless though I struggled with my sword. My left hand was still stuck somewhere in the vicinity of my knee.</p>
+
+<p>The elf was still laughing and finally managed to get himself under control as he said something to the dwarves in a strange tongue. Though I didn&#39;t understand the language, I knew and elf sneer when I heard one. I couldn&#39;t see through the thick netting, but I felt myself being lifted up and carried for a distance before being thrown down. Then we started moving.</p>
+
+<p>It was a long and bumpy trip, and many hours later until we stopped, with no rest upon the way. I was really starting to cramp in my position when the dwarves hands suddenly shot through the net and tied my hands and feet together. I managed to bite one of their fingers off before they got my hands tied though. Blood spurted all over me and the offended dwarf cursed aloud and kicked me repeated in the head. Then the net was lifted and I finally saw some sky blue light through my now blackened eyes. The light was strange, surrounding me though I couldn&#39;t tell the source. Sitting there on the wagon, observing my surroundings, the only thing I could see was a blue void all around me. No trees. No ground. No dwarves or elf. Nothing but blue and the wagon I sat upon.</p>
+
+<p>I knew the wagon had to be sitting on something, so I wiggled myself around to ask the elf, or perhaps the dwarves, but they were simply gone, nowhere to be found! Where could they have gone? Why would they have taken me here and tied me only to leave me. Then, I saw it. A trail of blood leading away from the wagon. How had I missed that? It must have been from the dwarf whose finger I had tasted. My hands and feet were still tied, so I couldn&#39;t just run after them. Though, something was poking me in the back. I turned to find a nail sticking from the wagon. The means of my escape!</p>
+
+<p>I wiggling around a bit, putting myself into position until I could get my hands near it the nail and sawed with it for what seemed like hours before the ropes finally frayed enough to give way to my strength. With my hands now free I looked around for my sword, but it was nowhere to be found. I couldn&#39;t just follow these mad creatures off into an unknown landscape without some sort of weapon, so I ripped one of the larger planks off the wagon and tore at the end until I had fashioned a splinter big enough to impale a small dragon.</p>
+
+<p>With my little wooden spear in in hand, sweat and blood upon my brow, and no minor headache from the blows to my face, I jumped from the wagon to follow the trail of blood, hoping that whatever held up the wagon was going to hold me as well. I had not even taken three steps when I looked back and found the wagon had disappeared into the cold blue haze. I stood there, alone and bloody, spear in hand, encompassed by blue and nothing else to see but this small trail of blood.</p>
+ ... <a href="/short-stories/trail-of-blood">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
         <h2 class='subheader'><a href="/short-stories/drakens-battle">Draken's battle</a></h2>
         <time pubdate="pubdate" class="meta">20 Apr 2011</time>
       </header>
@@ -166,65 +190,6 @@
 
 <p>In the morning we got up early and were on the road by 7:30am, making it to Austin by about 1:30pm. We found a hotel as our basecamp to start the apartment hunt and after two days of exploring Austin and searching for temporary housing, we&#39;re now staying in some guy&#39;s camper that he keeps in his driveway. It&#39;s clean, safe, and cheap. A much cheaper home base for now until we figure out what is going on with Jenney&#39;s job and where we&#39;re going to actually be for the next few months.</p>
  ... <a href="/content/trip-austin">read on</a>
-
-    </article>
-    <hr />
-  
-    <article class="post">
-      <header>
-        <h2 class='subheader'><a href="/content/resurrection">Resurrection</a></h2>
-        <time pubdate="pubdate" class="meta">12 Nov 2009</time>
-      </header>
-
-      <p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module&#39;s API. Here&#39;s a couple quick steps I took:
-&lt;!--break--&gt;
-<ol>
-<li>Edited the page-front.tpl.php and inserted a little logic to give the #preface-wrapper a different background-image property.
-<pre>
-<div id="preface-wrapper" class="clearfix" <?php if ($flickr): ?>style=&quot;background-image: url(&lt;?php print $flickr; ?&gt;);&quot;&lt;?php endif; ?&gt;&gt;
-</pre></li>
-<li>Wrote a custom function based off of the flickr<em>block.module&#39;s flickr</em>block<em>photoset</em>random() function. The function returns just the flickr farm url instead of running through the theme functions.
-<pre>
-function acquia<em>slate</em>flickr<em>block</em>photoset<em>random($nsid, $show</em>n, $size, $photoset<em>id) {
-  // Get information about the photoset, including the owner.
-  $info = flickr</em>photoset<em>get</em>info($photoset_id);
-  if (!$info) {
-    return;
-  }</p>
-
-<p>// Get a list of &quot;all&quot; the photos in the photoset. This is cached.
-  $response = flickr<em>request(&#39;flickr.photosets.getPhotos&#39;,
-    array(
-      &#39;photoset</em>id&#39; =&gt; $photoset<em>id,
-      &#39;per</em>page&#39; =&gt; 500, // get as many images as possible
-      &#39;extras&#39; =&gt; &#39;owner&#39;,
-    )
-  );
-  if (!$response) {
-    return;
-  }</p>
-
-<p>// Randomly display $show_n of them
-  $photos = $response[&#39;photoset&#39;][&#39;photo&#39;];
-  shuffle($photos);</p>
-
-<p>$output = flickr<em>photo</em>img($photos[0], $size);</p>
-
-<p>return $output;
-}
-</pre></li>
-<li>Set the result of this new function, called with hardcoded arguments, to a theme variable within template.php&#39;s phptemplate<em>preprocess</em>page() function.
-<pre>
-  // get a flickr image for the front page background
-  $vars[&#39;flickr&#39;] = acquia<em>slate</em>flickr<em>block</em>photoset<em>random($nsid, $show</em>n, $size, $photoset_id);
-</pre>
-</li>
-</ol></p>
-
-<p>The one thing I couldn&#39;t find was a block setting when looking at the flickr<em>block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc&#39;s flickr</em>photo<em>img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply &#39;b</em>d&#39; for large.</p>
-
-<p>Fun stuff!</p>
- ... <a href="/content/resurrection">read on</a>
 
     </article>
     <hr />

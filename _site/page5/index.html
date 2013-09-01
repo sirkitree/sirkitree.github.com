@@ -42,6 +42,65 @@
   
     <article class="post">
       <header>
+        <h2 class='subheader'><a href="/content/resurrection">Resurrection</a></h2>
+        <time pubdate="pubdate" class="meta">12 Nov 2009</time>
+      </header>
+
+      <p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module&#39;s API. Here&#39;s a couple quick steps I took:
+&lt;!--break--&gt;
+<ol>
+<li>Edited the page-front.tpl.php and inserted a little logic to give the #preface-wrapper a different background-image property.
+<pre>
+<div id="preface-wrapper" class="clearfix" <?php if ($flickr): ?>style=&quot;background-image: url(&lt;?php print $flickr; ?&gt;);&quot;&lt;?php endif; ?&gt;&gt;
+</pre></li>
+<li>Wrote a custom function based off of the flickr<em>block.module&#39;s flickr</em>block<em>photoset</em>random() function. The function returns just the flickr farm url instead of running through the theme functions.
+<pre>
+function acquia<em>slate</em>flickr<em>block</em>photoset<em>random($nsid, $show</em>n, $size, $photoset<em>id) {
+  // Get information about the photoset, including the owner.
+  $info = flickr</em>photoset<em>get</em>info($photoset_id);
+  if (!$info) {
+    return;
+  }</p>
+
+<p>// Get a list of &quot;all&quot; the photos in the photoset. This is cached.
+  $response = flickr<em>request(&#39;flickr.photosets.getPhotos&#39;,
+    array(
+      &#39;photoset</em>id&#39; =&gt; $photoset<em>id,
+      &#39;per</em>page&#39; =&gt; 500, // get as many images as possible
+      &#39;extras&#39; =&gt; &#39;owner&#39;,
+    )
+  );
+  if (!$response) {
+    return;
+  }</p>
+
+<p>// Randomly display $show_n of them
+  $photos = $response[&#39;photoset&#39;][&#39;photo&#39;];
+  shuffle($photos);</p>
+
+<p>$output = flickr<em>photo</em>img($photos[0], $size);</p>
+
+<p>return $output;
+}
+</pre></li>
+<li>Set the result of this new function, called with hardcoded arguments, to a theme variable within template.php&#39;s phptemplate<em>preprocess</em>page() function.
+<pre>
+  // get a flickr image for the front page background
+  $vars[&#39;flickr&#39;] = acquia<em>slate</em>flickr<em>block</em>photoset<em>random($nsid, $show</em>n, $size, $photoset_id);
+</pre>
+</li>
+</ol></p>
+
+<p>The one thing I couldn&#39;t find was a block setting when looking at the flickr<em>block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc&#39;s flickr</em>photo<em>img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply &#39;b</em>d&#39; for large.</p>
+
+<p>Fun stuff!</p>
+ ... <a href="/content/resurrection">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
         <h2 class='subheader'><a href="/poems/rust">Rust</a></h2>
         <time pubdate="pubdate" class="meta">05 Dec 2008</time>
       </header>
@@ -115,18 +174,6 @@
       <p>Here&#39;s the new one!
 <img src="http://farm4.static.flickr.com/3151/2694083801_bcba323a65_m.jpg" /></p>
  ... <a href="/content/new-tattoo">read on</a>
-
-    </article>
-    <hr />
-  
-    <article class="post">
-      <header>
-        <h2 class='subheader'><a href="/content/what-right">What is right?</a></h2>
-        <time pubdate="pubdate" class="meta">18 Jul 2008</time>
-      </header>
-
-      <p>There&#39;s an ideal of late that I&#39;ve seen repeated within literature and movies that intrigues me. It is that of the men and women who have ideals. Ideals that they do whatever it takes to uphold. I find this a respectable character trait that I find myself wanting to mimic. To uphold.<br /><br />When you see wrong being done what do you do?<br /><br />When you see something happening that you do not agree with, what do you do?<br /><br />When there are ideals being upheld by the populace that you do not agree with, not becuase you are bias or jaded or just plain sick of, but because you KNOW beyond a shadow of a doubt that they are absolutely wrong, what do you do?<br /><br />Some choose to do more, some choose to hide, some choose to reason that they&#39;re not the one who can do anything about those things that hide in the dark of the mind and pervert the perception of those that would stand for what is right. But YOU know what is RIGHT. You KNOW what is WRONG. And even though you doubt yourself and how you feel about the subject of the matter, you KNOW in that inner most place that is untainted, unforgettable, unmoving... you KNOW.<br /><br />So do something about it! And the world will recognize as well, because they know as well, even though they may ignore it, even though they may reason it away... they know. And will support you if you are the one who champions the cause of WHAT IS RIGHT!<br /></p>
- ... <a href="/content/what-right">read on</a>
 
     </article>
     <hr />

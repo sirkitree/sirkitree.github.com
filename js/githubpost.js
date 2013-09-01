@@ -22,6 +22,10 @@ app.controller('AuthCtrl', function($scope, $log) {
     repo.write('master', path, content, commitmsg, function (err) {
       if (err !== null) {
         $log.log(err);
+      } else {
+        // go to the new blog page
+        $scope.url = "https://github.com/sirkitree/sirkitree.github.com/blob/master/" + path;
+        window.location = $scope.url;
       }
     });
   }

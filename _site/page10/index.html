@@ -42,6 +42,93 @@
   
     <article class="post">
       <header>
+        <h2 class='subheader'><a href="/content/jquery-working-select-options">jQuery: working with select options</a></h2>
+        <time pubdate="pubdate" class="meta">27 Feb 2007</time>
+      </header>
+
+      <p>Following my <a href="/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
+
+<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here&#39;s the resulting code for the IE portion:
+<pre>
+    // ie doesn&#39;t pick up the option.click, so we&#39;ll have to use the select.change
+    $(&#39;#edit-role-changer&#39;).change(function(){</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// get rid of select box
+$(&#39;#edit-role-changer&#39;).hide();
+
+    // show the chosen role as static text
+   // NOTE: FF doesn&#39;t pick up [@selected]
+  $(&#39;#role&#39;).html($(this).children(&quot;[@selected]&quot;).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p></pre></p>
+
+<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:
+<pre>
+    // provide action for an option change
+    $(&#39;#edit-role-changer option&#39;).click(function(){</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">  // get rid of select box
+  $(&#39;#edit-role-changer&#39;).hide();
+
+  // show the chosen role as static text
+  $(&#39;#role&#39;).html($(this).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p></pre></p>
+
+<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:
+<pre>
+  // see which browser we&#39;re working with
+  if ($.browser.msie) {</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// ie doesn&#39;t pick up the option.click, so we&#39;ll have to use the select.change
+$(&#39;#edit-role-changer&#39;).change(function(){
+
+  // get rid of select box
+  $(&#39;#edit-role-changer&#39;).hide();
+
+  // show the chosen role as static text
+  // NOTE: FF doesn&#39;t pick up [@selected]
+  $(&#39;#role&#39;).html($(this).children(&quot;[@selected]&quot;).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p>}
+  else {</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// provide action for an option change
+$(&#39;#edit-role-changer option&#39;).click(function(){
+
+  // get rid of select box
+  $(&#39;#edit-role-changer&#39;).hide();
+
+  // show the chosen role as static text
+  $(&#39;#role&#39;).html($(this).text()).show();
+
+  // provide a change link
+  $(&#39;#role-change-back&#39;).show();
+
+});
+</code></pre></div>
+<p>}
+</pre></p>
+
+<p>Happy jQuerying!</p>
+ ... <a href="/content/jquery-working-select-options">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
         <h2 class='subheader'><a href="/content/rolechanger">Hey, you gotta start somewhere right?</a></h2>
         <time pubdate="pubdate" class="meta">25 Feb 2007</time>
       </header>
@@ -99,22 +186,6 @@ Due to more <a href="http://thevineyardvoice.com">commitments</a> then I have ti
 
 <p>I took a walk in the woods yesterday as it snowed. Here&#39;s a photo log of it.</p>
  ... <a href="/content/come-walk-me">read on</a>
-
-    </article>
-    <hr />
-  
-    <article class="post">
-      <header>
-        <h2 class='subheader'><a href="/content/oh-lullabot">oh Lullabot</a></h2>
-        <time pubdate="pubdate" class="meta">28 Jan 2007</time>
-      </header>
-
-      <p><img src="/sites/jeradbitner.com/files/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" />
-<h3>The family side</h3>
-I spent the week of January 15th in Providence, RI with a group known as <a href='http://www.lullabot.com'>Lullabot</a> learning the ins and outs of <a href="http://www.drupal.org">Drupal</a>. I&#39;ve been working with Drupal for a while now, about 2 years in fact, and had learned quite a lot on my own by reading the <a href="http://www.drupal.org/handbook">Drupal Handbook</a> and hacking the core (which really is a no-no, but a great way to learn). When my buddy <a href='http://thethisorthat.com'>Dave</a> told me about the workshop Lullabot was having, I looked into it and convinced <a href="http://www.improving-home.com">Shawn</a> to get <a href='http://www.c-sgroup.com'>work</a> to pay for it and let me go for the whole week. Since my <a href='http://www.rewardamericaclub.com'>Aunt and Uncle</a> live near Providence, I asked them if I could stay with them and it just so happened that the week was filled with birthdays! Two of my cousins and my Uncle&#39;s birthdays were that week. What luck! Carmen and Frank were more then happy to have me up for a week and I was so glad to get to spend some time with them. I lived with them for a summer when I was 17 and I&#39;ve missed them ever since.
-<h3>The technical side</h3>
-The Lullabot workshops, however were the real reason for the trip (since work was sending me) and I was not disappointed in that fact at all. They were fantastic! I knew quite a bit about Drupal when I arrived, but soon learned how much I really didn&#39;t know. I like to compare it to a huge puzzle that I had been putting together all by myself, not really knowing where all the pieces went, but I was getting them together on my own yet out of order. These workshops really helped to put the pieces I was missing into place and really helped fill out the whole picture. I learned in that one week what I had been missing and felt as though I crammed two months of learning on my own, into one week. My brain was soaking up the information like a sponge and <strong>it felt great</strong>! I wanted more and by the end of the week I felt like crying, knowing that I would have to leave and would not be able to maintain the rate of information absorption I was getting. I felt inspired, awed, and humbled by the amount of knowledge the Lullabots bestowed upon us, knowing that there was even more that could just not be taught with the time that we had. My only real consolation in that, was the fact that Drupal is open source and these were the people that had put enough time and effort into the creation of Drupal that they actually felt like they had an ownership in it. Maybe ownership si not the right word, but more like the feeling a parent might have towards a child, a very bright, intelligent, and well liked child. And with that realization, came the revelation that I too could have that as well! But it would take much time, effort and learning before that could ever be me. Now, I&#39;m not one for New Years resolutions, and yes I know it&#39;s already the end of January, but I submit to you now my New Years Revolution: I will contribute to the Drupal community as much as possible this coming year and will hopefully find that piece of mind in knowing that I&#39;ve contributed to the greater good in a project that affects so many geeks lives. And I say geek with the utmost admiration and respect, because not only do I categorize myself as one, but because so many of the people I&#39;ve come to respect categorize themselves as one as well.</p>
- ... <a href="/content/oh-lullabot">read on</a>
 
     </article>
     <hr />

@@ -7,6 +7,38 @@
 		<atom:link href="http://jeradbitner.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>AngularJS Posting Interface for your GitHub Jekyll Site</title>
+				<description>&lt;p&gt;After getting a decent way to create a file on GitHub just using a POST from a form as &lt;a href=&quot;http://brockboland.com/2013/07/jekyll-posting-interface/&quot;&gt;Brock Boland&lt;/a&gt; spoke about with his Jekyll posting interface, I thought I would take this one step further and figure out a way to use the &lt;a href=&quot;http://developer.github.com/v3/&quot;&gt;GitHub API&lt;/a&gt; to create that file instead of taking you to GitHub&amp;#39;s new file interface. This was much easier than I expected.&lt;/p&gt;
+
+&lt;h2&gt;GitHub.js&lt;/h2&gt;
+
+&lt;p&gt;I did a little searching for AngularJS and GitHub authentication and came across &lt;a href=&quot;https://github.com/michael/github&quot;&gt;GitHub.js&lt;/a&gt; which (to my delight and surprise) is now being maintained by none other than my friends at &lt;a href=&quot;https://github.com/developmentseed&quot;&gt;DevelopmentSeed&lt;/a&gt;! This gives the browser a complete javascript library for working with the GitHub API and is simply perfect for the job.&lt;/p&gt;
+
+&lt;p&gt;I added a username and password field to my &lt;a href=&quot;/new.html&quot;&gt;post interface&lt;/a&gt; and setup an AngularJS controller to utilize this library.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app.filters&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;AuthCtrl&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;auth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+      &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;github&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;basic&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;$scope.github&lt;/code&gt; now has access to all of the nifty functions that GitHub.js provides. You can see the &lt;a href=&quot;https://github.com/sirkitree/sirkitree.github.com/blob/master/js/githubpost.js&quot;&gt;full controller&lt;/a&gt; which uses the &lt;code&gt;GitHub.getRepo&lt;/code&gt; and &lt;code&gt;repo.write&lt;/code&gt; in order to create a new file in my _posts directory in markdown format with the appropriate YAML headers. GitHub then runs it through Jekyll and the result is what you&amp;#39;re reading now.&lt;/p&gt;
+</description>
+				<pubDate>Sat, 31 Aug 2013 20:54:00 -0600</pubDate>
+				<link>http://jeradbitner.com/2013/08/angularjs-posting-interface-for-your-github-jekyll-site/</link>
+				<guid isPermaLink="true">http://jeradbitner.com/2013/08/angularjs-posting-interface-for-your-github-jekyll-site/</guid>
+			</item>
+		
+			<item>
 				<title>Jekyll Juice</title>
 				<description>&lt;p&gt;This blog is now powered by Jekyll alone (was on Octopress). &lt;a href=&quot;http://brockboland.com&quot;&gt;Brock Boland&lt;/a&gt; recently wrote about moving his blog to only Jekyll and I&amp;#39;d been wanting to do this for a while as well so I don&amp;#39;t need to worry about generators and such at all. Only took about an hour. Generate a jekyll site with &lt;code&gt;jekyll new [site]&lt;/code&gt; and then just move your posts over, tweak your settings and theme and you&amp;#39;re done.&lt;/p&gt;
 
@@ -257,19 +289,6 @@ Angel of fire, cleanse me just right
 				<pubDate>Sun, 05 Feb 2012 13:59:00 -0700</pubDate>
 				<link>http://jeradbitner.com/2012/02/todo-list-in-node-dot-js-and-geektool/</link>
 				<guid isPermaLink="true">http://jeradbitner.com/2012/02/todo-list-in-node-dot-js-and-geektool/</guid>
-			</item>
-		
-			<item>
-				<title>New blog command and some style updates</title>
-				<description>&lt;p&gt;I love Github. The more I use it, the more I love it. As a form of endearment, I&amp;#39;ve updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;ve also been looking for a quicker way to blog on a whim, and having to switch into my octopress directory, and then type &lt;code&gt;new_post[&amp;quot;title of my post&amp;quot;]&lt;/code&gt; was still just two steps too much. So I pulled up my &lt;code&gt;.bash_profile&lt;/code&gt; and started scripting. Here&amp;#39;s what I came up with:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/1747860.js&quot;&gt; &lt;/script&gt;
-</description>
-				<pubDate>Sun, 05 Feb 2012 13:39:00 -0700</pubDate>
-				<link>http://jeradbitner.com/2012/02/new-blog-command-and-some-style-updates/</link>
-				<guid isPermaLink="true">http://jeradbitner.com/2012/02/new-blog-command-and-some-style-updates/</guid>
 			</item>
 		
 	</channel>
