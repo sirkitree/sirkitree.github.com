@@ -83,6 +83,7 @@
 
 
 <!-- AngularJS -->
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
 <script src="js/filters.js"></script>
 <script src="js/marked.js"></script>
@@ -90,6 +91,12 @@
 <script src="js/base64.js"></script>
 <script src="js/github.js"></script>
 <script src="js/githubpost.js"></script>
+<script src="js/jquery.autosize.js"></script>
+<script>
+  $(document).ready(function(){
+    $('textarea').autosize();   
+  });
+</script>
           <div class="footer row">
             <div class="contact">
               <p>
