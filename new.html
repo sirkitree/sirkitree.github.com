@@ -1,13 +1,13 @@
 ---
-layout: default
+layout: new
 title: New Post | Jerad Bitner
 ---
 
-<div data-ng-app='app' ng-controller="AuthCtrl">
+<div>
   
   <!-- Input/Preview Post -->
   <div class="wrapper row">
-    <div class="large-6 columns">
+    <div class="col-md-6">
       <form name="postForm">
         <div class="form-group">
           <label for="titleInput">Title</label>
@@ -18,30 +18,26 @@ title: New Post | Jerad Bitner
           <textarea name="value" ng-model="postContent" id="contentsInput" class="form-control large-12" rows="20"></textarea>
         </div>
       </form>
+
+      <div class="alert alert-success">Be sure to fill out your GitHub username and password.</div>
+
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <input type="text" placeholder="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="password" class="form-control" required>
+        </div>
+        <button ng-click="auth()" type="submit" class="btn btn-success pull-right">Submit</button>
+      </form>
+
+        
     </div> 
-    <div class="large-6 columns panel">
+    <div class="col-md-6 well" style="min-height:35em; margin-top:25px;">
       <div id="markdown-preview" ng-bind-html-unsafe="postContent|convert"></div>
     </div>
   </div>
 
-  <!-- Login form -->
-  <div class="wrapper row">
-    <div class="large-6 columns">
-      <form name="authForm">
-          <div class="control-group">
-              <div class="controls">
-                  <input type="text" name="username" ng-model="username" placeholder="enter username" required/><span class="error" ng-show="myForm.username.required">Required!</span>
-              </div>
-          </div>
-          <div class="control-group">
-              <div class="controls">
-                  <input type="password" name="pwd" ng-model="password" placeholder="enter password" required/><span class="error" ng-show="myForm.pwd.required">Required!</span>
-              </div>
-          </div>
-          <button ng-click="auth()">Submit</button>
-      </form>      
-    </div>
-  </div>
 </div>
 
 

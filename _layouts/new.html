@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>New Post | Jerad Bitner</title>
+        <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -25,7 +25,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <img class='gravatar' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=45" /><a class="navbar-brand" href="#">Jerad Bitner</a>
+            <img class='gravatar' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=45" /><a class="navbar-brand" href="#">{{ site.name }}</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -38,53 +38,7 @@
 
       <div class="container">
         <div class="site large">
-          <div>
-  
-  <!-- Input/Preview Post -->
-  <div class="wrapper row">
-    <div class="col-md-6">
-      <form name="postForm">
-        <div class="form-group">
-          <label for="titleInput">Title</label>
-          <input type="text" name="title" ng-model="postTitle" class="form-control" id="titleInput" placeholder="Title">
-        </div>
-        <div class="form-group">
-          <label for="contentsInput">Body</label>
-          <textarea name="value" ng-model="postContent" id="contentsInput" class="form-control large-12" rows="20"></textarea>
-        </div>
-      </form>
-
-      <div class="alert alert-success">Be sure to fill out your GitHub username and password.</div>
-
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <input type="text" placeholder="username" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="password" class="form-control" required>
-        </div>
-        <button ng-click="auth()" type="submit" class="btn btn-success pull-right">Submit</button>
-      </form>
-
-        
-    </div> 
-    <div class="col-md-6 well" style="min-height:35em; margin-top:25px;">
-      <div id="markdown-preview" ng-bind-html-unsafe="postContent|convert"></div>
-    </div>
-  </div>
-
-</div>
-
-
-
-<!-- AngularJS -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
-<script src="js/filters.js"></script>
-<script src="js/marked.js"></script>
-<script src="js/underscore.js"></script>
-<script src="js/base64.js"></script>
-<script src="js/github.js"></script>
-<script src="js/githubpost.js"></script>
+          {{ content }}
           <div class="footer row">
             <div class="contact">
               <p>

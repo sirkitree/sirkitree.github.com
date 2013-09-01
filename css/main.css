@@ -36,10 +36,17 @@ ul.posts span {
 
 .site {
   font-size: 115%;
-  text-align: justify;
   width: 42em;
   margin: 5em auto 2em;
   line-height: 1.5em;
+}
+
+.site p {
+  text-align: justify;
+}
+
+.site.large {
+  width: 100%;
 }
 
 .site .header a {
