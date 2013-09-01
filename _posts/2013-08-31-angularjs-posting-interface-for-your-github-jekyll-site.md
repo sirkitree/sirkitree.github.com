@@ -13,7 +13,7 @@ I did a little searching for AngularJS and GitHub authentication and came across
 
 I added a username and password field to my [post interface](/new.html) and setup an AngularJS controller to utilize this library.
 
-<code>
+```javascript
   var app = angular.module('app', ['app.filters']);
 
   app.controller('AuthCtrl', function($scope, $log) {
@@ -29,6 +29,6 @@ I added a username and password field to my [post interface](/new.html) and setu
       });
     }
   });
-</code>
+```
 
-<code> $scope.github</code> now has access to all of the nifty functions that GitHub.js provides. You can see the full controller which uses the <code>GitHub.getRepo</code> and <code>repo.write</code> in order to create a new file in my _posts directory in markdown format with the appropriate YAML headers. GitHub then runs it through Jekyll and the result is what you're reading now.
+`$scope.github` now has access to all of the nifty functions that GitHub.js provides. You can see the full controller which uses the `GitHub.getRepo` and `repo.write` in order to create a new file in my _posts directory in markdown format with the appropriate YAML headers. GitHub then runs it through Jekyll and the result is what you're reading now.
