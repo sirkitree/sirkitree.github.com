@@ -3,54 +3,117 @@ layout: default
 title: New Post | Jerad Bitner
 ---
 
-<div data-ng-app='app'>
-  <div  class="wrapper" class='row'>
+<div data-ng-app='app' ng-controller="AuthCtrl">
+  
+  <!-- Input/Preview Post -->
+  <div class="wrapper row">
     <div class="large-6 columns">
-      <form action="https://github.com/sirkitree/sirkitree.github.com/new/master/_posts" method="get" onsubmit='determineFilename(this)'>
-        <input type="hidden" name="filename" value="">
+      <form name="postForm">
         <div class="form-group">
           <label for="titleInput">Title</label>
-          <input type="text" name="title" class="form-control" id="titleInput" placeholder="Title">
+          <input type="text" name="title" ng-model="postTitle" class="form-control" id="titleInput" placeholder="Title">
         </div>
         <div class="form-group">
           <label for="contentsInput">Body</label>
-          <textarea name="value" id="contentsInput" class="form-control large-12" rows=20 ng-model='form.text'></textarea>
+          <textarea name="value" ng-model="postContent" id="contentsInput" class="form-control large-12" rows="20"></textarea>
         </div>
-        <button type="submit" class="button">Submit</button>
       </form>
     </div> 
     <div class="large-6 columns panel">
-      <div id="markdown-preview" ng-bind-html-unsafe="form.text|convert"></div>
+      <div id="markdown-preview" ng-bind-html-unsafe="postContent|convert"></div>
     </div>
-  </div>  
+  </div>
+
+  <!-- Login form -->
+  <div class="wrapper row">
+    <div class="large-6 columns">
+      <form name="authForm">
+          <div class="control-group">
+              <div class="controls">
+                  <input type="text" name="username" ng-model="username" placeholder="enter username" required/><span class="error" ng-show="myForm.username.required">Required!</span>
+              </div>
+          </div>
+          <div class="control-group">
+              <div class="controls">
+                  <input type="password" name="pwd" ng-model="password" placeholder="enter password" required/><span class="error" ng-show="myForm.pwd.required">Required!</span>
+              </div>
+          </div>
+          <button ng-click="auth()">Submit</button>
+      </form>      
+    </div>
+  </div>
 </div>
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
-    <script src="js/filters.js"></script>
-    <script src="js/marked.js"></script>
 
-    <script>
-    'use strict';
 
-    angular.module('app', ['app.filters']);
 
-    function determineFilename (form) {
-      // Find the date and time in the correct formats
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;//January is 0!`
-      var yyyy = today.getFullYear();
-      if(dd<10) dd = '0' + dd;
-      if(mm<10) mm = '0' + mm;
-      var today_nice = yyyy + '-' + mm + '-' + dd;
-      var date_time = today_nice + ' ' + today.getHours() + ':' + today.getMinutes();
+<!-- AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/marked.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/base64.js"></script>
+<script src="js/github.js"></script>
 
-      // Determine the filename
-      var post_title = form.title.value;
-      var filename = today_nice + '-' + post_title.replace(/[^\w]+/g, '-').toLowerCase() + '.md';
-      form.filename.value = filename;
+<script>
+'use strict';
 
-      // Add the YAML prefix on the content
-      form.value.value = "---\nlayout: post\ntitle: \"" + post_title + "\"\ndate: " + date_time + "\ncomments: true\npublished: true\ncategories: \n---\n" + form.value.value;
-    }
-    </script>
+var app = angular.module('app', ['app.filters']);
+
+app.controller('AuthCtrl', function($scope) {
+  $scope.username = '';
+  $scope.password = '';
+  $scope.success = false;
+  $scope.auth = function() {
+    console.log($scope.username);
+    console.log($scope.password);
+    console.log($scope.postTitle);
+    console.log($scope.postContent);
+    
+    $scope.github = new Github({
+      username: $scope.username,
+      password: $scope.password,
+      auth: "basic"
+    });
+
+    var path = '_posts/' + determineFilename($scope);
+    var content = "---\nlayout: post\ntitle: \"" + $scope.postTitle + "\"\ndate: " + determineDate('dt') + "\ncomments: true\npublished: true\ncategories: \n---\n" + $scope.postContent;
+    var commitmsg = ":skull: new post for " + determineDate('dt');
+
+    var repo = $scope.github.getRepo($scope.username, 'sirkitree.github.com');
+    repo.write('master', path, content, commitmsg, function (err) {
+      if (err !== null) {
+        console.log(err);
+      } else {
+        console.log(path, content, commitmsg);
+      }
+    });
+  }
+});
+
+function determineDate (which) {
+  // Find the date and time in the correct formats
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;//January is 0!`
+  var yyyy = today.getFullYear();
+  if(dd<10) dd = '0' + dd;
+  if(mm<10) mm = '0' + mm;
+  var today_nice = yyyy + '-' + mm + '-' + dd;
+  var date_time = today_nice + ' ' + today.getHours() + ':' + today.getMinutes();
+
+  if (which == 'dt') {
+    return date_time;
+  } else if (which == 'tn') {
+    return today_nice;
+  }
+  
+}
+
+function determineFilename ($scope) {
+  // Determine the filename
+  var post_title = $scope.postTitle;
+  var filename = determineDate('tn') + '-' + post_title.replace(/[^\w]+/g, '-').toLowerCase() + '.md';
+  return filename;  
+}
+
+</script>
