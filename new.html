@@ -8,6 +8,8 @@ title: New Post | Jerad Bitner
   <!-- Input/Preview Post -->
   <div class="wrapper row">
     <div class="col-md-6">
+
+      <!-- Post interface -->
       <form name="postForm">
         <div class="form-group">
           <label for="titleInput">Title</label>
@@ -33,8 +35,11 @@ title: New Post | Jerad Bitner
 
         
     </div> 
-    <div class="col-md-6 well" style="min-height:35em; margin-top:25px;">
-      <div id="markdown-preview" ng-bind-html-unsafe="postContent|convert"></div>
+
+    <!-- Preview -->
+    <div class="col-md-6">
+      <h1 id="markdown-preview-title" class=" preview-title" ng-bind-html-unsafe="postTitle|convert"></h1>
+      <div id="markdown-preview-body" class="well preview-body" ng-bind-html-unsafe="postContent|convert"></div>
     </div>
   </div>
 
