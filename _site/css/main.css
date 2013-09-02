@@ -165,13 +165,6 @@ ul.posts span {
   margin-top: 52px;
   min-height: 30em;
 }
-.title,
-.body {
-  width: 100%;
-}
-.publish,
-.category {
-  width: 100%;
-  float: right;
-  text-align: right;
+.publish {
+  width: 40%;
 }
