@@ -20,7 +20,7 @@ app.controller('AuthCtrl', function($scope, $log) {
       + "title: \"" + $scope.postTitle + "\"\n"
       + "date: " + determineDate('dt') + "\n"
       + "comments: true\n"
-      + "published: true\n"
+      + "published: " + $scope.postPublish + "\n"
       + "categories: [\"" + $scope.postCategory + "\"]\n"
       + "---\n" 
       + $scope.postContent;

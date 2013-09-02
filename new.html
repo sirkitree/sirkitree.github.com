@@ -10,20 +10,25 @@ title: New Post | Jerad Bitner
     <div class="col-md-6">
 
       <!-- Post interface -->
-      <form name="postForm">
-        <div class="form-group">
+      <form name="postForm" class="form-inline">
+        <div class="form-group title">
           <label for="postTitle">Title</label>
           <input name="postTitle" ng-model="postTitle" class="form-control" id="postTitle" type="text">
         </div>
-        <div class="form-group">
-          <label for="postCategories">Category</label>
-          <select name="category" id="postCategory">
+        <div class="form-group category">
+          <label for="postCategory">Category</label>
+          <select name="category" id="postCategory" ng-model="postCategory">
             <option value="blog">blog</option>
             <option value="poem">poem</option>
             <option value="story">story</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group publish">
+          <label for="postPublish">Publish</label>
+          <input type="radio" name="groupPublish" value="true" ng-model="postPublish"> True
+          <input type="radio" name="groupPublish" value="false" ng-model="postPublish" checked> False
+        </div>
+        <div class="form-group body">
           <label for="postContent">Body</label>
           <textarea name="value" ng-model="postContent" class="form-control large-12" id="postContent" rows="20"></textarea>
         </div>
