@@ -7,7 +7,7 @@
 		<atom:link href="http://jeradbitner.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Angularjs Posting Interface For Your Github Jekyll Site</title>
+				<title>AngularJS Posting Interface for your GitHub Jekyll Site</title>
 				<description>&lt;p&gt;After getting a decent way to create a file on GitHub just using a POST from a form as &lt;a href=&quot;http://brockboland.com/2013/07/jekyll-posting-interface/&quot;&gt;Brock Boland&lt;/a&gt; spoke about with his Jekyll posting interface, I thought I would take this one step further and figure out a way to use the &lt;a href=&quot;http://developer.github.com/v3/&quot;&gt;GitHub API&lt;/a&gt; to create that file instead of taking you to GitHub&amp;#39;s new file interface. This was much easier than I expected.&lt;/p&gt;
 
 &lt;h2&gt;GitHub.js&lt;/h2&gt;
@@ -33,7 +33,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;$scope.github&lt;/code&gt; now has access to all of the nifty functions that GitHub.js provides. You can see the &lt;a href=&quot;https://github.com/sirkitree/sirkitree.github.com/blob/master/js/githubpost.js&quot;&gt;full controller&lt;/a&gt; which uses the &lt;code&gt;GitHub.getRepo&lt;/code&gt; and &lt;code&gt;repo.write&lt;/code&gt; in order to create a new file in my _posts directory in markdown format with the appropriate YAML headers. GitHub then runs it through Jekyll and the result is what you&amp;#39;re reading now.&lt;/p&gt;
 </description>
-				<pubDate>Sat, 31 Aug 2013 00:00:00 -0600</pubDate>
+				<pubDate>Sat, 31 Aug 2013 20:54:00 -0600</pubDate>
 				<link>http://jeradbitner.com/2013/08/angularjs-posting-interface-for-your-github-jekyll-site/</link>
 				<guid isPermaLink="true">http://jeradbitner.com/2013/08/angularjs-posting-interface-for-your-github-jekyll-site/</guid>
 			</item>
