@@ -145,6 +145,15 @@ ul.posts span {
   background-color: #333;
 }
 
+.post a.pencil {
+  background-image: url(../img/prose-edit.png);
+  width: 41px;
+  height: 41px;
+  display: block;
+  text-indent: -9000px;
+  float: right;
+}
+
 /*
 /* New
 /*/
