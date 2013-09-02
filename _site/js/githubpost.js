@@ -15,8 +15,17 @@ app.controller('AuthCtrl', function($scope, $log) {
     });
 
     var path = '_posts/' + determineFilename($scope);
-    var content = "---\nlayout: post\ntitle: \"" + $scope.postTitle + "\"\ndate: " + determineDate('dt') + "\ncomments: true\npublished: true\ncategories: \n---\n" + $scope.postContent;
-    var commitmsg = ":speech_ballon: new post for " + determineDate('dt');
+    var content = "---\n"
+      + "layout: post\n"
+      + "title: \"" + $scope.postTitle + "\"\n"
+      + "date: " + determineDate('dt') + "\n"
+      + "comments: true\n"
+      + "published: true\n"
+      + "categories: [\"" + $scope.postCategory + "\"]\n"
+      + "---\n" 
+      + $scope.postContent;
+
+    var commitmsg = ":skull: new post for " + determineDate('dt');
 
     var repo = $scope.github.getRepo($scope.username, 'sirkitree.github.com');
     repo.write('master', path, content, commitmsg, function (err) {

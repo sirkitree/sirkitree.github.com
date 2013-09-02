@@ -47,12 +47,16 @@
       <!-- Post interface -->
       <form name="postForm">
         <div class="form-group">
-          <label for="titleInput">Title</label>
-          <input type="text" name="title" ng-model="postTitle" class="form-control" id="titleInput">
+          <label for="postTitle">Title</label>
+          <input name="postTitle" ng-model="postTitle" class="form-control" id="postTitle" type="text">
         </div>
         <div class="form-group">
-          <label for="contentsInput">Body</label>
-          <textarea name="value" ng-model="postContent" id="contentsInput" class="form-control large-12" rows="20"></textarea>
+          <label for="postCategories">Category</label>
+          <input name="title" ng-model="postCategory" class="form-control" id="postCategory" type="text" placeholder="One of either blog, poem or story.">
+        </div>
+        <div class="form-group">
+          <label for="postContent">Body</label>
+          <textarea name="value" ng-model="postContent" class="form-control large-12" id="postContent" rows="20"></textarea>
         </div>
       </form>
 
@@ -67,7 +71,6 @@
         </div>
         <button ng-click="auth()" type="submit" class="btn btn-success pull-right">Submit</button>
       </form>
-
         
     </div> 
 
@@ -80,9 +83,7 @@
 
 </div>
 
-
-
-<!-- AngularJS -->
+<!-- Scripts -->
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
 <script src="js/filters.js"></script>
