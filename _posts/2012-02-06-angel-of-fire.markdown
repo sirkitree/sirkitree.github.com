@@ -3,7 +3,7 @@ layout: post
 title: "Angel of fire"
 date: 2012-02-06 18:33
 comments: true
-categories: [poems]
+categories: ["poem"]
 ---
 ```
 Angel of fire, wings of light

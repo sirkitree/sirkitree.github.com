@@ -2,8 +2,8 @@
 layout : post
 title : "come walk with me"
 created : 1170077390
-permalink : /content/come-walk-me
-categories : ["photos"]
+permalink : /blog/come-walk-me
+categories : ["blog"]
 ---
 <div style="text-align:center;width:194px;font-family:arial,sans-serif;font-size:83%;float:left;margin-right:10px;">
   <div style="height:194px;background:url('http://picasaweb.google.com/f/img/transparent_album_background.gif') no-repeat left">

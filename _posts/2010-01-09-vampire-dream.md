@@ -2,8 +2,8 @@
 layout : post
 title : "Vampire dream"
 created : 1263033699
-permalink : /content/vampire-dream
-categories : ["ommwriter"]
+permalink : /blog/vampire-dream
+categories : ["blog"]
 ---
 I had a pretty in depth adventure in my dreams last night so I downloaded <a href="http://www.ommwriter.com/en/">ommwriter</a> to capture them in the wee morning hours as soon as I awoke. Ommwriter is pretty nice, the music and the interface really helped for this kind of writing and I think would inspire me to write more poetry. I'm still listening to the music as I type this up in my blog. Anyway, here are some notes on the things I remember from the dream. Should turn this into a short story.
 

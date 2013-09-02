@@ -3,7 +3,7 @@ layout : post
 title : "Draken's battle"
 created : 1303357134
 permalink : /short-stories/drakens-battle
-categories : ["short-stories"]
+categories : ["story"]
 ---
 Darkness quivered in the back of Draken's mind, threatening to disperse his current spell, still held in his commanding thoughts. He could feel the attack coming before it hit and struggled to get enough mana harnessed in order cast the protective one that he now held in preparation.
 

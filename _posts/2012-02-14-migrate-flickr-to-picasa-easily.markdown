@@ -3,7 +3,7 @@ layout: post
 title: "Migrate Flickr or Facebook photos to Picasa/Google+ easily"
 date: 2012-02-14 16:33
 comments: true
-categories: [photos,migration,flickr,facebook,picasa]
+categories: ["blog"]
 ---
 I found a great way to transfer photos from [Flickr](http://www.flickr.com/) or [Facebook](http://www.facebook.com/) to Picasa/[Google+](http://plus.google.com) quickly and easily, keeping albums intact using Mac OS X iPhoto '11.
 

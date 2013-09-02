@@ -2,8 +2,8 @@
 layout : post
 title : "oh Lullabot"
 created : 1170006307
-permalink : /content/oh-lullabot
-categories : ["lullabot"]
+permalink : /blog/oh-lullabot
+categories : ["blog"]
 ---
 <img src="/sites/jeradbitner.com/files/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" />
 <h3>The family side</h3>

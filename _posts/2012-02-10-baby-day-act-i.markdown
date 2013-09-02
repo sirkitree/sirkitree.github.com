@@ -3,7 +3,7 @@ layout: post
 title: "Baby Day! (Act I)"
 date: 2012-02-10 17:27
 comments: true
-categories: [baby,viola]
+categories: ["blog"]
 ---
 2.9.12 - 11:45pm
 Jenny wakes me up with, "I think my water broke!"

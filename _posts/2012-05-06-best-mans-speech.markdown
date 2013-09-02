@@ -3,7 +3,7 @@ layout: post
 title: "Best man's speech"
 date: 2012-05-06 16:59
 comments: true
-categories:
+categories: ["blog"]
 ---
 On Sept 27th 2010 I was married to the love of my life, Jenney Marie Richards. My best man David Burns, wrote a speech that was both moving and heartfelt. I record that now for all eternity (assuming the internet is immortal and all):
 

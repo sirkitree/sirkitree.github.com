@@ -2,8 +2,8 @@
 layout : post
 title : "In the beginning... there was no Drupal."
 created : 1165455296
-permalink : /content/drupal-beginner
-categories : ["drupal"]
+permalink : /blog/drupal-beginner
+categories : ["blog"]
 ---
 Don't cry, it's true. But let me tell you about how I first came about <a href="drupal.org" target="_blank">my savior</a>.
 

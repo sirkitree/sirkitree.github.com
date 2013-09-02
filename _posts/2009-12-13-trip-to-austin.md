@@ -2,8 +2,8 @@
 layout : post
 title : "Trip to Austin"
 created : 1260740902
-permalink : /content/trip-austin
-categories : ["Austin","Durango","traveling","my life"]
+permalink : /blog/trip-austin
+categories : ["blog"]
 ---
 What an adventure! <a href="http://jenneymarie.net">Jenney</a> got a contract in Austin Texas for her next position doing traveling Occupational Therapy, so we packed up the new Subaru Forester (new to us) and started the long trek from Grand Junction, Colorado to Austin, Texas.
 

@@ -2,8 +2,8 @@
 layout : post
 title : "jQuery: working with select options"
 created : 1172585968
-permalink : /content/jquery-working-select-options
-categories : ["code","jquery"]
+permalink : /blog/jquery-working-select-options
+categories : ["blog"]
 ---
 Following my <a href="/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.
 

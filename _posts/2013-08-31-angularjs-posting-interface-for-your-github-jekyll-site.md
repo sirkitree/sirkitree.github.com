@@ -4,7 +4,7 @@ title: "AngularJS Posting Interface for your GitHub Jekyll Site"
 date: 2013-08-31 20:54
 comments: true
 published: true
-categories: 
+categories: ["blog"]
 ---
 After getting a decent way to create a file on GitHub just using a POST from a form as [Brock Boland](http://brockboland.com/2013/07/jekyll-posting-interface/) spoke about with his Jekyll posting interface, I thought I would take this one step further and figure out a way to use the [GitHub API](http://developer.github.com/v3/) to create that file instead of taking you to GitHub's new file interface. This was much easier than I expected.
 

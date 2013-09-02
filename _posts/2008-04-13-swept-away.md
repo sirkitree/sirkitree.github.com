@@ -3,7 +3,7 @@ layout : post
 title : "Swept Away"
 created : 1208127648
 permalink : /poems/swept-away
-categories : ["poems","life","friends"]
+categories : ["poem"]
 ---
 
 Swept away are the remnants of old, smaller dreams thought too impossible now become reality, even though torn<br/>

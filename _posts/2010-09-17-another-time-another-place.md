@@ -2,8 +2,8 @@
 layout : post
 title : "Another time, another place..."
 created : 1284770558
-permalink : /content/another-time-another-place
-categories : ["marriage","my life"]
+permalink : /blog/another-time-another-place
+categories : ["blog"]
 ---
 Jenney and I moved from Austin to Carolina Beach, North Carolina and the past three.5 months have been amazing! It's been like a working vacation. We were right on the beach, with beautiful views, and a personal walkway to the beach which was in a premo-spot. Not a ton of people, lots of waves, and lots of sunshine. We both worked hard, and played hard. It was great and I can honestly say I've lived my 'beach life' dream for at least a while. Chalk another dream up to 'accomplished'!
 

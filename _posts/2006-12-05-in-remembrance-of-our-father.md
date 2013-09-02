@@ -2,8 +2,8 @@
 layout : post
 title : "In remembrance of our father"
 created : 1165376504
-permalink : /content/remembrance-our-father
-categories : ["familiy"]
+permalink : /blog/remembrance-our-father
+categories : ["blog"]
 ---
 So my brothers and I have wanted to get a tattoo for a while now that is in remembrance of our father who died one month ago today. Here is a preliminary sketch I did in Illustrator. We're going to have this the basis of the tattoo and have the artist get more creative with it, personalize each one.
 

@@ -2,8 +2,8 @@
 layout : post
 title : "Hey, you gotta start somewhere right?"
 created : 1172420817
-permalink : /content/rolechanger
-categories : ["drupal","modules"]
+permalink : /blog/rolechanger
+categories : ["blog"]
 ---
 So my first commit to the Drupal contributions has been made! WooHoo! I partied hard that night :) No, it's really not that big of a deal, but I'm excited as it takes me one step further into Drupal development and being more involved in the Drupal community.
 

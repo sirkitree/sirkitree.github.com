@@ -3,7 +3,7 @@ layout: post
 title: "Nginx: do not cache logged in Drupal or WordPress users"
 date: 2012-02-09 17:29
 comments: true
-categories: [code,wordpress,drupal,nginx]
+categories: ["blog"]
 ---
 A while ago I changed all of my domain names to [Namecheap](http://namecheap.com/) and migrated my Drupal and Wordpress sites to [Linode](http://www.linode.com/). I followed some excellent instructions from [James Sansbury](https://twitter.com/#!/q0rban) (soon to be a Lullabot article) and some of his [Nginx configuration files](https://github.com/q0rban/nginx-drupal). This worked great for my Drupal site (heh - which was this site that I then [converted to Jekkyl](blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/)) and my [wife's WordPress site](http://jenneymarie.net/).
 
