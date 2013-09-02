@@ -6,6 +6,8 @@ app.controller('AuthCtrl', function($scope, $log) {
   $scope.username = '';
   $scope.password = '';
   $scope.success = false;
+  $scope.postCategory = "blog";
+  $scope.postPublish = "false";
   $scope.auth = function() {
     
     $scope.github = new Github({
@@ -21,7 +23,7 @@ app.controller('AuthCtrl', function($scope, $log) {
       + "date: " + determineDate('dt') + "\n"
       + "comments: true\n"
       + "published: " + $scope.postPublish + "\n"
-      + "categories: [\"" + $scope.postCategory + "\"]\n"
+      + "category: [\"" + $scope.postCategory + "\"]\n"
       + "---\n" 
       + $scope.postContent;
 

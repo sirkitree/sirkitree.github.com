@@ -17,7 +17,7 @@ title: New Post | Jerad Bitner
         </div>
         <div class="form-group category">
           <label for="postCategory">Category</label>
-          <select name="category" id="postCategory" ng-model="postCategory">
+          <select name="postCategory" id="postCategory" ng-model="postCategory">
             <option value="blog">blog</option>
             <option value="poem">poem</option>
             <option value="story">story</option>
@@ -25,8 +25,8 @@ title: New Post | Jerad Bitner
         </div>
         <div class="form-group publish">
           <label for="postPublish">Publish</label>
-          <input type="radio" name="groupPublish" value="true" ng-model="postPublish"> True
-          <input type="radio" name="groupPublish" value="false" ng-model="postPublish" checked> False
+          <input type="radio" name="postPublish" value="true" ng-model="postPublish"> True
+          <input type="radio" name="postPublish" value="false" ng-model="postPublish" checked> False
         </div>
         <div class="form-group body">
           <label for="postContent">Body</label>
