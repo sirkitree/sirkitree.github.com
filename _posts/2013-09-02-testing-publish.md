@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "testing publish"
-date: 2013-09-02 9:47
+title: testing publish
+date: "2013-09-02 9:47"
 comments: true
-published: false
-categories: ["undefined"]
+published: true
+categories: 
+  - undefined
 ---
+
 testing publish state
