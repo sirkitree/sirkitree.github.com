@@ -3,7 +3,7 @@ layout: post
 title: "Using Node.js to convert Drupal to Jekkyl"
 date: 2012-01-29 15:54
 comments: true
-categories: ["blog"]
+category: "blog"
 ---
 I've gone and revamped my blog again.
 

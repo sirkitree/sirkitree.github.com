@@ -3,7 +3,7 @@ layout : post
 title : "Californication"
 created : 1217522430
 permalink : /blog/californication
-categories : ["blog"]
+category : "blog"
 ---
 Drupal, you've done it again... become the vector of change in my life by presenting me with opportunities that are seemingly too good to be true. Last year it was New York and Sony BMG. This year it's San Francisco and a start-up called ParentsClick Network. Just when I thought things couldn't get any better and that maybe I've hit the height of reaching my dreams in life, another one comes within my grasp, and giving in to my free spirit, I jump at the chance to make a dream a reality.
 

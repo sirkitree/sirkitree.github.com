@@ -3,7 +3,7 @@ layout: post
 title: "todo list in node.js and geektool"
 date: 2012-02-05 13:59
 comments: true
-categories: ["blog"]
+category: "blog"
 ---
 I've long had a quick shell script that was a simple todo list based on Jerod Santo's [Minimally Awesome Todos](http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/). It's very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through [GeekTool](http://projects.tynsoe.org/en/geektool/).
 

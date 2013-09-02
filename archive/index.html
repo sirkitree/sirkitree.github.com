@@ -7,7 +7,11 @@ title: "Archives: Jerad Bitner"
   <h1>Posts</h1>
   <ul class="posts">
     {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <img width="20" height="20" src="{% case post.category %}
+          {% when 'poem' %}https://github.global.ssl.fastly.net/images/icons/emoji/performing_arts.png
+          {% when 'story' %}https://github.global.ssl.fastly.net/images/icons/emoji/notebook.png
+          {% when 'blog' %}https://github.global.ssl.fastly.net/images/icons/emoji/thought_balloon.png
+          {% else %}https://github.global.ssl.fastly.net/images/icons/emoji/droplet.png{% endcase %}" /> <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
 </div>

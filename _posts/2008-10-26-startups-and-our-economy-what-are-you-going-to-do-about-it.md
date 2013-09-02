@@ -3,7 +3,7 @@ layout : post
 title : "Startups and our economy - what are YOU going to do about it?"
 created : 1225002697
 permalink : /blog/startups-and-our-economy-what-are-you-going-do-about-it
-categories : ["blog"]
+category : "blog"
 ---
 A couple months ago (right after I made a big move) I started hearing thing about the financial crisis and banks going under. Talking with my friend who travels a lot, I came to hear that when America sneezes, the rest of the world gets a cold. Another friend of mine introduced me to a film called "Zeitgeist". With the uncertainty of living in a new area, trying to gain respect at a new job, and making new friends, I started worrying. Actually worrying is an understatement, but I'll not be dramatic.
 

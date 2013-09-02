@@ -3,6 +3,6 @@ layout : post
 title : "A much needed vacation"
 created : 1215825245
 permalink : /blog/much-needed-vacation
-categories : ["blog"]
+category : "blog"
 ---
 This weekend I'm leaving for PA for a week long vacation of nature, family and friends. Saturday I hope to be going to the Lycoming County Fair, Sunday going to see Wall-E with a friend. I'll also be using my spare time over the weekend to get everything ready for a three day backpacking trip through the mountains where I grew up. I've not been out there by myself in years and I really want to just take my time hiking through the mountains around Rose Valley Lake where I grew up.<br /><br />When I return from that, I'll be heading out to the family cabin in Belleville where a family reunion is taking place, full of family on my mother's side. Great Aunts and Uncles and hopefully time enough to talk with them all to glean what wisdom I may from them. I've come to think that you have to know where you come from in order to figure out where to go next in life. And that's the big question I ask myself every so often, so hopefully some time alone, and then with family and friends will help me figure that one out.<br /><br />Next weekend I'll be home at my mother's then, visiting with her, my brothers and my father's parents who will be visiting. I think we're planning on going to Ricket's Glen where there is some nice camping, a good place to hike some waterfalls, and a beach on the lake for swimming.<br />

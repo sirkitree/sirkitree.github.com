@@ -3,7 +3,7 @@ layout: post
 title: "Replicate and share"
 date: 2012-02-27 04:52
 comments: true
-categories: ["poem"]
+category: "poem"
 ---
 As a child I learned how to speak. The sounds I heard my parents produce helped to form coherent thought patterns in which to relate with the world around me. No, yes; good, bad; dog, cat; hot, cold; all sounds that came to mean something to a normal human being. I replicated their sound and shared.
 

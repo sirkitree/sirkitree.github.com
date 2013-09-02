@@ -3,7 +3,7 @@ layout : post
 title : "jQuery checkbox goodness"
 created : 1181158685
 permalink : /blog/jquery-checkbox-goodness
-categories : ["blog"]
+category : "blog"
 ---
 I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)
 

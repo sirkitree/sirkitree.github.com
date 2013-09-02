@@ -3,7 +3,7 @@ layout : post
 title : "Resurrection"
 created : 1258011256
 permalink : /blog/resurrection
-categories : ["blog"]
+category : "blog"
 ---
 Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module's API. Here's a couple quick steps I took:
 <!--break-->

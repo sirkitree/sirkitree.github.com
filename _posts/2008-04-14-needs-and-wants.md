@@ -3,7 +3,7 @@ layout : post
 title : "Needs and Wants"
 created : 1208229381
 permalink : /blog/needs-and-wants
-categories : ["blog"]
+category : "blog"
 ---
 For a long time I've thought that a major distinction in life that people must try to make is the difference between needs and wants. I've told many of my friends that if they just try to make this distinction in their own life, they will live a much happier, balanced life.
 
