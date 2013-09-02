@@ -52,7 +52,11 @@
         </div>
         <div class="form-group">
           <label for="postCategories">Category</label>
-          <input name="title" ng-model="postCategory" class="form-control" id="postCategory" type="text" placeholder="One of either blog, poem or story.">
+          <select name="category" id="postCategory">
+            <option value="blog">blog</option>
+            <option value="poem">poem</option>
+            <option value="story">story</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="postContent">Body</label>
