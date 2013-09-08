@@ -11,7 +11,7 @@ After getting a decent way to create a file on GitHub just using a POST from a f
 ## GitHub.js
 I did a little searching for AngularJS and GitHub authentication and came across [GitHub.js](https://github.com/michael/github) which (to my delight and surprise) is now being maintained by none other than my friends at [DevelopmentSeed](https://github.com/developmentseed)! This gives the browser a complete javascript library for working with the GitHub API and is simply perfect for the job.
 
-I added a username and password field to my [post interface](/new.html) and setup an AngularJS controller to utilize this library.
+I added a username and password field to my [post interface](/hublog-ng/new.html) and setup an AngularJS controller to utilize this library.
 
 ```javascript
   var app = angular.module('app', ['app.filters']);
