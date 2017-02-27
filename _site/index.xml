@@ -7,6 +7,96 @@
 		<atom:link href="http://jeradbitner.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Karate; Body Programming</title>
+				<description>&lt;p&gt;Karate is an advanced programming language for the body. Each movement is a letter in an alphabet which when strung together form words. These words are practiced in routines which become expressions, phrases, and functions stored in your muscle memory. Once stored, they can be quickly called upon to solve problems of a physical nature.&lt;/p&gt;
+</description>
+				<pubDate>Sun, 26 Feb 2017 05:00:00 -0700</pubDate>
+				<link>http://jeradbitner.com/2017/02/karate-prog/</link>
+				<guid isPermaLink="true">http://jeradbitner.com/2017/02/karate-prog/</guid>
+			</item>
+		
+			<item>
+				<title>THREE.js object and material loading</title>
+				<description>&lt;h2&gt;Messing with some &lt;a href=&quot;&quot;&gt;THREE.js&lt;/a&gt; and on top of that the excellent &lt;a href=&quot;&quot;&gt;webvr-starter-kit&lt;/a&gt;.&lt;/h2&gt;
+
+&lt;p&gt;The WebVR starter kit is a library on top of Three.js that allows you to quickly and easily setup a scene without all of the coding required by Three.js.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;VR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will get you a basic scene with lighting, rendering, camera, and a checkered plane for a floor.&lt;/p&gt;
+
+&lt;p&gt;Since this is based on Three.js, you can then use typical Three.js libraries to do things like load objects and materials. Then you can add them to the existing scene like so:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;VR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;whatever&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I wrote a basic example that utilizes Three&amp;#39;s OBJMTLLoader. You can see the source below and you can see it in action &lt;a href=&quot;http://jeradbitner.com/VR/load-obj.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Load Obj with Three.js&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;js/three.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://povdocs.github.io/webvr-starter-kit/build/vr.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;js/MTLLoader.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;js/OBJMTLLoader.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;VR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;VR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this container things like VR.camera, VR.scene, VR.renderer from THREE&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// this just&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;manager&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;THREE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LoadingManager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onProgress&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Manager:&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt; * objLocation should be the http location of the file without the extension.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt; * we will automatically assume that an obj file and an mtl file are present.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt; * ex: https://raw.githubusercontent.com/bitgridio/models/gh-pages/lullabot/Body&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loadObjMtl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;objLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;THREE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;OBJMTLLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;objLocation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.obj&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;objLocation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.mtl&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;VR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loaded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39; bytes loaded&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Error loading object&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;loadObjMtl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;https://raw.githubusercontent.com/bitgridio/models/gh-pages/lullabot/Body&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;loadObjMtl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;https://raw.githubusercontent.com/bitgridio/models/gh-pages/lullabot/Headd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+				<pubDate>Sat, 31 Oct 2015 05:00:00 -0600</pubDate>
+				<link>http://jeradbitner.com/2015/10/VR/</link>
+				<guid isPermaLink="true">http://jeradbitner.com/2015/10/VR/</guid>
+			</item>
+		
+			<item>
+				<title>Ello.co</title>
+				<description>&lt;p&gt;I guess I should write &lt;em&gt;something&lt;/em&gt; this year ;) Well, I have, but I&amp;#39;ve really been enjoying &lt;a href=&quot;https://ello.co/sirkitree&quot;&gt;Ello.co&lt;/a&gt; as a writing platform lately, so if you&amp;#39;d like to read more, please visit there.&lt;/p&gt;
+</description>
+				<pubDate>Sun, 28 Dec 2014 05:00:00 -0700</pubDate>
+				<link>http://jeradbitner.com/2014/12/ello/</link>
+				<guid isPermaLink="true">http://jeradbitner.com/2014/12/ello/</guid>
+			</item>
+		
+			<item>
 				<title>AngularJS Posting Interface for your GitHub Jekyll Site</title>
 				<description>&lt;p&gt;After getting a decent way to create a file on GitHub just using a POST from a form as &lt;a href=&quot;http://brockboland.com/2013/07/jekyll-posting-interface/&quot;&gt;Brock Boland&lt;/a&gt; spoke about with his Jekyll posting interface, I thought I would take this one step further and figure out a way to use the &lt;a href=&quot;http://developer.github.com/v3/&quot;&gt;GitHub API&lt;/a&gt; to create that file instead of taking you to GitHub&amp;#39;s new file interface. This was much easier than I expected.&lt;/p&gt;
 
@@ -14,8 +104,8 @@
 
 &lt;p&gt;I did a little searching for AngularJS and GitHub authentication and came across &lt;a href=&quot;https://github.com/michael/github&quot;&gt;GitHub.js&lt;/a&gt; which (to my delight and surprise) is now being maintained by none other than my friends at &lt;a href=&quot;https://github.com/developmentseed&quot;&gt;DevelopmentSeed&lt;/a&gt;! This gives the browser a complete javascript library for working with the GitHub API and is simply perfect for the job.&lt;/p&gt;
 
-&lt;p&gt;I added a username and password field to my &lt;a href=&quot;/new.html&quot;&gt;post interface&lt;/a&gt; and setup an AngularJS controller to utilize this library.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app.filters&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;p&gt;I added a username and password field to my &lt;a href=&quot;/hublog-ng/new.html&quot;&gt;post interface&lt;/a&gt; and setup an AngularJS controller to utilize this library.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app.filters&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
 
   &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;AuthCtrl&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -32,6 +122,12 @@
   &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;$scope.github&lt;/code&gt; now has access to all of the nifty functions that GitHub.js provides. You can see the &lt;a href=&quot;https://github.com/sirkitree/sirkitree.github.com/blob/master/js/githubpost.js&quot;&gt;full controller&lt;/a&gt; which uses the &lt;code&gt;GitHub.getRepo&lt;/code&gt; and &lt;code&gt;repo.write&lt;/code&gt; in order to create a new file in my _posts directory in markdown format with the appropriate YAML headers. GitHub then runs it through Jekyll and the result is what you&amp;#39;re reading now.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3&gt;Updates&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;2013-09-08&lt;/strong&gt;: I&amp;#39;ve since turned this into a full-fledged project called &lt;a href=&quot;https://github.com/sirkitree/hublog-ng&quot;&gt;hublog-ng&lt;/a&gt; and taken &lt;a href=&quot;https://github.com/PascalPrecht&quot;&gt;Pascal Precht&lt;/a&gt;&amp;#39;s advice and incorporated his &lt;a href=&quot;https://github.com/PascalPrecht/angular-github-adapter&quot;&gt;angular-github-adapter&lt;/a&gt; which taught me a bit about &lt;a href=&quot;http://docs.angularjs.org/api/ng.$q&quot;&gt;Angular&amp;#39;s promises feature&lt;/a&gt;.&lt;/p&gt;
 </description>
 				<pubDate>Sat, 31 Aug 2013 20:54:00 -0600</pubDate>
 				<link>http://jeradbitner.com/2013/08/angularjs-posting-interface-for-your-github-jekyll-site/</link>
@@ -188,7 +284,7 @@ So we turned around at Manitou Springs and headed back to the house, about 25 mi
 &lt;p&gt;Again, James to the rescue! He pointed me in the right direction and I got it working. Here&amp;#39;s what I did.&lt;/p&gt;
 
 &lt;p&gt;One of the relevant pieces of James&amp;#39; setup, is this line within his &lt;a href=&quot;https://github.com/q0rban/nginx-drupal/blob/master/nginx.conf#L63&quot;&gt;&lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;http {
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http {
 ...
   ##
   # Virtual Host Configs
@@ -199,14 +295,14 @@ So we turned around at Manitou Springs and headed back to the house, about 25 mi
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And then within &lt;a href=&quot;https://github.com/q0rban/nginx-drupal/blob/master/conf.d/session_cookie.conf&quot;&gt;&lt;code&gt;/etc/nginx/conf.d/session_cookie.conf&lt;/code&gt;&lt;/a&gt; he searches for the cookie that Drupal sets when you log in:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# Determine if a Drupal session cookie is present
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# Determine if a Drupal session cookie is present
 map $http_cookie $logged_in {
     default 0;
     ~SESS 1; # Drupal session cookie
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To this, I added a search for the wordpress cookie as well:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# Determine if a Drupal session cookie is present
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# Determine if a Drupal session cookie is present
 map $http_cookie $logged_in {
     default 0;
     ~SESS 1; # Drupal session cookie
@@ -214,7 +310,7 @@ map $http_cookie $logged_in {
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The last piece is telling your site to bypass the cache if &lt;code&gt;$http_cookie&lt;/code&gt; is set:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;location / {
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;location / {
   ...
   # If client is logged in we bypass cache
   fastcgi_cache_bypass $logged_in;
@@ -227,68 +323,6 @@ map $http_cookie $logged_in {
 				<pubDate>Thu, 09 Feb 2012 17:29:00 -0700</pubDate>
 				<link>http://jeradbitner.com/2012/02/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/</link>
 				<guid isPermaLink="true">http://jeradbitner.com/2012/02/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/</guid>
-			</item>
-		
-			<item>
-				<title>Darkness &amp; Light</title>
-				<description>&lt;p&gt;&lt;img src=&quot;http://f.cl.ly/items/2d0g2v3H3i0V0o1t2O0d/light-dark.png&quot; alt=&quot;Dark &amp;amp; Light&quot;&gt;&lt;/p&gt;
-</description>
-				<pubDate>Tue, 07 Feb 2012 14:36:00 -0700</pubDate>
-				<link>http://jeradbitner.com/2012/02/darkness-and-light/</link>
-				<guid isPermaLink="true">http://jeradbitner.com/2012/02/darkness-and-light/</guid>
-			</item>
-		
-			<item>
-				<title>Angel of fire</title>
-				<description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Angel of fire, wings of light
-  Visit me in my dreams tonight
-  Tell me of love and burning desire
-  Caress my lips, set me on fire
-
-Angel of fire, eyes so bright
-  See through my soul, feel the fright
-  Singe my heart and look for the liar
-  Scar on my sould cleanse with your fire
-  Transcendance lost on the blackening shame
-  Licked by lips that are black from the flame
-
-Angel of fire, cleanse me just right
-  Leaving your mark steal through the night
-  Tease my mind leaving desire
-  Tease my heart scarred by your fire
-  Knowing we&amp;#39;ll never ever be the same
-  Learn from our past, never do this again
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;AUG &amp;#39;04&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-				<pubDate>Mon, 06 Feb 2012 18:33:00 -0700</pubDate>
-				<link>http://jeradbitner.com/2012/02/angel-of-fire/</link>
-				<guid isPermaLink="true">http://jeradbitner.com/2012/02/angel-of-fire/</guid>
-			</item>
-		
-			<item>
-				<title>todo list in node.js and geektool</title>
-				<description>&lt;p&gt;I&amp;#39;ve long had a quick shell script that was a simple todo list based on Jerod Santo&amp;#39;s &lt;a href=&quot;http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/&quot;&gt;Minimally Awesome Todos&lt;/a&gt;. It&amp;#39;s very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through &lt;a href=&quot;http://projects.tynsoe.org/en/geektool/&quot;&gt;GeekTool&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Then I stumbled onto a &lt;a href=&quot;https://github.com/vesln/todo&quot;&gt;Node.js version&lt;/a&gt; of a todo list and thought I&amp;#39;d give it a shot. I got it setup, but when I wanted to try to display the output through GeekTool, I failed. So I delved into todo list code a bit more and learned quite a lot!&lt;/p&gt;
-
-&lt;p&gt;My &lt;a href=&quot;https://github.com/vesln/todo/pull/3&quot;&gt;first attempt&lt;/a&gt; was to simply write the output of the &lt;code&gt;todo ls&lt;/code&gt; command to a file. I got an immediate response from the maintainer, &lt;a href=&quot;https://github.com/vesln&quot;&gt;Veselin Todorov&lt;/a&gt; and was encouraged to change the command from &lt;code&gt;write&lt;/code&gt; to &lt;code&gt;export&lt;/code&gt; and write up a test for the new command as well.&lt;/p&gt;
-
-&lt;p&gt;I succeeded in &lt;a href=&quot;https://github.com/vesln/todo/pull/4&quot;&gt;converting the &lt;code&gt;write&lt;/code&gt; command to &lt;code&gt;export&lt;/code&gt;&lt;/a&gt;, and fixed up a small bug with the path of the file I was writing to by default, but thus far have completely failed at writing a test to confirm that the file was written.&lt;/p&gt;
-
-&lt;p&gt;The project is currently using &lt;a href=&quot;http://sinonjs.org/&quot;&gt;Sinon.JS&lt;/a&gt; for testing, and even though the API seems pretty robust, and the examples coherent, I&amp;#39;m simply failing at figuring out how to test file creation with it. So far all I have is a stub:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/1747985.js&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;However, it is working well without a test at this point, and I have a pretty todo list on my desktop! :)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://img.skitch.com/20120205-q32piq2918kutm1autmh6yby4m.png&quot; alt=&quot;GeekTool Todos&quot;&gt;&lt;/p&gt;
-</description>
-				<pubDate>Sun, 05 Feb 2012 13:59:00 -0700</pubDate>
-				<link>http://jeradbitner.com/2012/02/todo-list-in-node-dot-js-and-geektool/</link>
-				<guid isPermaLink="true">http://jeradbitner.com/2012/02/todo-list-in-node-dot-js-and-geektool/</guid>
 			</item>
 		
 	</channel>

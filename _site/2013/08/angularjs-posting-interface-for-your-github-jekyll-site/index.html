@@ -56,8 +56,8 @@
 
 <p>I did a little searching for AngularJS and GitHub authentication and came across <a href="https://github.com/michael/github">GitHub.js</a> which (to my delight and surprise) is now being maintained by none other than my friends at <a href="https://github.com/developmentseed">DevelopmentSeed</a>! This gives the browser a complete javascript library for working with the GitHub API and is simply perfect for the job.</p>
 
-<p>I added a username and password field to my <a href="/new.html">post interface</a> and setup an AngularJS controller to utilize this library.</p>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;app.filters&#39;</span><span class="p">]);</span>
+<p>I added a username and password field to my <a href="/hublog-ng/new.html">post interface</a> and setup an AngularJS controller to utilize this library.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;app.filters&#39;</span><span class="p">]);</span>
 
   <span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;AuthCtrl&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$log</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$scope</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
@@ -74,6 +74,12 @@
   <span class="p">});</span>
 </code></pre></div>
 <p><code>$scope.github</code> now has access to all of the nifty functions that GitHub.js provides. You can see the <a href="https://github.com/sirkitree/sirkitree.github.com/blob/master/js/githubpost.js">full controller</a> which uses the <code>GitHub.getRepo</code> and <code>repo.write</code> in order to create a new file in my _posts directory in markdown format with the appropriate YAML headers. GitHub then runs it through Jekyll and the result is what you&#39;re reading now.</p>
+
+<hr>
+
+<h3>Updates</h3>
+
+<p><strong>2013-09-08</strong>: I&#39;ve since turned this into a full-fledged project called <a href="https://github.com/sirkitree/hublog-ng">hublog-ng</a> and taken <a href="https://github.com/PascalPrecht">Pascal Precht</a>&#39;s advice and incorporated his <a href="https://github.com/PascalPrecht/angular-github-adapter">angular-github-adapter</a> which taught me a bit about <a href="http://docs.angularjs.org/api/ng.$q">Angular&#39;s promises feature</a>.</p>
 
   </section>
   

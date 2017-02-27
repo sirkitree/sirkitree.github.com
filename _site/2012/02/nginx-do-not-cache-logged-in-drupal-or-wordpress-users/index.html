@@ -57,7 +57,7 @@
 <p>Again, James to the rescue! He pointed me in the right direction and I got it working. Here&#39;s what I did.</p>
 
 <p>One of the relevant pieces of James&#39; setup, is this line within his <a href="https://github.com/q0rban/nginx-drupal/blob/master/nginx.conf#L63"><code>/etc/nginx/nginx.conf</code></a>:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">http {
+<div class="highlight"><pre><code class="language-text" data-lang="text">http {
 ...
   ##
   # Virtual Host Configs
@@ -68,14 +68,14 @@
 }
 </code></pre></div>
 <p>And then within <a href="https://github.com/q0rban/nginx-drupal/blob/master/conf.d/session_cookie.conf"><code>/etc/nginx/conf.d/session_cookie.conf</code></a> he searches for the cookie that Drupal sets when you log in:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"># Determine if a Drupal session cookie is present
+<div class="highlight"><pre><code class="language-text" data-lang="text"># Determine if a Drupal session cookie is present
 map $http_cookie $logged_in {
     default 0;
     ~SESS 1; # Drupal session cookie
 }
 </code></pre></div>
 <p>To this, I added a search for the wordpress cookie as well:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"># Determine if a Drupal session cookie is present
+<div class="highlight"><pre><code class="language-text" data-lang="text"># Determine if a Drupal session cookie is present
 map $http_cookie $logged_in {
     default 0;
     ~SESS 1; # Drupal session cookie
@@ -83,7 +83,7 @@ map $http_cookie $logged_in {
 }
 </code></pre></div>
 <p>The last piece is telling your site to bypass the cache if <code>$http_cookie</code> is set:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">location / {
+<div class="highlight"><pre><code class="language-text" data-lang="text">location / {
   ...
   # If client is logged in we bypass cache
   fastcgi_cache_bypass $logged_in;
