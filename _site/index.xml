@@ -7,6 +7,24 @@
 		<atom:link href="http://jeradbitner.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Other Places to Find Me</title>
+				<description>&lt;p&gt;I obviously don&amp;#39;t post here enough even though I&amp;#39;ve made it dead simple for myself.&lt;/p&gt;
+
+&lt;h2&gt;So here are some other places I tend to post things lately.&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/sirkitree&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vr.google.com/sketches/user/3dVB0GT8oMI&quot;&gt;Google TiltBrush&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vr.google.com/objects/user/3dVB0GT8oMI&quot;&gt;Google Blocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sketchfab.com/sirkitree&quot;&gt;Sketchfab&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Wed, 12 Jul 2017 05:00:00 -0600</pubDate>
+				<link>http://jeradbitner.com/2017/07/other-places/</link>
+				<guid isPermaLink="true">http://jeradbitner.com/2017/07/other-places/</guid>
+			</item>
+		
+			<item>
 				<title>Karate; Body Programming</title>
 				<description>&lt;p&gt;Karate is an advanced programming language for the body. Each movement is a letter in an alphabet which when strung together form words. These words are practiced in routines which become expressions, phrases, and functions stored in your muscle memory. Once stored, they can be quickly called upon to solve problems of a physical nature.&lt;/p&gt;
 </description>
@@ -273,56 +291,6 @@ So we turned around at Manitou Springs and headed back to the house, about 25 mi
 				<pubDate>Fri, 10 Feb 2012 17:27:00 -0700</pubDate>
 				<link>http://jeradbitner.com/2012/02/baby-day-act-i/</link>
 				<guid isPermaLink="true">http://jeradbitner.com/2012/02/baby-day-act-i/</guid>
-			</item>
-		
-			<item>
-				<title>Nginx: do not cache logged in Drupal or WordPress users</title>
-				<description>&lt;p&gt;A while ago I changed all of my domain names to &lt;a href=&quot;http://namecheap.com/&quot;&gt;Namecheap&lt;/a&gt; and migrated my Drupal and Wordpress sites to &lt;a href=&quot;http://www.linode.com/&quot;&gt;Linode&lt;/a&gt;. I followed some excellent instructions from &lt;a href=&quot;https://twitter.com/#!/q0rban&quot;&gt;James Sansbury&lt;/a&gt; (soon to be a Lullabot article) and some of his &lt;a href=&quot;https://github.com/q0rban/nginx-drupal&quot;&gt;Nginx configuration files&lt;/a&gt;. This worked great for my Drupal site (heh - which was this site that I then &lt;a href=&quot;blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/&quot;&gt;converted to Jekkyl&lt;/a&gt;) and my &lt;a href=&quot;http://jenneymarie.net/&quot;&gt;wife&amp;#39;s WordPress site&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.&lt;/p&gt;
-
-&lt;p&gt;Again, James to the rescue! He pointed me in the right direction and I got it working. Here&amp;#39;s what I did.&lt;/p&gt;
-
-&lt;p&gt;One of the relevant pieces of James&amp;#39; setup, is this line within his &lt;a href=&quot;https://github.com/q0rban/nginx-drupal/blob/master/nginx.conf#L63&quot;&gt;&lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http {
-...
-  ##
-  # Virtual Host Configs
-  ##
-
-  include /etc/nginx/conf.d/*.conf;
-  include /etc/nginx/sites-enabled/*;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;And then within &lt;a href=&quot;https://github.com/q0rban/nginx-drupal/blob/master/conf.d/session_cookie.conf&quot;&gt;&lt;code&gt;/etc/nginx/conf.d/session_cookie.conf&lt;/code&gt;&lt;/a&gt; he searches for the cookie that Drupal sets when you log in:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# Determine if a Drupal session cookie is present
-map $http_cookie $logged_in {
-    default 0;
-    ~SESS 1; # Drupal session cookie
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;To this, I added a search for the wordpress cookie as well:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# Determine if a Drupal session cookie is present
-map $http_cookie $logged_in {
-    default 0;
-    ~SESS 1; # Drupal session cookie
-    ~wordpress_logged_in 1; # Wordpress session cookie
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The last piece is telling your site to bypass the cache if &lt;code&gt;$http_cookie&lt;/code&gt; is set:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;location / {
-  ...
-  # If client is logged in we bypass cache
-  fastcgi_cache_bypass $logged_in;
-  fastcgi_no_cache $logged_in;
-  ...
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;A quick &lt;code&gt;sudo service nginx restart&lt;/code&gt; and our WordPress site is working much better!&lt;/p&gt;
-</description>
-				<pubDate>Thu, 09 Feb 2012 17:29:00 -0700</pubDate>
-				<link>http://jeradbitner.com/2012/02/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/</link>
-				<guid isPermaLink="true">http://jeradbitner.com/2012/02/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/</guid>
 			</item>
 		
 	</channel>
