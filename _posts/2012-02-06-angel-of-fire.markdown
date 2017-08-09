@@ -1,9 +1,10 @@
 ---
 layout: post
-title: "Angel of fire"
-date: 2012-02-06 18:33
+title: Angel of fire
+date: '2012-02-06 18:33'
 comments: true
-category: "poem"
+category: poem
+published: true
 ---
 ```
 Angel of fire, wings of light
@@ -14,7 +15,7 @@ Angel of fire, wings of light
 Angel of fire, eyes so bright
   See through my soul, feel the fright
   Singe my heart and look for the liar
-  Scar on my sould cleanse with your fire
+  Scar on my soul cleanse with your fire
   Transcendance lost on the blackening shame
   Licked by lips that are black from the flame
 
