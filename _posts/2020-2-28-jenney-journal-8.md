@@ -15,7 +15,7 @@ He left and then came back just a little bit later saying that it is in fact mel
 
 He was going to be leaving for a family vacation for 5 days, but gave me his cell phone number. His PA was with him and she would be there to provide some continuity. He also mentioned that he was conferring with others, but wanted to do a CT scan of the chest and abdomen to verify that there wasn't any more cancer in those areas. They would shield the baby, but he was assured by the OB that this would be safe for the baby since it is old enough and the risk is minimal.
 
-Later there would most likely be radiation therapy with something called a Gammaknife, which is not a knife, it is a way to highly localize treatment without being invasive. It has a high chance of success.
+Later there would most likely be radiation therapy with something called a gamma knife, which is not a knife, it is a way to highly localize treatment without being invasive. It has a high chance of success.
 
 He also then mentioned that there is a possibility that we'll need to do intravenous treatments if the cancer was found elsewhere in the body. This may mean that the baby would need to be delivered early, 28 to 32 weeks. Jenney's at 24 weeks. Then they could do the additional treatment.
 
