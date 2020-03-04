@@ -36,3 +36,7 @@ Viola brought a book to read again, and had made a book herself out of paper cal
 They stayed almost an hour and then Jenney started getting a headache and so I shooed them out, got her back into bed. Then her nurse brought her some meds and she fell asleep within 10 minutes, listening to K Love streaming on her phone (a positive and uplifting radio station around here). Maybe we should tell them Jenney's story.
 
 Around 10pm Jenney had another walk around the quads with the walker and we went really fast this time. I think she was trying to push herself a little, which is good; chasing kids ain't easy. Brushed her teeth, changed her robe, and got a wipe bath from the evening nurse. We fell asleep after watching a couple of online shows, and awoke during the night at regular intervals for meds and blood letting.
+
+---
+That evening, our dear friend Lorena, Sebastian's Godmother contacted us to setup a GoFundMe. If this story has touched your life, and you're struggling to find a way to help, this is a way you can help.
+<div class="gfm-embed" data-url="https://www.gofundme.com/f/jenney-and-jerad-bitner/widget/large"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
