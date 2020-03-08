@@ -168,3 +168,10 @@ ul.posts span {
 .publish {
   width: 40%;
 }
+
+/*
+/* Sidebar
+/*/
+.sidebar {
+  float: right;
+}

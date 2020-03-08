@@ -8,13 +8,31 @@ layout: default
     <div class="breadcrumb">
       <time pubdate="pubdate" class="meta">{{ page.date | date_to_string }}</time>
     </div>
-    <div class="g-plusone right" data-size="medium"></div>
         
   </header>
+  
+  {% assign tags = page.category | split: ", " %}
+  {% for tag in tags %}
+    {% if tag == "jenney" %}
+    <section class="sidebar">
+      <ul>
+      {% assign posts = site.posts | reverse %}
+      {% for post in posts %}
+        {% assign tags = post.category | split: ", " %}
+        {% for tag in tags %}
+          {% if tag == 'jenney' %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+      </ul> 
+    </section>
+    {% endif %}
+  {% endfor %}
 
   <section class="content">
   {{ content }}
-  </section>
+  </section>  
   
   <section class="comments">
     <div id="disqus_thread"></div>
@@ -42,13 +60,5 @@ layout: default
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </section>
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
 
 </article>
