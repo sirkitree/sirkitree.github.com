@@ -175,3 +175,16 @@ ul.posts span {
 .sidebar {
   float: right;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black !important; 
+    color: #aaa !important;
+  }
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+}
