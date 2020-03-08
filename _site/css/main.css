@@ -154,6 +154,10 @@ ul.posts span {
   float: right;
 }
 
+.post .content img {
+  width: 100%;
+}
+
 /*
 /* New
 /*/
