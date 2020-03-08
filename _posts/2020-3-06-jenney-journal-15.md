@@ -6,7 +6,7 @@ comments: true
 published: true
 category: blog, jenney
 ---
-The oncologist came in bright and early the nest morning around 6:20am. He said he would be setting up an appointment for us next week, and that he had referred us to a different gamma knife facility at the University of Washington's Harborview Medical Center where they have the means of shielding the baby during the procedure. This would mean we wouldn't have to have the baby in a few weeks. 
+The oncologist came in bright and early the next morning around 6:20am. He said he would be setting up an appointment for us next week, and that he had referred us to a different gamma knife facility at the University of Washington's Harborview Medical Center where they have the means of shielding the baby during the procedure. This would mean we wouldn't have to have the baby in a few weeks. 
 
 The roller coaster continues...
 
