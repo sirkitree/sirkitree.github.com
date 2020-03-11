@@ -181,13 +181,13 @@ ul.posts span {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  html, body {
     background-color: black !important; 
     color: #aaa !important;
   }
 }
 @media (prefers-color-scheme: light) {
-  body {
+  html, body {
     background-color: white !important;
     color: black !important;
   }
