@@ -6,6 +6,18 @@
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
         <meta name="description" content="{{ page.excerpt | strip_html }}">
+        <meta name="author" content="Jerad Bitner" />
+
+        <!-- For Facebook -->
+        <meta property="og:title" content="{{ page.title }}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="{{ page.url }}" />
+        <meta property="og:description" content="{{ page.excerpt | strip_html }}" />
+
+        <!-- For Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{{ page.title }}" />
+        <meta name="twitter:description" content="{{ page.excerpt | strip_html }}" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
