@@ -49,6 +49,7 @@ Frank is the main oncologist we've been seeing so far. He's clearly very respect
 
 
 # What we're reading and researching
+Special thanks to our friend John Hannah Price for many of these materials.
 
 ## Immunotherapy
 - [Immunotherapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/immunotherapy)
