@@ -8,7 +8,7 @@ category: blog, jenney
 ---
 It's been a long week. We've had another share of ups and downs, but mostly ups I think. Lots of appointments, some disappointments, but overall we're feeling optimistic having such amazing support from our community, the new doctors we've met, and Jenney's returning strength.
 
-**Tues 3/10**
+## Tues 3/10
 Tuesday the Grandmas left. My mom left early in the morning with Steve who dropped her off at the airport on his way in to work. Thanks Steve :) Then I took Jeanne to a Kitsap drop-off spot to take the shuttle into the airport a little later that morning, in between work meetings. It's sad to see them go, and we're forever grateful that they were able to come be with our us and our children during this time. But with all the virus scare, I'm happy to get them back to their homes.
 
 Later that day we had an appointment with a new OB in maternal-fetal medicine who specializes in high risk pregnancies. It started off with a very detailed ultrasound of the baby that lasted almost an hour. They took a very detailed look at his development; the heart, organs, bones, and placenta. I'm happy to say that everything looked very good, and the estimated weight of the little guy is around 1.14 lbs. We're in week 26 and he's around the 27th percentile at that weight, which they assured us is well within normal parameters.
@@ -19,12 +19,12 @@ Directly after our visit with Dr Chau we went across the street to the main hosp
 
 Our neighbors Alicia and Steve had the kids when we got home, and the meal that was delivered to our door. They were about to serve the kids, so they just gave us a plate and kept the kids while Jenney and I had a nice quiet dinner to ourselves, then promptly fell asleep on the love seat until the kids came home to get ready for bed. We appreciated that a lot, as it'd been a tiring trip; lots of information, emotions, and the virus scare to top it off.
 
-**Wed 3/11**
+## Wed 3/11
 Wednesday we didn't have any appointments (thankfully) so I actually got some work done, and Jenney got some rest while the kids were at school. We did get a call back from Dr Rutter saying that she had found a facility close by that had a custom made lead shield that they could use over Jenney's abdomen for the cyber knife procedure. She was going to try to pre-authorize the procedure with our insurance company and then schedule another MRI for next week to start preparing.
 
 We also received a call for scheduling an appointment with Dr Thompson at the SCCA (Seattle Cancer Care Alliance). He'd been referred by Dr Senecal and has 41 years of experience, specializing in melanoma. We setup an appointment with him for April 2nd as he would most likely be consulting with us on the systemic treatment and that most likely wouldn't happen until the baby was born. I looked up his credentials and was very encouraged by what I saw.
 
-**Thurs 3/12**
+## Thurs 3/12
 Thursday we had an appointment with our oncologist, Dr Senecal. It took us a bit to find his office, and they again stopped us at the door, asking if we'd been out of the country, etc. then gave us a sticker on our hand. *sigh* Meeting with Dr Senecal has always been a pleasure though. His calm demeanor, methodic facts and observations, his questions of concern for our mental well-being. He checked Jenney for any new spots, looked at the existing one on her back, and when that all looked good talked to us about where we go from here. He said he'd like to see Jenney's head treated with radiation to stem any growth there first, and hoped with the various doctors we'd already been talking with we could find a good solution for that. Then he'd be talking with Dr Thompson to discuss systemic treatment and in particular be looking for something that could hopefully cross the blood-brain barrier for treatment after the baby comes. 
 
 We left the office feeling a bit better at his optimism, and pensive about just being in a hospital. Someone in the parking lot had a face mask and was sneezing, we skirted around them on the way back to the car, Sebastian in tow.
