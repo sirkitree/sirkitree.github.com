@@ -1,0 +1,36 @@
+---
+layout: post
+title: Jenney Journal, Part 17
+date: "2020-03-13 05:00"
+comments: true
+published: true
+category: blog, jenney
+---
+It's been a long week. We've had another share of ups and downs, but mostly ups I think. Lots of appointments, some disappointments, but overall we're feeling optimistic having such amazing support from our community, the new doctors we've met, and Jenney's returning strength.
+
+**Tues 3/10**
+Tuesday the Grandmas left. My mom left early in the morning with Steve who dropped her off at the airport on his way in to work. Thanks Steve :) Then I took Jeanne to a Kitsap drop-off spot to take the shuttle into the airport a little later that morning, in between work meetings. It's sad to see them go, and we're forever grateful that they were able to come be with our us and our children during this time. But with all the virus scare, I'm happy to get them back to their homes.
+
+Later that day we had an appointment with a new OB in maternal-fetal medicine who specializes in high risk pregnancies. It started off with a very detailed ultrasound of the baby that lasted almost an hour. They took a very detailed look at his development; the heart, organs, bones, and placenta. I'm happy to say that everything looked very good, and the estimated weight of the little guy is around 1.14 lbs. We're in week 26 and he's around the 27th percentile at that weight, which they assured us is well within normal parameters.
+
+Then we met with Dr Chau. She was amazed at how great Jenney looked just 2 weeks after brain surgery. She went over history with us, told us her specialities, and concerns. Amongst them was that there is a small chance (about 22%) of the cancer attaching to the placenta, which could lead to the baby also getting cancer. That was hard to hear, but she stressed it is very rare. There were no signs of it happening in the detailed ultrasound they performed.
+
+Directly after our visit with Dr Chau we went across the street to the main hospital to see Dr Rutter, whom Dr Chau had referred us. Security stopped us at the door to ask if we'd been out of the country in the last 14 days and if we'd come into contact with anyone showing signs of the corona virus. After wandering a bit to find the right floor, Dr Rutter talked with us more about the cancer and made sure she had the story straight. She struck me as extremely empathetic and kind. She wanted us to consider another approach for radiation treatment to Jenney's brain to get rid of the remaining tumor there, which she called a cyber knife. It's similar to the gamma knife but uses a robotic arm for targeting the brain. There is still a chance of scatter radiation hitting the baby, but she was going to look into some more options to see what they could do to shield the baby.
+
+Our neighbors Alicia and Steve had the kids when we got home, and the meal that was delivered to our door. They were about to serve the kids, so they just gave us a plate and kept the kids while Jenney and I had a nice quiet dinner to ourselves, then promptly fell asleep on the love seat until the kids came home to get ready for bed. We appreciated that a lot, as it'd been a tiring trip; lots of information, emotions, and the virus scare to top it off.
+
+**Wed 3/11**
+Wednesday we didn't have any appointments (thankfully) so I actually got some work done, and Jenney got some rest while the kids were at school. We did get a call back from Dr Rutter saying that she had found a facility close by that had a custom made lead shield that they could use over Jenney's abdomen for the cyber knife procedure. She was going to try to pre-authorize the procedure with our insurance company and then schedule another MRI for next week to start preparing.
+
+We also received a call for scheduling an appointment with Dr Thompson at the SCCA (Seattle Cancer Care Alliance). He'd been referred by Dr Senecal and has 41 years of experience, specializing in melanoma. We setup an appointment with him for April 2nd as he would most likely be consulting with us on the systemic treatment and that most likely wouldn't happen until the baby was born. I looked up his credentials and was very encouraged by what I saw.
+
+**Thurs 3/12**
+Thursday we had an appointment with our oncologist, Dr Senecal. It took us a bit to find his office, and they again stopped us at the door, asking if we'd been out of the country, etc. then gave us a sticker on our hand. *sigh* Meeting with Dr Senecal has always been a pleasure though. His calm demeanor, methodic facts and observations, his questions of concern for our mental well-being. He checked Jenney for any new spots, looked at the existing one on her back, and when that all looked good talked to us about where we go from here. He said he'd like to see Jenney's head treated with radiation to stem any growth there first, and hoped with the various doctors we'd already been talking with we could find a good solution for that. Then he'd be talking with Dr Thompson to discuss systemic treatment and in particular be looking for something that could hopefully cross the blood-brain barrier for treatment after the baby comes. 
+
+We left the office feeling a bit better at his optimism, and pensive about just being in a hospital. Someone in the parking lot had a face mask and was sneezing, we skirted around them on the way back to the car, Sebastian in tow.
+
+Later that afternoon we had another appointment with Dr. Rockhill, but over the phone as he is in Seattle and we'd requested that we talk over the phone due to all the virus craziness. I thanked him profusely for being willing to speak with us over the phone. He'd reviewed our case, and asked some questions to make sure he had the important pieces correct. He asked if we'd met with anyone else, and I relayed Dr Rutter's current plan. He said that he knew her and would speak with her about our case as well. He mentioned there is a possible systemic treatment that we might be able to use without radiation, but the timing here is what is tricky. We need to watch for any growth and if it's slow, we might be ok waiting until the baby is born to start treatment, but if it started growing, we would need to act sooner. He recommended another MRI 4 weeks after surgery so that we could see if there was any growth, and there are some factors associated with pregnancy which can potentially increase the growth rate of melanoma. He would talk with Dr Senecal, Thompson, and Rutter, but also would recommend the gamma knife treatment over the cyber knife treatment if we must go that route due to less chance of scatter radiation to the baby.
+
+Back and forth the pendulum swings...
+
+It was a beautiful day outside, the sun was shining and it was relatively warm. We received notice that the kids would be off of school for the next 6 weeks and told the kids as they got off the bus. We all played outside and started working on the yard as a fellow parent from Sebastian's school delivered dinner for us. Vincent and I cleaned up the back yard, then the front, while Jenney trimmed our rose bushes which are starting to leaf. Raking the yard felt good; a shining moment of normalcy amidst the chaos that is our world these days.
