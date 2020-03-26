@@ -5,30 +5,11 @@ layout: default
   <header>
     <h2 class="subheader"><a href="http://prose.io/#sirkitree/sirkitree.github.com/edit/master/{{ page.path }}" class="pencil" title="Edit with Prose.io"><span>Edit</span></a>{{ page.title }}</h2>
 
-    <div class="breadcrumb">
+    <div class="breadcrumb bg-secondary">
       <time pubdate="pubdate" class="meta">{{ page.date | date_to_string }}</time>
     </div>
         
   </header>
-  
-  {% assign tags = page.category | split: ", " %}
-  {% for tag in tags %}
-    {% if tag == "jenney" %}
-    <section class="sidebar">
-      <ul>
-      {% assign posts = site.posts | reverse %}
-      {% for post in posts %}
-        {% assign tags = post.category | split: ", " %}
-        {% for tag in tags %}
-          {% if tag == 'jenney' %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
-      </ul> 
-    </section>
-    {% endif %}
-  {% endfor %}
 
   <section class="content">
   {{ content }}
