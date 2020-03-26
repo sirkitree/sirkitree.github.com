@@ -15,6 +15,12 @@ body {
   font-size: 1.1rem !important;
 }
 
+blockquote {
+  font-size: 1.25rem;
+  margin-left: 1.25rem;
+  font-weight: lighter;
+}
+
 @media (prefers-color-scheme: dark) {
   html, body {
     background-color: black !important; 
