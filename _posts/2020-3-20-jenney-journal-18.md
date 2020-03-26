@@ -36,6 +36,8 @@ I've also been reading the Bible more lately, and it's been many years since I'v
 
 > Trust in the Lord with all your heart, and lean not on your own understanding; in all your ways acknowledge Him and He will make your path straight.
 
+and 
+
 > The Lord is my shepherd, I shall not want. He makes me lie down in green pastures. He leads me beside the still waters. He restores my soul. He guides me in the paths of righteousness for his name's sake. Though I walk through the valley of the shadow of death, I shall fear no evil, for thou art with me. Thy rod and thy staff, they comfort me. You prepare a table before me in the presence of my enemies. You anoint my head with oil; my cup overflows. Surely goodness and mercy will follow me all the days of my life, and I will dwell in the house of the Lord forever, and ever, amen.
 
 I do hope for goodness and mercy in the days to come. I find myself remembering old songs during the day that I used to sing in church. I sang one to my son while I pushed him on the swing today. And we pray over dinner these evenings, and prayed for Rosie this evening.
