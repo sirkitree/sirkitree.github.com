@@ -1,0 +1,61 @@
+---
+layout: post
+title: Jenney Journal, part 19
+date: "2020-03-27 05:00"
+comments: true
+published: true
+category: blog, jenney
+---
+
+- Tues: MRI, quick
+- Wed: Rutter called, Neuro, baby name
+- Thur: Senecal and OB
+
+Since my last post I've had a lot of encouragement from so many people sharing verses with us. I'm compiling a list of them and will share them in their own post. I think the biggest help has been this:
+
+Lay your fears, anxiety, and worries on God. Tell Him about them. Let yourself be afraid and tell Him, knowing you're not strong enough to handle them all. Cry even. Then fill your heart and mind with trust, gratitude, kindness, and love by deciding to trust God, trust that he has a plan through all of this, and that he will not forsake you. Count your blessings and thank those who have enabled those blessings and thanking God for them. This has been a huge help in helping me experience peace. I can feel my anxiety fade as I think of those things I'm grateful for and it doesn't leave room for fear. Then do something kind for someone, or at least think of something you can do that is kind later today, even if it's for yourself. Express your love to someone. Maybe it's a pet, or maybe it's your kids, or your partner, or yourself, but express it through words or actions.
+
+Much of this was gleaned in a large part by my friend Darren's post: [Pursuing Peace Through Prayer](https://jazzgeek.blogspot.com/2020/03/pursuing-peace-through-prayer.html). I've been sharing it with people all week because it's made such a difference for most of the week... and it's been a good week. Some more roller coaster riding, but overall good. God is good.
+
+## 3/21-22
+This weekend we went out and did some hiking. I had a feeling we wouldn't be able to soon, so we went to [Banner State Park](https://photos.app.goo.gl/niEngSfMfknGoJNY7) on Saturday to hike on some empty trails. On Sunday we watched church online, I tried out my Mom's church and Jenney watched our local church at St John's. Then we went to [Kopachuck State Park](https://photos.app.goo.gl/kRpTXXjAmd6tJHvW6) which goes to a beach. There were very little folks out and about and those that were kept to their own family groups and away from others.
+
+## 3/23
+Monday we did some school work with the kids, and when the Neurology office called to see if we could do a virtual visit, we reminded them that Jenney needed stitches out and that we would need to come in for a visit on our regularly scheduled visit on Wednesday. We took pictures of Jenney's head to confirm that she had some that needed to come out and sent them in through their online system, MyChart.
+
+## 3/24
+Tuesday we had an MRI scheduled which we were quite nervous about as this would tell us if the cancer remaining in her brain had grown back or not. I tried to focus on work during the day and in the afternoon we left the kids with our next-door neighbor. Alicia and Steve have been so kind to watch them when we have appointments. They had Jenney change and took her into the shielded room while I waited in the hallway. The MRI took about half an hour, so I messaged with my brother and mother while I waited. Afterwards the technician told us we'd have the results pretty quickly because with everyone focused on COVID, there's not much going on in the MRI department. Dinner was waiting for us on the porch when we returned (so thankful for that) and we got the kids from the neighbors and prayed over dinner once we had it set on the table. We talked with the kids about the MRI and what it may mean. Later that evening Jenney saw we had the test results in MyChart and while we didn't understand everything, we did understand that there was no new growth, and that her healing was progressing. Still some swelling, but less than the last scan. We message family with the good news with the caveat that we hadn't spoken to a Dr about it yet.
+
+## 3/25
+Wednesday Dr Rutter called us and talked to us about the MRI results. It was as we suspected, that there was no new growth. She mentioned we might be able to go until week 37 to have the baby and we rejoiced! She mentioned she would talk with Dr Senecal and our OB. I messaged more folks with the great news, including my colleagues in our #celebration Slack channel. We were elated! We went to our Neurology appointment in the middle of the day, again leaving the kids with Alicia. I'm not sure what we would do without their family, we're so thankful. We met with Dr Goldman's PA and she removed the stitches that weren't dissolvable and went over the MRI results with us, showing us the one taken before surgery, and comparing it side by side with the most recent one. Dr Goldman stopped in to say Hi and make sure everything was going well. Jenney thanked him for saving her life. He thanked her for recovering so well, lol. Then we told him that we are naming the baby after him. His first name is Marc and we are going to name the baby Marcus. He said wow, he was honored. I mean, the man saved Jenney's life! 
+
+We're going with Marcus Ezequiel Bitner. Marcus means "polite; shining" and Ezequiel means "the strength of God." He will be our shining strength of God. We're using the 'qu' instead of the biblical 'k' because my friend in Spain has this spelling and we like it better. My friend Ezequiel goes by Zequi and is an inspiration to me in many ways, especially with how he's dealing with his own current struggles. Also, the strength of God is what we are relying on so heavily right now. And Marcus is also going to need the strength of God, being that he'll be born pre-term and will most likely spend some time in the NICU.
+
+> Dear Lord be with us, lend us your strength.
+
+Deborah wrote to us that evening. She had many words of encouragement, sharing her experience of treatments with her husband, and things that she had learned. I share some of them here:
+
+1. Lean on your community! This can be difficult, but it was crucial for us. Having help with the kids, meals, etc. allows you to conserve your mental and emotional energy.
+2. Figure out what strategies help you minimize your worry and anxiety. For me that ended up being meditation (I still use the Headspace app!) and prayer. For Bill, it was exercise as he could.
+3. It is a rollercoaster of a ride! It seemed that for every 2 steps forward we took a big step back. One doctor gave my husband a 25% chance at being alive 5 years from diagnosis. The doctors at Seattle Cancer Care changed the diagnosis and gave us 80% - we focused on that!
+4. Take time for yourselves - as we got more comfortable with the routine of going up to Seattle 3x a week, we began to call some of them “date days”. Bill hated eating in the hospital cafeteria, so we would walk outside and grab a quick lunch somewhere else. It was a great distraction.
+
+## 3/26
+Thursday Dr. Senecal called and we video conferenced with him. He asked us how we were and we discussed the MRI results. I also reported that I'd found another lump a little farther down on Jenney's back, very small, but seems to be the same consistency as the current mass close to her scapula that was biopsied and found to be cancerous. He encouraged me to do a full scan of her body and would be setting up another appointment with the dermatologist to do a full exam, not just from the neck up like the last one had been. He asked us how we were doing emotionally, financially, spiritually. We talked about it for a little and he mentioned that God has an amazing design for our brains to keep them from infection. He talked to us about the treatment options, one being pill and another an injection, and yet another that is immunotherapy, all of which can pass the blood-brain barrier to treat what is left in Jenney's brain and the rest of her body. We have an appointment with Dr Thompson on April 2nd and Dr Senecal would be discussing these options with Dr Thompson to get his opinion on which would be the best after the baby is delivered. He said he did not want us to wait until week 37 but would rather shoot for 32 to 34 weeks if possible. He wanted us to ask the OB at our next appointment if that would be safe for the baby.
+
+Our appointment at maternal-fetal medicine with the OB was later that day, and we had to go into the office for this one. We met with another OB (there are 6 in the office) and talked about all of the recent developments. She said she would like to wait until week 34 since that is the top of the range Dr Senecal gave us. The procedure would be a c-section to minimize risk to Jenney's brain, and she would go on some steroids a couple of weeks before-hand to help with Marcus' development. Marcus would need to remain in the NICU afterwards, she said a good guideline is typically until the due date. We're very hopeful that he does not need to remain in the NICU for 6 whole weeks. The thought of going to the hospital everyday for 6 weeks to see him while Jenney is also undergoing treatment, is not appealing at all, so hopefully he does really well, as quickly as possible.
+
+> Dear God be with us, lend us your strength.
+
+So at this point, we're grateful that Jenney's brain is ok, her swelling is going down, and there are no new growths. The doctors agree that week 34 is when we should have Marcus, and that is the week of May 3rd. We're still not sure what treatment Jenney will have afterwards but we have at least 3 different options at this point, and a high percentage rate of success. I'm also worried about the new lump I found on Jenney's back, and waiting another 6 weeks to have the baby. 
+
+## 3/27
+Friday we had no appointments. Works was good, with some excellent serendipitous meetings where my co-workers and I hung out on Zoom and just talked, rather than talk about work. The takeaway there is that there are a lot of folks with a lot of anxiety about the COVID situation, and we share our techniques for coping, and try to make each other laugh and feel less isolated. I shared the basic idea that has been helping me, in the hopes that it will help others and that I can try to provide hope to others. But it was probably the hardest day in terms of anxiety for me. I tried to get outside some and work on the yard and my small trails in our woods, tried to keep Jesus with me and talk with him as I trimmed, exercised with Jenney. 
+
+We also got a lovely letter from our sister-in-law's mother, Jane saying there isn't a day or a meal that goes by that she doesn't pray for us, and a print out of an article about how God does not forsake those who trust in him, and some song lyrics from a song by "The Afters" called "I Will Fear No More". Reading her words brought tears to my eyes, and the article and song were comforting indeed. Jenney and I spent a good portion of our evening talking about it, listening to the song. Then I started writing this.
+
+So yeah, it's been a long week. 
+
+## A note on meditation
+A friend of mine, Dr. Matthew Tift has started providing free guided meditations on Tues/Thur at 8am PT over Zoom. I mentioned before that I was working on a meditation app in virtual reality and have started this. I created a comforting environment in VR and listen to the Zoom call with him and about 10 others. I recorded it to allow people to at least see what it looks like. There's not a lot of action to see of course, but you can at least see what I'm doing, and the audio of the guided meditation is something anyone can benefit from. It's a lovingkindness mediation, which is part of the practice of having good thoughts and feelings for yourself, your loved ones, your enemies, and the entire world.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/k0tkgBNov24" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
