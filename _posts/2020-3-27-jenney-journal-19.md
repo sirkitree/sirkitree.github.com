@@ -7,10 +7,6 @@ published: true
 category: blog, jenney
 ---
 
-- Tues: MRI, quick
-- Wed: Rutter called, Neuro, baby name
-- Thur: Senecal and OB
-
 Since my last post I've had a lot of encouragement from so many people sharing verses with us. I'm compiling a list of them and will share them in their own post. I think the biggest help has been this:
 
 Lay your fears, anxiety, and worries on God. Tell Him about them. Let yourself be afraid and tell Him, knowing you're not strong enough to handle them all. Cry even. Then fill your heart and mind with trust, gratitude, kindness, and love by deciding to trust God, trust that he has a plan through all of this, and that he will not forsake you. Count your blessings and thank those who have enabled those blessings and thanking God for them. This has been a huge help in helping me experience peace. I can feel my anxiety fade as I think of those things I'm grateful for and it doesn't leave room for fear. Then do something kind for someone, or at least think of something you can do that is kind later today, even if it's for yourself. Express your love to someone. Maybe it's a pet, or maybe it's your kids, or your partner, or yourself, but express it through words or actions.
