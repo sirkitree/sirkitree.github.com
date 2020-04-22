@@ -45,7 +45,7 @@ title: Jerad Bitner
       {% for count in (2..paginator.total_pages) %}
         <li class="page page-item">
           {% if count == paginator.page %}
-            <span class="current">{{ count }}</span>
+            <span class="current page-link">{{ count }}</span>
           {% else %}
             <a href="/page{{ count }}" class="page-link">{{ count }}</a>
           {% endif %}
