@@ -23,14 +23,14 @@ title: Jerad Bitner
     {% if paginator.previous_page %}
       <li class="previous page-item">
         {% if paginator.previous_page == 1 %}
-          <a href="/">&laquo;</a>
+          <a href="/" class="page-link">&laquo;</a>
         {% else %}
           <a href="{{ paginator.previous_page_path }}">&laquo;</a>
         {% endif %}
       </li>
     {% else %}
       <li class="previous disabled page-item">
-        <span>&laquo;</span>
+        <span class="page-link">&laquo;</span>
       </li>
     {% endif %}
 
