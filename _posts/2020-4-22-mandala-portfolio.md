@@ -12,11 +12,13 @@ Many of these are done in Virtual Reality, using the Valve Index, Gravity Sketch
 
 Others are created using a Pixel tablet and Sketchpad 5.1
 <style>
+  .pa-carousel-widget {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(405px, 1fr));
+    grid-gap: 1rem;
+  }
   .pa-carousel-widget a {
-    width: 33%;
-    display: block;
-    float: left;
-    margin: 25px;
+    text-align: center;
   }
 </style>
 <div class="pa-carousel-widget"
