@@ -25,3 +25,5 @@ God has brought us this far, I know He won't abandon us now.
 My apologies if I don't get back to anyone, or forget to update you all. I'm crying and in prayer a lot, and trying to be strong enough to just put one foot in front of the other. Jeanne has been a huge source of comfort, as have my neighbors who try to make sure that I'm ok and taking care of myself too. I don't want to do this. But it seems we must. 
 
 Please pray for us, pray we don't break. Pray God will give us the strength to endure the coming weeks. Pray these COVID restrictions loosen up so that I can have help in being with Jenney in one hospital and Marcus in another. Thank God for the healing he has given us so far, and pray that the doctors are making the best decisions possible. Pray that we find moments of peace in this storm.
+
+Thank you to every one how has been praying already, to those sending us food, cards, gifts, and supporting us in so many ways. I hope one day I can repay the incredible generosity we're receiving. This would be so much harder without it. God bless you all.
