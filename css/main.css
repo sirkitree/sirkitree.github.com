@@ -33,3 +33,7 @@ blockquote {
     color: black !important;
   }
 }
+
+.pagination {
+  flex-wrap: wrap;
+}
