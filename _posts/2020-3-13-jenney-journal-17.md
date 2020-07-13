@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Jenney Journal, Part 17
+title: Jenney Journal, part 17
 date: "2020-03-13 05:00"
 comments: true
 published: true
