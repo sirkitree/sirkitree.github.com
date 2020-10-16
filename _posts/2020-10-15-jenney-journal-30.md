@@ -1,0 +1,19 @@
+---
+layout: post
+title: 'Jenney Journal, part 30'
+date: '2020-10-15 05:00'
+comments: true
+published: true
+category: 'blog, jenney'
+---
+Jenney was diagnosed in February of 2020 with stage 4 metastatic melanoma which had spread to her brain. The survival rate of stage 4 metastatic melanoma is about 25%. After 2 brain surgeries, a C-section operation to deliver our son Marcus, an extensive recovery from encephalitis caused by the immune therapy, and hives from a reaction to an antibiotic... there are now no signs of the cancer. We had a Pet scan and an MRI of her brain and they found no signs of the cancer or growth. The visible lumps under her skin in 5 different places are gone. The spot on her lung is gone. The spots in her brain are gone. There is still scar tissue from the surgeries in her brain but they show no signs of growth. 9 months after what could have been a death sentence, Jenney is healed!
+
+This miracle did not come cheaply. So many friends and family have prayed and petitioned our Lord and savior Jesus Christ. They've supported us through gifts, cards, prayers, encouragement, time, and love. Thank you. Know that your thoughts and prayers did not go unanswered. Know that God is good, He is real, and He listens to our prayers. We've struggled so hard to find and hold onto what little faith we could find, and the Lord heard our prayers. Thank you Jesus, for working through the doctors, through Jim Allison who discovered immunotherapy, and through our church; the body of Christ. I will spend the rest of my life thanking Him, praising Him, and finding ways to serve Him.
+
+Jenney is still on a fairly high dose of steroids currently, an antibiotic, an antiviral, and antacid - all preventative measures. The steroid causes acid buildup, and lowers white blood cell count, which is what counteracts her amped up white blood cells from attacking her brain again. This does however cause the jitters, and confusion making it hard to think at times. But we're lowering the dose by about 2mg per week right now and at that rate she should only have to take them another month at the most. We're hopeful we can lower the dosage quicker soon and be off of them.
+
+So many miracles this year. Coming out of the first brain surgery. Having Marcus. Recovering from the second brain surgery. Recovering from the encephalitis. Recovering from stage 4 cancer! 
+
+I am in awe of our God, the God of Abraham, Issac, and Jacob. We're getting to know Him much better in our household, by reading the Bible almost every day to our children, by having consistent quiet time with Him, and by watching renditions of the Gospels on Amazon Prime Video. I'm currently going through Matthew, and reading "Knowing God". I thank God every morning when I wake up next to Jenney and try to keep Him with me all day, as I work, as I teach my children, praying with my family at meals and before bed time. We're instilling rituals into our daily lives that incorporate learning about Him and making Him a part of everything we can. I'm hoping to start serving more in our church by lending my time and technical talents in various ways. I've joined a small group and hope to help with family ministries as well. I'm learning more about giving and living for God, and not just my career any longer. I'm learning to ask God where He wants me to go, and what He wants me to do, and not just doing what I want. I'm excited for the future and what it may hold for me, my family, my friends, and my community. Here I am Lord, where do you want me to go?
+
+I've also started seeing a therapist. There is a lot of processing I need to do around the events of this year. So far it's been good in that I can share things with my therapist in a way that I cannot with others, and receive some tools for handling myself in healthier ways. It's good to have help in this area. Improving my mental health will help those around me as well.
