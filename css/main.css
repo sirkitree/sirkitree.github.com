@@ -189,12 +189,26 @@ nav a:focus {
   margin: 3rem 0;
   padding-bottom: 3rem;
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 1;
+}
+
+.post header {
+  position: static;
+  z-index: auto;
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
 }
 
 .post-title {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  position: static;
 }
 
 .post-title a {
