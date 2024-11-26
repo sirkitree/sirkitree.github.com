@@ -3,45 +3,46 @@ layout: default
 title: Jerad Bitner
 ---
 
-<div id="home">
-  {% for post in site.posts %}
+<div class="posts">
+  {% assign posts = paginator.posts | default: site.posts %}
+  {% for post in posts %}
     <article class="post">
-      <header>
-        <h2 class='subheader'><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <time pubdate="pubdate" class="meta">{{ post.date | date_to_string }}</time>
-      </header>
-
-      {{ post.excerpt }} ... <a href="{{ post.url }}">read on</a>
-
+      <h2 class="post-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+      <div class="post-meta">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
+      </div>
+      <div class="post-content">
+        {{ post.excerpt }} 
+        <a href="{{ post.url }}" class="read-more">read on</a>
+      </div>
     </article>
-    <hr />
   {% endfor %}
+
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
+    {% else %}
+      <span class="disabled">&laquo; Previous</span>
+    {% endif %}
+
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="current">{{ page }}</span>
+      {% elsif page == 1 %}
+        <a href="{{ '/' | relative_url }}">{{ page }}</a>
+      {% else %}
+        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+    {% else %}
+      <span class="disabled">Next &raquo;</span>
+    {% endif %}
+  </div>
+  {% endif %}
 </div>
-
-<!-- Add this somewhere in your header or navigation area -->
-<button id="theme-toggle" aria-label="Toggle dark mode">
-  🌙
-</button>
-
-<!-- Add this script before closing body tag -->
-<script>
-  // Set default theme
-  document.documentElement.setAttribute('data-theme', 'dark');
-  
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
-    
-    // Save preference
-    localStorage.setItem('theme', newTheme);
-  });
-
-  // Check for saved theme preference
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
-</script>
