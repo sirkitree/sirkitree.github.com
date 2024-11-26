@@ -17,3 +17,31 @@ title: Jerad Bitner
     <hr />
   {% endfor %}
 </div>
+
+<!-- Add this somewhere in your header or navigation area -->
+<button id="theme-toggle" aria-label="Toggle dark mode">
+  🌙
+</button>
+
+<!-- Add this script before closing body tag -->
+<script>
+  // Set default theme
+  document.documentElement.setAttribute('data-theme', 'dark');
+  
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+    
+    // Save preference
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+</script>

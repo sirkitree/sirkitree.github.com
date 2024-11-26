@@ -24,6 +24,13 @@ Draken chuckled to himself once more, wiped the blood spatters from his face and
 ">
         <meta name="author" content="Jerad Bitner" />
 
+        <!-- Theme initialization -->
+        <script>
+          // Check for saved theme preference, otherwise default to dark
+          const savedTheme = localStorage.getItem('theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        </script>
+
         <!-- For Facebook -->
         <meta property="og:title" content="Draken's battle" />
         <meta property="og:type" content="article" />
@@ -403,10 +410,6 @@ Draken chuckled to himself once more, wiped the blood spatters from his face and
                   
                     
                     
-                      
-                    
-                      
-                    
                   
                     
                     
@@ -776,6 +779,9 @@ Draken chuckled to himself once more, wiped the blood spatters from his face and
                 <a class="nav-link" href="/archive">Archive</a>
               </li>
             </ul>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+              🌙
+            </button>
           </div>
         </div>
       </nav>
@@ -865,5 +871,21 @@ Draken chuckled to himself once more, wiped the blood spatters from his face and
       </footer>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      
+      <!-- Theme toggle script -->
+      <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
+        
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          document.documentElement.setAttribute('data-theme', newTheme);
+          themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+          
+          localStorage.setItem('theme', newTheme);
+        });
+      </script>
     </body>
 </html>

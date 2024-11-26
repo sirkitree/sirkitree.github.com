@@ -1,0 +1,26 @@
+---
+layout: default
+title: Tags
+---
+
+<h1>All Tags</h1>
+
+<div class="tag-cloud">
+  {% for tag in site.tags %}
+    <a href="/tags/{{ tag[0] }}" class="tag">{{ tag[0] }} ({{ tag[1].size }})</a>
+  {% endfor %}
+</div>
+
+<div class="tag-list">
+  {% for tag in site.tags %}
+    <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+    <ul>
+      {% for post in tag[1] %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <span class="date">({{ post.date | date: "%B %-d, %Y" }})</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div> 

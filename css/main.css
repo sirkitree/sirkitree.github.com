@@ -1,21 +1,57 @@
-:root {
-  --primary-color: #284a6f;
-  --text-color: #2c3e50;
+/* Theme variables */
+:root[data-theme="light"] {
   --bg-color: #ffffff;
-  --nav-bg: rgba(255, 255, 255, 0.9);
-  --code-bg: #f8f9fa;
-  --blockquote-color: #6c757d;
-  --link-color: var(--primary-color);
-  --transition-speed: 0.3s;
+  --text-color: #333333;
+  --link-color: #0066cc;
+  --code-bg: #f5f5f5;
+  --navbar-bg: #f8f9fa;
 }
 
-[data-bs-theme=dark] {
-  --text-color: #e9ecef;
+:root[data-theme="dark"] {
   --bg-color: #1a1a1a;
-  --nav-bg: rgba(26, 26, 26, 0.9);
+  --text-color: #e0e0e0;
+  --link-color: #66b3ff;
   --code-bg: #2d2d2d;
-  --blockquote-color: #adb5bd;
-  --link-color: #7eb6ff;
+  --navbar-bg: #2d2d2d;
+}
+
+/* Set dark theme as default */
+:root {
+  color-scheme: dark;
+}
+
+/* Theme-aware styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color) !important;
+}
+
+pre, code {
+  background-color: var(--code-bg);
+}
+
+.navbar {
+  background-color: var(--navbar-bg);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  color: var(--text-color);
+}
+
+#theme-toggle:hover {
+  background-color: var(--code-bg);
 }
 
 /* Base Styles */

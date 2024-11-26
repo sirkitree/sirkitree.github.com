@@ -3,35 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>jQuery checkbox goodness</title>
-        <meta name="description" content="I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)
-
-
-$(document).ready( function() {
-  $('a#select_all').click( function() {
-    $('input:checkbox').each( function() {
-      this.checked = !this.checked;
-    });
-    return false;
-  });
-});
-
-
-The first item to note is that jQuery created pseudo classes for input.
-
-$('input:checkbox');
-...
-$('input:textbox');
-... etc.
-
-
-The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it’s current value.
-
-this.checked = !this.checked;
-
-
-Works great and it’s short and sweet. Who loves jQuery?
-">
+        <title>Tags</title>
+        <meta name="description" content="">
         <meta name="author" content="Jerad Bitner" />
 
         <!-- Theme initialization -->
@@ -42,69 +15,15 @@ Works great and it’s short and sweet. Who loves jQuery?
         </script>
 
         <!-- For Facebook -->
-        <meta property="og:title" content="jQuery checkbox goodness" />
+        <meta property="og:title" content="Tags" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="/blog/jquery-checkbox-goodness" />
-        <meta property="og:description" content="I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)
-
-
-$(document).ready( function() {
-  $('a#select_all').click( function() {
-    $('input:checkbox').each( function() {
-      this.checked = !this.checked;
-    });
-    return false;
-  });
-});
-
-
-The first item to note is that jQuery created pseudo classes for input.
-
-$('input:checkbox');
-...
-$('input:textbox');
-... etc.
-
-
-The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it’s current value.
-
-this.checked = !this.checked;
-
-
-Works great and it’s short and sweet. Who loves jQuery?
-" />
+        <meta property="og:url" content="/tags/" />
+        <meta property="og:description" content="" />
 
         <!-- For Twitter -->
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="jQuery checkbox goodness" />
-        <meta name="twitter:description" content="I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)
-
-
-$(document).ready( function() {
-  $('a#select_all').click( function() {
-    $('input:checkbox').each( function() {
-      this.checked = !this.checked;
-    });
-    return false;
-  });
-});
-
-
-The first item to note is that jQuery created pseudo classes for input.
-
-$('input:checkbox');
-...
-$('input:textbox');
-... etc.
-
-
-The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it’s current value.
-
-this.checked = !this.checked;
-
-
-Works great and it’s short and sweet. Who loves jQuery?
-" />
+        <meta name="twitter:title" content="Tags" />
+        <meta name="twitter:description" content="" />
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -817,78 +736,63 @@ Works great and it’s short and sweet. Who loves jQuery?
       </nav>
 
       <main class="container py-4">
-        <article class="post">
-  <header>
-    <h1 class="subheader">
-      <a href="http://prose.io/#sirkitree/sirkitree.github.com/edit/master/_posts/2007-06-06-jquery-checkbox-goodness.md" class="pencil" title="Edit with Prose.io"><span>Edit</span></a>
-      jQuery checkbox goodness
-    </h1>
+        <h1>All Tags</h1>
 
-    <div class="meta mb-4">
-      <time pubdate="pubdate">June 06, 2007</time>
+<div class="tag-cloud">
+  
+    <a href="/tags/threejs" class="tag">threejs (1)</a>
+  
+    <a href="/tags/webvr" class="tag">webvr (1)</a>
+  
+    <a href="/tags/javascript" class="tag">javascript (1)</a>
+  
+    <a href="/tags/3d" class="tag">3d (1)</a>
+  
+</div>
+
+<div class="tag-list">
+  
+    <h2 id="threejs">threejs</h2>
+    <ul>
       
-        <span class="ms-2 me-2">•</span>
-        <span class="category">blog</span>
+        <li>
+          <a href="/2015/10/VR/">THREE.js object and material loading</a>
+          <span class="date">(October 31, 2015)</span>
+        </li>
       
-    </div>
-  </header>
-
-  <section class="content">
-    <p>I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)</p>
-
-<pre>
-$(document).ready( function() {
-  $('a#select_all').click( function() {
-    $('input:checkbox').each( function() {
-      this.checked = !this.checked;
-    });
-    return false;
-  });
-});
-</pre>
-
-<p>The first item to note is that jQuery created pseudo classes for input.</p>
-<pre>
-$('input:checkbox');
-...
-$('input:textbox');
-... etc.
-</pre>
-
-<p>The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it’s current value.</p>
-<pre>
-this.checked = !this.checked;
-</pre>
-
-<p>Works great and it’s short and sweet. Who loves jQuery?</p>
-
-  </section>  
+    </ul>
   
+    <h2 id="webvr">webvr</h2>
+    <ul>
+      
+        <li>
+          <a href="/2015/10/VR/">THREE.js object and material loading</a>
+          <span class="date">(October 31, 2015)</span>
+        </li>
+      
+    </ul>
   
-  <section class="comments mt-5">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'jbitner';
-        var disqus_url = window.location.href;
-        if (disqus_url.indexOf('#') >= 0) {
-          disqus_url = disqus_url.split('#')[0];
-        }
-        var last_char = disqus_url[disqus_url.length-1]
-        if (last_char == '/') {
-          disqus_url = disqus_url.substring(0, disqus_url.length-1);
-        }
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </section>
+    <h2 id="javascript">javascript</h2>
+    <ul>
+      
+        <li>
+          <a href="/2015/10/VR/">THREE.js object and material loading</a>
+          <span class="date">(October 31, 2015)</span>
+        </li>
+      
+    </ul>
   
-</article>
-
+    <h2 id="3d">3d</h2>
+    <ul>
+      
+        <li>
+          <a href="/2015/10/VR/">THREE.js object and material loading</a>
+          <span class="date">(October 31, 2015)</span>
+        </li>
+      
+    </ul>
+  
+</div> 
       </main>
 
       <footer class="footer mt-5 py-3">
