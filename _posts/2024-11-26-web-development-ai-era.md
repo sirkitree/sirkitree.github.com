@@ -18,7 +18,7 @@ What really gets me excited is the emergence of what I call "AI-native" web expe
 The technical implications are profound:
 
 - Edge computing is becoming crucial as more processing needs to happen closer to the user
-- We're seeing the emergence of new web standards specifically designed for AI integration, like [Anthropic's Method of Constitutional AI](https://www.anthropic.com/index/constitutional-ai-the-next-step) and [W3C's work on AI integration](https://www.w3.org/community/aiml/)
+- We're seeing the emergence of new web standards specifically designed for AI integration, like [Constitutional AI](https://www.constitutional.ai/) and [W3C's Human-Centric AI Community Group](https://www.w3.org/community/humancentricai/)
 - Privacy and security considerations are evolving rapidly as we handle more complex, AI-driven interactions
 
 The most intellectually stimulating challenges right now revolve around bridging traditional web development and AI capabilities. How do we maintain performance when we're running increasingly complex AI operations? How do we ensure consistency across different AI systems? These are the kinds of problems that energize our field and drive innovation forward.
