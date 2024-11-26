@@ -1,194 +1,398 @@
-/*****************************************************************************/
-/*
-/* Common
-/*
-/*****************************************************************************/
-
-.gravatar {
-  margin-left: 12px;
+/* Theme variables */
+:root[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --meta-color: #666666;
+  --link-color: #e31818;
+  --code-bg: #f6f8fa;
+  --border-color: #eee;
+  --header-bg: #ffffff;
+  --footer-bg: #f6f8fa;
+  --nav-link-color: #555555;
+  --post-title-color: #333333;
 }
 
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
-ul.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
+:root[data-theme="dark"] {
+  --bg-color: #1c1c1c;
+  --text-color: #ffffff;
+  --meta-color: #999999;
+  --link-color: #ff6b6b;
+  --code-bg: #2d2d2d;
+  --border-color: #333333;
+  --header-bg: #1c1c1c;
+  --footer-bg: #2d2d2d;
+  --nav-link-color: #ffffff;
+  --post-title-color: #ff6b6b;
 }
 
-ul.posts li {
-  line-height: 1.75em;
+/* Set dark theme as default */
+:root {
+  color-scheme: dark;
 }
 
-ul.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
+/* Reset and base styles */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
-
-.site {
-  font-size: 115%;
-  width: 42em;
-  margin: 5em auto 2em;
-  line-height: 1.5em;
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.site p {
-  text-align: justify;
+/* Header and Navigation Layout */
+header {
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(28, 28, 28, 0.8); /* Dark mode background with opacity */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s;
 }
 
-.site.large {
-  width: 100%;
+/* Adjust header background based on theme */
+:root[data-theme="light"] header {
+  background: rgba(255, 255, 255, 0.8);
 }
 
-.site .header a {
-  font-weight: bold;
+:root[data-theme="dark"] header {
+  background: rgba(28, 28, 28, 0.8);
+}
+
+/* Add some spacing after the header for content */
+main {
+  padding-top: 1rem;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Profile and Title */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+header h1 a {
+  color: var(--text-color);
   text-decoration: none;
 }
 
-.site .header h1.title {
-  display: inline-block;
-  margin-bottom: 2em;
+/* Navigation */
+nav {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
-.site .header h1.title a {
-  color: #a00;
+nav a {
+  color: var(--nav-link-color);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: color 0.2s, background-color 0.2s;
 }
 
-.site .header h1.title a:hover {
-  color: #000;
+nav a:hover,
+nav a:focus {
+  color: var(--link-color);
+  background: transparent;
 }
 
-.site .header a.extra {
-  color: #aaa;
-  margin-left: 1em;
+nav a:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
 
-.site .header a.extra:hover {
-  color: #000;
+/* Posts */
+.post {
+  margin: 3rem 0;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.site .meta {
-  color: #aaa;
+.post-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
-.site .footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
-  overflow: hidden;
+.post-title a {
+  color: var(--post-title-color);
+  text-decoration: none;
 }
 
-.site .footer .contact {
-  float: left;
-  margin-right: 3em;
+.post-title a:hover {
+  color: var(--link-color);
 }
 
-.site .footer .contact a {
-  color: #8085C1;
+.post-meta {
+  color: var(--meta-color);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
 }
 
-.site .footer .rss {
-  margin-top: 1.1em;
-  margin-right: -.2em;
-  float: right;
+.post-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
-.site .footer .rss img {
-  border: 0;
+/* Code blocks */
+pre, code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
-
-/* standard */
-.post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
+pre {
+  padding: 1rem;
+  overflow-x: auto;
 }
 
-.post ul, .post ol {
-  margin-left: 1.35em;
+code {
+  padding: 0.2rem 0.4rem;
 }
 
-.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
 }
 
-.post pre code {
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: var(--footer-bg);
+  padding: 3rem 0;
+  margin-top: 4rem;
+  color: var(--meta-color);
+}
+
+/* Theme toggle */
+#theme-toggle {
+  background: transparent;
   border: none;
+  color: var(--nav-link-color);
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
 }
 
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
+#theme-toggle:hover,
+#theme-toggle:focus {
+  color: var(--link-color);
+  outline: none;
 }
 
-.post pre.terminal code {
-  background-color: #333;
+#theme-toggle:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
 
-.post a.pencil {
-  background-image: url(../img/prose-edit.png);
-  width: 41px;
-  height: 41px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .post-title {
+    font-size: 1.75rem;
+  }
+  
+  nav {
+    gap: 1rem;
+  }
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--header-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  min-width: 200px;
+  max-width: 300px;
+  max-height: 70vh; /* Limit height to 70% of viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  z-index: 1000;
+  list-style: none;
+  /* Add smooth scrolling */
+  scroll-behavior: smooth;
+  /* Style the scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+/* Webkit scrollbar styles */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+  border: 2px solid var(--header-bg);
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu.show {
   display: block;
-  text-indent: -9000px;
-  float: right;
 }
 
-.post .content img {
-  width: 100%;
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--nav-link-color);
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-/*
-/* New
-/*/
-.preview-title {
-  margin-top: 30px;
-  height: 24px;
-}
-.preview-body {
-  margin-top: 52px;
-  min-height: 30em;
-}
-.publish {
-  width: 40%;
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: var(--link-color);
+  background-color: var(--code-bg);
 }
 
-/*
-/* Sidebar
-/*/
-.sidebar {
-  float: right;
+/* Footer layout */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: black !important; 
-    color: #aaa !important;
+.footer-info,
+.footer-links {
+  flex: 1;
+}
+
+.footer-links {
+  text-align: right;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .footer-links {
+    text-align: left;
   }
 }
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: white !important;
-    color: black !important;
-  }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0;
+}
+
+.pagination a,
+.pagination span {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.pagination a:hover {
+  background: var(--code-bg);
+  color: var(--link-color);
+  border-color: var(--link-color);
+}
+
+.pagination .current {
+  background: var(--link-color);
+  color: var(--bg-color);
+  border-color: var(--link-color);
+}
+
+.pagination .disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

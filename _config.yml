@@ -2,9 +2,23 @@ url: http://jeradbitner.com
 name: Jerad Bitner
 author: Jerad Bitner
 
-markdown: redcarpet
-pygments: true
+# Change markdown processor from redcarpet to kramdown
+markdown: kramdown
+
+# Add jekyll-paginate to plugins list if you're using pagination
+plugins:
+  - jekyll-paginate
+
+# Pagination settings
 paginate: 5
+paginate_path: "/page:num/"
+
+# Show future posts
+future: true
+
+# Site settings
+timezone: America/New_York
+encoding: utf-8
 
 root: /
 permalink: /:year/:month/:title/
@@ -12,4 +26,3 @@ permalink: /:year/:month/:title/
 #GitHub Overrides
 safe: true
 lsi: false
-pygments: true

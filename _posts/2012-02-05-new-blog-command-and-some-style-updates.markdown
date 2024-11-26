@@ -9,4 +9,15 @@ I love Github. The more I use it, the more I love it. As a form of endearment, I
 
 I've also been looking for a quicker way to blog on a whim, and having to switch into my octopress directory, and then type `new_post["title of my post"]` was still just two steps too much. So I pulled up my `.bash_profile` and started scripting. Here's what I came up with:
 
-{% gist 1747860 %}
+```bash
+Add this to your .bash_profile
+function blog() {
+if [ -z "$1" ]; then
+echo "Usage: blog \"post title\""
+return 1
+fi
+cd ~/Sites/jeradbitner.com
+rake new_post["$1"]
+mate .
+}
+```

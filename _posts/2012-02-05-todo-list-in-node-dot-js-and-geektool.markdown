@@ -15,7 +15,17 @@ I succeeded in [converting the `write` command to `export`](https://github.com/v
 
 The project is currently using [Sinon.JS](http://sinonjs.org/) for testing, and even though the API seems pretty robust, and the examples coherent, I'm simply failing at figuring out how to test file creation with it. So far all I have is a stub:
 
-{% gist 1747985 %}
+```javascript
+var sinon = require('sinon');
+var fs = require('fs');
+describe('todo export', function() {
+it('should write todo list to file', function() {
+var mock = sinon.mock(fs);
+mock.expects('writeFile').once();
+// TODO: Complete this test
+});
+});
+```
 
 However, it is working well without a test at this point, and I have a pretty todo list on my desktop! :)
 

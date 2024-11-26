@@ -3,65 +3,46 @@ layout: default
 title: Jerad Bitner
 ---
 
-<div id="home">
-  {% for post in paginator.posts %}
+<div class="posts">
+  {% assign posts = paginator.posts | default: site.posts %}
+  {% for post in posts %}
     <article class="post">
-      <header>
-        <h2 class='subheader'><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <time pubdate="pubdate" class="meta">{{ post.date | date_to_string }}</time>
-      </header>
-
-      {{ post.excerpt }} ... <a href="{{ post.url }}">read on</a>
-
+      <h2 class="post-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+      <div class="post-meta">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
+      </div>
+      <div class="post-content">
+        {{ post.excerpt }} 
+        <a href="{{ post.url }}" class="read-more">read on</a>
+      </div>
     </article>
-    <hr />
   {% endfor %}
 
-  <!-- Pagination links -->
-  <div id="post-pagination" class="pagination-centered">
-    <ul class="pagination pagination-sm">
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
     {% if paginator.previous_page %}
-      <li class="previous page-item">
-        {% if paginator.previous_page == 1 %}
-          <a href="/" class="page-link">&laquo;</a>
-        {% else %}
-          <a href="{{ paginator.previous_page_path }}" class="page-link">&laquo;</a>
-        {% endif %}
-      </li>
+      <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
     {% else %}
-      <li class="previous disabled page-item">
-        <span class="page-link">&laquo;</span>
-      </li>
+      <span class="disabled">&laquo; Previous</span>
     {% endif %}
 
-      <li class="page page-item">
-        {% if paginator.page == 1 %}
-          <span class="current-page page-link">1</span>
-        {% else %}
-          <a href="/" class="page-link">1</a>
-        {% endif %}
-      </li>
-
-      {% for count in (2..paginator.total_pages) %}
-        <li class="page page-item">
-          {% if count == paginator.page %}
-            <span class="current page-link">{{ count }}</span>
-          {% else %}
-            <a href="/page{{ count }}" class="page-link">{{ count }}</a>
-          {% endif %}
-        </li>
-      {% endfor %}
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="current">{{ page }}</span>
+      {% elsif page == 1 %}
+        <a href="{{ '/' | relative_url }}">{{ page }}</a>
+      {% else %}
+        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
 
     {% if paginator.next_page %}
-      <li class="next page-item">
-        <a href="{{ paginator.next_page_path }}" class="page-link">&raquo;</a>
-      </li>
+      <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
     {% else %}
-      <li class="next disabled page-item">
-        <span class="page-link">&raquo;</span>
-      </li>
+      <span class="disabled">Next &raquo;</span>
     {% endif %}
-    </ul>
-  </div>  
-
+  </div>
+  {% endif %}
 </div>
