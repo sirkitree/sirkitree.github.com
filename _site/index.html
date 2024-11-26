@@ -1,44 +1,1263 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Jerad Bitner</title>
-        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="">
+        <meta name="author" content="Jerad Bitner" />
+
+        <!-- For Facebook -->
+        <meta property="og:title" content="Jerad Bitner" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="/" />
+        <meta property="og:description" content="" />
+
+        <!-- For Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Jerad Bitner" />
+        <meta name="twitter:description" content="" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
 
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
     </head>
     <body>
+      <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="/">
+            <img class='gravatar rounded-circle me-2' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=45" alt="Jerad Bitner" />
+            Jerad Bitner
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
 
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <img class='gravatar' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=45" /><a class="navbar-brand" href="/">Jerad Bitner</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/archive">Archive</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Jenney Journals
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-1/">Jenney Journal, part 1</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-2/">Jenney Journal, part 2</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-3/">Jenney Journal, part 3</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-4/">Jenney Journal, part 4</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-5/">Jenney Journal, part 5</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-6/">Jenney Journal, part 6</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-7/">Jenney Journal, part 7</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-8/">Jenney Journal, part 8</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-9/">Jenney Journal, part 9</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-10/">Jenney Journal, part 10</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-11/">Jenney Journal, part 11</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-12/">Jenney Journal, part 12</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-13/">Jenney Journal, part 13</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-14/">Jenney Journal, part 14</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-15/">Jenney Journal, part 15</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-16/">Jenney Journal, part 16</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-team/">Jenney Journal, Jenney's Team</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-17/">Jenney Journal, part 17</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-18/">Jenney Journal, part 18</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/verse-collection/">Verse Collection</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-19/">Jenney Journal, part 19</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/04/jenney-journal-20/">Jenney Journal, part 20</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-21/">Jenney Journal, part 21</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-22/">Jenney Journal, part 22</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-23/">Jenney Journal, part 23</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-24/">Jenney Journal, part 24</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-25/">Jenney Journal, part 25</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/06/jenney-journal-26/">Jenney Journal, part 26</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/07/jenney-journal-27/">Jenney Journal, part 27</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/08/jenney-journal-28/">Jenney Journal, part 28</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/09/jenney-journal-29/">Jenney Journal, part 29</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/10/jenney-journal-30/">Jenney Journal, part 30</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/11/jenney-journal-31/">Jenney Journal, part 31</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2021/01/jenney-journal-32/">Jenney Journal, part 32</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                </ul>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/archive">Archive</a>
+              </li>
             </ul>
-          </div><!--/.navbar-collapse -->
+          </div>
         </div>
-      </div>
+      </nav>
 
-      <div class="container">
-        <div class="site">
-          <div id="home">
+      <main class="container py-4">
+        <div id="home">
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2024/11/eliza-and-the-ai-frontier/">eliza and the AI Frontier</a></h2>
+        <time pubdate="pubdate" class="meta">26 Nov 2024</time>
+      </header>
+
+      <p>The world of technology never ceases to amaze me with its rapid evolution and unexpected convergences. Recently, I’ve been deeply involved with an exciting project at the intersection of artificial intelligence and cryptocurrency - the <a href="https://github.com/ai16z/eliza">@ai16z/eliza</a> project.</p>
+ ... <a href="/2024/11/eliza-and-the-ai-frontier/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2021/01/jenney-journal-32/">Jenney Journal, part 32</a></h2>
+        <time pubdate="pubdate" class="meta">31 Jan 2021</time>
+      </header>
+
+      <p>Things have been going really well as Jenney heals at home. She’s back to doing everything she was always able to do, and our latest scans have shown no signs of cancer growth! Praise God!</p>
+ ... <a href="/2021/01/jenney-journal-32/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/11/candala/">Candala</a></h2>
+        <time pubdate="pubdate" class="meta">26 Nov 2020</time>
+      </header>
+
+      <p><img src="https://lh3.googleusercontent.com/TrO6c01iA9BqHdFiyg8DzlIJRJSQi5hQxk7cpqKaHjY7E0XPYYy6DxfJS9Ucwcs55GvDQDxqU2F3ArLurQASUR5qK9DjEApDpSopFWmUBqxj5wfxm6u1QmU7FqpmuNqUtx_NciJhbnDNYnkmzAf51yXJTjL21F9l93O9dZ9l9spyiFue-9fdZ254N5C0iSqzZcr2Ytej3_Fy_p58XfdA4zdEJUYSdM1hryRCrFHdJIzn5kpH5y4bPgoZBHdOh1aempxOST5RjATxqj-f_15wIGJrWvL4C7re085zx12G54h_9XRsWmIEqBhDxzZdcA9zW_C0dyTfnlSrzhpwughxNm0U544_L5ODLHQygrwcCnJJYgkg7kjYjJd-56Q4Dg_prHVLRQ87qS2eqiCk91vQOSS5eMfimZ5uRBnQkyvtjl55RoW0uKR-IR-kJRAJ8IXKCWVS3tdqSLzJOiwROPb7CtOLIbnEx1lr6AN6nSqey8NIaM3dJavoqEo44aNyrA8gg18bMFEgKQthRcbvTqoA-nuRxZKfng00lJUFpv5gDCshUwuvsBEVsHM81EeXlBjHh8pMViXaCjoYuMT2M9mx4fYe3lTacE3JQkqhUyjUKanRP8vb9_TJFICZi9pWeJF1TrflgPBy7Yqf8e0hzSSP3az3s5vqNhDJ01ua2rTovp-J8teMwnRhtu0tmCDEIz9ishIUTRGQ4OZ-AavJ2s_CwKZSSWGjBTKLHQP0u_admsJ6-Hudp_kzbKvJ=w1440-h810-no?authuser=0" atl="At the end of February 2020, my wife underwent surgery to remove a metastatic melanoma tumor from her brain. She has made a full recovery from the surgery, but our fight with cancer is just starting. " style="width:100%" /></p>
+ ... <a href="/2020/11/candala/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/11/jenney-journal-31/">Jenney Journal, part 31</a></h2>
+        <time pubdate="pubdate" class="meta">08 Nov 2020</time>
+      </header>
+
+      <p>On Oct 21, Jenney started to get nauseous and diarrhea. She became very dehydrated quickly, and had a seizure. I called our oncologist who said we should call 911 and get her into the ER. We spent the day in the ER where they ran various tests and could find no real cause for the seizure. They started her on Kepra and sent us home. The diarrhea continued. Imodium had no effect. Stronger medications had no effect. I had to take her in every other day to get an IV for fluids, and her potassium keeps getting low. Finally, a week after having constant diarrhea (10-20 times per day) the oncologist said she needed to be admitted to the hospital.</p>
+ ... <a href="/2020/11/jenney-journal-31/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/11/sadness/">Sadness</a></h2>
+        <time pubdate="pubdate" class="meta">05 Nov 2020</time>
+      </header>
+
+      <p><img src="https://lh3.googleusercontent.com/FZd8RxE9LXfAgQnQjOH_Yca84IDTJVazCY4oxZ8EmbjSK_OIuMiyRLsthnArA1AIImyVmPPZXcKGSt38a6W7Wa-QuljMeTgXV5KJeP1l9GWszpLw5FHebpvCXJDYA9Fv6VkXIy90snx6YnxilVm1Fs3yIAONvYe4xuA24KvEoGVb8KxFcK7IStdVwqDPY_Invzn8l7ISX_Fquf9oBmUZ96GESMFCzrBxfhSPTU9DezgDIgstHjFa6rKuPfg4-lccE0RiqPEQ3o_gf6kfEujfMSDivptKb2MWZJQ8iY8DKt5A3CPEGkTW8wD9wirlmypVndsj-EhkOoaNZbkJNR4fp2Np3rcxiZdzEgVb_aUp_tQRP2YXCqhzXpojLtrjOWLYqBzc9O50wZ4cVpObSv10EZ55Xsymy9agzXTYNMQGSGR4hUdx7XLDpWyTpGQSsNY--AtvQVpDC7gxVhgNmf880j0qFlMvOGcz-ctXuwDNJ7jXf4ttisfsa2QJV02rP-pFzpD17WNOaYuUEivkG7Kft-zvWEPn1NycQi3VlkrS5r2JkitPZUyFsjVtle7urmptJt6jHerfhll3I9LGVacxHp_yuiSKAEv0-W-BDlcnV_CZl7K9LclsGIWB-dus6QBnToYhslzmhO36KiDv0sL5k5q_R6l0rcIOIWfGVJBDMEKgxzYhVF91S9SIVEgZWlOI7SnIPdhM52Ejw986cQZrjuV7J6KGysCC5OSpGmDXu9V38_LClzuJWpQ=w872-h756-no?authuser=0" /></p>
+ ... <a href="/2020/11/sadness/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/10/jenney-journal-30/">Jenney Journal, part 30</a></h2>
+        <time pubdate="pubdate" class="meta">15 Oct 2020</time>
+      </header>
+
+      <p>Jenney was diagnosed in February of 2020 with stage 4 metastatic melanoma which had spread to her brain. The survival rate of stage 4 metastatic melanoma is about 25%. After 2 brain surgeries, a C-section operation to deliver our son Marcus, an extensive recovery from encephalitis caused by the immune therapy, and hives from a reaction to an antibiotic… there are now no signs of the cancer. We had a Pet scan and an MRI of her brain and they found no signs of the cancer or growth. The visible lumps under her skin in 5 different places are gone. The spot on her lung is gone. The spots in her brain are gone. There is still scar tissue from the surgeries in her brain but they show no signs of growth. 9 months after what could have been a death sentence, Jenney is healed!</p>
+ ... <a href="/2020/10/jenney-journal-30/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/09/jenney-journal-29/">Jenney Journal, part 29</a></h2>
+        <time pubdate="pubdate" class="meta">04 Sep 2020</time>
+      </header>
+
+      <p>It’s been a full three weeks since I last wrote. In that time Jenney was</p>
+<ul>
+  <li>in the hospital for a total of 10 days,</li>
+  <li>returned home on the 21st,</li>
+  <li>spent time recovering at home,</li>
+  <li>developed insomnia; and</li>
+  <li>had an alergic reaction to one of her medications resulting in hives.</li>
+</ul>
+ ... <a href="/2020/09/jenney-journal-29/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/08/jenney-journal-28/">Jenney Journal, part 28</a></h2>
+        <time pubdate="pubdate" class="meta">14 Aug 2020</time>
+      </header>
+
+      <p>I believe that Jenney will be healed, fully and completely, and by the grace of God will see her children grow and meet her grandchildren.</p>
+ ... <a href="/2020/08/jenney-journal-28/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/07/jenney-journal-27/">Jenney Journal, part 27</a></h2>
+        <time pubdate="pubdate" class="meta">12 Jul 2020</time>
+      </header>
+
+      <p>This past month has been a blessing. It reminds me of April which was a calm in the eye of the storm as Jenney recovered from her first brain surgery. We knew there would be the other side of the storm to go through, knowing Marcus was going to be born and that we would have to start treatments, but we didn’t know it was going to be so extremely harrowing with the additional brain surgery. But this last half of June and first half of July have been like April, with not only Jenney recovering again, but also with Marcus growing so big and so strong.</p>
+ ... <a href="/2020/07/jenney-journal-27/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/06/jenney-journal-26/">Jenney Journal, part 26</a></h2>
+        <time pubdate="pubdate" class="meta">08 Jun 2020</time>
+      </header>
+
+      <p>Looking for words to describe the past couple of weeks; stressful, joyful at times, peaceful, some frustrations, a lot of gratitude. Overall Jenney continues to recover from her second craniotomy remarkably well.</p>
+ ... <a href="/2020/06/jenney-journal-26/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/06/pentecost/">Pentecost</a></h2>
+        <time pubdate="pubdate" class="meta">02 Jun 2020</time>
+      </header>
+
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dead and gone are the aspirations of self
+  a new career
+  selfish desires
+  a life of control
+Born anew into a life of service and care-giving to 
+  my God 
+  my family
+  the body of Christ
+Grieving for this loss
+  the time to adjust - incalculable - has begun 
+Gratitude for all that I gain
+  grace and peace
+  a new life grunting and growing
+  maturity and strength
+  everlasting life and joy
+A new spirit enters as 
+  my soul given over to the incarnation
+  acceptance over struggle
+  trust over control
+  satisfaction over anxiety
+  generosity over accumulation
+I am undone, and glad of it
+</code></pre></div></div>
+ ... <a href="/2020/06/pentecost/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/05/jenney-journal-25/">Jenney Journal, part 25</a></h2>
+        <time pubdate="pubdate" class="meta">20 May 2020</time>
+      </header>
+
+      <p>Yesterday was a joyous day! For the first time in over 2 weeks my family was all reunited under one roof again. God is good, all the time.</p>
+ ... <a href="/2020/05/jenney-journal-25/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/05/jenney-journal-24/">Jenney Journal, part 24</a></h2>
+        <time pubdate="pubdate" class="meta">14 May 2020</time>
+      </header>
+
+      <p>Jenney’s second craniotomy is complete. The operation took over 7 hours. There was some complications in that they lost a piece of cotton during the operation and had to open her back up to search for it. They spent over 2 hours just doing that. It never showed on the X-ray and they never found it, so we hope and pray that it’s not still inside. If it is, there will be complications. But so far, Jenney has woken up and is speaking in full sentences. She’s ok. Praise the Lord!</p>
+ ... <a href="/2020/05/jenney-journal-24/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/05/jenney-journal-23/">Jenney Journal, part 23</a></h2>
+        <time pubdate="pubdate" class="meta">09 May 2020</time>
+      </header>
+
+      <p>This has been one of the hardest weeks yet. Jenney continues to have memory issues, and trouble controlling herself. Sometimes she won’t take her meds, but the steroids are at least helping. She’s confused a good bit of the time, and she needs help with personal care. She can shower on her own, though at one point she turned off the water before conditioning her hair. Small things. Yet last night she read a whole book to the boys for bedtime, and prayed with them.</p>
+ ... <a href="/2020/05/jenney-journal-23/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/05/jenney-journal-22/">Jenney Journal, part 22</a></h2>
+        <time pubdate="pubdate" class="meta">05 May 2020</time>
+      </header>
+
+      <p>Praise the Lord, all went well with the delivery and Marcus Ezequiel was born May 4th at 12:19pm. He weighed 3lbs 12oz and is 42.3cm or between 16.5 - 16.75in. He is strong and breathing on his own. They have a CPAP machine on him but have already lowered that to room oxygen and it’s only assisting him slightly. They plan to take it off today. He’s moving, crying, and being feisty already (almost pulled out his IV!). He’s a fighter, and he’s so so tiny. You should have seen him throw a fit when they took his temperature with a thermometer under his arm!</p>
+ ... <a href="/2020/05/jenney-journal-22/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/05/jenney-journal-21/">Jenney Journal, part 21</a></h2>
+        <time pubdate="pubdate" class="meta">01 May 2020</time>
+      </header>
+
+      <p>April was a blessed month. I’ve described it as the eye of the storm; peaceful and calm for us, yet with a storm wall on either side. The second wall is about to hit, yet during this time we’ve been able to recharge our batteries, to concentrate on those things that matter most; our family and our faith. God is with us, and no matter the outcome, all things work for good to those who love God.</p>
+ ... <a href="/2020/05/jenney-journal-21/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/04/hang-on/">Hang On</a></h2>
+        <time pubdate="pubdate" class="meta">26 Apr 2020</time>
+      </header>
+
+      <p>```
+The future seems bleak
+Your past but a dream
+Fear holds sway this day
+But I’m not the enemy</p>
+ ... <a href="/2020/04/hang-on/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/04/mandala-portfolio/">Mandala Portfolio</a></h2>
+        <time pubdate="pubdate" class="meta">22 Apr 2020</time>
+      </header>
+
+      <p>This is a portfolio of the mandalas I create.</p>
+ ... <a href="/2020/04/mandala-portfolio/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/04/jenney-journal-20/">Jenney Journal, part 20</a></h2>
+        <time pubdate="pubdate" class="meta">11 Apr 2020</time>
+      </header>
+
+      <p>The last couple of weeks seem to have flown by. Still some ups and downs, some hard days, but most full of blessed peace. Here’s some highlights.</p>
+ ... <a href="/2020/04/jenney-journal-20/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-19/">Jenney Journal, part 19</a></h2>
+        <time pubdate="pubdate" class="meta">27 Mar 2020</time>
+      </header>
+
+      <p>Since my last post I’ve had a lot of encouragement from so many people sharing verses with us. I’m compiling a list of them and will share them in their own post. I think the biggest help has been this:</p>
+ ... <a href="/2020/03/jenney-journal-19/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/verse-collection/">Verse Collection</a></h2>
+        <time pubdate="pubdate" class="meta">26 Mar 2020</time>
+      </header>
+
+      <p>This is a collection of Bible verses that are helping us through these times, providing encouragement, reducing anxiety, and building our faith. I wrote in my last entry that I was looking for some, and I’ve had so, so many shared with me that have helped us over the last week. I’ve put them all here for you and others to read and share alike, that you too may be encouraged, find strength, and hopefully help you get through these troubled times.</p>
+ ... <a href="/2020/03/verse-collection/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-18/">Jenney Journal, part 18</a></h2>
+        <time pubdate="pubdate" class="meta">20 Mar 2020</time>
+      </header>
+
+      <p>This week we started learning how to homeschool. We’re taking it easy at first, just a couple hours a day, mostly worksheets from teachers, and online exercises. 6 weeks off of school though means that we have to try to do something. The kids are handling it pretty well, they’re resilient like that. They don’t really understand the chaos the world is in, and that’s ok… we’ll keep them on the blue pill for as long as we can (that’s a Matrix reference if you’re not a Sci-fi fan).</p>
+ ... <a href="/2020/03/jenney-journal-18/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/letter-grammy/">A letter to my grandmother</a></h2>
+        <time pubdate="pubdate" class="meta">16 Mar 2020</time>
+      </header>
+
+      <p>Last night, after another panic attack, I cracked my bible for the first time in what feels like a very long time. I looked up the Lord’s prayer. After reading it I noticed on the very same page, “The cure for anxiety”. Matthew 6 and 7 have so much wisdom in such a relatively small part of the bible. Matthew 6:25 talks about the birds of the air and how we are worth more. “So do not worry about tomorrow; for tomorrow will care for itself. Each day has enough trouble of its own.”</p>
+ ... <a href="/2020/03/letter-grammy/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-17/">Jenney Journal, part 17</a></h2>
+        <time pubdate="pubdate" class="meta">13 Mar 2020</time>
+      </header>
+
+      <p>It’s been a long week. We’ve had another share of ups and downs, but mostly ups I think. Lots of appointments, some disappointments, but overall we’re feeling optimistic having such amazing support from our community, the new doctors we’ve met, and Jenney’s returning strength.</p>
+ ... <a href="/2020/03/jenney-journal-17/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-team/">Jenney Journal, Jenney's Team</a></h2>
+        <time pubdate="pubdate" class="meta">12 Mar 2020</time>
+      </header>
+
+      <p>Jenney’s support team of doctors, resources, and ways you can help.</p>
+ ... <a href="/2020/03/jenney-journal-team/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-16/">Jenney Journal, part 16</a></h2>
+        <time pubdate="pubdate" class="meta">09 Mar 2020</time>
+      </header>
+
+      <p>We had a really good weekend. Saturday we did pretty much nothing at all, just rested. Jenney took some naps and had a headache in the morning and another in the evening, small ones that some Tylenol took care of. But overall we just played with the kids.</p>
+ ... <a href="/2020/03/jenney-journal-16/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-15/">Jenney Journal, part 15</a></h2>
+        <time pubdate="pubdate" class="meta">06 Mar 2020</time>
+      </header>
+
+      <p>The oncologist came in bright and early the next morning around 6:20am. He said he would be setting up an appointment for us next week, and that he had referred us to a different gamma knife facility at the University of Washington’s Harborview Medical Center where they have the means of shielding the baby during the procedure. This would mean we wouldn’t have to have the baby in a few weeks.</p>
+ ... <a href="/2020/03/jenney-journal-15/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-14/">Jenney Journal, part 14</a></h2>
+        <time pubdate="pubdate" class="meta">05 Mar 2020</time>
+      </header>
+
+      <p>At 3am they woke us to draw blood, and to prep us for one last CT scan of Jenney’s head to compare it to the first one taken post-op. We woke up a while and by 3:15 they had a spot for Jenney in radiology. I stayed in the room, telling her to “smile pretty” for the camera as they wheeled her away. She was back in about 20 minutes and we tried to get back to sleep.</p>
+ ... <a href="/2020/03/jenney-journal-14/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-13/">Jenney Journal, part 13</a></h2>
+        <time pubdate="pubdate" class="meta">04 Mar 2020</time>
+      </header>
+
+      <p>Jeanne reported in to me in the morning. Around 7:30am the neurologist came in and said Jenney was doing better than he anticipated with the drain clamped. One more day and then it most likely can come out. Woohoo! He said he was meeting with oncology and OB the following day to discuss next steps. Jenney still had a small headache and double vision from the trauma of the migraines, but she was doing better than expected as he didn’t think her body was going to tolerate the drain being clamped yet.</p>
+ ... <a href="/2020/03/jenney-journal-13/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-12/">Jenney Journal, part 12</a></h2>
+        <time pubdate="pubdate" class="meta">03 Mar 2020</time>
+      </header>
+
+      <blockquote>
+  <p>Feeling gratitude and not expressing it is like wrapping a present and not giving it. <br />— William Arthur Ward</p>
+</blockquote>
+ ... <a href="/2020/03/jenney-journal-12/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-11/">Jenney Journal, part 11</a></h2>
+        <time pubdate="pubdate" class="meta">02 Mar 2020</time>
+      </header>
+
+      <p>Jenney awoke at 2:30am with a headache. Tylenol, then tried to get back to sleep. At 5:42 she still had a headache and asked for more meds. She got her typical meds and some more Tylenol at 5:55.</p>
+ ... <a href="/2020/03/jenney-journal-11/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/03/jenney-journal-10/">Jenney Journal, part 10</a></h2>
+        <time pubdate="pubdate" class="meta">01 Mar 2020</time>
+      </header>
+
+      <p>Sunday Jeanne messaged me to tell us Jenney woke up feeling pretty well. She’d gotten at least some sleep, and felt at least marginally better. The doctor came in around 7:15am while she was eating breakfast and said it would be ok to take more of the IV’s out (she had like three of them in) and didn’t need to be monitored as much for blood pressure (which was every hour so far). He said they would attempt to close the drain on Tuesday and see how she did.</p>
+ ... <a href="/2020/03/jenney-journal-10/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-9/">Jenney Journal, part 9</a></h2>
+        <time pubdate="pubdate" class="meta">29 Feb 2020</time>
+      </header>
+
+      <p>Saturday morning the Dr came to see us with a message of hope. The CT scan showed that Jenney’s chest, abdomen, liver, bones, and lungs look good. They did find some subcutaneous nodules on her left shoulder and flank under the skin, above the muscle, which would be easy to biopsy with some local anesthesia to check and be sure. If these were benign, they saw no reason why we would need to do any chemical treatment, which also means she should be able to carry the baby to full term.</p>
+ ... <a href="/2020/02/jenney-journal-9/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-8/">Jenney Journal, part 8</a></h2>
+        <time pubdate="pubdate" class="meta">28 Feb 2020</time>
+      </header>
+
+      <p>Friday morning I awoke to the oncologist coming into the room, turning on the lights. I scrambled for my phone to take notes as he started talking.</p>
+ ... <a href="/2020/02/jenney-journal-8/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-7/">Jenney Journal, part 7</a></h2>
+        <time pubdate="pubdate" class="meta">27 Feb 2020</time>
+      </header>
+
+      <p>This was a hard, terrible day.</p>
+ ... <a href="/2020/02/jenney-journal-7/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-6/">Jenney Journal, part 6</a></h2>
+        <time pubdate="pubdate" class="meta">26 Feb 2020</time>
+      </header>
+
+      <p>They woke us at 5am to start prepping for the post-op MRI. There was some confusion as to where to go as there are two different MRI’s in this hospital and they had to find someone who knew how to get to the outpatient MRI station, which does a lower resolution (non-contrast) MRI, deemed slightly safer for a baby. The OB has since explained there is a lot that is very safe for a baby, we just try not to do them needlessly, and everyone at the hospital gets on-edge when there’s a pregnancy involved.</p>
+ ... <a href="/2020/02/jenney-journal-6/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-5/">Jenney Journal, part 5</a></h2>
+        <time pubdate="pubdate" class="meta">25 Feb 2020</time>
+      </header>
+
+      <p>After a quick cup of coffee and a hug from Jim, I drove to the hospital to be with Jenney before the surgery. When I got to the room, curled up in the hospital bed with her and we held each other and cried. At 6am they came in to prep for surgery, then wheeled her down to the pre-surgery area. I remember an area where there were lots of lights and alcoves. In one of the alcoves they placed us and put a monitor on the baby to get a read on his heartbeat. The quick pulse was comforting to our ears. Jenney mentioned double vision, and they noted it during another eval.</p>
+ ... <a href="/2020/02/jenney-journal-5/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-4/">Jenney Journal, part 4</a></h2>
+        <time pubdate="pubdate" class="meta">24 Feb 2020</time>
+      </header>
+
+      <p>In the morning the Neurologist, Dr. Hammer came to see us. She said she had referred us to Dr. Goldman as she would be out later in the week and wanted to ensure we had continuity of care. She answered our questions, showed us the MRI, explained how an operation might proceed, assured us that this was a very good time for the pregnancy for an operation, and assured us that the chances of success for where the tumor was located were very good. Dr. Goldman would be in to see us later that morning to evaluate Jenney and would most likely want to operate as soon as possible.</p>
+ ... <a href="/2020/02/jenney-journal-4/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-3/">Jenney Journal, part 3</a></h2>
+        <time pubdate="pubdate" class="meta">23 Feb 2020</time>
+      </header>
+
+      <p>Jenney fell again while I was helping her to the bathroom, and I caught her. She had been having a headache and thought she needed to pee, but once it subsided realized she in fact did not. I took her back to bed and didn’t give her the option this time. We were going to the ER.</p>
+ ... <a href="/2020/02/jenney-journal-3/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-2/">Jenney Journal, part 2</a></h2>
+        <time pubdate="pubdate" class="meta">22 Feb 2020</time>
+      </header>
+
+      <p>I heard a crash from upstairs. I ran up to find Jenney naked on the floor of the bathroom. She had blacked out and fell on her way to the toilet. She’d been taking baths every so often as she found the water somewhat soothing, and wasn’t bothering to put clothes back on since she just went back to bed. I urged her to go to the ER. She refused saying we had an appointment on Monday with the OB who could advise us better. She didn’t want to go and have them charge us more money and say, “Take some Tylenol” again. But after that I watched her like a hawk and didn’t let her go to the bathroom alone.</p>
+ ... <a href="/2020/02/jenney-journal-2/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2020/02/jenney-journal-1/">Jenney Journal, part 1</a></h2>
+        <time pubdate="pubdate" class="meta">21 Feb 2020</time>
+      </header>
+
+      <p>Jenney’s migraines started on Feb 10th while we were in San Diego visiting her mom. We had planned on taking the kids to Disney while we were there but Jenney could barely leave her bed, much less the house. She had vomited a couple times as well. The migraines came anywhere from 15 to 50 minutes at a time, lasted 5 to 10 minutes, and only seemed to subside at night or in the mornings. We started keeping a log.</p>
+ ... <a href="/2020/02/jenney-journal-1/">read on</a>
+
+    </article>
+    <hr />
   
     <article class="post">
       <header>
@@ -46,15 +1265,14 @@
         <time pubdate="pubdate" class="meta">12 Jul 2017</time>
       </header>
 
-      <p>I obviously don&#39;t post here enough even though I&#39;ve made it dead simple for myself.</p>
-
-<h2>So here are some other places I tend to post things lately.</h2>
-
+      <p>I obviously don’t post here enough even though I’ve made it dead simple for myself.
+So here are some other places I tend to post things lately.
+—</p>
 <ul>
-<li><a href="https://twitter.com/sirkitree">Twitter</a></li>
-<li><a href="https://vr.google.com/sketches/user/3dVB0GT8oMI">Google TiltBrush</a></li>
-<li><a href="https://vr.google.com/objects/user/3dVB0GT8oMI">Google Blocks</a></li>
-<li><a href="https://sketchfab.com/sirkitree">Sketchfab</a></li>
+  <li><a href="https://twitter.com/sirkitree">Twitter</a></li>
+  <li><a href="https://vr.google.com/sketches/user/3dVB0GT8oMI">Google TiltBrush</a></li>
+  <li><a href="https://vr.google.com/objects/user/3dVB0GT8oMI">Google Blocks</a></li>
+  <li><a href="https://sketchfab.com/sirkitree">Sketchfab</a></li>
 </ul>
  ... <a href="/2017/07/other-places/">read on</a>
 
@@ -79,7 +1297,7 @@
         <time pubdate="pubdate" class="meta">31 Oct 2015</time>
       </header>
 
-      <h2>Messing with some <a href="">THREE.js</a> and on top of that the excellent <a href="">webvr-starter-kit</a>.</h2>
+      <h2 id="messing-with-some-threejs-and-on-top-of-that-the-excellent-webvr-starter-kit">Messing with some <a href="">THREE.js</a> and on top of that the excellent <a href="">webvr-starter-kit</a>.</h2>
  ... <a href="/2015/10/VR/">read on</a>
 
     </article>
@@ -91,7 +1309,7 @@
         <time pubdate="pubdate" class="meta">28 Dec 2014</time>
       </header>
 
-      <p>I guess I should write <em>something</em> this year ;) Well, I have, but I&#39;ve really been enjoying <a href="https://ello.co/sirkitree">Ello.co</a> as a writing platform lately, so if you&#39;d like to read more, please visit there.</p>
+      <p>I guess I should write <em>something</em> this year ;) Well, I have, but I’ve really been enjoying <a href="https://ello.co/sirkitree">Ello.co</a> as a writing platform lately, so if you’d like to read more, please visit there.</p>
  ... <a href="/2014/12/ello/">read on</a>
 
     </article>
@@ -103,128 +1321,1115 @@
         <time pubdate="pubdate" class="meta">31 Aug 2013</time>
       </header>
 
-      <p>After getting a decent way to create a file on GitHub just using a POST from a form as <a href="http://brockboland.com/2013/07/jekyll-posting-interface/">Brock Boland</a> spoke about with his Jekyll posting interface, I thought I would take this one step further and figure out a way to use the <a href="http://developer.github.com/v3/">GitHub API</a> to create that file instead of taking you to GitHub&#39;s new file interface. This was much easier than I expected.</p>
+      <p>After getting a decent way to create a file on GitHub just using a POST from a form as <a href="http://brockboland.com/2013/07/jekyll-posting-interface/">Brock Boland</a> spoke about with his Jekyll posting interface, I thought I would take this one step further and figure out a way to use the <a href="http://developer.github.com/v3/">GitHub API</a> to create that file instead of taking you to GitHub’s new file interface. This was much easier than I expected.</p>
  ... <a href="/2013/08/angularjs-posting-interface-for-your-github-jekyll-site/">read on</a>
 
     </article>
     <hr />
   
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2013/07/jekyll-juice/">Jekyll Juice</a></h2>
+        <time pubdate="pubdate" class="meta">30 Jul 2013</time>
+      </header>
 
-  <!-- Pagination links -->
-  <div id="post-pagination" class="pagination-centered">
-    <ul class="pagination">
-    
-      <li class="previous disabled">
-        <span>&laquo;</span>
-      </li>
-    
+      <p>This blog is now powered by Jekyll alone (was on Octopress). <a href="http://brockboland.com">Brock Boland</a> recently wrote about moving his blog to only Jekyll and I’d been wanting to do this for a while as well so I don’t need to worry about generators and such at all. Only took about an hour. Generate a jekyll site with <code class="language-plaintext highlighter-rouge">jekyll new [site]</code> and then just move your posts over, tweak your settings and theme and you’re done.</p>
+ ... <a href="/2013/07/jekyll-juice/">read on</a>
 
-      <li class="page">
-        
-          <span class="current-page">1</span>
-        
-      </li>
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/05/best-mans-speech/">Best man's speech</a></h2>
+        <time pubdate="pubdate" class="meta">06 May 2012</time>
+      </header>
 
-      
-        <li class="page">
-          
-            <a href="/page2">2</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page3">3</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page4">4</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page5">5</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page6">6</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page7">7</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page8">8</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page9">9</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page10">10</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page11">11</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page12">12</a>
-          
-        </li>
-      
-        <li class="page">
-          
-            <a href="/page13">13</a>
-          
-        </li>
-      
+      <p>On Sept 27th 2010 I was married to the love of my life, Jenney Marie Richards. My best man David Burns, wrote a speech that was both moving and heartfelt. I record that now for all eternity (assuming the internet is immortal and all):</p>
+ ... <a href="/2012/05/best-mans-speech/">read on</a>
 
-    
-      <li class="next">
-        <a href="/page2">&raquo;</a>
-      </li>
-    
-    </ul>
-  </div>  
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/replicate-and-share/">Replicate and share</a></h2>
+        <time pubdate="pubdate" class="meta">27 Feb 2012</time>
+      </header>
 
+      <p>As a child I learned how to speak. The sounds I heard my parents produce helped to form coherent thought patterns in which to relate with the world around me. No, yes; good, bad; dog, cat; hot, cold; all sounds that came to mean something to a normal human being. I replicated their sound and shared.</p>
+ ... <a href="/2012/02/replicate-and-share/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/migrate-flickr-to-picasa-easily/">Migrate Flickr or Facebook photos to Picasa/Google+ easily</a></h2>
+        <time pubdate="pubdate" class="meta">14 Feb 2012</time>
+      </header>
+
+      <p>I found a great way to transfer photos from <a href="http://www.flickr.com/">Flickr</a> or <a href="http://www.facebook.com/">Facebook</a> to Picasa/<a href="http://plus.google.com">Google+</a> quickly and easily, keeping albums intact using Mac OS X iPhoto ‘11.</p>
+ ... <a href="/2012/02/migrate-flickr-to-picasa-easily/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/baby-day-act-i/">Baby Day! (Act I)</a></h2>
+        <time pubdate="pubdate" class="meta">10 Feb 2012</time>
+      </header>
+
+      <p>2.9.12 - 11:45pm
+Jenny wakes me up with, “I think my water broke!”
+I groggily look over at her and ask, “Are you sure?”
+“Yeah, pretty sure”, she says.
+“What time is it?” I ask her.
+“11:45”.
+“What? Uhg.” I had gotten about two and a half hours of sleep by this time, having gone to bed early to try and kick my oncoming head cold. “Did you call Katie?” Katie is our birthing companion, whom we took HypnoBirthing courses with months earlier.
+“I am going to now”, Jenny tells me.
+“Do you want to go to the hospital?”
+“No, let’s just see what happens. Go back to sleep.”
+I promptly fall back asleep, but hear her stirrings through dreams of a strange birth in which the baby is born in a tub and no one at the hospital cares. I hear snippets of a conversation on the phone, the tub water running, a hair dryer blowing, a shower, and repeatedly telling the dog, Dante, to go back to bed when he wined because Jenny was in a different room.</p>
+ ... <a href="/2012/02/baby-day-act-i/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/">Nginx: do not cache logged in Drupal or WordPress users</a></h2>
+        <time pubdate="pubdate" class="meta">09 Feb 2012</time>
+      </header>
+
+      <p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife’s WordPress site</a>.</p>
+ ... <a href="/2012/02/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/darkness-and-light/">Darkness &amp; Light</a></h2>
+        <time pubdate="pubdate" class="meta">07 Feb 2012</time>
+      </header>
+
+      <p><img src="http://f.cl.ly/items/2d0g2v3H3i0V0o1t2O0d/light-dark.png" alt="Dark &amp; Light" /></p>
+ ... <a href="/2012/02/darkness-and-light/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/angel-of-fire/">Angel of fire</a></h2>
+        <time pubdate="pubdate" class="meta">06 Feb 2012</time>
+      </header>
+
+      <p>```
+Angel of fire, wings of light
+  Visit me in my dreams tonight
+  Tell me of love and burning desire
+  Caress my lips, set me on fire</p>
+ ... <a href="/2012/02/angel-of-fire/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/todo-list-in-node-dot-js-and-geektool/">todo list in node.js and geektool</a></h2>
+        <time pubdate="pubdate" class="meta">05 Feb 2012</time>
+      </header>
+
+      <p>I’ve long had a quick shell script that was a simple todo list based on Jerod Santo’s <a href="http://blog.jerodsanto.net/2010/12/minimally-awesome-todos/">Minimally Awesome Todos</a>. It’s very minimal, and quite awesome indeed. Even more than loving how minimal it is, I really liked displaying my todos on my desktop through <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
+ ... <a href="/2012/02/todo-list-in-node-dot-js-and-geektool/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/02/new-blog-command-and-some-style-updates/">New blog command and some style updates</a></h2>
+        <time pubdate="pubdate" class="meta">05 Feb 2012</time>
+      </header>
+
+      <p>I love Github. The more I use it, the more I love it. As a form of endearment, I’ve updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.</p>
+ ... <a href="/2012/02/new-blog-command-and-some-style-updates/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/01/html5-photoboot/">HTML5 Photobooth</a></h2>
+        <time pubdate="pubdate" class="meta">30 Jan 2012</time>
+      </header>
+
+      <p>After reading an <a href="http://arstechnica.com/business/news/2012/01/hands-on-building-an-html5-photo-booth-with-chromes-new-webcam-api.ars">article</a> about the experimental support for WebRTC getting put into the latest version of browsers, my buddy <a href="https://plus.google.com/102577299588201077107/about">David Burns</a> was inspired to write a quick app called <a href="http://html5photobooth.com/">HTML5 Photobooth</a>.</p>
+ ... <a href="/2012/01/html5-photoboot/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/2012/01/using-node-dot-js-to-convert-drupal-to-jekkyl/">Using Node.js to convert Drupal to Jekkyl</a></h2>
+        <time pubdate="pubdate" class="meta">29 Jan 2012</time>
+      </header>
+
+      <p>I’ve gone and revamped my blog again.</p>
+ ... <a href="/2012/01/using-node-dot-js-to-convert-drupal-to-jekkyl/">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/poems/images">Images</a></h2>
+        <time pubdate="pubdate" class="meta">25 Apr 2011</time>
+      </header>
+
+      <p>These are from high school. Guess you’d call that about the height of my creativity - or at least when I had the time to do all of this instead of worrying about a paycheck.</p>
+ ... <a href="/poems/images">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/poems/beauty">Beauty.</a></h2>
+        <time pubdate="pubdate" class="meta">23 Apr 2011</time>
+      </header>
+
+      <pre>
+           In the eye of the beholder?
+  Maybe.                                                    Not?
+                      Well...?
+           For sure, are my wants.                  Love,
+beauty - I behold.
+                            You?
+           Oh! Matters to me, what you think.
+  Love me?                   Love,     me?
+                                Yes!
+       For a long time, ifn't life.
+Teach: Spirit, love; new, responsibility.
+                                     pain; past, New way of thought.
+                                                      Discipline.
+  SPECIAL are YOU!
+         i am?
+Comprehend...
+                       hard to.
+       Comfort are you in a rocking world, in a storm
+          of sin.
+                    Stability...
+                              *mind
+                              *soul.
+                   For sure.
+</pre>
+<!-- break -->
+ ... <a href="/poems/beauty">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/short-stories/trail-of-blood">Trail of Blood</a></h2>
+        <time pubdate="pubdate" class="meta">21 Apr 2011</time>
+      </header>
+
+      <p>The young appearing warrior elf moved with gentle but fierce and deadly grace. He swooped around to my left and right with his ever-glowing sky blue sword. I swung around to face him at each turn, then suddenly shifted my great sword to my right hand and took an expert chop at the small bright-eyed elf. He jumped over me and with a fleeting glance at my defenseless back, sliced at the belt on my loincloth, which subsequently fell to my knees.</p>
+
+<p>Although I had thought that the elf and I were alone, I heard a gruff snickering coming from behind the bushes and trees surrounding us. I tried to look and see where exactly the laughter might be coming from but the elf and my loincloth took up most of my attention. It was sort of drafty without my loincloth and the hysterical elf made matters worse, so I bent over to pick it up when I was suddenly pounced upon from behind by strong but short beings; dwarves. I hate dwarves. Probably more than this elf, my he burn in the underworld. Before I could get the creatures off my back, I was covered with a thick black net and being wrapped up tight, was rendered helpless though I struggled with my sword. My left hand was still stuck somewhere in the vicinity of my knee.</p>
+
+<p>The elf was still laughing and finally managed to get himself under control as he said something to the dwarves in a strange tongue. Though I didn’t understand the language, I knew and elf sneer when I heard one. I couldn’t see through the thick netting, but I felt myself being lifted up and carried for a distance before being thrown down. Then we started moving.</p>
+
+<p>It was a long and bumpy trip, and many hours later until we stopped, with no rest upon the way. I was really starting to cramp in my position when the dwarves hands suddenly shot through the net and tied my hands and feet together. I managed to bite one of their fingers off before they got my hands tied though. Blood spurted all over me and the offended dwarf cursed aloud and kicked me repeated in the head. Then the net was lifted and I finally saw some sky blue light through my now blackened eyes. The light was strange, surrounding me though I couldn’t tell the source. Sitting there on the wagon, observing my surroundings, the only thing I could see was a blue void all around me. No trees. No ground. No dwarves or elf. Nothing but blue and the wagon I sat upon.</p>
+
+<p>I knew the wagon had to be sitting on something, so I wiggled myself around to ask the elf, or perhaps the dwarves, but they were simply gone, nowhere to be found! Where could they have gone? Why would they have taken me here and tied me only to leave me. Then, I saw it. A trail of blood leading away from the wagon. How had I missed that? It must have been from the dwarf whose finger I had tasted. My hands and feet were still tied, so I couldn’t just run after them. Though, something was poking me in the back. I turned to find a nail sticking from the wagon. The means of my escape!</p>
+
+<p>I wiggling around a bit, putting myself into position until I could get my hands near it the nail and sawed with it for what seemed like hours before the ropes finally frayed enough to give way to my strength. With my hands now free I looked around for my sword, but it was nowhere to be found. I couldn’t just follow these mad creatures off into an unknown landscape without some sort of weapon, so I ripped one of the larger planks off the wagon and tore at the end until I had fashioned a splinter big enough to impale a small dragon.</p>
+
+<p>With my little wooden spear in in hand, sweat and blood upon my brow, and no minor headache from the blows to my face, I jumped from the wagon to follow the trail of blood, hoping that whatever held up the wagon was going to hold me as well. I had not even taken three steps when I looked back and found the wagon had disappeared into the cold blue haze. I stood there, alone and bloody, spear in hand, encompassed by blue and nothing else to see but this small trail of blood.</p>
+ ... <a href="/short-stories/trail-of-blood">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/short-stories/drakens-battle">Draken's battle</a></h2>
+        <time pubdate="pubdate" class="meta">20 Apr 2011</time>
+      </header>
+
+      <p>Darkness quivered in the back of Draken’s mind, threatening to disperse his current spell, still held in his commanding thoughts. He could feel the attack coming before it hit and struggled to get enough mana harnessed in order cast the protective one that he now held in preparation.</p>
+
+<p>“Just a little more”, he thought to himself. Then just as the darkness was about to overwhelm him, he case his spell, feeling forces gather around him and cling to his mind, shielding it. A sharp gong sounded as his head reeled from the mental force of the impact from the blast he had just barely been able to sheild himself from.</p>
+
+<p>Rubbing his cambrinth ring, shaped as a scorpion, he began to draw mana from it’s reserves as as the diminishing resources around himself. The darkness, still oozing the in the back of his mind, grew as he added mana to it. Draken had been saving this spell for just such a battle and planned ot use it to it’s fullest deadly potential this time. He’d used it in experimentation before, against the likes of wood trolls and creepers, but never to a lethal extent.</p>
+
+<p>“Now would be the time”, thought Draken. For his foe was indeed powerful, maybe more powerful than himself, and he hated anything that was more powerful and destroyed those that were with trickery and deceit. With this newly learned spell, he didn’t exactly need to be more powerful or more learned than his adversary. He just needed the right opening.</p>
+
+<p>Draken saw such an opening as his opponent closed it’s eyes for just a second.  Mana started flowing toward his foe and Draken knew what was coming.</p>
+
+<p>“Just a little…”, he took a breath through clenched teeth, “… more”. Draken could feel the other almost at it’s fullest and held that darkness in the back of his mind in check, ready to be unleashed. The other reached his maximum harness and just before the cast, Draken released the darkness from his mind, quickly slipping it past his enemy’s defenses. His opponent gasped and his eyes flared open in shock. It’s arms straightened and went rigid, fingers flexed. Shadows began to form around Draken’s feet and flew to his opponent and down his throat. More shadows seemed to materialize from nowhere and stream into every opening of his foe’s body, filling him like a balloon.</p>
+
+<p>Standing there bloated and so fat it couldn’t move or even fall over, the shadows stopped and it’s mouth closed and opened like a fish as it’s eyes bulged. It’s skin crawled with the shadows as they seemed to move just beneath. Tears streamed down it’s fattened face.</p>
+
+<p>Draken strode over to the bloated live thing and flicked his nose. He laughed a little chuckle to himself, pleased at the outcome of his new spell. It had succeeded in a most pleasing manner, using the victims own mana stores against itself to complete the effects. Helpless now, Draken’s foe stood where he was, tears still streaming. Darken pulled skinning knife from his belt and waved in it from the the bloated thing. His enemy watched every move of the knife, eyes moving back and forth, in shameless fear and not a small hint of anger. Draken took the knife and pressed the top to the thing’s nose, wiggling it’s nose just a little. With a smile, Draken sliced the nose down the middle and the shadows started pouring out of the wound, ripping the flesh bigger and bigger. The shadows poured forth which such force, the creature was ripped apart in a matter of seconds, the shadows disappearing as quickly as they had come.</p>
+
+<p>Draken chuckled to himself once more, wiped the blood spatters from his face and walk on down the trail.</p>
+ ... <a href="/short-stories/drakens-battle">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/another-time-another-place">Another time, another place...</a></h2>
+        <time pubdate="pubdate" class="meta">17 Sep 2010</time>
+      </header>
+
+      <p>Jenney and I moved from Austin to Carolina Beach, North Carolina and the past three.5 months have been amazing! It’s been like a working vacation. We were right on the beach, with beautiful views, and a personal walkway to the beach which was in a premo-spot. Not a ton of people, lots of waves, and lots of sunshine. We both worked hard, and played hard. It was great and I can honestly say I’ve lived my ‘beach life’ dream for at least a while. Chalk another dream up to ‘accomplished’!</p>
+
+<p>Today marks the start of ANOTHER adventure. We packed up our life once more and left beautiful Carolina Beach behind. Tonight we wait at Jenney’s best friend’s (and Maid of Honor’s) house before our flight tomorrow for San Diego where we will be for a week, staying at her mother’s house before we are wed on Saturday, September 25th. We’re both so so so excited to see our friends and family and to celebrate what we’ve held true in our hearts for the last year; our commitment and love for each other.</p>
+
+<p>After the wedding we’ll be flying back to North Carolina to pick up our belonging and drive to Colorado Springs where we will continue our life together. Jenney took the opportunity for a Pediatric job in her field of Occupational Therapy and will be doing more of what she loves. She went to school specifically for pediatrics, but the job market has, until now, dictate she work in Geriatrics instead. As you can imagine, the field of Geriatrics is a bit more sobering than getting to play with children all day, which is part of what she’ll be able to do at her new job. The new job is not quite as lucrative as a traveling position, but we will still be doing fine and loving our life.</p>
+
+<p>My past year with Jenney has been the best year of my life, and I’m so looking forward to many, many more with her by my side. – guess I better write my vows ;)</p>
+
+<p>For some of the great pictures we took on our travel this far, check out our photostreams on Flickr.</p>
+
+<p><a href="http://www.flickr.com/photos/43114238@N03/">Jenney’s Photostream</a>
+<a href="http://www.flickr.com/photos/sirkitree/">Jerad’s Photostream</a></p>
+ ... <a href="/blog/another-time-another-place">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/vampire-dream">Vampire dream</a></h2>
+        <time pubdate="pubdate" class="meta">09 Jan 2010</time>
+      </header>
+
+      <p>I had a pretty in depth adventure in my dreams last night so I downloaded <a href="http://www.ommwriter.com/en/">ommwriter</a> to capture them in the wee morning hours as soon as I awoke. Ommwriter is pretty nice, the music and the interface really helped for this kind of writing and I think would inspire me to write more poetry. I’m still listening to the music as I type this up in my blog. Anyway, here are some notes on the things I remember from the dream. Should turn this into a short story.</p>
+
+<ul>
+  <li>start out searching for lost people down a dark hallway</li>
+  <li>hole in the wall</li>
+  <li>go through to find a vampire playing pool, trying to make crazy shots, like off the table, off the wall</li>
+  <li>knock off the cue ball from a precarious position</li>
+  <li>pisses off the vampire and I run</li>
+  <li>fall down a story, over a banister, into a pool of water</li>
+  <li>notice the missing childrens possessions</li>
+  <li>notice the missing children, wrapped up in cacoons made of the green weeds lining the bottom of the pool</li>
+  <li>pull some of the cacoons to the surface</li>
+  <li>free the children</li>
+  <li>vampire comes and i set her on fire, first her hair, then with gasoline</li>
+  <li>throw more gasoline up the stairway and onto her brothers</li>
+  <li>light the trail and run</li>
+  <li>i am vampire</li>
+  <li>they search for me</li>
+  <li>they find me, and we run from the mother, scatter</li>
+  <li>i am alone, running through backyards, pissed</li>
+  <li>there is a pool made of runoff, collected rain in a tarp, redneck pool, in which a male and female human lounge</li>
+  <li>i am pissed, redneck floating is pissed i’m in his pool making waves</li>
+  <li>i jump out, apologise, he threatens me</li>
+  <li>i am pissed so i tell him to hit me with whatever he has, a couple huge bottles</li>
+  <li>i warn him i may have some vampiric blood in me and need to feed afterwards</li>
+  <li>he doesn’t really understand what i’ve said and is rearing to hit me anyway</li>
+  <li>my brother appears, a werewolf and hairy, fangs bared</li>
+  <li>he bites into the male human and the woman turns to scream</li>
+  <li>i catch her and make he look into my eyes</li>
+  <li>draw her mind into mine and tell her all is well</li>
+  <li>remember well looking into her eyes, connecting with her mind, how it felt to draw her in, how she looked as i became her world, how it felt to have control</li>
+</ul>
+ ... <a href="/blog/vampire-dream">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/trip-austin">Trip to Austin</a></h2>
+        <time pubdate="pubdate" class="meta">13 Dec 2009</time>
+      </header>
+
+      <p>What an adventure! <a href="http://jenneymarie.net">Jenney</a> got a contract in Austin Texas for her next position doing traveling Occupational Therapy, so we packed up the new Subaru Forester (new to us) and started the long trek from Grand Junction, Colorado to Austin, Texas.</p>
+
+<p>Now it hadn’t snowed much at all in Colorado while we were there, but wouldn’t it so happen that the day we decide to leave, a huge storm is forecasted to come through! So we set out as early Monday morning as we could (still had a little cleaning to do) and started on our way. It was too far outside of GJ that it started to flurry, and before we arrived in Ouray, we had passed through some areas with some pretty substantial snowfall. But Ouray there was not much of anything on the ground, and the highway pass through the Redridge Mountains was not closed. So even though there was a sign that commercial vehicles were required to have chains, we went against our better judgement and started up the mountain pass instead of staying in Ouray, at the hotspring hotel, like we should have.</p>
+
+<p>The mountains were amazing! Sheer cliff walls and narrow roads all covered in freshly fallen snow… and it kept getting deeper the higher we went. We were listening to the Lord of the Rings soundtrack on our way up, but when I went around a bend and the back of the car slid just the slightest bit, we turned off the majestic but suspenseful music.</p>
+
+<p>We continued up the mountain pass at a whopping 15MPH and when we came to Silverton we decided to keep going. There were some plows on the road, and there were other vehicles traveling, so we thought we could chance it. We made it <em>almost</em> to Durango when I made a slip in judgement, and was going 20MPH instead of 15MPH coming up on a turn, and the vehicle started to slide as I applied the brakes. We slid off the road, still going quite slow, and took out the front passenger side headlight on a tree. The car bounced to the left and the back end of the car then hit the same spot taking out some of the plastic of the rear brake light and bending up my rear bike wheel which was hitched to the bike rack on the back of the car.</p>
+
+<p>The car stalled, I cursed and pounded the steering wheel, Jenney remained quiet.</p>
+
+<p>I got out of the car to inspect the damage, bent the front side panel back down into place, and got back in the car, kicking the snow from my feet. the car took a couple tries to start, but the engine sounded fine. The damage was completely superficial and since we had all wheel drive, the Subaru pulled right out of the snow bank.</p>
+
+<p>We headed the rest of the way to Durango barely going over 15MPH the rest of the way. Talk about trepidation! When we got to Durango, we stopped at a gas station to get some gas, and I asked the cashier if she had heard the forecast. She said they were due to have about 13inches. I asked if there was a way out of Durango that did not involve mountains. She said she didn’t know of any. So we drove around town a little while and decided to bunker down at the Adobe hotel, which offerred us an ‘early snow rate’ of $40/night.</p>
+
+<p>While we were settling in there, Jenney checked her messages and called back her recruiter who informed her that her contract in Austin had been cancelled! Talk about a depressing day. Stressful snowstorm trek through the precarious mountain pass, damage to our new car, stuck in a snow storm in a town we had not planned on being in and new next to nothing about, and now we were on our way to a job that did not exists.</p>
+
+<p>We stayed in Durango for two nights and checked out the town. Walking through the snow was an adventure for Jenney. Coming from San Diego and being a Cali girl most of her life, she had never experienced a foot of snow before and it was very endearing how her face would light up and she made a snow ball, or a little snow man, or fell backwards in the snow to make a snow angel. She also found that it took a bit of skill to actually <em>walk</em> in the snow ;)</p>
+
+<p>On Wednesday the sun came out and we decided to try our luck getting the heck out of Dodge… err.. Durango. What we found was that the roads weren’t so bad and the mountains were no where near as bad as the ones we had come in through, so we probably could have pushed through. But, better safe then sorry - and we didn’t want to push our luck any more than we already had. So we are glad we waited.</p>
+
+<p>We made it so Santa Fe, New Mexico and decided to stay there for the evening. We still had a headlight out (garages in Durango didn’t have the parts available) so we decided no driving at night. We found a wonderful bed and breakfast on Manhattan St. and after getting settled, wandered around town for a while. Nice town, found some good beer, but the highlight was the fireplace and bed at the bed and breakfast. We awoke the next morning so refreshed and much less stressed from the ordeal through the mountains and Durango.</p>
+
+<p>We headed out around 9am, after breakfast, and got all the way to Post, Texas where we decided on another bed and breakfast. It was only a fraction more than a local chain motel and much cleaner and homey. It was a historical building and I cold work in comfort and we slept quite well.</p>
+
+<p>In the morning we got up early and were on the road by 7:30am, making it to Austin by about 1:30pm. We found a hotel as our basecamp to start the apartment hunt and after two days of exploring Austin and searching for temporary housing, we’re now staying in some guy’s camper that he keeps in his driveway. It’s clean, safe, and cheap. A much cheaper home base for now until we figure out what is going on with Jenney’s job and where we’re going to actually be for the next few months.</p>
+ ... <a href="/blog/trip-austin">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/resurrection">Resurrection</a></h2>
+        <time pubdate="pubdate" class="meta">12 Nov 2009</time>
+      </header>
+
+      <p>Finally took the old personal blog from d5 to d6 and gave it a face lift. The new Acquia Slate theme is pretty slick, but I wanted to give it just a small bit of uniqueness, so I wrote a little custom function into the theme in order to pull up random photos from one of my Flickr sets. It was fast and fun, made easy with the Flickr module’s API. Here’s a couple quick steps I took:
+<!--break--></p>
+<ol>
+<li>Edited the page-front.tpl.php and inserted a little logic to give the #preface-wrapper a different background-image property.
+<pre>
+&lt;div id="preface-wrapper" class="clearfix" <?php if ($flickr): ?>style="background-image: url(<?php print $flickr; ?>);"<?php endif; ?>&gt;
+</pre></li>
+<li>Wrote a custom function based off of the flickr_block.module's flickr_block_photoset_random() function. The function returns just the flickr farm url instead of running through the theme functions.
+<pre>
+function acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id) {
+  // Get information about the photoset, including the owner.
+  $info = flickr_photoset_get_info($photoset_id);
+  if (!$info) {
+    return;
+  }
+
+  // Get a list of "all" the photos in the photoset. This is cached.
+  $response = flickr_request('flickr.photosets.getPhotos',
+    array(
+      'photoset_id' =&gt; $photoset_id,
+      'per_page' =&gt; 500, // get as many images as possible
+      'extras' =&gt; 'owner',
+    )
+  );
+  if (!$response) {
+    return;
+  }
+
+  // Randomly display $show_n of them
+  $photos = $response['photoset']['photo'];
+  shuffle($photos);
+
+  $output = flickr_photo_img($photos[0], $size);
+
+  return $output;
+}
+</pre></li>
+<li>Set the result of this new function, called with hardcoded arguments, to a theme variable within template.php's phptemplate_preprocess_page() function.
+<pre>
+  // get a flickr image for the front page background
+  $vars['flickr'] = acquia_slate_flickr_block_photoset_random($nsid, $show_n, $size, $photoset_id);
+</pre>
+</li>
+</ol>
+
+<p>The one thing I couldn’t find was a block setting when looking at the flickr_block.module for the large size picture, which I needed.  But looking at how the url is created within flickr.inc’s flickr_photo_img() function and comparing it with an actual large image on Flickr.com, I quickly saw that the size string is simply ‘b_d’ for large.</p>
+
+<p>Fun stuff!</p>
+ ... <a href="/blog/resurrection">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/poems/rust">Rust</a></h2>
+        <time pubdate="pubdate" class="meta">05 Dec 2008</time>
+      </header>
+
+      <p>The cold hard rain dripped down my face, erasing the warmth<br />
+&nbsp;&nbsp;only remembrance remained.</p>
+<p>So used to the shielding when heat returned<br />
+&nbsp;&nbsp;unnoticed and without all the same.</p>
+<p>Then brightness shined, a key was found<br />
+&nbsp;&nbsp;to try that diligent construct; cold hard lock.</p>
+<p>Will it fit; turn that intricate mechanism<br />
+&nbsp;&nbsp;surrounding that which has rusted?</p>
+<p>I hope.</p>
+ ... <a href="/poems/rust">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/startups-and-our-economy-what-are-you-going-do-about-it">Startups and our economy - what are YOU going to do about it?</a></h2>
+        <time pubdate="pubdate" class="meta">26 Oct 2008</time>
+      </header>
+
+      <p>A couple months ago (right after I made a big move) I started hearing thing about the financial crisis and banks going under. Talking with my friend who travels a lot, I came to hear that when America sneezes, the rest of the world gets a cold. Another friend of mine introduced me to a film called “Zeitgeist”. With the uncertainty of living in a new area, trying to gain respect at a new job, and making new friends, I started worrying. Actually worrying is an understatement, but I’ll not be dramatic.</p>
+
+<p>However, after hearing about Lullabot’s new venture, and especially Ed Sussman’s blog post, “<a href="http://www.lullabot.com/blog/edward-sussman-why-start-now">Why Start (Up) Now?</a>” I gained a little hope. Then I got a <a href="http://twitter.com/kevinrose/statuses/975842840">twitter from Kevin Rose</a> today where he talked about Paul Graham’s post, “<a href="http://www.paulgraham.com/badeconomy.html">Why to Start a Startup in a Bad Economy</a>”. I must say that I’m feeling better. Again an understatement, but dramatics really aren’t my thing.</p>
+
+<p>The thought of having a startup has always appealed to me. I even have <a href="http://lullabot.com">friends</a> <a href="http://zivtech.com">who</a> <a href="http://parentsclick.com">have</a> done them. And though I’ve always <a href="http://sonybmg.com">played</a> it <a href="http://www.shscares.org">safe</a> by <a href="c-sgroup.com">working</a> for <a href="http://mylifetime.com">corporations</a>, I’ve always wanted to have my own business, startup or consulting, to call my own. It’s looking more and more like now is the time to get my nose to the grindstone. I’m not planning on quitting my job anytime soon, but now is the time to invest.</p>
+
+<p><a href="http://thethisorthat.com">Dave</a> and I have been in the middle of revitalizing <a href="http://drupalmao.com">DrupaLMAO</a> (here’s a quick <a href="http://img.skitch.com/20081026-p9gy1k8m26nhp51tu91xgb7srk.jpg">sneak peak</a>) to incorporate the Drupal community into our show by getting feedback from them in the form of voting upon the content on the site (via the <a href="http://drupal.org/planet">Drupal Planet</a>). Hopefully this will help get the community’s involvement in the show as we’ll talk about the things that the readers care about. We’re coming out with a new episode any day now, it’s taped, waiting on our editor ;) and while we wait, we’re redesigning, rethinking and migrating to Drupal 6 (WIN!). Though this may not be startup material, it is nonetheless paramount to have a presence in the community… and it’s just damn good fun!</p>
+
+<p>Another project I’m soon to have underway, came about from the fact that I get contacted by recruiters on a weekly basis looking for Drupal talent. Drupal hackers are in <strong>VERY HIGH DEMAND</strong> and there are many corporations out there now who are willing to pay top dollar for some of the best Drupal talent. While I may not be up there on the “high talent scale”, I keep a good relationship with these recruiters by offering advice on where to find Drupal talent, and how to go about it. They’re quite often taken by surprise at the amount of resources that are actually out there to help them find who or what they’re looking for, and some are a little discouraged by the advice I give. Especially when I tell them that they may be better off hiring one good Drupal developer who can teach a team of PHP developers how to use Drupal. Sounds like a good consulting strategy too ;) So after talking with endless recruiters, and regurgitating the same advice time and again, I’m convinced that there is a huge need to connect employers, recruiters and Drupal talent. There are no real good solutions out there that have the community backing them so in the next few weeks I’ll be on irc looking for ways to get this going. I’ve got a good idea in the front of my mind (rather then the back) but I want to build something that is going to have the community behind it and hopefully get d.o involved, not just another lame job board.</p>
+
+<p>So if you’re out there looking down, thinking the end is neigh… think again. Read the posts mentioned above, and be inspired.</p>
+ ... <a href="/blog/startups-and-our-economy-what-are-you-going-do-about-it">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/californication">Californication</a></h2>
+        <time pubdate="pubdate" class="meta">31 Jul 2008</time>
+      </header>
+
+      <p>Drupal, you’ve done it again… become the vector of change in my life by presenting me with opportunities that are seemingly too good to be true. Last year it was New York and Sony BMG. This year it’s San Francisco and a start-up called ParentsClick Network. Just when I thought things couldn’t get any better and that maybe I’ve hit the height of reaching my dreams in life, another one comes within my grasp, and giving in to my free spirit, I jump at the chance to make a dream a reality.</p>
+
+<p><a href="http://tedserbinski.com/">Ted Serbinski</a> is a guy whose progress I’ve followed since that first <a href="http://jeradbitner.com/node/11">Lullabot class in Rhode island</a>, less than two years ago (1/15/07) when the world of Drupal really opened up to me. He was a Lullabot at the time, teaching theming and some jQuery. He <a href="http://tedserbinski.com/2007/05/24/i-have-left-lullabot">left Lullabot</a> later that year to start a journey into entrepreneurship (and <a href="http://tedserbinski.com/tags/mothersclick">MothersClick</a>) that has started to pan out nicely. I’ve great respect for his coding skills and believe in his business sense. So when he approached me about a job working with him in San Francisco, a place I’ve always wanted to live, I was very excited.</p>
+
+<p>After a week of vacation, taking time to think about my priorities while spending time with family and friends in PA, and then meeting with Ted’s business partner, <a href="http://www.mothersclick.com/management">Dietrich von Behren</a> who is the Co-founder &amp; Chief Strategy Officer of MothersClick, I felt confident enough to make the jump and reach for a star on the other side of the country.</p>
+
+<p>My last day at Sony BMG is August 7th, 2008. I’ll be heading back to PA to spend some more time with my family and friends and then back to Jersey to take care of getting rid of as much of my worldly possessions as possible. Then the week of the 18th Dave and I will be taking a cross country trip to San Francisco along RT 80. We’re still looking for good places to stop along the way, so if you have any suggestions that would be wonderful! I’m also still looking for a temporary place to crash in San Fran while I get the lay of the land and figure out where it makes sense to park myself for a year (read: sign a lease).</p>
+
+<p>All in all, I’m very optimistic and I really feel this is the right move. Not only because I can live one of my dreams, but also to learn about starting a business, and everything that entails. Not to mention becoming a better programmer under the tutelage of a master! Wish me luck!</p>
+ ... <a href="/blog/californication">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/new-tattoo">New Tattoo</a></h2>
+        <time pubdate="pubdate" class="meta">22 Jul 2008</time>
+      </header>
+
+      <p>Here’s the new one!
+<img src="http://farm4.static.flickr.com/3151/2694083801_bcba323a65_m.jpg" /></p>
+ ... <a href="/blog/new-tattoo">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/what-right">What is right?</a></h2>
+        <time pubdate="pubdate" class="meta">18 Jul 2008</time>
+      </header>
+
+      <p>There’s an ideal of late that I’ve seen repeated within literature and movies that intrigues me. It is that of the men and women who have ideals. Ideals that they do whatever it takes to uphold. I find this a respectable character trait that I find myself wanting to mimic. To uphold.<br /><br />When you see wrong being done what do you do?<br /><br />When you see something happening that you do not agree with, what do you do?<br /><br />When there are ideals being upheld by the populace that you do not agree with, not becuase you are bias or jaded or just plain sick of, but because you KNOW beyond a shadow of a doubt that they are absolutely wrong, what do you do?<br /><br />Some choose to do more, some choose to hide, some choose to reason that they’re not the one who can do anything about those things that hide in the dark of the mind and pervert the perception of those that would stand for what is right. But YOU know what is RIGHT. You KNOW what is WRONG. And even though you doubt yourself and how you feel about the subject of the matter, you KNOW in that inner most place that is untainted, unforgettable, unmoving… you KNOW.<br /><br />So do something about it! And the world will recognize as well, because they know as well, even though they may ignore it, even though they may reason it away… they know. And will support you if you are the one who champions the cause of WHAT IS RIGHT!<br /></p>
+ ... <a href="/blog/what-right">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/much-needed-vacation">A much needed vacation</a></h2>
+        <time pubdate="pubdate" class="meta">11 Jul 2008</time>
+      </header>
+
+      <p>This weekend I’m leaving for PA for a week long vacation of nature, family and friends. Saturday I hope to be going to the Lycoming County Fair, Sunday going to see Wall-E with a friend. I’ll also be using my spare time over the weekend to get everything ready for a three day backpacking trip through the mountains where I grew up. I’ve not been out there by myself in years and I really want to just take my time hiking through the mountains around Rose Valley Lake where I grew up.<br /><br />When I return from that, I’ll be heading out to the family cabin in Belleville where a family reunion is taking place, full of family on my mother’s side. Great Aunts and Uncles and hopefully time enough to talk with them all to glean what wisdom I may from them. I’ve come to think that you have to know where you come from in order to figure out where to go next in life. And that’s the big question I ask myself every so often, so hopefully some time alone, and then with family and friends will help me figure that one out.<br /><br />Next weekend I’ll be home at my mother’s then, visiting with her, my brothers and my father’s parents who will be visiting. I think we’re planning on going to Ricket’s Glen where there is some nice camping, a good place to hike some waterfalls, and a beach on the lake for swimming.<br /></p>
+ ... <a href="/blog/much-needed-vacation">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/needs-and-wants">Needs and Wants</a></h2>
+        <time pubdate="pubdate" class="meta">14 Apr 2008</time>
+      </header>
+
+      <p>For a long time I’ve thought that a major distinction in life that people must try to make is the difference between needs and wants. I’ve told many of my friends that if they just try to make this distinction in their own life, they will live a much happier, balanced life.</p>
+
+<p>I was going through an old hard drive today and found many of my old writings on lots of different topics, but this one just jumped out at me as it is probably one of the most profound truths and holds some of the most engaging questions of life. The entry is dated 1-11-07:</p>
+
+<p><cite>We’ve got to stop thinking that we are the only ones that matter.</cite>
+<cite>Where does one find the strength to accomplish such a feat? What is the formula for molding one’s self unto this task? We all want something greater than what we already experience in this life, but we must learn to separate that which we want, from that which is needed. </cite>
+<cite>Define what is needed.</cite>
+<cite>Can we tell by ourselves what is needed, or is it defined by those around us? Should it be defined by those around us, or by something greater? If by something greater, then what is that greater something? If by those around us, then whom?</cite></p>
+
+<p>I’ve pondered on these things most of my conscious life, and still look for the answers. I doubt I will ever stop.</p>
+ ... <a href="/blog/needs-and-wants">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/poems/swept-away">Swept Away</a></h2>
+        <time pubdate="pubdate" class="meta">13 Apr 2008</time>
+      </header>
+
+      <p>Swept away are the remnants of old, smaller dreams thought too impossible now become reality, even though torn<br />
+Reality torn asunder, pulling back the curtain to reveal the secrets of life lived fully, unhindered by shame<br />
+Shameful regrets, swept away, replaced by a new reality, revealed through conscious will and positive karmic energy<br />
+Positive energies flow through willful projections when unhindered by fear, guided by respect and discipline<br />
+Respect being key, replaces that which eats at everyones soul of late, fear and the assumption of security, apathy&lt;/br&gt;
+<br />
+Swept away and free to dream, your life becomes clay in which to mold a destiny, in harmony with the lines which exist<br />
+See the lines, look ahead down that path which your decision may take you to make a wise choice… prosper<br />
+Fear and doubt be swept away, leaving assured security molded by discipline and experience, always increasing, improving<br />
+Constant reshaping of thoughts and patterns of reasoning, learning to optimize, conceptualize, visualize<br />
+Look forward to what is to come, and what will be swept away</p>
+ ... <a href="/poems/swept-away">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalcon-boston-2008-wrap-up">DrupaLMAO: DrupalCon Boston 2008 Wrap-up</a></h2>
+        <time pubdate="pubdate" class="meta">20 Mar 2008</time>
+      </header>
+
+      <p>Sit down with me and Dave as they kick back some Johnny Walker Green label for St. Patrick’s Day and talk about our impressions of DrupalCon Boston 2008!</p>
+ ... <a href="/drupalmao/drupalcon-boston-2008-wrap-up">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008">DrupaLMAO: Earl Miles Interview - DrupalCon MIT 2008</a></h2>
+        <time pubdate="pubdate" class="meta">17 Mar 2008</time>
+      </header>
+
+      <p>The fifth release of DrupaLMAO’s coverage of DrupalCon 2008. Listen as we sit down with Earl Miles to get his reactions to DrupalCon Boston and to talk about Views 2, Views in core, and Panels 2.</p>
+ ... <a href="/drupalmao/drupalmao-earl-miles-interview-drupalcon-mit-2008">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008">DrupaLMAO: Moshe Weitzman Interview - DrupalCon MIT 2008</a></h2>
+        <time pubdate="pubdate" class="meta">16 Mar 2008</time>
+      </header>
+
+      <p>So it’s really late/early and we’ve had a great time tonight with some fun girls from Philly and hanging out with Ted Serbinski… AND we’re releasing our interview with Moshe Weitzman from DrupalCon! Check out DrupaLMAO’s 4 installation of their coverage of DrupalCon Boston 2008!</p>
+ ... <a href="/drupalmao/drupalmao-moshe-weitzman-interview-drupalcon-mit-2008">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008">DrupaLMAO: Robert Douglass Interview - DrupalCon MIT 2008</a></h2>
+        <time pubdate="pubdate" class="meta">13 Mar 2008</time>
+      </header>
+
+      <p>The third release of DrupaLMAO’s coverage of DrupalCon Boston 2008! Listen while <a href="http://robshouse.net">Robert Douglass</a> talks about the first DrupalCon, DrupalCon Boston 2008, and what the future holds for <a href="http://acquia.com">Acquia</a>! Oh, and the <strong>best</strong> video still of all the interviews!</p>
+ ... <a href="/drupalmao/drupalmao-robert-douglass-interview-drupalcon-mit-2008">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalmao-roger-lopez-interview-drupalcon-mit-2008">DrupaLMAO: Roger Lopez Interview - DrupalCon MIT 2008</a></h2>
+        <time pubdate="pubdate" class="meta">12 Mar 2008</time>
+      </header>
+
+      <p>The second release of DrupaLMAO’s coverage of DrupalCon Boston 2008. Roger is the maintainer of the Asset module which I blogged about over at <a href="http://sirkitree.net/node/2">http://sirkitree.net</a> back in December so I was glad to get to meet him. Listen while Dave sits down to get a developer’s perspective on DrupalCon.</p>
+ ... <a href="/drupalmao/drupalmao-roger-lopez-interview-drupalcon-mit-2008">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalmao-jacob-redding-interview-drupalcon-mit-2008">DrupaLMAO: Jacob Redding Interview - DrupalCon MIT 2008</a></h2>
+        <time pubdate="pubdate" class="meta">11 Mar 2008</time>
+      </header>
+
+      <p>The first release in DrupaLMAO’s Coverage of DrupalCon Boston 2008! Sorry for the jump, we’ll get DrupaLMAO.com into the planet agg soon! Promise!</p>
+ ... <a href="/drupalmao/drupalmao-jacob-redding-interview-drupalcon-mit-2008">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalmaos-upcoming-coverage-drupalcon-2008">DrupaLMAO's Upcoming Coverage of DrupalCon 2008</a></h2>
+        <time pubdate="pubdate" class="meta">08 Mar 2008</time>
+      </header>
+
+      <p>We’ve got some good interviews at the Friday’s code sprint hosted by MIT in Boston this week. We’re in the process of doing some editing but you’ll be able to see the following over at <a href="http://drupalmao.com">DrupaLMAO.com</a>: an interview with <a href="http://robshouse.net">Robert Douglass</a> of <a href="http://acquia">Acquia</a>, <a href="http://">Moshe Weitzman</a> starting <a href="http://cyrve.com">Cyrve</a>, <a href="http://wiredgeek.com/">Jacob Reading</a> spreading the word in China, <a href="http://boston2008.drupalcon.org/user/106">Roger Lopez</a> developer of <a href="http://drupal.org/project/asset">Asset Module</a>, and <a href="http://angrydonuts.com">Earl Miles</a> author of the <a href="http://drupal.org/project/views">Views 2</a>, <a href="http://drupal.org/project/panels">Panels 2</a> and <a href="http://drupal.org/project/nodequeue">Nodequeque 2</a>.</p>
+ ... <a href="/drupalmao/drupalmaos-upcoming-coverage-drupalcon-2008">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/drupalmao/drupalmao-pilot-3">DrupaLMAO Pilot 3</a></h2>
+        <time pubdate="pubdate" class="meta">19 Feb 2008</time>
+      </header>
+
+      <p>Dave and I have been planning http://DrupaLMAO.com for a while now, and the idea has finally come to fruition with Dave’s purchase of a camera.</p>
+ ... <a href="/drupalmao/drupalmao-pilot-3">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/alignment">Alignment</a></h2>
+        <time pubdate="pubdate" class="meta">16 Dec 2007</time>
+      </header>
+
+      <p>I’ve been having quite a time lately adjusting to this new life, priorities shifting all over the place, looking for a pattern to fall into, yet trying not to fall into a pattern. Women problems, travel problems, work, politics, and visions of the future, wondering which paths to take. Morality adjustments and sometimes not enough attention to my soul and the things that REALLY matter. But that’s life in general. The changes that have started are sometimes scary and I continually re-evaluate my life and what matters to me. I’ve had periods of my life where I’ve been so secure in what I want and where to go and how to get there. But that feeling of security and steadfastness has been replaced by shifting sands underneath my feet and bright lights in every corner catching my attention, distracting me from what I really need and where I really should be. Time to start paying more attention to the things that matter most and cut out the clutter.</p>
+ ... <a href="/blog/alignment">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/lullabytesnet">lullabytes.net</a></h2>
+        <time pubdate="pubdate" class="meta">11 Oct 2007</time>
+      </header>
+
+      <p>This site came about while listening to the latest <a href="http://www.lullabot.com/audiocast/podcast-48-taxonomy-taxonomy-taxonomy">Lullabot podcast: Episode 48</a>, when <a href="http://www.lullabot.com/about/jeffeaton">eaton</a> made the profound statement, “What are you, like, some kind of taxonomy nazi?”. This got me to thinking that I’d like that for a sound on my iPhone… wouldn’t it be cool to have some sound bytes from all the crazy things eaton says on those podcasts? How about eatonbytes.com? Why stop there? How about lullabytes.com? Unfortunately lullabytes.com was taken, but lullabytes.net wasn’t! ;) Check it out, upload some of your favs and share some ideas for the site here. Thanks!</p>
+ ... <a href="/blog/lullabytesnet">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/open-source-pimp">Open Source Pimp</a></h2>
+        <time pubdate="pubdate" class="meta">11 Sep 2007</time>
+      </header>
+
+      <p>A friend at work heard a story about my friend Dave and I and thought this was appropriate. LMAO.
+<a href="http://picasaweb.google.com/sirkitree/OpenSourcePimp"><img src="http://lh6.google.com/sirkitree/RubeuHqwSFE/AAAAAAAAAM0/zbJ0DL-sKkA/s160-c/OpenSourcePimp.jpg" width="160" height="160" style="margin:1px 0 0 4px;" /></a></p>
+ ... <a href="/blog/open-source-pimp">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/try-learn-know-and-then-teach">Try, Learn, Know and then Teach</a></h2>
+        <time pubdate="pubdate" class="meta">18 Aug 2007</time>
+      </header>
+
+      <p>I make cool stuff at work. I learn something every day that makes me excited and in awe that I get paid to learn, and use, while being taught by the most <a href="http://lullabot.com">enigmatic geniuses</a> that I could even call friend, after a month or so of work comradere. Darkness turns to light with the slightest of gestures from the hands of such as these, that one might stop… and wonders how they, <em>themselves</em> could become something of such magnitude… if only they try, learn, know and then teach.</p>
+<h3>Try, Learn, Know and then Teach.</h3>
+<p>I am a Drupal Developer, and I love my job. And though it’s good to be paid to do what I do, so that I might live in our world, and survive, it is so much more rewarding to live by a Basic Standard in a community of individuals that live by a basic oath, simple, plain, and yet oh… so full of meaning. <em>Try, Learn, Know, and then Teach</em>. A creed of this simplicity and magnitude has yet to be developed and aspired to, other then by so many as those that see Open Source as a way of life, a desire, and a monologue to happiness. The principles not only can be seen, and used well, within software development, but of your life in general. An that is what intrigued me the most when I found Drupal.</p>
+<h4>Come again?</h4>
+<p>I know it sounds somewhat fanatical and naive, but if you think back to your <a href="http://www.peace.ca/kindergarten.htm">kindergarten rules</a>, what is there NOT in Drupal’s Open Source Way of Life that could not be applied to a life and how it should be lived? Drupal’s success has been attribute to that and succinctly profound. So live on Open Source, live on… those that thought up Open Source, and please, participate and become someone you respect in a community that truly appreciates those that try, learn, know and then teach.</p>
+ ... <a href="/blog/try-learn-know-and-then-teach">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/jerad-goes-new-york">Jerad goes to New York</a></h2>
+        <time pubdate="pubdate" class="meta">29 Jul 2007</time>
+      </header>
+
+      <p>So it’s been a long time since I’ve posted, and there has been so much going on in my life. I’ve moved to New York City to work with Sony BMG making websites for rockstars. I gotta say, it’s been a HUGE change for me. My calm, collected country life where I lived all alone in the woods with the ability to go camping in my back yard was replaced by the hustle and bustle of New York City, staying in a studio apartment next to the Empire State building.</p>
+ ... <a href="/blog/jerad-goes-new-york">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/jquery-checkbox-goodness">jQuery checkbox goodness</a></h2>
+        <time pubdate="pubdate" class="meta">06 Jun 2007</time>
+      </header>
+
+      <p>I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)</p>
+
+<pre>
+$(document).ready( function() {
+  $('a#select_all').click( function() {
+    $('input:checkbox').each( function() {
+      this.checked = !this.checked;
+    });
+    return false;
+  });
+});
+</pre>
+
+<p>The first item to note is that jQuery created pseudo classes for input.</p>
+<pre>
+$('input:checkbox');
+...
+$('input:textbox');
+... etc.
+</pre>
+
+<p>The second item to note, which I thought was ingenious, was setting the value of the checkbox to the inverse of it’s current value.</p>
+<pre>
+this.checked = !this.checked;
+</pre>
+
+<p>Works great and it’s short and sweet. Who loves jQuery?</p>
+ ... <a href="/blog/jquery-checkbox-goodness">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/god-damn-ie">New background image</a></h2>
+        <time pubdate="pubdate" class="meta">22 Mar 2007</time>
+      </header>
+
+      <p>I’ve create a new background image today and think I’ll make a shirt out of it. It pretty much summarizes my day today. You can get this background image in 800x600 or 1024x768. If you want it in another size just let me know. For those of you who don’t understand it, be glad. For those of you who do, ‘nuff said.</p>
+ ... <a href="/blog/god-damn-ie">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/theming-cck-drupal">Theming CCK in Drupal</a></h2>
+        <time pubdate="pubdate" class="meta">07 Mar 2007</time>
+      </header>
+
+      <p>I recently had a friend ask me how to be able to give CCK fields more user-friendly class names so that they could be styled a little easier. I actually needed to do this myself with a project at work, so I had time to really sit down and figure out a good way to do this.</p>
+
+<h3>CCK</h3>
+<p>The <a href="http://drupal.org/project/cck">Content Creation Kit (CCK)</a> is a great way to add different fields to any particular content type within Drupal. When you first start learning Drupal, you’ll see that it ships with two main content types: Page and Story. The fields that these two content types have by default are the Title and the Body. These are respectively a single line text field, and a multi-line text field of which you can choose an input format. This is great and very useful for basic content, but what if I would like another text field other then just Title and Body? CCK allows you to add this. But instead of trying to explain the power and awe of CCK here, please take a look at the <a href="http://drupal.org/node/101723">CCK handbook</a> where this is explained in much greater detail.</p>
+
+<h3>Stepping Stones</h3>
+<p>Now adding CCK fields to a content type is all fine and dandy, but what if I want to make them <em>look</em> better by perhaps changing around the order in which they appear when viewed, or perhaps target that specific element with my CSS in order to specify the exact look and feel of the content it holds? This is where you want to start theming. However, sometimes theming in Drupal can be a pretty complex concept to grok at first. Not because it is very hard, but because without any stepping stones to how theming actually works, you can very easily fall into a dangerous quagmire of code, arrays and objects that you have no idea are even available to you.</p>
+
+<h3>Contemplate this my friend</h3>
+<p>This is where <a href="http://www.lullabot.com/about/jeffrobbins">Jeff Robbins</a> of the <a href="http://www.lullabot.com">Lullabot</a> crew has come to our rescue with a great module called <a href="http://drupal.org/project/contemplate">Content Templates (contemplate)</a>. I believe this module is an incredible stepping stone in learning how to bridge the gap that exists between CCK and the way CCK fields are presented (themed). Installing this module will add a new menu item under Content Mangement in your Administration panel called ‘Content templates’, and also a templates tab inside of your ‘Content types’ page of your Admin section. Once you create a template for any given content type, you can effectually customize the look and feel of not just the content type’s node view (labeled Body in contemplate), but also the Teaser and the RSS!</p>
+
+<h3>Commercial break</h3>
+<p>BUT WAIT, THERE’S MORE! Each fieldset (teaser, body, and rss) has not just a text field to edit the template in, but also inserts a default view of what Drupal spits out, ready to edit. And if that isn’t exciting enough for you, there is (<strong>IMHO the most useful feature of this module</strong>) a rich text-field next to that which lists every object available to you for templating! There’s even some neato javascript that allows you to click on an object and insert the php to print that object into the template field. This is just good stuff man. Fun times. Act now while supplies last. Void where prohibited.</p>
+
+<h3>Ok, time for a downer</h3>
+<p>Finding such a gem is really very great, but the excitement starts to wear off after about an hour of trying to template a complete content type inside of that teeny, tiny, little box. Even the javascript insertion of the box next to it begins to feel like a sticky piece of candy that’s lost it’s flavor. I’d like to take this opportunity to mention that the <a href="http://drupal.org/project/devel">devel module</a> provides you with a feature quite similar to this little javascript flavored object reference box, but unless you’re already very familiar with how to work with these field objects in PHP, the devel module is next to useless. So, again as a stepping stone, the contemplate module really comes in handy for referencing what objects are available to theme, and will give you a little insight as to how to work with them in PHP.</p>
+
+<p>So what do we do about the teeny, tiny, little text box that we’re supposed to put all of our theming code into? Well, fortunately Drupal’s main theming engine, phptemplate, has already taken care of this. Listen carefully now, ‘cuz this is important and I don’t want to lose you now. We’ve already come so far. <strong>Each content type can have it’s very own template file within your theme.</strong></p>
+
+<h3>Theming a content type</h3>
+<p>You can actually accomplish this very easily. The first step is to create a file within your theme directory named <strong>node-content_type.tpl.php</strong> <em>replacing <strong>content_type</strong> with the machine readable name you’ve given your content type</em>. So if your content type is named <strong>forum</strong>, you’ll want the file to be named node-<strong>forum</strong>.tpl.php. For almost all of my work lately I’ve been using a <a href="http://drupal.org/project/zen">theme called zen</a>. It’s written by the Lullabot crew once again, and is probably the best theme out there to teach you anything about a theme. This theme has a file that is a custom themed content type already specific to the forum module. The file is node-forum.tpl.php. I’ve used this on multiple occasions as a template on how to start a new custom theme file for a content type. If you use this file, you’ll notice that, among other things, it prints out the $content variable. All of our CCK fields can be found inside of this variable, along with the default theming of them that you find in the contemplate module’s teeny, tiny, little box for the template code. So you can take the code that is generated by default in the contemplate module, and insert all of that where you see the $content variable being printed in the tpl file. From there, you can do all of your editing in the editor of your choice without having to strain your back trying to bend closer to your monitor to see what’s inside of the teeny, tiny, little box.</p>
+ ... <a href="/blog/theming-cck-drupal">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/jquery-working-select-options">jQuery: working with select options</a></h2>
+        <time pubdate="pubdate" class="meta">27 Feb 2007</time>
+      </header>
+
+      <p>Following my <a href="/rolechanger/">recent post</a> on my <a href="http://drupal.org/project/rolechanger/">rolechanger module</a>, I started delving into how to provide functionality with the resulting dropdown box that the module provides. I wanted to provide all functionality through javascript and have included a rolechanger.js file for this purpose. However I found a few quirks while working with jQuery and the select element.</p>
+
+<p>I started out with a .change() on the select element and drilled down through the .children() looking for [@selected]. However, thought this worked fine in IE, Firefox did not pick this up at all. I saw in the jQuery issues that this had been fixed, but evidently not for the release that ships with Drupal. Here’s the resulting code for the IE portion:</p>
+<pre>
+    // ie doesn't pick up the option.click, so we'll have to use the select.change
+    $('#edit-role-changer').change(function(){
+
+  	// get rid of select box
+  	$('#edit-role-changer').hide();
+
+        // show the chosen role as static text
+       // NOTE: FF doesn't pick up [@selected]
+      $('#role').html($(this).children("[@selected]").text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+</pre>
+
+<p>Firefox was actually a little easier to code for, since I found that it would pick up a .click() on the option element. So the resulting code for Firefox is this:</p>
+<pre>
+    // provide action for an option change
+    $('#edit-role-changer option').click(function(){
+
+  	  // get rid of select box
+  	  $('#edit-role-changer').hide();
+
+  	  // show the chosen role as static text
+      $('#role').html($(this).text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+</pre>
+
+<p>Since Firefox does pick up the .change() function that is on the select element that is used for IE, I then had to do a browsers detection, which jQuery makes simple as pie with $.browser. Here is the resulting full code:</p>
+<pre>
+  // see which browser we're working with
+  if ($.browser.msie) {
+
+    // ie doesn't pick up the option.click, so we'll have to use the select.change
+    $('#edit-role-changer').change(function(){
+
+  	  // get rid of select box
+  	  $('#edit-role-changer').hide();
+
+  	  // show the chosen role as static text
+  	  // NOTE: FF doesn't pick up [@selected]
+      $('#role').html($(this).children("[@selected]").text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+  }
+  else {
+
+    // provide action for an option change
+    $('#edit-role-changer option').click(function(){
+
+  	  // get rid of select box
+  	  $('#edit-role-changer').hide();
+
+  	  // show the chosen role as static text
+      $('#role').html($(this).text()).show();
+
+      // provide a change link
+      $('#role-change-back').show();
+
+    });
+  }
+</pre>
+
+<p>Happy jQuerying!</p>
+ ... <a href="/blog/jquery-working-select-options">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/rolechanger">Hey, you gotta start somewhere right?</a></h2>
+        <time pubdate="pubdate" class="meta">25 Feb 2007</time>
+      </header>
+
+      <p>So my first commit to the Drupal contributions has been made! WooHoo! I partied hard that night :) No, it’s really not that big of a deal, but I’m excited as it takes me one step further into Drupal development and being more involved in the Drupal community.</p>
+ ... <a href="/blog/rolechanger">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/marti-gras-weekend">Marti Gras Weekend</a></h2>
+        <time pubdate="pubdate" class="meta">19 Feb 2007</time>
+      </header>
+
+      <div style="float:left; margin-right:10px;"><div style="text-align:center;width:194px;font-family:arial,sans-serif;font-size:83%"><div style="height:194px;background:url('http://picasaweb.google.com/f/img/transparent_album_background.gif') no-repeat left"><a href="http://picasaweb.google.com/sirkitree/PhotoboothFunOnMartiGras"><img src="http://lh6.google.com/image/sirkitree/RdmoxEtxMTE/AAAAAAAAAHo/eoQXIJmK_p0/s160-c/PhotoboothFunOnMartiGras.jpg" width="160" height="160" style="border:none;padding:0px;margin-top:16px;" /></a></div><a href="http://picasaweb.google.com/sirkitree/PhotoboothFunOnMartiGras"><div style="color:#4D4D4D;font-weight:bold;text-decoration:none;">Photobooth fun on Marti Gras</div></a><div style="color:#808080"></div></div></div>
+<p>So Marti Gras weekend was great! I’m so fraking sore form Wii that it’s not even funny. Well maybe a little bit funny… Snugs and his wife were in town as well as Dave, so we all hung out at Dana’s, drank, and played Wii for 8 hours straight! It was a blast, a good time was had by all. This video is of Dave and Dana boxing, but we bowled a hell of a lot more. We almost all hit pro by the end of the night (3am). Too bad for Amy, who hurt her leg earlier in the day and was not able to bowl very much, but she did pretty well sitting down, even on her Vikoden! We also played with my Mac’s PhotoBooth program, hilarity ensued. <object width="425" height="350"><param name="movie" value="http://www.youtube.com/v/gYuacuTK_eU" />&lt;/param&gt;<param name="wmode" value="transparent" />&lt;/param&gt;<embed src="http://www.youtube.com/v/gYuacuTK_eU" type="application/x-shockwave-flash" wmode="transparent" width="425" height="350" />&lt;/embed&gt;</object></p>
+ ... <a href="/blog/marti-gras-weekend">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/theme-loader">Drupal Theme Loader</a></h2>
+        <time pubdate="pubdate" class="meta">13 Feb 2007</time>
+      </header>
+
+      <p>I’ve started a project on <a href="drupal.org">drupal.org</a> to contribute a module that will allow loading of new themes into Drupal from a compressed file (zip, gzip) that is either on your local hard drive, or from a web URL (curl support required?). <a href="http://drupal.org/project/theme-loader">View Project on drupal.org</a></p>
+
+<p>It’s a basic idea and I’m hoping to get some feedback from the Drupal community on how best to execute this. The idea came about when <a href="http://improving-home.com">a friend of mine</a> mentioned that he had introduced <a href="http://www.commandtoclient.com/">his brother</a> (a Joomla user) to Drupal and got some feedback from him on what he thought Drupal was lacking.</p>
+
+<p>The first thing mentioned was the weight system. Joomla uses a system similar to that which is implemented in the Views module where you can hit and up or down arrow to resort content. I heard mention that <a href="http://drupal.org/node/91039">someone has been working on a module to do sortables</a> with Drupal’s new <a href="jQuery.com">jQuery</a> library, but it looks to be a 4.7 implementation so far.</p>
+
+<p>I’ve not really seen much discussion on drupal.org about a theme installation interface, so I figure since it would help convert users and there is some good interest at least outside the drupal community, it may take some hold.</p>
+
+<p><strong>Update:</strong>
+Due to more <a href="http://thevineyardvoice.com">commitments</a> then I have time, I’ve discontinued any work on this module. My regrets.</p>
+ ... <a href="/blog/theme-loader">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/come-walk-me">come walk with me</a></h2>
+        <time pubdate="pubdate" class="meta">29 Jan 2007</time>
+      </header>
+
+      <div style="text-align:center;width:194px;font-family:arial,sans-serif;font-size:83%;float:left;margin-right:10px;">
+  <div style="height:194px;background:url('http://picasaweb.google.com/f/img/transparent_album_background.gif') no-repeat left">
+    <a href="http://picasaweb.google.com/sirkitree/TakeAWalkWithMe"><img src="http://lh3.google.com/image/sirkitree/Rb0ig9Sj63E/AAAAAAAAAFo/HRwybLGba_U/s160-c/TakeAWalkWithMe.jpg" width="160" height="160" style="border:none;padding:0px;margin-top:16px;" /></a>
+  </div>
 </div>
-          <div class="footer row">
-            <div class="contact">
-              <p>
-                Jerad Bitner<br />
+<p>I took a walk in the woods yesterday as it snowed. Here’s a photo log of it.</p>
+ ... <a href="/blog/come-walk-me">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/oh-lullabot">oh Lullabot</a></h2>
+        <time pubdate="pubdate" class="meta">28 Jan 2007</time>
+      </header>
+
+      <p><img src="/sites/jeradbitner.com/files/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" /></p>
+<h3>The family side</h3>
+<p>I spent the week of January 15th in Providence, RI with a group known as <a href="http://www.lullabot.com">Lullabot</a> learning the ins and outs of <a href="http://www.drupal.org">Drupal</a>. I’ve been working with Drupal for a while now, about 2 years in fact, and had learned quite a lot on my own by reading the <a href="http://www.drupal.org/handbook">Drupal Handbook</a> and hacking the core (which really is a no-no, but a great way to learn). When my buddy <a href="http://thethisorthat.com">Dave</a> told me about the workshop Lullabot was having, I looked into it and convinced <a href="http://www.improving-home.com">Shawn</a> to get <a href="http://www.c-sgroup.com">work</a> to pay for it and let me go for the whole week. Since my <a href="http://www.rewardamericaclub.com">Aunt and Uncle</a> live near Providence, I asked them if I could stay with them and it just so happened that the week was filled with birthdays! Two of my cousins and my Uncle’s birthdays were that week. What luck! Carmen and Frank were more then happy to have me up for a week and I was so glad to get to spend some time with them. I lived with them for a summer when I was 17 and I’ve missed them ever since.</p>
+<h3>The technical side</h3>
+<p>The Lullabot workshops, however were the real reason for the trip (since work was sending me) and I was not disappointed in that fact at all. They were fantastic! I knew quite a bit about Drupal when I arrived, but soon learned how much I really didn’t know. I like to compare it to a huge puzzle that I had been putting together all by myself, not really knowing where all the pieces went, but I was getting them together on my own yet out of order. These workshops really helped to put the pieces I was missing into place and really helped fill out the whole picture. I learned in that one week what I had been missing and felt as though I crammed two months of learning on my own, into one week. My brain was soaking up the information like a sponge and <strong>it felt great</strong>! I wanted more and by the end of the week I felt like crying, knowing that I would have to leave and would not be able to maintain the rate of information absorption I was getting. I felt inspired, awed, and humbled by the amount of knowledge the Lullabots bestowed upon us, knowing that there was even more that could just not be taught with the time that we had. My only real consolation in that, was the fact that Drupal is open source and these were the people that had put enough time and effort into the creation of Drupal that they actually felt like they had an ownership in it. Maybe ownership si not the right word, but more like the feeling a parent might have towards a child, a very bright, intelligent, and well liked child. And with that realization, came the revelation that I too could have that as well! But it would take much time, effort and learning before that could ever be me. Now, I’m not one for New Years resolutions, and yes I know it’s already the end of January, but I submit to you now my New Years Revolution: I will contribute to the Drupal community as much as possible this coming year and will hopefully find that piece of mind in knowing that I’ve contributed to the greater good in a project that affects so many geeks lives. And I say geek with the utmost admiration and respect, because not only do I categorize myself as one, but because so many of the people I’ve come to respect categorize themselves as one as well.</p>
+ ... <a href="/blog/oh-lullabot">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/another-remembrance">Another remembrance...</a></h2>
+        <time pubdate="pubdate" class="meta">31 Dec 2006</time>
+      </header>
+
+      <p><img src="/files/chris_tattoo.jpg" style="width:250px; height: 188px; float:right;" /> Christopher just got his tattoo and as you can see it’s almost exactly like Cody’s. So I’ll be getting mine as soon as I get some time and I’m going to keep the design as close to theirs as possible.</p>
+ ... <a href="/blog/another-remembrance">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/remembrance-continued">Remembrance continued...</a></h2>
+        <time pubdate="pubdate" class="meta">24 Dec 2006</time>
+      </header>
+
+      <p><img src="http://jeradbitner.com/files/cody_tattoo.jpg" style="float:left; width: 223px; height: 220px; margin-right:10px;" /> Here’s Cody’s tattoo. I’m going to schedule mine sometime this week, and Chris has his scheduled for next Saturday. I’ve also attached the original that Cody based his off of.</p>
+ ... <a href="/blog/remembrance-continued">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/macbook-pro">Macbook Pro</a></h2>
+        <time pubdate="pubdate" class="meta">10 Dec 2006</time>
+      </header>
+
+      <p><img src="/files/medium_macbookpro.jpg" title="macbook pro" style="float:right" />I purchased a new Macbook Pro, 15” with 1G RAM and 256VRAM ATI Graphics and it is incredible! Not only does everything look so much better then windoze, but the operating system is just so much better.</p>
+ ... <a href="/blog/macbook-pro">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/drupal-beginner">In the beginning... there was no Drupal.</a></h2>
+        <time pubdate="pubdate" class="meta">06 Dec 2006</time>
+      </header>
+
+      <p>Don’t cry, it’s true. But let me tell you about how I first came about <a href="drupal.org" target="_blank">my savior</a>.</p>
+
+<p>My first Drupal child was a project we call the Resource Center. When I say we, I mean Shawn Priesz, Kevin Poust, and me. I started off with writing a login system for a project Shawn had built that takes registered users from our main company’s website (<a href="http://www.c-sgroup.com" target="_blank" title="Construction Specialties, Inc - USA">c-sgroup.com</a>) and gives our sales representatives the information of those users, that live in their respective area, along with what product details they were downloading. I know what you’re thinking, ‘Big Brother type stuff, eh?’. Well maybe a little, but these are our <strong>REGISTERED</strong> users and they know that their information is kept within the company. Or at least that’s what helps <em>me</em> sleep at night. In any case, we needed a way for our sales reps to log in before they could see the information so that it was not readily available to just anyone.</p>
+
+<p>So I worked for a while on a login script and built it around this reporting program (after converting it from ASP to PHP) and finally had a working system when alas, I found Drupal. Praise be. A system that already did what I was looking to do <strong><em>AND MORE</em></strong>.</p>
+
+<p>I devoured it, finding that not only was it free, but there were literally a TON of developers using and developing for Drupal. The modules came into site after my first initial shock wore off at all of the already prepackaged features, and then I started in on my own development.</p>
+
+<p>Well, I really had no idea at first of how to develop a module, and quite frankly was a tad bit intimidated to try something of the like, so I resorted to inserted PHP code within custom pages and linking around ever so sloppily. But hey, we all start somewhere right? I was a beginner DrupalHEAD and I have the scars to prove it. Mainly mental scars that you can’t really see unless you sit beside me while I rework old code from a month or so ago. Then you hear a lot of ‘Daaang it!’s with Nepoleon Dynamite’s inflection. I had this folder in the Drupal root I called ‘myblocks’ and stuck all of my PHP code in there with a few links to scripts I would throw into the root/scripts/ folder… I’m a bit embarrassed of all this by now, but I really have no shame.</p>
+
+<p>Between here and there I came across Ajax, and all of it’s wonders and took a bit of a break from the daily Drupal grind to relearn all of the javascript I had started out with almost 9 years ago. But you can <a href="http://www.thethisorthat.com/ajax-app-development" target="_blank">read about that</a> over at <a href="http://thethisorthat.com" target="_blank">thethisorthat.com</a>, one of my subsites run by my good friend <a href="http://blog.linkworth.com/pubcon-linkworth-happy-hour-a-success/" target="_blank">INSANE Dave</a>.</p>
+
+<p>But then came a point where I really wanted to start a fresh module and get my hands dripping red (blue?) in Drupal’s inner core. I had gotten this email from a guy at work who thought it would be a good idea to display internal job openings on the Resource Center, so I got together with Human Resources and start hacking out a module. I started by reading the <a href="http://drupal.org/node/508" target="_blank">Module developer’s guide</a> and tore apart a simple module (don’t remember which one) and it went form there like wildfire. I couldn’t get enough. Everything went into a module. I redeveloped all of the ‘myblocks’ crap into modules after I finished the iPost module (will post it later, this is the internal job listings module I made for HR). During the redevelopment of those, I we started wanting to put other sites into Drupal. Namely, <a href="http://www.grand-entrance.com">Grand Entrance,</a>, which is like a sub company of ours that sells our products.</p>
+
+<p>From there we knew it was going to expand even more because of the ease of use and management that Drupal provides. So while I did research into Drupal multisite functionality, Shawn was busy learning and setting up everything for subversion. I’ll post sometime on my experience with that, but for now suffice to say, that if you are a developer, and you have not begun using subversion, DO IT! DO IT NOW! I seriously do not know what I did before subversion came into my life. This has been more a passion of Shawn’s, but I’ve reaped many of the benefits. Even if you don’t use it the correct way, which I’m still not sure I do entirely, for backup purposes alone it is a must.</p>
+
+<p>But enough ranting on that, I’m focusing on Drupal multisites now. The basis of a drupal multisite is this: you have a domain, in fact, multiple domains, that point to the same core Drupal install. Drupal then routes the request to it’s /sites folder and looks for a folder with the requested uri. This folder, contains a settings.php which defines the database in which the site runs, and wala! That’s really all there is too it. One Drupal install, multiple database, multiple sites. So simple, yet so ingenious it makes me emotional…. well not really emotional, more sexually… no that’s not it either… nevermind.</p>
+
+<p>So what have we learned here today boys and … well I doubt if you’re a girl you’ve made it this far ‘cuz I don’t know hardly any girls that speak techbabble.</p>
+
+<ol>
+  <li>Drupal is the lord your god in code format.</li>
+  <li>If you can't find a Drupal module to do it for you, start by developing a real Drupal module and not trying to 'just get by' on mashed up code.</li>
+  <li>Multisite Drupal installs are an easy thing to learn, and well worth the time, (1-2 minutes) to setup if you have multiple sites that you want to run through Drupal.</li>
+  <li>This Jerad guy probably never gets a date.</li>
+&lt;/ul&gt;
+</ol>
+ ... <a href="/blog/drupal-beginner">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/remembrance-our-father">In remembrance of our father</a></h2>
+        <time pubdate="pubdate" class="meta">05 Dec 2006</time>
+      </header>
+
+      <p>So my brothers and I have wanted to get a tattoo for a while now that is in remembrance of our father who died one month ago today. Here is a preliminary sketch I did in Illustrator. We’re going to have this the basis of the tattoo and have the artist get more creative with it, personalize each one.</p>
+ ... <a href="/blog/remembrance-our-father">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/interesting-note-login">Interesting note on login</a></h2>
+        <time pubdate="pubdate" class="meta">30 Nov 2006</time>
+      </header>
+
+      <p>For a while, I’ve been annoyed by the default way Drupal displays it’s login box automatically if you’re not signed in. So I usually just put a link in the footer or primary links to ‘user’ after enabling clean urls. This works great, but when I did it with Drupal 5, I found that the link that should be entitled <em>Login</em>, was changed to <em>My account</em>!</p>
+ ... <a href="/blog/interesting-note-login">read on</a>
+
+    </article>
+    <hr />
+  
+    <article class="post">
+      <header>
+        <h2 class='subheader'><a href="/blog/ah-can-you-smell-fresh-drupal">Ah, can you smell the fresh Drupal?</a></h2>
+        <time pubdate="pubdate" class="meta">30 Nov 2006</time>
+      </header>
+
+      <p>Drupal 5.0 beta 2 is out now and <em>God-damn</em> , I… I got to tell you, I’m fairly excited to see what you’re capable of, if Morpheus is right and all… I’m not supposed to talk about this, but if you are… a very exciting time. We got a lot to do. We got to get to it…</p>
+ ... <a href="/blog/ah-can-you-smell-fresh-drupal">read on</a>
+
+    </article>
+    <hr />
+  
+</div>
+      </main>
+
+      <footer class="footer mt-5 py-3">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <p class="mb-1">
+                Jerad Bitner<br>
                 sirkitree@gmail.com
               </p>
             </div>
-            <div class="contact">
-              <p>
-                <a href="http://github.com/sirkitree/">github.com/sirkitree</a><br />
-                <a href="http://twitter.com/sirkitree/">twitter.com/sirkitree</a><br />
-                <a href="http://https://plus.google.com/u/0/104118380060543405502/posts">plus.google.com</a><br />
+            <div class="col-md-6 text-md-end">
+              <p class="mb-1">
+                <a href="http://github.com/sirkitree/" class="text-decoration-none">github.com/sirkitree</a><br>
+                <a href="http://twitter.com/sirkitree/" class="text-decoration-none">twitter.com/sirkitree</a>
               </p>
             </div>
           </div>
         </div>
-      </div> <!-- /container -->
+      </footer>
 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 </html>

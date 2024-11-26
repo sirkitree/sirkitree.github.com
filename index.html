@@ -4,7 +4,7 @@ title: Jerad Bitner
 ---
 
 <div id="home">
-  {% for post in paginator.posts %}
+  {% for post in site.posts %}
     <article class="post">
       <header>
         <h2 class='subheader'><a href="{{ post.url }}">{{ post.title }}</a></h2>
@@ -16,52 +16,4 @@ title: Jerad Bitner
     </article>
     <hr />
   {% endfor %}
-
-  <!-- Pagination links -->
-  <div id="post-pagination" class="pagination-centered">
-    <ul class="pagination pagination-sm">
-    {% if paginator.previous_page %}
-      <li class="previous page-item">
-        {% if paginator.previous_page == 1 %}
-          <a href="/" class="page-link">&laquo;</a>
-        {% else %}
-          <a href="{{ paginator.previous_page_path }}" class="page-link">&laquo;</a>
-        {% endif %}
-      </li>
-    {% else %}
-      <li class="previous disabled page-item">
-        <span class="page-link">&laquo;</span>
-      </li>
-    {% endif %}
-
-      <li class="page page-item">
-        {% if paginator.page == 1 %}
-          <span class="current-page page-link">1</span>
-        {% else %}
-          <a href="/" class="page-link">1</a>
-        {% endif %}
-      </li>
-
-      {% for count in (2..paginator.total_pages) %}
-        <li class="page page-item">
-          {% if count == paginator.page %}
-            <span class="current page-link">{{ count }}</span>
-          {% else %}
-            <a href="/page{{ count }}" class="page-link">{{ count }}</a>
-          {% endif %}
-        </li>
-      {% endfor %}
-
-    {% if paginator.next_page %}
-      <li class="next page-item">
-        <a href="{{ paginator.next_page_path }}" class="page-link">&raquo;</a>
-      </li>
-    {% else %}
-      <li class="next disabled page-item">
-        <span class="page-link">&raquo;</span>
-      </li>
-    {% endif %}
-    </ul>
-  </div>  
-
 </div>

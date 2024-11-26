@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>eliza and the AI Frontier</title>
+        <meta name="description" content="The world of technology never ceases to amaze me with its rapid evolution and unexpected convergences. Recently, I’ve been deeply involved with an exciting project at the intersection of artificial intelligence and cryptocurrency - the @ai16z/eliza project.
+">
+        <meta name="author" content="Jerad Bitner" />
+
+        <!-- For Facebook -->
+        <meta property="og:title" content="eliza and the AI Frontier" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="/2024/11/eliza-and-the-ai-frontier/" />
+        <meta property="og:description" content="The world of technology never ceases to amaze me with its rapid evolution and unexpected convergences. Recently, I’ve been deeply involved with an exciting project at the intersection of artificial intelligence and cryptocurrency - the @ai16z/eliza project.
+" />
+
+        <!-- For Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="eliza and the AI Frontier" />
+        <meta name="twitter:description" content="The world of technology never ceases to amaze me with its rapid evolution and unexpected convergences. Recently, I’ve been deeply involved with an exciting project at the intersection of artificial intelligence and cryptocurrency - the @ai16z/eliza project.
+" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="/">
+            <img class='gravatar rounded-circle me-2' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=45" alt="Jerad Bitner" />
+            Jerad Bitner
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Jenney Journals
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-1/">Jenney Journal, part 1</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-2/">Jenney Journal, part 2</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-3/">Jenney Journal, part 3</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-4/">Jenney Journal, part 4</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-5/">Jenney Journal, part 5</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-6/">Jenney Journal, part 6</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-7/">Jenney Journal, part 7</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-8/">Jenney Journal, part 8</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-9/">Jenney Journal, part 9</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-10/">Jenney Journal, part 10</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-11/">Jenney Journal, part 11</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-12/">Jenney Journal, part 12</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-13/">Jenney Journal, part 13</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-14/">Jenney Journal, part 14</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-15/">Jenney Journal, part 15</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-16/">Jenney Journal, part 16</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-team/">Jenney Journal, Jenney's Team</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-17/">Jenney Journal, part 17</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-18/">Jenney Journal, part 18</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/verse-collection/">Verse Collection</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-19/">Jenney Journal, part 19</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/04/jenney-journal-20/">Jenney Journal, part 20</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-21/">Jenney Journal, part 21</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-22/">Jenney Journal, part 22</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-23/">Jenney Journal, part 23</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-24/">Jenney Journal, part 24</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-25/">Jenney Journal, part 25</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/06/jenney-journal-26/">Jenney Journal, part 26</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/07/jenney-journal-27/">Jenney Journal, part 27</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/08/jenney-journal-28/">Jenney Journal, part 28</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/09/jenney-journal-29/">Jenney Journal, part 29</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/10/jenney-journal-30/">Jenney Journal, part 30</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/11/jenney-journal-31/">Jenney Journal, part 31</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2021/01/jenney-journal-32/">Jenney Journal, part 32</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                </ul>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/archive">Archive</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <main class="container py-4">
+        <article class="post">
+  <header>
+    <h1 class="subheader">
+      <a href="http://prose.io/#sirkitree/sirkitree.github.com/edit/master/_posts/2024-11-26-eliza-and-the-ai-frontier.md" class="pencil" title="Edit with Prose.io"><span>Edit</span></a>
+      eliza and the AI Frontier
+    </h1>
+
+    <div class="meta mb-4">
+      <time pubdate="pubdate">November 26, 2024</time>
+      
+        <span class="ms-2 me-2">•</span>
+        <span class="category">technology</span>
+      
+    </div>
+  </header>
+
+  <section class="content">
+    <p>The world of technology never ceases to amaze me with its rapid evolution and unexpected convergences. Recently, I’ve been deeply involved with an exciting project at the intersection of artificial intelligence and cryptocurrency - the <a href="https://github.com/ai16z/eliza">@ai16z/eliza</a> project.</p>
+
+<p>eliza, named after Joseph Weizenbaum’s groundbreaking 1966 chatbot, is reimagining what’s possible when we combine modern AI capabilities with blockchain technology. This isn’t just another chatbot; it’s a vision of how autonomous AI agents might interact with both humans and the digital economy.</p>
+
+<p>My journey with eliza began with the fundamental building blocks - setting up the project infrastructure that would enable our growing community of contributors. I established the initial GitHub project management workflows, implementing project boards and issue templates to streamline our development process. One of my first contributions was setting up the continuous integration pipeline, ensuring that every code contribution maintains our quality standards and can be confidently deployed.</p>
+
+<p>I also started work on expanding eliza’s reach by developing a Slack client, allowing the agent to interact with teams in their native workspace environments. There’s something fascinating about building these bridges between AI agents and human communication platforms - each new integration opens up novel possibilities for interaction and collaboration.</p>
+
+<p>The project has grown to encompass several fascinating repositories:</p>
+<ul>
+  <li><a href="https://github.com/ai16z/eliza">The core eliza platform</a> for Twitter and Discord interactions</li>
+  <li><a href="https://github.com/ai16z/elizas-world">eliza’s world</a> - a space where AI swarms come to life</li>
+  <li><a href="https://github.com/ai16z/elizas-list">eliza’s list</a> - a growing collection of community projects</li>
+  <li><a href="https://github.com/ai16z/eliza-starter">eliza-starter</a> - A starter kit for developers looking to build their own AI agents</li>
+</ul>
+
+<p>What excites me most about this project is how it bridges multiple technological paradigms. We’re not just building tools; we’re exploring fundamental questions about AI autonomy, digital identity, and economic interaction in the age of artificial intelligence.</p>
+
+<p>The crypto aspect adds another fascinating layer. How do autonomous agents interact with digital assets? What does it mean for an AI to have its own wallet, to make transactions, to participate in an economy? These aren’t just theoretical questions anymore - we’re building the infrastructure to answer them practically.</p>
+
+<p>This reminds me of my earlier work with VR and web technologies. Just as virtual reality opened up new ways of experiencing digital spaces, AI agents are opening up new ways of interacting with digital systems. The difference is that while VR extended human presence into digital spaces, AI agents are creating new forms of digital presence entirely.</p>
+
+<p>Looking ahead, I see enormous potential in this space. We’re not just creating tools for human use; we’re potentially bootstrapping an entire ecosystem of autonomous digital entities that can interact, trade, and evolve in ways we’re only beginning to understand.</p>
+
+<p>The community’s response has been incredible. Developers and creators are already building on top of eliza, extending its capabilities in unexpected directions. It’s reminiscent of the early days of the web, when every new project seemed to open up ten more possibilities. From my vantage point managing our GitHub workflows, I’ve had the privilege of watching new contributors join the ecosystem, each bringing their unique perspective and ideas.</p>
+
+<p>What keeps me up at night (in the best way possible) is thinking about the implications. How will these AI agents evolve? What kind of economy will they create? How will they interact with human society? These are the questions that drive our development, and I’m thrilled to be part of finding the answers.</p>
+
+<p>For those interested in joining this journey, the project is open source and welcomes contributors. Whether you’re interested in AI, blockchain, or both, there’s something here for you to explore and build upon. Our CI pipeline makes it easy to get started - you can have your first PR merged within hours.</p>
+
+<p>The future is coming faster than we think, and it’s being shaped by projects like eliza. I’m grateful to be part of this revolution, and I can’t wait to see what we’ll build next.</p>
+
+<p><em>P.S. If you’re interested in getting involved, check out the <a href="https://github.com/ai16z/">eliza repositories on GitHub</a>. The future is open source, and it needs builders like you.</em></p>
+
+  </section>  
+  
+  
+  <section class="comments mt-5">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'jbitner';
+        var disqus_url = window.location.href;
+        if (disqus_url.indexOf('#') >= 0) {
+          disqus_url = disqus_url.split('#')[0];
+        }
+        var last_char = disqus_url[disqus_url.length-1]
+        if (last_char == '/') {
+          disqus_url = disqus_url.substring(0, disqus_url.length-1);
+        }
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+  
+</article>
+
+      </main>
+
+      <footer class="footer mt-5 py-3">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <p class="mb-1">
+                Jerad Bitner<br>
+                sirkitree@gmail.com
+              </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+              <p class="mb-1">
+                <a href="http://github.com/sirkitree/" class="text-decoration-none">github.com/sirkitree</a><br>
+                <a href="http://twitter.com/sirkitree/" class="text-decoration-none">twitter.com/sirkitree</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>

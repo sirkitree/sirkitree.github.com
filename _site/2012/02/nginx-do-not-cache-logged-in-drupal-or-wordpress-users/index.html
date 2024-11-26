@@ -1,63 +1,764 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Nginx: do not cache logged in Drupal or WordPress users</title>
-        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="A while ago I changed all of my domain names to Namecheap and migrated my Drupal and Wordpress sites to Linode. I followed some excellent instructions from James Sansbury (soon to be a Lullabot article) and some of his Nginx configuration files. This worked great for my Drupal site (heh - which was this site that I then converted to Jekkyl) and my wife’s WordPress site.
+">
+        <meta name="author" content="Jerad Bitner" />
+
+        <!-- For Facebook -->
+        <meta property="og:title" content="Nginx: do not cache logged in Drupal or WordPress users" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="/2012/02/nginx-do-not-cache-logged-in-drupal-or-wordpress-users/" />
+        <meta property="og:description" content="A while ago I changed all of my domain names to Namecheap and migrated my Drupal and Wordpress sites to Linode. I followed some excellent instructions from James Sansbury (soon to be a Lullabot article) and some of his Nginx configuration files. This worked great for my Drupal site (heh - which was this site that I then converted to Jekkyl) and my wife’s WordPress site.
+" />
+
+        <!-- For Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Nginx: do not cache logged in Drupal or WordPress users" />
+        <meta name="twitter:description" content="A while ago I changed all of my domain names to Namecheap and migrated my Drupal and Wordpress sites to Linode. I followed some excellent instructions from James Sansbury (soon to be a Lullabot article) and some of his Nginx configuration files. This worked great for my Drupal site (heh - which was this site that I then converted to Jekkyl) and my wife’s WordPress site.
+" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
 
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
     </head>
     <body>
+      <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="/">
+            <img class='gravatar rounded-circle me-2' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=45" alt="Jerad Bitner" />
+            Jerad Bitner
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
 
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <img class='gravatar' src="http://www.gravatar.com/avatar/4950478a2c8a6627004a41b2617948a4?s=45" /><a class="navbar-brand" href="/">Jerad Bitner</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/archive">Archive</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Jenney Journals
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-1/">Jenney Journal, part 1</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-2/">Jenney Journal, part 2</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-3/">Jenney Journal, part 3</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-4/">Jenney Journal, part 4</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-5/">Jenney Journal, part 5</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-6/">Jenney Journal, part 6</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-7/">Jenney Journal, part 7</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-8/">Jenney Journal, part 8</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/02/jenney-journal-9/">Jenney Journal, part 9</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-10/">Jenney Journal, part 10</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-11/">Jenney Journal, part 11</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-12/">Jenney Journal, part 12</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-13/">Jenney Journal, part 13</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-14/">Jenney Journal, part 14</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-15/">Jenney Journal, part 15</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-16/">Jenney Journal, part 16</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-team/">Jenney Journal, Jenney's Team</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-17/">Jenney Journal, part 17</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-18/">Jenney Journal, part 18</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/verse-collection/">Verse Collection</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/03/jenney-journal-19/">Jenney Journal, part 19</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/04/jenney-journal-20/">Jenney Journal, part 20</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-21/">Jenney Journal, part 21</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-22/">Jenney Journal, part 22</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-23/">Jenney Journal, part 23</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-24/">Jenney Journal, part 24</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/05/jenney-journal-25/">Jenney Journal, part 25</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/06/jenney-journal-26/">Jenney Journal, part 26</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/07/jenney-journal-27/">Jenney Journal, part 27</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/08/jenney-journal-28/">Jenney Journal, part 28</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/09/jenney-journal-29/">Jenney Journal, part 29</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/10/jenney-journal-30/">Jenney Journal, part 30</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2020/11/jenney-journal-31/">Jenney Journal, part 31</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                        <li><a class="dropdown-item" href="/2021/01/jenney-journal-32/">Jenney Journal, part 32</a></li>
+                      
+                    
+                  
+                    
+                    
+                      
+                    
+                  
+                </ul>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/archive">Archive</a>
+              </li>
             </ul>
-          </div><!--/.navbar-collapse -->
+          </div>
         </div>
-      </div>
+      </nav>
 
-      <div class="container">
-        <div class="site">
-          <article class="post">
+      <main class="container py-4">
+        <article class="post">
   <header>
-    <h2 class="subheader"><a href="http://prose.io/#sirkitree/sirkitree.github.com/edit/master/_posts/2012-02-09-nginx-do-not-cache-logged-in-drupal-or-wordpress-users.markdown" class="pencil" title="Edit with Prose.io"><span>Edit</span></a>Nginx: do not cache logged in Drupal or WordPress users</h2>
+    <h1 class="subheader">
+      <a href="http://prose.io/#sirkitree/sirkitree.github.com/edit/master/_posts/2012-02-09-nginx-do-not-cache-logged-in-drupal-or-wordpress-users.markdown" class="pencil" title="Edit with Prose.io"><span>Edit</span></a>
+      Nginx: do not cache logged in Drupal or WordPress users
+    </h1>
 
-    <div class="breadcrumb">
-      <time pubdate="pubdate" class="meta">09 Feb 2012</time>
+    <div class="meta mb-4">
+      <time pubdate="pubdate">February 09, 2012</time>
+      
+        <span class="ms-2 me-2">•</span>
+        <span class="category">blog</span>
+      
     </div>
-    <div class="g-plusone right" data-size="medium"></div>
-        
   </header>
 
   <section class="content">
-  <p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife&#39;s WordPress site</a>.</p>
+    <p>A while ago I changed all of my domain names to <a href="http://namecheap.com/">Namecheap</a> and migrated my Drupal and Wordpress sites to <a href="http://www.linode.com/">Linode</a>. I followed some excellent instructions from <a href="https://twitter.com/#!/q0rban">James Sansbury</a> (soon to be a Lullabot article) and some of his <a href="https://github.com/q0rban/nginx-drupal">Nginx configuration files</a>. This worked great for my Drupal site (heh - which was this site that I then <a href="blog/2012/01/29/using-node-dot-js-to-convert-drupal-to-jekkyl/">converted to Jekkyl</a>) and my <a href="http://jenneymarie.net/">wife’s WordPress site</a>.</p>
 
 <p>However, when my wife started using her blog on my fancy new Nginx setup with PHP-FPM, she noticed that when she created posts one after the other, they were overwriting eachother, effectively creating a new revision of the same post instead of creating a new one. I knew that this was because of the caching, but was still too new to Nginx to know exactly what to do about it.</p>
 
-<p>Again, James to the rescue! He pointed me in the right direction and I got it working. Here&#39;s what I did.</p>
+<p>Again, James to the rescue! He pointed me in the right direction and I got it working. Here’s what I did.</p>
 
-<p>One of the relevant pieces of James&#39; setup, is this line within his <a href="https://github.com/q0rban/nginx-drupal/blob/master/nginx.conf#L63"><code>/etc/nginx/nginx.conf</code></a>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">http {
+<p>One of the relevant pieces of James’ setup, is this line within his <a href="https://github.com/q0rban/nginx-drupal/blob/master/nginx.conf#L63"><code class="language-plaintext highlighter-rouge">/etc/nginx/nginx.conf</code></a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http {
 ...
   ##
   # Virtual Host Configs
@@ -66,42 +767,47 @@
   include /etc/nginx/conf.d/*.conf;
   include /etc/nginx/sites-enabled/*;
 }
-</code></pre></div>
-<p>And then within <a href="https://github.com/q0rban/nginx-drupal/blob/master/conf.d/session_cookie.conf"><code>/etc/nginx/conf.d/session_cookie.conf</code></a> he searches for the cookie that Drupal sets when you log in:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># Determine if a Drupal session cookie is present
+</code></pre></div></div>
+
+<p>And then within <a href="https://github.com/q0rban/nginx-drupal/blob/master/conf.d/session_cookie.conf"><code class="language-plaintext highlighter-rouge">/etc/nginx/conf.d/session_cookie.conf</code></a> he searches for the cookie that Drupal sets when you log in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Determine if a Drupal session cookie is present
 map $http_cookie $logged_in {
     default 0;
     ~SESS 1; # Drupal session cookie
 }
-</code></pre></div>
+</code></pre></div></div>
+
 <p>To this, I added a search for the wordpress cookie as well:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"># Determine if a Drupal session cookie is present
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Determine if a Drupal session cookie is present
 map $http_cookie $logged_in {
     default 0;
     ~SESS 1; # Drupal session cookie
     ~wordpress_logged_in 1; # Wordpress session cookie
 }
-</code></pre></div>
-<p>The last piece is telling your site to bypass the cache if <code>$http_cookie</code> is set:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">location / {
+</code></pre></div></div>
+
+<p>The last piece is telling your site to bypass the cache if <code class="language-plaintext highlighter-rouge">$http_cookie</code> is set:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>location / {
   ...
   # If client is logged in we bypass cache
   fastcgi_cache_bypass $logged_in;
   fastcgi_no_cache $logged_in;
   ...
 }
-</code></pre></div>
-<p>A quick <code>sudo service nginx restart</code> and our WordPress site is working much better!</p>
+</code></pre></div></div>
 
-  </section>
+<p>A quick <code class="language-plaintext highlighter-rouge">sudo service nginx restart</code> and our WordPress site is working much better!</p>
+
+  </section>  
   
-  <section class="comments">
+  
+  <section class="comments mt-5">
     <div id="disqus_thread"></div>
     <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'jbitner'; // required: replace example with your forum shortname
-
-        // Remove the trailing slash off the URL that's used to identify this page for Disqus. Also trim off the #comment-xxxxx if it's there
+        var disqus_shortname = 'jbitner';
         var disqus_url = window.location.href;
         if (disqus_url.indexOf('#') >= 0) {
           disqus_url = disqus_url.split('#')[0];
@@ -111,7 +817,6 @@ map $http_cookie $logged_in {
           disqus_url = disqus_url.substring(0, disqus_url.length-1);
         }
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -119,35 +824,31 @@ map $http_cookie $logged_in {
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </section>
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
+  
 </article>
-          <div class="footer row">
-            <div class="contact">
-              <p>
-                Jerad Bitner<br />
+
+      </main>
+
+      <footer class="footer mt-5 py-3">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <p class="mb-1">
+                Jerad Bitner<br>
                 sirkitree@gmail.com
               </p>
             </div>
-            <div class="contact">
-              <p>
-                <a href="http://github.com/sirkitree/">github.com/sirkitree</a><br />
-                <a href="http://twitter.com/sirkitree/">twitter.com/sirkitree</a><br />
-                <a href="http://https://plus.google.com/u/0/104118380060543405502/posts">plus.google.com</a><br />
+            <div class="col-md-6 text-md-end">
+              <p class="mb-1">
+                <a href="http://github.com/sirkitree/" class="text-decoration-none">github.com/sirkitree</a><br>
+                <a href="http://twitter.com/sirkitree/" class="text-decoration-none">twitter.com/sirkitree</a>
               </p>
             </div>
           </div>
         </div>
-      </div> <!-- /container -->
+      </footer>
 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 </html>
