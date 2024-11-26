@@ -16,10 +16,10 @@ My journey with eliza began with the fundamental building blocks - setting up th
 I also started work on expanding eliza's reach by developing a Slack client, allowing the agent to interact with teams in their native workspace environments. There's something fascinating about building these bridges between AI agents and human communication platforms - each new integration opens up novel possibilities for interaction and collaboration.
 
 The project has grown to encompass several fascinating repositories:
-- The core eliza platform for Twitter and Discord interactions
-- eliza's world - a space where AI swarms come to life
-- eliza's list - a growing collection of community projects
-- A starter kit for developers looking to build their own AI agents
+- [The core eliza platform](https://github.com/ai16z/eliza) for Twitter and Discord interactions
+- [eliza's world](https://github.com/ai16z/elizas-world) - a space where AI swarms come to life
+- [eliza's list](https://github.com/ai16z/elizas-list) - a growing collection of community projects
+- [eliza-starter](https://github.com/ai16z/eliza-starter) - A starter kit for developers looking to build their own AI agents
 
 What excites me most about this project is how it bridges multiple technological paradigms. We're not just building tools; we're exploring fundamental questions about AI autonomy, digital identity, and economic interaction in the age of artificial intelligence.
 
