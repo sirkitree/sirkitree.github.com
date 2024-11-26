@@ -107,6 +107,11 @@
           themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
           
           localStorage.setItem('theme', newTheme);
+          
+          // Dispatch theme change event
+          document.dispatchEvent(new CustomEvent('themeChanged', { 
+            detail: { theme: newTheme }
+          }));
         });
       </script>
     </body>
