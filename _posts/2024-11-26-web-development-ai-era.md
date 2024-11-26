@@ -18,7 +18,11 @@ What really gets me excited is the emergence of what I call "AI-native" web expe
 The technical implications are profound:
 
 - Edge computing is becoming crucial as more processing needs to happen closer to the user
-- We're seeing the emergence of new web standards specifically designed for AI integration, like [Constitutional AI](https://www.constitutional.ai/) and [W3C's Human-Centric AI Community Group](https://www.w3.org/community/humancentricai/)
+- We're seeing the emergence of new web standards specifically designed for AI integration, like [Constitutional AI](https://www.constitutional.ai/) and [W3C's Human-Centric AI Community Group](https://www.w3.org/community/humancentricai/). The standardization landscape is rapidly evolving with several key initiatives:
+  - [NIST's AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) provides crucial guidelines for managing AI-related risks, with specific guidance for generative AI systems
+  - [ISO/IEC standards](https://www.niso.org/niso-io/2024/01/new-and-emerging-specs-standards-january-2024) are defining AI system lifecycles and management systems
+  - The [W3C's AI & Web Impact Report](https://www.w3.org/reports/ai-web-impact/) outlines how AI systems are reshaping the web's architecture
+  - Emerging [Spatial Web Standards](https://www.verses.ai/blogs/spatial-web-standards-approval) are addressing interoperability and governance of intelligent software agents
 - Privacy and security considerations are evolving rapidly as we handle more complex, AI-driven interactions
 
 The most intellectually stimulating challenges right now revolve around bridging traditional web development and AI capabilities. How do we maintain performance when we're running increasingly complex AI operations? How do we ensure consistency across different AI systems? These are the kinds of problems that energize our field and drive innovation forward.
