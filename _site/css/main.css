@@ -268,7 +268,42 @@ footer {
   padding: 0.5rem 0;
   margin-top: 0.5rem;
   min-width: 200px;
+  max-width: 300px;
+  max-height: 70vh; /* Limit height to 70% of viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
   z-index: 1000;
+  list-style: none;
+  /* Add smooth scrolling */
+  scroll-behavior: smooth;
+  /* Style the scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+/* Webkit scrollbar styles */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+  border: 2px solid var(--header-bg);
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  margin: 0;
+  padding: 0;
 }
 
 .dropdown-menu.show {
@@ -281,6 +316,10 @@ footer {
   color: var(--nav-link-color);
   text-decoration: none;
   transition: color 0.2s, background-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .dropdown-item:hover,
