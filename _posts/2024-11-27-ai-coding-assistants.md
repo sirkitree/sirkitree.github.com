@@ -1,9 +1,12 @@
 ---
 layout: post
-title: "The No-BS Guide to AI-Powered Coding Assistants"
-created: 1701251200
+title: 'The No-BS Guide to AI-Powered Coding Assistants'
+date: '2024-11-27 14:00'
+comments: true
+published: true
+category: 'tech'
 permalink: /blog/ai-coding-assistants
-category: "tech"
+---
 
 If you haven't been sleeping under a rock for the past few years, you've probably heard the buzz about AI-powered coding tools. GitHub Copilot, Amazon CodeWhisperer, Anthropic Claude - these robo-devs are making waves and promising to revolutionize how we sling code. But are they really the game-changers they claim to be, or just overhyped toys? Let's cut through the noise and see what's <em>really</em> crackin'.
 
