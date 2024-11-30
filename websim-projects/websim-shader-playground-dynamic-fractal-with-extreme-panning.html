@@ -1,0 +1,195 @@
+<html><head><base href="https://websim.ai" /><title>WebSim Shader Playground - Dynamic Fractal with Extreme Panning</title>
+<style>
+  body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #000; font-family: Arial, sans-serif; }
+  #shaderContainer { 
+    width: 100%; 
+    height: 100%; 
+    position: relative;
+  }
+  canvas { width: 100%; height: 100%; display: block; }
+  #info {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+  }
+  #codeEditor {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 70%;
+    background-color: rgba(0,0,0,0.8);
+    color: #fff;
+    font-family: monospace;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    overflow: auto;
+  }
+  #codeEditor textarea {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    resize: none;
+    outline: none;
+  }
+</style>
+</head>
+<body>
+<div id="shaderContainer">
+  <canvas id="shaderCanvas"></canvas>
+  <div id="info">Click to Pause/Resume & Edit | Scroll to Zoom | Up/Down Arrows to Pan<br><span id="status"></span></div>
+  <div id="codeEditor">
+    <textarea id="shaderCode"></textarea>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script id="fragmentShader" type="x-shader/x-fragment">
+uniform float time;
+uniform vec2 resolution;
+uniform float zoom;
+uniform float panY;
+
+vec3 hsv(float h, float s, float v) {
+    vec4 t = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(vec3(h) + t.xyz) * 6.0 - vec3(t.w));
+    return v * mix(vec3(t.x), clamp(p - vec3(t.x), 0.0, 1.0), s);
+}
+
+mat2 rotate2D(float angle) {
+    float s = sin(angle), c = cos(angle);
+    return mat2(c, -s, s, c);
+}
+
+void main() {
+    vec2 FC = gl_FragCoord.xy;
+    vec2 r = resolution;
+    float t = time * 0.2;
+    vec4 o = vec4(0.0);
+    
+    // Apply zoom and pan
+    vec2 zoomedFC = (FC - 0.5 * r) / zoom + 0.5 * r;
+    zoomedFC.y += panY;
+    
+    for(float i=0.0,g=0.0,e=0.0,s=0.0;++i<85.;o.rgb+=hsv(g*i*.1-.5,e,s/5e2)){
+        vec3 p=vec3((zoomedFC.xy-.5*r)/r.y+vec2(0,1.1),g+.1);
+        p.zx*=rotate2D(t*.5);
+        s=2.;
+        float x = 2.0 + sin(time * 0.1) * 1.0; // x changes over time
+        for(int i=0;i++<12;p=vec3(2,5,2)-abs(abs(p)*e-vec3(x,4,4)))
+            s*=e=max(1.02,12./dot(p,p));
+        g+=mod(length(p.xz),p.y)/s;
+        s=log2(s*.2);
+    }
+    
+    gl_FragColor = o;
+}
+</script>
+<script>
+let scene, camera, renderer, material, mesh;
+let isPaused = false;
+let zoomLevel = 1.0;
+let panY = 0.0;
+
+function init() {
+    scene = new THREE.Scene();
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    renderer = new THREE.WebGLRenderer({canvas: document.getElementById('shaderCanvas'), antialias: true});
+    
+    material = new THREE.ShaderMaterial({
+        uniforms: {
+            time: { value: 0 },
+            resolution: { value: new THREE.Vector2() },
+            zoom: { value: zoomLevel },
+            panY: { value: panY }
+        },
+        fragmentShader: document.getElementById('fragmentShader').textContent
+    });
+    
+    mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
+    scene.add(mesh);
+    
+    onWindowResize();
+    window.addEventListener('resize', onWindowResize, false);
+    
+    document.getElementById('shaderCanvas').addEventListener('click', togglePauseAndEdit);
+    document.getElementById('shaderCanvas').addEventListener('wheel', handleZoom);
+    window.addEventListener('keydown', handlePan);
+    
+    document.getElementById('shaderCode').value = document.getElementById('fragmentShader').textContent;
+    document.getElementById('shaderCode').addEventListener('input', updateShader);
+    
+    animate();
+    updateStatus();
+}
+
+function onWindowResize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    renderer.setSize(width, height);
+    material.uniforms.resolution.value.set(width, height);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    if (!isPaused) {
+        material.uniforms.time.value += 0.05;
+    }
+    renderer.render(scene, camera);
+}
+
+function handleZoom(event) {
+    event.preventDefault();
+    const zoomSpeed = 0.1;
+    zoomLevel += event.deltaY > 0 ? -zoomSpeed : zoomSpeed;
+    zoomLevel = Math.max(0.1, Math.min(5, zoomLevel));
+    material.uniforms.zoom.value = zoomLevel;
+    updateStatus();
+}
+
+function handlePan(event) {
+    const panSpeed = 20.0; // Increased from 2.0 to 20.0 (10x faster)
+    if (event.key === 'ArrowUp') {
+        panY += panSpeed / zoomLevel;
+    } else if (event.key === 'ArrowDown') {
+        panY -= panSpeed / zoomLevel;
+    }
+    material.uniforms.panY.value = panY;
+    updateStatus();
+}
+
+function togglePauseAndEdit() {
+    isPaused = !isPaused;
+    const codeEditor = document.getElementById('codeEditor');
+    if (isPaused) {
+        codeEditor.style.display = 'block';
+    } else {
+        codeEditor.style.display = 'none';
+    }
+    updateStatus();
+}
+
+function updateStatus() {
+    const statusElement = document.getElementById('status');
+    statusElement.textContent = `Status: ${isPaused ? 'Paused' : 'Running'} | Zoom: ${(zoomLevel * 100).toFixed(0)}% | Pan Y: ${panY.toFixed(2)}`;
+}
+
+function updateShader() {
+    const newShaderCode = document.getElementById('shaderCode').value;
+    material.fragmentShader = newShaderCode;
+    material.needsUpdate = true;
+}
+
+init();
+</script>
+</body></html>

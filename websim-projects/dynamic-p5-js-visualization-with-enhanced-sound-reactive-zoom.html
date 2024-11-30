@@ -1,0 +1,256 @@
+<html><head><base href="https://websim.ai/"><title>Dynamic P5.js Visualization with Enhanced Sound-Reactive Zoom</title><style>
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+#main-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+#canvas-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: rgba(17, 17, 17, 0.8);
+  overflow-y: auto;
+  height: 100vh;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+#controls > * {
+  margin-bottom: 15px;
+}
+canvas {
+  display: block;
+}
+.control-group {
+  margin-bottom: 15px;
+}
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.control-group input[type="range"] {
+  width: 100%;
+}
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+<script>
+let plotMult, baseHue, xBase, yBase, cosFrmRatio, sinFrmRatio;
+let ptnCnt = 500, plotDiv = 0.02, divHue = 90, baseSat = 60, baseBri = 50, baseSiz = 1;
+const frmMax = 144, hueIncrement = 0.5;
+let isPaused = false;
+let noiseScale = 0.02;
+let rotationSpeed = 0.5;
+let canvas;
+let mic, fft;
+let soundEnabled = false;
+let bassEnergy = 0;
+let midEnergy = 0;
+let trebleEnergy = 0;
+let soundDrivenZoom = 1;
+let soundSensitivity = 3;
+let zoomDecayRate = 0.05;
+let initialSize = 0.7;
+let soundThreshold = 0.1;
+
+function setup() {
+  let canvasContainer = select('#canvas-container');
+  canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent(canvasContainer);
+  colorMode(HSB, 360, 100, 100, 100);
+  blendMode(SCREEN);
+  noStroke();
+  frameRate(60);
+  randomizeParams();
+  createControls();
+
+  // Initialize audio input
+  mic = new p5.AudioIn();
+  fft = new p5.FFT();
+  fft.setInput(mic);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+function createControls() {
+  let sidebar = select('#controls');
+  
+  let pauseButton = createButton('Pause/Unpause');
+  pauseButton.mousePressed(() => isPaused = !isPaused);
+  pauseButton.parent(sidebar);
+  
+  let randomizeButton = createButton('Randomize Parameters');
+  randomizeButton.mousePressed(randomizeParams);
+  randomizeButton.parent(sidebar);
+
+  let soundButton = createButton('Enable/Disable Sound');
+  soundButton.mousePressed(toggleSound);
+  soundButton.parent(sidebar);
+
+  // Rotation Speed
+  let speedGroup = createDiv('');
+  speedGroup.class('control-group');
+  speedGroup.parent(sidebar);
+  let speedLabel = createElement('label', 'Rotation Speed');
+  speedLabel.parent(speedGroup);
+  let speedSlider = createSlider(0.1, 5, rotationSpeed, 0.1);
+  speedSlider.input(() => rotationSpeed = speedSlider.value());
+  speedSlider.parent(speedGroup);
+
+  // Sound Sensitivity
+  let sensitivityGroup = createDiv('');
+  sensitivityGroup.class('control-group');
+  sensitivityGroup.parent(sidebar);
+  let sensitivityLabel = createElement('label', 'Sound Sensitivity');
+  sensitivityLabel.parent(sensitivityGroup);
+  let soundSensitivitySlider = createSlider(1, 10, soundSensitivity, 0.1);
+  soundSensitivitySlider.input(() => soundSensitivity = soundSensitivitySlider.value());
+  soundSensitivitySlider.parent(sensitivityGroup);
+
+  // Sound Threshold
+  let thresholdGroup = createDiv('');
+  thresholdGroup.class('control-group');
+  thresholdGroup.parent(sidebar);
+  let thresholdLabel = createElement('label', 'Sound Threshold');
+  thresholdLabel.parent(thresholdGroup);
+  let thresholdSlider = createSlider(0, 0.5, soundThreshold, 0.01);
+  thresholdSlider.input(() => soundThreshold = thresholdSlider.value());
+  thresholdSlider.parent(thresholdGroup);
+}
+
+function toggleSound() {
+  if (!soundEnabled) {
+    mic.start();
+    soundEnabled = true;
+  } else {
+    mic.stop();
+    soundEnabled = false;
+  }
+}
+
+function randomizeParams() {
+  plotMult = random(1.5, 3.5);
+  baseHue = random(360);
+  xBase = random(3);
+  yBase = random(3);
+  noiseScale = random(0.01, 0.05);
+}
+
+function draw() {
+  if (!isPaused) {
+    clear();
+    updateSoundEnergy();
+    updateZoom();
+    const frmRatio = (frameCount * rotationSpeed) % frmMax / frmMax;
+    cosFrmRatio = cos(TWO_PI * frmRatio);
+    sinFrmRatio = sin(TWO_PI * frmRatio);
+    baseHue = (baseHue + hueIncrement * rotationSpeed) % 360;
+    background((baseHue + divHue * 0.5) % 360, 90, 10, 100);
+    
+    let size = min(width, height) * initialSize * soundDrivenZoom;
+    let offsetX = (width - size) / 2;
+    let offsetY = (height - size) / 2;
+    
+    for (let rInit = 0, rDiv = PI / ptnCnt; rInit < PI; rInit += rDiv) {
+      const rRatio = rInit / PI,
+            cosRInit = cos(rInit),
+            sinRInit = sin(rInit),
+            xInit = 0.5 + 0.25 * (cosFrmRatio * cosRInit - sinFrmRatio * sinRInit),
+            yInit = 0.5 + 0.25 * (sinFrmRatio * cosRInit + cosFrmRatio * sinRInit);
+      let xPoint = xInit, yPoint = yInit;
+      const plotMax = 10 + floor(20 * sin(PI * (rRatio + frmRatio) % PI));
+      
+      for (let plotCnt = 0; plotCnt < plotMax; ++plotCnt) {
+        const pRatio = plotCnt / plotMax,
+              pHue = (baseHue + pRatio * 90 + noise(xPoint, yPoint, frameCount * 0.01 * rotationSpeed) * 60 + bassEnergy * 50) % 360,
+              pSat = baseSat * (1 - pRatio + rRatio) * (1 + midEnergy),
+              pBri = baseBri * (1 + pRatio) * (1 + trebleEnergy),
+              pSiz = baseSiz * baseSiz * (1 - pRatio) * (plotCnt ? 1 : (3 - 3 * rRatio)) * (1 + bassEnergy * 2);
+        
+        const xPrev = xPoint, yPrev = yPoint,
+              plotRadian = sin(xPrev + yPrev + frameCount * 0.01 * rotationSpeed) + sin(dist(xBase, yBase, xInit, yInit)) + noise(xPrev * noiseScale, yPrev * noiseScale, frameCount * 0.005 * rotationSpeed) * 4;
+        xPoint += plotDiv * cos(TWO_PI * plotRadian * plotMult) * (1 + midEnergy);
+        yPoint += plotDiv * sin(TWO_PI * plotRadian * plotMult) * (1 + trebleEnergy);
+        
+        fill(pHue, pSat, pBri, 100);
+        ellipse(xPrev * size + offsetX, yPrev * size + offsetY, pSiz * size / 720);
+        fill((pHue + divHue) % 360, pSat, pBri, 100);
+        ellipse((1 - xPrev) * size + offsetX, (1 - yPrev) * size + offsetY, pSiz * size / 720);
+      }
+    }
+  }
+  
+  updateSidebar();
+}
+
+function updateZoom() {
+  let soundLevel = (bassEnergy + midEnergy + trebleEnergy) / 3;
+  let targetZoom = 1;
+  
+  if (soundLevel > soundThreshold) {
+    targetZoom = 1 + (soundLevel - soundThreshold) * soundSensitivity;
+  }
+  
+  soundDrivenZoom = lerp(soundDrivenZoom, targetZoom, 0.2);
+  soundDrivenZoom = constrain(soundDrivenZoom, 1, 1 + soundSensitivity);
+  
+  // Apply decay
+  if (!soundEnabled || soundLevel <= soundThreshold) {
+    soundDrivenZoom = lerp(soundDrivenZoom, 1, zoomDecayRate);
+  }
+}
+
+function updateSoundEnergy() {
+  if (soundEnabled) {
+    fft.analyze();
+    bassEnergy = fft.getEnergy("bass") / 255;
+    midEnergy = fft.getEnergy("mid") / 255;
+    trebleEnergy = fft.getEnergy("treble") / 255;
+  } else {
+    bassEnergy = midEnergy = trebleEnergy = 0;
+  }
+}
+
+function updateSidebar() {
+  let sidebar = select('#info');
+  sidebar.html(`
+    <p>FPS: ${~~frameRate()}</p>
+    <p>Lines: ${ptnCnt}</p>
+    <p>Speed: ${rotationSpeed.toFixed(1)}</p>
+    <p>Sound: ${soundEnabled ? "ON" : "OFF"}</p>
+    <p>Bass: ${(bassEnergy * 100).toFixed(0)}%</p>
+    <p>Mid: ${(midEnergy * 100).toFixed(0)}%</p>
+    <p>Treble: ${(trebleEnergy * 100).toFixed(0)}%</p>
+    <p>Zoom: ${soundDrivenZoom.toFixed(2)}x</p>
+    ${isPaused ? "<p>Paused</p>" : ""}
+  `);
+}
+</script></head><body>
+<div id="main-container">
+  <div id="canvas-container"></div>
+  <div id="sidebar">
+    <h2>Controls</h2>
+    <div id="controls"></div>
+    <h2>Info</h2>
+    <div id="info"></div>
+  </div>
+</div>
+</body></html>

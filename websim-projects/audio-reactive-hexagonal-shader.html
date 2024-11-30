@@ -1,0 +1,327 @@
+<html><head><base href="https://websim.ai" />
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+  #controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+  }
+  #controls.hidden {
+    transform: translateX(100%);
+  }
+  .control-group {
+    margin-bottom: 10px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="range"] {
+    width: 100%;
+  }
+  button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #555;
+  }
+  #toggleControls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  #toggleControls:hover {
+    transform: scale(1.1);
+  }
+  #toggleControls.hidden {
+    transform: rotate(180deg);
+  }
+</style>
+</head>
+<body>
+<button id="toggleControls" aria-label="Toggle Controls">⚙️</button>
+<div id="controls">
+  <div class="control-group">
+    <label for="rotationSpeed">Rotation Speed</label>
+    <input type="range" id="rotationSpeed" min="0" max="5" step="0.1" value="0.5">
+  </div>
+  <div class="control-group">
+    <label for="globalRotationSpeed">Global Rotation Speed</label>
+    <input type="range" id="globalRotationSpeed" min="0" max="1" step="0.01" value="0.1">
+  </div>
+  <div class="control-group">
+    <label for="zoomSensitivity">Zoom Sensitivity</label>
+    <input type="range" id="zoomSensitivity" min="0" max="5" step="0.1" value="2">
+  </div>
+  <div class="control-group">
+    <label for="audioReactivity">Audio Reactivity</label>
+    <input type="range" id="audioReactivity" min="0" max="5" step="0.1" value="2">
+  </div>
+  <div class="control-group">
+    <label for="hexSize">Hexagon Size</label>
+    <input type="range" id="hexSize" min="0.01" max="0.2" step="0.01" value="0.1">
+  </div>
+  <div class="control-group">
+    <label for="refractionStrength">Refraction Strength</label>
+    <input type="range" id="refractionStrength" min="0" max="1" step="0.01" value="0.2">
+  </div>
+  <div class="control-group">
+    <label for="mirrorStrength">Mirror Strength</label>
+    <input type="range" id="mirrorStrength" min="0" max="1" step="0.01" value="0.5">
+  </div>
+  <button id="startButton">Start Listening</button>
+  <button id="fullscreenButton">Fullscreen</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+
+<script>
+let theShader;
+let mic, fft;
+let micStarted = false;
+let soundDrivenZoom = 1;
+
+const vertexShader = `
+    attribute vec3 aPosition;
+
+    void main() {
+        vec4 positionVec4 = vec4(aPosition, 1.0);
+        positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
+        gl_Position = positionVec4;
+    }
+`;
+
+const fragmentShader = `
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
+
+    uniform vec2 iResolution;
+    uniform float iTime;
+    uniform float iAudioLow;
+    uniform float iAudioMid;
+    uniform float iAudioHigh;
+    uniform float iRotationSpeed;
+    uniform float iGlobalRotationSpeed;
+    uniform float iZoomSensitivity;
+    uniform float iAudioReactivity;
+    uniform float iHexSize;
+    uniform float iRefractionStrength;
+    uniform float iMirrorStrength;
+
+    vec3 hsv2rgb(vec3 c) {
+        vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+        vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+        return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+    }
+
+    float hexDist(vec2 p) {
+        p = abs(p);
+        float c = dot(p, normalize(vec2(1,1.73)));
+        c = max(c, p.x);
+        return c;
+    }
+
+    vec4 hexCoords(vec2 uv) {
+        vec2 r = vec2(1, 1.73);
+        vec2 h = r*0.5;
+        vec2 a = mod(uv, r)-h;
+        vec2 b = mod(uv-h, r)-h;
+        vec2 gv = dot(a,a) < dot(b,b) ? a : b;
+        vec2 id = uv-gv;
+        return vec4(gv.x, gv.y, id.x, id.y);
+    }
+
+    void main() {
+        vec2 fragCoord = gl_FragCoord.xy;
+        vec4 O = vec4(0.0);
+        vec2 u = fragCoord.xy / iResolution.xy;
+        u = u * 2.0 - 1.0;
+        vec3 R = vec3(iResolution, 0.0);
+        vec3 f = vec3(0.2, 2.0, 0.2);
+        float T = iTime * iRotationSpeed;
+        
+        // Apply global rotation
+        float globalRotation = iTime * iGlobalRotationSpeed;
+        mat2 rotMat = mat2(cos(globalRotation), -sin(globalRotation),
+                           sin(globalRotation), cos(globalRotation));
+        u = rotMat * u;
+        
+        float audioZoom = 1.0 + (iAudioLow + iAudioMid + iAudioHigh) * iZoomSensitivity * 0.5;
+        u /= audioZoom;
+        
+        vec4 hc = hexCoords(u * 10.0);
+        float hd = hexDist(hc.xy);
+        
+        // Apply refraction effect
+        vec2 refractionOffset = vec2(
+            sin(hc.z * 10.0 + T) * cos(hc.w * 8.0 - T * 0.5),
+            cos(hc.z * 9.0 - T) * sin(hc.w * 7.0 + T * 0.6)
+        ) * iRefractionStrength * 0.1;
+        u += refractionOffset;
+        
+        // Apply mirror effect
+        vec2 mirrorOffset = vec2(
+            sin(hc.z * 5.0 - T) * cos(hc.w * 6.0 + T * 0.7),
+            cos(hc.z * 7.0 + T) * sin(hc.w * 4.0 - T * 0.8)
+        ) * iMirrorStrength * 0.1;
+        u = abs(u + mirrorOffset) - mirrorOffset;
+        
+        float t = 0.0;
+        
+        for (int i = 0; i < 50; i++) {
+            vec3 p = t * normalize(vec3(u * mat2(cos(T/16.0), sin(T/16.0), -sin(T/16.0), cos(T/16.0)), 1.0));
+            vec3 q = p;
+            
+            float n = sin(p.z + T) * cos(p.x * 1.4 + T/4.0) * cos(p.z * 1.2 - T * 0.5) * 0.5 + 0.5;
+            
+            p.y += 1.0 + q.z * sin(T/6.0) * 0.2 - n;
+            
+            p = mod(p, f + f) - f;
+            float d = length(p) - iHexSize * (1.0 + sin(hc.z * 0.8 + hc.w * 1.2 + T) * 0.2);
+            t += d;
+            
+            if (d < 0.001) {
+                vec3 color = hsv2rgb(vec3(t * 0.1 + iTime * 0.1, 0.8, 1.0));
+                O += vec4(color, 1.0) * 0.5;
+                break;
+            }
+            
+            vec3 color = hsv2rgb(vec3(t * 0.1 + iTime * 0.1 + hd * 0.2, 0.8, 1.0));
+            
+            float audioReactivity = (iAudioLow + iAudioMid + iAudioHigh) * iAudioReactivity;
+            
+            O += vec4(color, 1.0) * 0.1 * pow(n, 3.0) / (d + 1.0) *
+                 (1.0 + cos(length(q) * 0.14
+                           + length(u) * 3.0 - T
+                           + vec4(iAudioLow, iAudioMid, iAudioHigh, 0.0) * 5.0 * iAudioReactivity));
+        }
+        
+        gl_FragColor = clamp(O, 0.0, 1.0);
+    }
+`;
+
+function setup() {
+    createCanvas(windowWidth, windowHeight, WEBGL);
+    noStroke();
+    
+    theShader = createShader(vertexShader, fragmentShader);
+
+    mic = new p5.AudioIn();
+    fft = new p5.FFT();
+    fft.setInput(mic);
+
+    document.getElementById('startButton').addEventListener('click', startMic);
+    document.getElementById('fullscreenButton').addEventListener('click', toggleFullScreen);
+
+    document.getElementById('rotationSpeed').addEventListener('input', updateUniforms);
+    document.getElementById('globalRotationSpeed').addEventListener('input', updateUniforms);
+    document.getElementById('zoomSensitivity').addEventListener('input', updateUniforms);
+    document.getElementById('audioReactivity').addEventListener('input', updateUniforms);
+    document.getElementById('hexSize').addEventListener('input', updateUniforms);
+    document.getElementById('refractionStrength').addEventListener('input', updateUniforms);
+    document.getElementById('mirrorStrength').addEventListener('input', updateUniforms);
+
+    document.getElementById('toggleControls').addEventListener('click', toggleControls);
+}
+
+function startMic() {
+    userStartAudio();
+    mic.start();
+    micStarted = true;
+    document.getElementById('startButton').style.display = 'none';
+}
+
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+function toggleControls() {
+    const controls = document.getElementById('controls');
+    const toggleButton = document.getElementById('toggleControls');
+    controls.classList.toggle('hidden');
+    toggleButton.classList.toggle('hidden');
+}
+
+function updateUniforms() {
+    if (theShader) {
+        theShader.setUniform('iRotationSpeed', parseFloat(document.getElementById('rotationSpeed').value));
+        theShader.setUniform('iGlobalRotationSpeed', parseFloat(document.getElementById('globalRotationSpeed').value));
+        theShader.setUniform('iZoomSensitivity', parseFloat(document.getElementById('zoomSensitivity').value));
+        theShader.setUniform('iAudioReactivity', parseFloat(document.getElementById('audioReactivity').value));
+        theShader.setUniform('iHexSize', parseFloat(document.getElementById('hexSize').value));
+        theShader.setUniform('iRefractionStrength', parseFloat(document.getElementById('refractionStrength').value));
+        theShader.setUniform('iMirrorStrength', parseFloat(document.getElementById('mirrorStrength').value));
+    }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+    shader(theShader);
+    
+    theShader.setUniform('iResolution', [width, height]);
+    theShader.setUniform('iTime', millis() / 1000.0);
+
+    updateUniforms();
+
+    if (micStarted) {
+        fft.analyze();
+        let lowEnd = fft.getEnergy("bass");
+        let midRange = fft.getEnergy("mid");
+        let highEnd = fft.getEnergy("treble");
+
+        theShader.setUniform('iAudioLow', lowEnd / 255.0);
+        theShader.setUniform('iAudioMid', midRange / 255.0);
+        theShader.setUniform('iAudioHigh', highEnd / 255.0);
+
+        soundDrivenZoom = 1 + (lowEnd + midRange + highEnd) / (3 * 255) * parseFloat(document.getElementById('zoomSensitivity').value);
+    } else {
+        theShader.setUniform('iAudioLow', 0.0);
+        theShader.setUniform('iAudioMid', 0.0);
+        theShader.setUniform('iAudioHigh', 0.0);
+    }
+    
+    rect(0, 0, width, height);
+}
+</script>
+</body></html>

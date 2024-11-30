@@ -1,0 +1,238 @@
+<html>
+
+<head>
+  <base href="https://websim.ai/index.html?hyperstitioning=true&speculative=art2">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #001f3f;
+      overflow: hidden;
+    }
+
+    canvas {
+      background-color: #001f3f;
+    }
+
+    #controlPanel {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      color: white;
+      font-family: Arial, sans-serif;
+      transition: opacity 0.5s;
+    }
+
+    .slider {
+      width: 100%;
+    }
+
+    label {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="controlPanel">
+    <label for="numTentaclesSlider">Number of Tentacles</label>
+    <input type="range" min="1" max="100" value="20" class="slider" id="numTentaclesSlider">
+
+    <label for="tentacleLengthSlider">Tentacle Length</label>
+    <input type="range" min="10" max="2000" value="500" step="1" class="slider" id="tentacleLengthSlider">
+
+    <label for="waveSpeedSlider">Wave Speed</label>
+    <input type="range" min="0.001" max="0.1" value="0.01" step="0.001" class="slider" id="waveSpeedSlider">
+
+    <label for="waveSpeedSlider">Wave Speed 2</label>
+    <input type="range" min="0.001" max="2" value="0.01" step="0.001" class="slider" id="waveSpeed2Slider">
+
+    <label for="waveAmplitudeSlider">Wave Amplitude</label>
+    <input type="range" min="1" max="100" value="20" step="1" class="slider" id="waveAmplitudeSlider">
+
+    <label for="hueSlider">Color</label>
+    <input type="range" min="0" max="360" value="120" class="slider" id="hueSlider">
+
+    <label for="lineWidthSlider">Line Width</label>
+    <input type="range" min="1" max="10" value="2" step="1" class="slider" id="lineWidthSlider">
+
+    <label for="glowSlider">Glow Effect</label>
+    <input type="range" min="0" max="50" value="20" step="1" class="slider" id="glowSlider">
+
+    <button id="resetButton">Reset</button>
+    <button id="downloadButton">Download Image</button>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const controlPanel = document.getElementById('controlPanel');
+
+    let tentacles = [];
+    let numTentacles = 20;
+    let tentacleLength = 500;
+    let waveSpeed = 0.01;
+    let waveSpeed2 = 0.01;
+    let waveAmplitude = 20;
+    let hue = 120;
+    let lineWidth = 2;
+    let glowRadius = 20;
+    let time = 0;
+    let mouseTimer;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Tentacle {
+      constructor(angle) {
+        this.angle = angle;
+        this.points = [];
+        for (let i = 0; i < tentacleLength; i++) {
+          this.points.push({ x: 0, y: 0 });
+        }
+      }
+
+      update() {
+        for (let i = 1; i < this.points.length; i++) {
+          const angle = this.angle + Math.sin(time * waveSpeed + i * 0.1) * Math.sin(i * 0.02) * waveAmplitude;
+          const x = this.points[i - 1].x + Math.cos(angle * waveSpeed2) * 5;
+          const y = this.points[i - 1].y + Math.sin(angle * (waveSpeed / waveSpeed2)) * 5;
+          this.points[i] = { x, y };
+        }
+      }
+
+      draw() {
+        for (let replication = 0; replication < 12; replication++) {
+          const replicationAngle = (replication * Math.PI) / 6;
+          
+          // Mirror 
+          drawTentacleSegment(this.points, replicationAngle, hue);
+          drawTentacleSegment(this.points.map(p => ({ x: -p.x, y: p.y })), replicationAngle, hue);
+        }
+      }
+    }
+
+    function drawTentacleSegment(points, angleOffset, hue) {
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2, canvas.height / 2);
+      for (let i = 0; i < points.length - 1; i++) {
+        let p1 = {
+          x: points[i].x * Math.cos(angleOffset) - points[i].y * Math.sin(angleOffset),
+          y: points[i].x * Math.sin(angleOffset) + points[i].y * Math.cos(angleOffset)
+        };
+        let p2 = {
+          x: points[i + 1].x * Math.cos(angleOffset) - points[i + 1].y * Math.sin(angleOffset),
+          y: points[i + 1].x * Math.sin(angleOffset) + points[i + 1].y * Math.cos(angleOffset)
+        };
+        
+        ctx.lineTo(canvas.width / 2 + p1.x, canvas.height / 2 + p1.y);
+        ctx.lineTo(canvas.width / 2 + p2.x, canvas.height / 2 + p2.y);
+      }
+
+      const gradient = ctx.createLinearGradient(canvas.width / 2, canvas.height / 2, canvas.width / 2 + points[points.length - 1].x, canvas.height / 2 + points[points.length - 1].y);
+      gradient.addColorStop(0, `hsl(${hue*1.5}, 100%, 50%)`);
+      gradient.addColorStop(1, `hsl(${hue}, 100%, 20%)`);
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = lineWidth;
+      ctx.stroke();
+      
+      ctx.strokeStyle = '#001f3f';
+      ctx.lineWidth = lineWidth / 2;
+      ctx.stroke();
+
+      ctx.shadowColor = `hsl(${hue}, 100%, 50%)`;
+      ctx.shadowBlur = glowRadius;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
+
+    function createTentacles() {
+      tentacles = [];
+      for (let i = 0; i < numTentacles; i++) {
+        const angle = (i / numTentacles) * Math.PI * 2;
+        tentacles.push(new Tentacle(angle));
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = '#001f3f';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      hue = (hue + 0.1) % 360;
+
+      for (const tentacle of tentacles) {
+        tentacle.update();
+        tentacle.draw();
+      }
+
+      time += 0.1;
+
+      requestAnimationFrame(animate);
+    }
+
+    function handleMouseMove() {
+      controlPanel.style.opacity = '1';
+      clearTimeout(mouseTimer);
+      mouseTimer = setTimeout(() => {
+        controlPanel.style.opacity = '0';
+      }, 3000);
+    }
+
+    // Control panel event listeners
+    document.getElementById('numTentaclesSlider').addEventListener('input', (e) => {
+      numTentacles = parseInt(e.target.value);
+      createTentacles();
+    });
+    document.getElementById('tentacleLengthSlider').addEventListener('input', (e) => {
+      tentacleLength = parseInt(e.target.value);
+      createTentacles();
+    });
+    document.getElementById('waveSpeedSlider').addEventListener('input', (e) => {
+      waveSpeed = parseFloat(e.target.value);
+    });
+    document.getElementById('waveSpeed2Slider').addEventListener('input', (e) => {
+      waveSpeed2 = parseFloat(e.target.value);
+    });
+    document.getElementById('waveAmplitudeSlider').addEventListener('input', (e) => {
+      waveAmplitude = parseInt(e.target.value);
+    });
+    document.getElementById('hueSlider').addEventListener('input', (e) => {
+      hue = parseInt(e.target.value);
+    });
+    document.getElementById('lineWidthSlider').addEventListener('input', (e) => {
+      lineWidth = parseInt(e.target.value);
+    });
+    document.getElementById('glowSlider').addEventListener('input', (e) => {
+      glowRadius = parseInt(e.target.value);
+    });
+    document.getElementById('resetButton').addEventListener('click', () => {
+      createTentacles();
+    });
+    document.getElementById('downloadButton').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'generative-art.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    createTentacles();
+    animate();
+  </script>
+
+</body>
+
+</html>

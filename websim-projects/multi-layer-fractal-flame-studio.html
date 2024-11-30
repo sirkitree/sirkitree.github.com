@@ -1,0 +1,462 @@
+<html><head><base href="https://fractal-flame.net/studio" />
+<title>Multi-Layer Fractal Flame Studio</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1400px;
+    width: 100%;
+  }
+  #canvas-container {
+    flex: 0 0 auto;
+  }
+  #controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 600px;
+  }
+  .control-group {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    width: 200px;
+  }
+  h2 {
+    margin-top: 0;
+    color: #4a90e2;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="range"], select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: left;
+  }
+  button:hover {
+    background-color: #357abd;
+  }
+  #presets, #actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #layer-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .layer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #3a3a3a;
+    margin-bottom: 5px;
+    border-radius: 4px;
+  }
+  .layer-item button {
+    padding: 2px 5px;
+    font-size: 12px;
+    width: auto;
+  }
+</style>
+</head>
+<body>
+<h1>Multi-Layer Fractal Flame Studio</h1>
+<div class="main-container">
+  <div id="canvas-container"></div>
+  <div id="controls">
+    <div class="control-group">
+      <h2>Fractal Parameters</h2>
+      <label for="numFunctions">Number of Functions:</label>
+      <input type="range" id="numFunctions" min="2" max="10" value="3">
+      <label for="iterations">Iterations per Frame:</label>
+      <input type="range" id="iterations" min="100" max="10000" value="1000">
+      <label for="zoom">Zoom:</label>
+      <input type="range" id="zoom" min="0.5" max="2" step="0.1" value="1">
+    </div>
+    <div class="control-group">
+      <h2>Color Settings</h2>
+      <label for="colorScheme">Color Scheme:</label>
+      <select id="colorScheme">
+        <option value="rainbow">Rainbow</option>
+        <option value="fire">Fire</option>
+        <option value="ice">Ice</option>
+        <option value="forest">Forest</option>
+        <option value="custom">Custom</option>
+      </select>
+      <div id="customColors" style="display: none;">
+        <label for="color1">Color 1:</label>
+        <input type="color" id="color1" value="#ff0000">
+        <label for="color2">Color 2:</label>
+        <input type="color" id="color2" value="#00ff00">
+      </div>
+      <label for="blendMode">Blend Mode:</label>
+      <select id="blendMode">
+        <option value="BLEND">Normal</option>
+        <option value="ADD">Add</option>
+        <option value="MULTIPLY">Multiply</option>
+        <option value="SCREEN">Screen</option>
+        <option value="OVERLAY">Overlay</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <h2>Presets</h2>
+      <div id="presets">
+        <button onclick="applyPreset('dragon')">Dragon</button>
+        <button onclick="applyPreset('spiral')">Spiral</button>
+        <button onclick="applyPreset('julia')">Julia</button>
+        <button onclick="applyPreset('feather')">Feather</button>
+        <button onclick="applyPreset('galaxy')">Galaxy</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <h2>Actions</h2>
+      <div id="actions">
+        <button id="newFractal">Generate New Fractal</button>
+        <button id="resetView">Reset View</button>
+        <button id="saveImage">Save Image</button>
+        <button onclick="randomizeLayer()">Randomize Layer</button>
+        <button onclick="duplicateLayer()">Duplicate Layer</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <h2>Layers</h2>
+      <div id="layers">
+        <button onclick="addLayer()">Add Layer</button>
+        <button onclick="mergeLayers()">Merge Visible Layers</button>
+      </div>
+      <div id="layer-list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let layers = [];
+let activeLayerIndex = 0;
+let zoom = 1;
+let panX = 0;
+let panY = 0;
+let color1, color2;
+
+const presets = {
+  dragon: [
+    {a: 0.824074, b: 0.281482, c: -1.882290, d: -0.212346, e: 0.864198, f: -0.110607},
+    {a: 0.088272, b: 0.520988, c: 0.785360, d: -0.463889, e: -0.377778, f: 0.833333},
+  ],
+  spiral: [
+    {a: 0.787879, b: -0.424242, c: 1.758647, d: 0.242424, e: 0.859848, f: 1.408065},
+    {a: -0.121212, b: 0.257576, c: -6.721654, d: 0.151515, e: 0.053030, f: 1.377236},
+  ],
+  julia: [
+    {a: 0.7, b: -0.7, c: 0.0, d: 0.7, e: 0.7, f: 0.0},
+    {a: -0.4, b: 0.0, c: 0.0, d: 0.0, e: -0.4, f: 0.0},
+  ],
+  feather: [
+    {a: 0.8, b: 0.0, c: 0.0, d: 0.0, e: 0.8, f: 0.0},
+    {a: 0.15, b: -0.1, c: 0.0, d: 0.1, e: 0.15, f: 0.0},
+    {a: 0.0, b: 0.0, c: 0.0, d: 0.0, e: 0.5, f: -0.5},
+  ],
+  galaxy: [
+    {a: 0.8, b: 0.2, c: -0.9, d: -0.2, e: 0.8, f: 0.0},
+    {a: 0.5, b: -0.45, c: -0.15, d: 0.5, e: 0.5, f: 0.2},
+    {a: -0.3, b: 0.4, c: 0.3, d: -0.3, e: -0.3, f: -0.1},
+  ],
+};
+
+function setup() {
+  const canvas = createCanvas(800, 600);
+  canvas.parent('canvas-container');
+  pixelDensity(1);
+  color1 = color('#ff0000');
+  color2 = color('#00ff00');
+  addLayer();
+}
+
+function draw() {
+  background(0);
+  layers.forEach((layer, index) => {
+    if (layer.visible) {
+      layer.graphics.loadPixels();
+      let iterations = parseInt(document.getElementById('iterations').value);
+      for (let i = 0; i < iterations; i++) {
+        iterate(layer);
+      }
+      layer.graphics.updatePixels();
+      layer.totalIterations += iterations;
+      drawLayer(layer);
+    }
+  });
+}
+
+function drawLayer(layer) {
+  push();
+  blendMode(BLEND);
+  tint(255, layer.opacity * 255);
+  image(layer.graphics, 0, 0);
+  pop();
+}
+
+function generateFunctions(numFunctions) {
+  let functions = [];
+  for (let i = 0; i < numFunctions; i++) {
+    functions.push({
+      a: random(-1, 1), b: random(-1, 1), c: random(-1, 1),
+      d: random(-1, 1), e: random(-1, 1), f: random(-1, 1),
+      color: random(1)
+    });
+  }
+  return functions;
+}
+
+function iterate(layer) {
+  let point = layer.points[layer.points.length - 1];
+  let f = random(layer.functions);
+  let x = f.a * point.x + f.b * point.y + f.c;
+  let y = f.d * point.x + f.e * point.y + f.f;
+  
+  if (layer.totalIterations > 20) {
+    let px = map(x, -1.5/zoom + panX, 1.5/zoom + panX, 0, width);
+    let py = map(y, -1.5/zoom + panY, 1.5/zoom + panY, height, 0);
+    if (px >= 0 && px < width && py >= 0 && py < height) {
+      layer.graphics.set(px, py, getColor(f.color, layer.colorScheme));
+    }
+  }
+  
+  layer.points.push({x, y});
+  if (layer.points.length > 100) layer.points.shift();
+}
+
+function getColor(t, scheme) {
+  switch (scheme) {
+    case 'rainbow':
+      return color(t * 255, (1-t) * 255, sin(TWO_PI * t) * 127 + 128);
+    case 'fire':
+      return color(t * 255, t * t * 255, 0);
+    case 'ice':
+      return color(t * 127, t * 255, 255);
+    case 'forest':
+      return color(0, t * 255, t * 127);
+    case 'custom':
+      return lerpColor(color1, color2, t);
+  }
+}
+
+function addLayer() {
+  let newLayer = {
+    graphics: createGraphics(width, height),
+    functions: generateFunctions(parseInt(document.getElementById('numFunctions').value)),
+    points: [{x: random(-1, 1), y: random(-1, 1)}],
+    totalIterations: 0,
+    visible: true,
+    opacity: 1,
+    colorScheme: document.getElementById('colorScheme').value,
+    blendMode: document.getElementById('blendMode').value
+  };
+  layers.push(newLayer);
+  activeLayerIndex = layers.length - 1;
+  updateLayerList();
+}
+
+function updateLayerList() {
+  const layerList = document.getElementById('layer-list');
+  layerList.innerHTML = '';
+  layers.forEach((layer, index) => {
+    const layerItem = document.createElement('div');
+    layerItem.className = 'layer-item';
+    layerItem.innerHTML = `
+      Layer ${index + 1}
+      <div>
+        <button onclick="toggleLayerVisibility(${index})">${layer.visible ? 'Hide' : 'Show'}</button>
+        <button onclick="setActiveLayer(${index})">Select</button>
+        <button onclick="deleteLayer(${index})">Delete</button>
+        <input type="range" min="0" max="1" step="0.1" value="${layer.opacity}" onchange="setLayerOpacity(${index}, this.value)">
+      </div>
+    `;
+    if (index === activeLayerIndex) {
+      layerItem.style.border = '2px solid #4a90e2';
+    }
+    layerList.appendChild(layerItem);
+  });
+}
+
+function toggleLayerVisibility(index) {
+  layers[index].visible = !layers[index].visible;
+  updateLayerList();
+}
+
+function setActiveLayer(index) {
+  activeLayerIndex = index;
+  updateLayerList();
+}
+
+function deleteLayer(index) {
+  if (layers.length > 1) {
+    layers.splice(index, 1);
+    activeLayerIndex = Math.min(activeLayerIndex, layers.length - 1);
+    updateLayerList();
+  }
+}
+
+function setLayerOpacity(index, opacity) {
+  layers[index].opacity = parseFloat(opacity);
+}
+
+function mergeLayers() {
+  const mergedGraphics = createGraphics(width, height);
+  layers.forEach(layer => {
+    if (layer.visible) {
+      mergedGraphics.blendMode(layer.blendMode);
+      mergedGraphics.tint(255, layer.opacity * 255);
+      mergedGraphics.image(layer.graphics, 0, 0);
+    }
+  });
+  layers = [{
+    graphics: mergedGraphics,
+    functions: generateFunctions(parseInt(document.getElementById('numFunctions').value)),
+    points: [{x: random(-1, 1), y: random(-1, 1)}],
+    totalIterations: 0,
+    visible: true,
+    opacity: 1,
+    colorScheme: document.getElementById('colorScheme').value,
+    blendMode: BLEND
+  }];
+  activeLayerIndex = 0;
+  updateLayerList();
+}
+
+function mouseDragged() {
+  panX += (pmouseX - mouseX) * 0.003 / zoom;
+  panY -= (pmouseY - mouseY) * 0.003 / zoom;
+  resetLayers();
+}
+
+function mouseWheel(event) {
+  zoom *= 1 - event.delta * 0.001;
+  zoom = constrain(zoom, 0.1, 5);
+  resetLayers();
+  return false;
+}
+
+function resetLayers() {
+  layers.forEach(layer => {
+    layer.graphics.clear();
+    layer.points = [{x: random(-1, 1), y: random(-1, 1)}];
+    layer.totalIterations = 0;
+  });
+}
+
+function applyPreset(presetName) {
+  layers[activeLayerIndex].functions = presets[presetName].map(f => ({...f, color: random(1)}));
+  document.getElementById('numFunctions').value = layers[activeLayerIndex].functions.length;
+  resetLayers();
+}
+
+function randomizeLayer() {
+  layers[activeLayerIndex].functions = generateFunctions(parseInt(document.getElementById('numFunctions').value));
+  layers[activeLayerIndex].colorScheme = ['rainbow', 'fire', 'ice', 'forest', 'custom'][Math.floor(Math.random() * 5)];
+  document.getElementById('colorScheme').value = layers[activeLayerIndex].colorScheme;
+  resetLayers();
+}
+
+function duplicateLayer() {
+  const sourceLayer = layers[activeLayerIndex];
+  const newLayer = {
+    graphics: createGraphics(width, height),
+    functions: [...sourceLayer.functions],
+    points: [{x: random(-1, 1), y: random(-1, 1)}],
+    totalIterations: 0,
+    visible: true,
+    opacity: sourceLayer.opacity,
+    colorScheme: sourceLayer.colorScheme,
+    blendMode: sourceLayer.blendMode
+  };
+  layers.push(newLayer);
+  activeLayerIndex = layers.length - 1;
+  updateLayerList();
+}
+
+// UI Controls
+document.getElementById('newFractal').addEventListener('click', () => {
+  layers[activeLayerIndex].functions = generateFunctions(parseInt(document.getElementById('numFunctions').value));
+  resetLayers();
+});
+
+document.getElementById('resetView').addEventListener('click', () => {
+  zoom = 1;
+  panX = 0;
+  panY = 0;
+  resetLayers();
+});
+
+document.getElementById('saveImage').addEventListener('click', () => saveCanvas('fractal_flame', 'png'));
+
+document.getElementById('colorScheme').addEventListener('change', (e) => {
+  layers[activeLayerIndex].colorScheme = e.target.value;
+  document.getElementById('customColors').style.display = e.target.value === 'custom' ? 'block' : 'none';
+  resetLayers();
+});
+
+document.getElementById('color1').addEventListener('input', (e) => {
+  color1 = color(e.target.value);
+  resetLayers();
+});
+
+document.getElementById('color2').addEventListener('input', (e) => {
+  color2 = color(e.target.value);
+  resetLayers();
+});
+
+document.getElementById('blendMode').addEventListener('change', (e) => {
+  layers[activeLayerIndex].blendMode = e.target.value;
+});
+
+['numFunctions', 'iterations', 'zoom'].forEach(id => {
+  document.getElementById(id).addEventListener('input', (e) => {
+    if (id === 'numFunctions') {
+      layers[activeLayerIndex].functions = generateFunctions(parseInt(e.target.value));
+    } else if (id === 'zoom') {
+      zoom = parseFloat(e.target.value);
+    }
+    resetLayers();
+  });
+});
+
+// Initialize the first layer
+addLayer();
+
+// Start the animation loop
+function animate() {
+  draw();
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body></html>

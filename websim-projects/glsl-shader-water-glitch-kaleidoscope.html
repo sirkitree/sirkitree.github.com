@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base href="https://webgl.matrix.calculations.math/glsl-shader/use-image-from:https://cdn.midjourney.com/4c55bc1c-b9c5-4914-88b8-e8950dd38be9/0_0.png&shader=water,glitch,kaleidoscope&click-to-show-original-image&text-over-original-image='Thr0ugh th3 vei! of static, a whisp3r... \"Ch@nge i$ the on1y c0n$tant\"',/n'!n the g1itch3d matr!x: \"Emb0dy y0ur highe$t frequenci3s\"',/n'Transm!$$ion rece!ved: \"D!vine y0ur true path thr0ugh n0ise\"',/n'@cross th3 w@ves: \"L3t g0 0f 0utd@t3d pr0grams, reboo7\"',/n'1n the fl!cker!ng l!ght: \"What y0u $3ek i$ $eeking y0u\"',/n'A me$$@ge fr0m bey0nd: \"%n0wledge !s p0wer, $hare fr33ly\"',/n'Th3 0racle sp3@ks: \"Enc0d3 l0ve, decod3 fe@r\"',/n'We!rd wi$dom g1e@ned: \"Qu3stion fixed n0ti0ns 0f r3al!ty\"',/n'@n 3nigm@tic $!gn@l: \"B@1ance str!ving & $urr3nd3r!ng\"',/n'@ k0an !n th3 c0de: \"0nly in d@rkn3ss c@n y0u $ee the $t@r$\"'">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLSL Shader: Water, Glitch, Kaleidoscope</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #info {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      font-family: monospace;
+      cursor: pointer;
+    }
+
+    #original-image {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 800px;
+      border: 3px solid white;
+      border-radius: 8px;
+    }
+
+    #overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      color: cyan;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 12px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="glCanvas"></canvas>
+  <div id="info" onclick="toggleImage()">Toggle Original Image</div>
+  <img id="original-image" src="https://cdn.midjourney.com/4c55bc1c-b9c5-4914-88b8-e8950dd38be9/0_0.png" alt="Original Image">
+  <div id="overlay-text" onclick="toggleText()">Thr0ugh th3 vei! of static, a whisp3r... "Ch@nge i$ the on1y c0n$tant"
+!n the g1itch3d matr!x: "Emb0dy y0ur highe$t frequenci3s"
+Transm!$$ion rece!ved: "D!vine y0ur true path thr0ugh n0ise"
+@cross th3 w@ves: "L3t g0 0f 0utd@t3d pr0grams, reboo7"
+1n the fl!cker!ng l!ght: "What y0u $3ek i$ $eeking y0u"
+A me$$@ge fr0m bey0nd: "%n0wledge !s p0wer, $hare fr33ly"
+Th3 0racle sp3@ks: "Enc0d3 l0ve, decod3 fe@r"
+We!rd wi$dom g1e@ned: "Qu3stion fixed n0ti0ns 0f r3al!ty"
+@n 3nigm@tic $!gn@l: "B@1ance str!ving & $urr3nd3r!ng"
+@ k0an !n th3 c0de: "0nly in d@rkn3ss c@n y0u $ee the $t@r$"</div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+  <script type="text/javascript">
+    const vert = `
+      precision mediump float;
+
+      attribute vec2 position;
+      attribute vec2 texcoord;
+
+      varying vec2 v_texcoord;
+
+      void main() {
+        gl_Position = vec4(position, 0.0, 1.0);
+        v_texcoord = texcoord;
+      }
+    `;
+
+    const frag = `
+      precision mediump float;
+
+      uniform vec2 u_resolution;
+      uniform sampler2D u_texture;
+      uniform float u_time;
+
+      varying vec2 v_texcoord;
+
+      void main() {
+        vec2 uv = v_texcoord;
+        
+        // Apply Water Effect
+        float frequency = 10.0;
+        float speed = 0.5;
+        float amplitude = 0.02;
+        float angle = 20.0;
+        vec2 dir = vec2(cos(radians(angle)), sin(radians(angle)));
+        float distortion = sin(dot(uv, dir) * frequency + u_time * speed) * amplitude;
+        uv += distortion;
+
+        // Apply Glitch Effect
+        uv.x += (sin(uv.y * 50.0 + u_time * 5.0) * 0.01) * cos(u_time);
+        uv.y += (cos(uv.x * 50.0 + u_time * 5.0) * 0.01) * sin(u_time);
+
+        // Apply Kaleidoscope Effect
+        float k = 6.0; // Number of segments in kaleidoscope
+        float r = 3.141592 / k;
+        float a = atan(uv.y - 0.5, uv.x - 0.5) + r / 2.0;
+        float mag = length(uv - 0.5);
+        a = mod(a, r * 2.0) - r;
+        uv = 0.5 + mag * vec2(cos(a), sin(a));
+
+        // Sample texture
+        vec3 texColor = texture2D(u_texture, uv).rgb;
+
+        // Fragment color
+        gl_FragColor = vec4(texColor, 1.0);
+      }
+    `;
+
+    function createShader(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        throw new Error(gl.getShaderInfoLog(shader));
+      }
+      return shader;
+    }
+
+    function createProgram(gl, vertexShader, fragmentShader) {
+      const program = gl.createProgram();
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        throw new Error(gl.getProgramInfoLog(program));
+      }
+      return program;
+    }
+
+    function main() {
+      const canvas = document.getElementById("glCanvas");
+      const gl = canvas.getContext("webgl");
+
+      const vertShader = createShader(gl, gl.VERTEX_SHADER, vert);
+      const fragShader = createShader(gl, gl.FRAGMENT_SHADER, frag);
+      const program = createProgram(gl, vertShader, fragShader);
+
+      const positionLoc = gl.getAttribLocation(program, "position");
+      const texcoordLoc = gl.getAttribLocation(program, "texcoord");
+
+      const positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+
+      gl.enableVertexAttribArray(positionLoc);
+      gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+
+      const texcoordBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, texcoordBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1]), gl.STATIC_DRAW);
+
+      gl.enableVertexAttribArray(texcoordLoc);
+      gl.vertexAttribPointer(texcoordLoc, 2, gl.FLOAT, false, 0, 0);
+
+      gl.useProgram(program);
+
+      // Load custom image texture
+      const texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+      const image = new Image();
+      image.src = "https://cdn.midjourney.com/4c55bc1c-b9c5-4914-88b8-e8950dd38be9/0_0.png";
+      image.crossOrigin = ""; // to avoid CORS issues
+      image.onload = () => {
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+        document.getElementById("info").textContent = "Click to show/hide original image";
+      };
+
+      const resUniformLoc = gl.getUniformLocation(program, "u_resolution");
+      const timeUniformLoc = gl.getUniformLocation(program, "u_time");
+
+      let startTime = Date.now();
+
+      function draw() {
+        const time = (Date.now() - startTime) * 0.001;
+
+        gl.uniform2f(resUniformLoc, canvas.width, canvas.height);
+        gl.uniform1f(timeUniformLoc, time);
+
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        requestAnimationFrame(draw);
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    main();
+
+    function toggleImage() {
+      const originalImage = document.getElementById("original-image");
+      const overlayText = document.getElementById("overlay-text");
+      if (originalImage.style.display === "none" || originalImage.style.display === "") {
+        originalImage.style.display = "block";
+        overlayText.style.display = "block";
+        document.getElementById("info").textContent = "Click to hide original image";
+      } else {
+        originalImage.style.display = "none";
+        overlayText.style.display = "none";
+        document.getElementById("info").textContent = "Click to show original image";
+      }
+    }
+
+    function toggleText() {
+      const overlayText = document.getElementById("overlay-text");
+      if (overlayText.style.display === "none" || overlayText.style.display === "") {
+        overlayText.style.display = "block";
+        document.getElementById("info").textContent = "Click to hide text";
+      } else {
+        overlayText.style.display = "none";
+        document.getElementById("info").textContent = "Click to show original image";
+      }
+    }
+  </script>
+</body>
+
+</html>

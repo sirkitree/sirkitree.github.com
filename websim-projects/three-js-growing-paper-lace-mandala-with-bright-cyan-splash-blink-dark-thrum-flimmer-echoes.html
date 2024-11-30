@@ -1,0 +1,165 @@
+<html><head><base href="https://threedeejs.io/" /><title>Three.js Growing Paper Lace Mandala with Bright Cyan Splash **> blink-dark thrum < flimmer-echoes **</title>
+<style>
+  body { margin: 0; overflow: hidden; background-color: #f0e6d2; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.153.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.153.0/examples/jsm/"
+    }
+  }
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+let scene, camera, renderer;
+let uniforms;
+
+init();
+animate();
+
+function init() {
+  scene = new THREE.Scene();
+  camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
+  camera.position.z = 1;
+
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const geometry = new THREE.PlaneGeometry(2, 2);
+
+  uniforms = {
+    u_time: { value: 1.0 },
+    u_resolution: { value: new THREE.Vector2() }
+  };
+
+  const material = new THREE.ShaderMaterial({
+    uniforms: uniforms,
+    vertexShader: `
+      void main() {
+        gl_Position = vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      #define PI 3.14159265359
+
+      uniform vec2 u_resolution;
+      uniform float u_time;
+
+      float random(vec2 st) {
+        return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+      }
+
+      mat2 rotate2d(float angle){
+        return mat2(cos(angle),-sin(angle),
+                    sin(angle),cos(angle));
+      }
+
+      float circle(vec2 st, float radius) {
+        vec2 dist = st - vec2(0.5);
+        return 1.0 - smoothstep(radius - (radius * 0.01), radius + (radius * 0.01), dot(dist, dist) * 4.0);
+      }
+
+      float flower(vec2 st, float n, float radius) {
+        st = st * 2.0 - 1.0;
+        float r = length(st) * 2.0;
+        float a = atan(st.y, st.x);
+        float f = radius * cos(a * n);
+        return 1.0 - smoothstep(f, f + 0.01, r);
+      }
+
+      void main() {
+        vec2 st = gl_FragCoord.xy / u_resolution.xy;
+        st.x *= u_resolution.x / u_resolution.y;
+        vec2 center = vec2(0.5 * u_resolution.x / u_resolution.y, 0.5);
+        
+        vec3 color = vec3(0.9, 0.85, 0.8); // Base paper color
+        vec3 cyan = vec3(0.0, 1.0, 1.0); // Bright cyan color
+        
+        // Center and scale the coordinate system
+        st = (st - center) * 4.0 + center;
+        
+        float growth = min(u_time * 0.1, 5.0); // Control the growth of the pattern
+        
+        // Create the main mandala structure
+        for (float i = 0.0; i < 16.0; i++) {
+          float angle = i * PI / 8.0 + u_time * 0.05;
+          vec2 rotated = rotate2d(angle) * (st - center) + center;
+          
+          // Create layers of floral patterns
+          float f1 = flower(rotated, 5.0, 0.5 * growth);
+          float f2 = flower(rotated, 8.0, 0.3 * growth);
+          float f3 = flower(rotated, 12.0, 0.2 * growth);
+          float f4 = flower(rotated, 16.0, 0.15 * growth);
+          
+          // Add dots to the patterns
+          vec2 dotPos = fract(rotated * (10.0 + 10.0 * growth));
+          float dot = circle(dotPos, 0.3 / (1.0 + growth * 0.2));
+          
+          // Combine patterns
+          float pattern = max(max(max(f1, f2), f3), f4) * dot;
+          
+          // Create a radial gradient for depth
+          float radialGradient = 1.0 - length(st - center) / growth;
+          
+          // Apply color and depth
+          vec3 patternColor = mix(color * 0.7, vec3(0.2), pattern * radialGradient);
+          
+          // Add bright cyan splash
+          float cyanSplash = sin(length(rotated - center) * 10.0 + u_time) * 0.5 + 0.5;
+          patternColor = mix(patternColor, cyan, cyanSplash * 0.2 * pattern);
+          
+          color = mix(color, patternColor, pattern);
+        }
+        
+        // Add subtle animated noise for paper texture
+        float noise = random(st * 100.0 + u_time) * 0.05;
+        color += noise;
+
+        // Vignette effect
+        float vignette = smoothstep(1.5, 0.5, length(st - center));
+        color *= vignette;
+
+        // Enhance cyan brightness
+        color += cyan * 0.1 * sin(u_time * 2.0) * (1.0 - length(st - center));
+
+        gl_FragColor = vec4(color, 1.0);
+      }
+    `
+  });
+
+  const mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
+
+  onWindowResize();
+  window.addEventListener('resize', onWindowResize, false);
+}
+
+function onWindowResize() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(width, height);
+
+  uniforms.u_resolution.value.x = width;
+  uniforms.u_resolution.value.y = height;
+}
+
+function animate(timestamp) {
+  requestAnimationFrame(animate);
+  uniforms.u_time.value = timestamp / 1000;
+  renderer.render(scene, camera);
+}
+</script>
+
+</body></html>

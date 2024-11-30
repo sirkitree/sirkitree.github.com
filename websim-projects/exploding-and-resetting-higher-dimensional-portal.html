@@ -1,0 +1,146 @@
+<html><head><base href="https://particles.gymnasium.quantum/multidimensional/mirrored-entangled/mandala/kaleidoscope/wavy-tencular/time-particles/higher-dimensional-portal/explode-on-click&click-again-to-reset"><title>Exploding and Resetting Higher Dimensional Portal</title>
+<style>
+  body {
+    margin: 0;
+    background-color: black;
+    overflow: hidden;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  #kaleidoscope-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  #kaleidoscope {
+    width: 100%;
+    height: 100%;
+  }
+
+  #message-container {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  #message {
+    padding: 20px;
+    font-size: 24px;
+    background: rgba(0,0,0,0.5);
+    transition: opacity 1s ease;
+  }
+</style>
+</head>
+<body>
+  <div id="kaleidoscope-container">
+    <canvas id="kaleidoscope"></canvas>
+  </div>
+
+  <div id="message-container">
+    <p id="message">Click to shatter spacetime! Click again to reset the portal!</p>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('kaleidoscope');
+    const ctx = canvas.getContext('2d');
+    const TAU = Math.PI * 2;
+    let t = 0;
+    let exploding = false;
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    function mirror(x, y, color) {
+      for (let d = -1; d <= 1; d += 2) {
+        for (let i = 0; i <= 11; i++) {
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.arc(
+            canvas.width/2 + d*x*Math.cos(i*TAU/12) - d*y*Math.sin(i*TAU/12),
+            canvas.height/2 + d*x*Math.sin(i*TAU/12) + d*y*Math.cos(i*TAU/12),
+            2, 0, TAU
+          );
+          ctx.fill();
+        }  
+      }
+    }
+
+    function entangle(x, y, hue, t) {
+      mirror(x, y, `hsl(${hue},100%,50%)`);
+      mirror(-x, y, `hsl(${hue + 180},100%,50%)`);
+    }
+
+    function frame() {
+      t += 0.002;
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for(let a = 0; a < TAU; a += TAU/300) {
+        let r1, r2;
+        if (!exploding) {
+          r1 = canvas.width * 0.1 + canvas.width * 0.05 * Math.sin(a*7 + t*3); 
+          r2 = canvas.width * 0.1 + canvas.width * 0.05 * Math.sin(a*11 + t*5);
+        } else {
+          const explodeT = (performance.now() - explodeStartTime) / 1000;
+          r1 = canvas.width * 0.1 + canvas.width * explodeT * Math.cos(a*7 + t*3); 
+          r2 = canvas.width * 0.1 + canvas.width * explodeT * Math.cos(a*11 + t*5);
+        }
+        
+        const x1 = Math.cos(a) * r1;
+        const y1 = Math.sin(a) * r1;  
+        const x2 = Math.cos(a) * r2;
+        const y2 = Math.sin(a) * r2;
+        
+        entangle(x1, y1, (a / TAU) * 360 + t*40, t);
+        entangle(x2, y2, (a / TAU) * 360 - t*40, t);
+
+        ctx.strokeStyle = `hsl(${(a / TAU) * 360},100%,50%)`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(canvas.width/2 + x1, canvas.height/2 + y1);
+        ctx.lineTo(canvas.width/2 + x2, canvas.height/2 + y2);
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    let explodeStartTime;
+    const message = document.getElementById('message');
+
+    function explode() {
+      if (!exploding) {
+        exploding = true;
+        explodeStartTime = performance.now();
+        message.style.opacity = 0;
+      } else {
+        exploding = false;
+        message.textContent = "Portal reset! Click again to re-shatter spacetime!";
+        message.style.opacity = 1;
+      }
+    }
+
+    document.addEventListener('click', explode);
+
+    frame();
+  </script>
+</body>
+</html>

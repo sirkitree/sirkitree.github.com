@@ -1,0 +1,32 @@
+<html><head><base href="https://p5js.org/"><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+<style>
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: black;
+}
+</style>
+</head>
+<body>
+<script>
+t=0
+draw=_=>{t++||createCanvas(W=720,W)
+B=blendMode
+colorMode(HSB)
+B(BLEND)
+background(0,.1)  
+B(ADD)
+filter(BLUR)
+for(i=0;i<6;i++){
+  push()
+  translate(W/2,W/2)
+  rotate(i*PI/3)
+  for(r=0;r<TAU*3;r+=.01)fill(noise(r)*W%360,80,W,T=tan(noise(r/9+t/99)*9))+circle(cos(r+T)*r*3+120,tan(r+t/99)*r*3+120,2/T)
+  pop()
+}}
+</script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<html><head><base href="https://threejs.websim.ai/cosmic-horror[fractal](spheres).sdf" /><title>Cosmic Horror Fractal Spheres - Horizontally Mirrored</title><style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; width: 100vw; height: 100vh; }
+    </style></head><body><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 2;
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        const material = new THREE.ShaderMaterial({
+            uniforms: {
+                iTime: { value: 0 },
+                iResolution: { value: new THREE.Vector3() },
+                zoom: { value: 1.0 }
+            },
+            vertexShader: `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform float iTime;
+                uniform vec3 iResolution;
+                uniform float zoom;
+                varying vec2 vUv;
+
+                #define MAX_ITERATIONS 100
+                #define EPSILON 0.0001
+                #define MAX_DISTANCE 10.0
+                #define PHI 1.618033988749895
+                #define PI 3.14159265359
+
+                vec2 cpow(vec2 z, float n) {
+                    float r = length(z);
+                    float theta = atan(z.y, z.x);
+                    return pow(r, n) * vec2(cos(n * theta), sin(n * theta));
+                }
+
+                vec3 eldritchColor(vec3 p, vec3 n) {
+                    vec2 c = vec2(0.285, 0.01);
+                    vec2 z = vec2(dot(p, n.yzx), dot(p, n.zxy));
+                    
+                    for (int i = 0; i < MAX_ITERATIONS; i++) {
+                        z = cpow(z, 2.0 + sin(iTime * 0.1) * 0.5) + c;
+                        if (length(z) > 2.0) {
+                            float t = float(i) / float(MAX_ITERATIONS);
+                            return vec3(
+                                0.5 + 0.5 * sin(t * 6.28 + iTime + sin(p.x * 5.0)),
+                                0.5 + 0.5 * sin(t * 6.28 + iTime + 2.09 + cos(p.y * 4.0)),
+                                0.5 + 0.5 * sin(t * 6.28 + iTime + 4.18 + sin(p.z * 3.0))
+                            );
+                        }
+                    }
+                    return vec3(0.0);
+                }
+
+                mat3 rotateX(float angle) {
+                    float s = sin(angle);
+                    float c = cos(angle);
+                    return mat3(
+                        1.0, 0.0, 0.0,
+                        0.0, c, -s,
+                        0.0, s, c
+                    );
+                }
+
+                mat3 rotateY(float angle) {
+                    float s = sin(angle);
+                    float c = cos(angle);
+                    return mat3(
+                        c, 0.0, s,
+                        0.0, 1.0, 0.0,
+                        -s, 0.0, c
+                    );
+                }
+
+                mat3 rotateZ(float angle) {
+                    float s = sin(angle);
+                    float c = cos(angle);
+                    return mat3(
+                        c, -s, 0.0,
+                        s, c, 0.0,
+                        0.0, 0.0, 1.0
+                    );
+                }
+
+                float sdSphere(vec3 p, float r) {
+                    return length(p) - r;
+                }
+
+                float smin(float a, float b, float k) {
+                    float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+                    return mix(b, a, h) - k * h * (1.0 - h);
+                }
+
+                float map(vec3 p) {
+                    mat3 rotationX = rotateX(iTime / 2.0);
+                    mat3 rotationY = rotateY(iTime * 0.35);
+                    mat3 rotationZ = rotateZ(iTime * 0.25);
+                    p = rotationZ * rotationY * rotationX * p;
+
+                    float result = MAX_DISTANCE;
+
+                    for (int i = 0; i < 5; i++) {
+                        float angle = float(i) / 5.0 * 2.0 * PI;
+                        vec3 offset = vec3(cos(angle), sin(angle), 0.0) * 0.5;
+
+                        vec3 sphere1Pos = vec3(sin(iTime * 0.25), cos(iTime * 0.2), sin(iTime * 0.15)) * 0.3 + offset;
+                        vec3 sphere2Pos = vec3(-sin(iTime * 0.3), -cos(iTime * 0.25), cos(iTime * 0.2)) * 0.3 + offset;
+                        
+                        float sphere1 = sdSphere(p - sphere1Pos, 0.15 * PHI);
+                        float sphere2 = sdSphere(p - sphere2Pos, 0.15);
+                        
+                        for (int j = 0; j < 5; j++) {
+                            float bubbleAngle1 = float(j) / 5.0 * 6.28 + iTime * 0.375;
+                            float bubbleAngle2 = float(j) / 5.0 * 6.28 - iTime * 0.375;
+                            vec3 bubbleOffset1 = vec3(cos(bubbleAngle1), sin(bubbleAngle1), sin(bubbleAngle1 * 0.5)) * 0.35;
+                            vec3 bubbleOffset2 = vec3(cos(bubbleAngle2), sin(bubbleAngle2), cos(bubbleAngle2 * 0.5)) * 0.35;
+                            float bubble1 = sdSphere(p - (sphere1Pos + bubbleOffset1), 0.06 * PHI);
+                            float bubble2 = sdSphere(p - (sphere2Pos + bubbleOffset2), 0.06);
+                            sphere1 = smin(sphere1, bubble1, 0.05);
+                            sphere2 = smin(sphere2, bubble2, 0.05);
+                        }
+                        
+                        result = smin(result, smin(sphere1, sphere2, 0.1), 0.1);
+                    }
+
+                    result += 0.1 * sin(8.0 * p.x + 4.0 * sin(7.0 * p.y + 3.0 * sin(6.0 * p.z + iTime)));
+
+                    return result;
+                }
+
+                vec3 calcNormal(vec3 p) {
+                    const float h = 0.0001;
+                    const vec2 k = vec2(1, -1);
+                    return normalize(k.xyy * map(p + k.xyy * h) +
+                                     k.yyx * map(p + k.yyx * h) +
+                                     k.yxy * map(p + k.yxy * h) +
+                                     k.xxx * map(p + k.xxx * h));
+                }
+
+                vec3 eldritchBackground(vec2 uv) {
+                    vec3 color1 = vec3(0.05, 0.1, 0.2);
+                    vec3 color2 = vec3(0.1, 0.05, 0.15);
+                    vec3 color3 = vec3(0.15, 0.05, 0.1);
+
+                    float t1 = sin(iTime * 0.1 + uv.x * 2.0 + uv.y * 3.0 + sin(uv.y * 5.0)) * 0.5 + 0.5;
+                    float t2 = sin(iTime * 0.2 - uv.x * 3.0 - uv.y * 2.0 + cos(uv.x * 4.0)) * 0.5 + 0.5;
+
+                    vec3 gradientColor = mix(mix(color1, color2, t1), color3, t2);
+                    return gradientColor;
+                }
+
+                void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+                    vec2 uv = (fragCoord.xy / iResolution.xy) * 2.0 - 1.0;
+                    uv.x *= iResolution.x / iResolution.y;
+
+                    // Horizontal mirroring
+                    uv.x = abs(uv.x);
+
+                    uv /= zoom;
+
+                    vec3 ro = vec3(0.0, 0.0, -2.0);
+                    vec3 rd = normalize(vec3(uv, 1.0));
+
+                    vec3 bgColor = eldritchBackground(uv);
+                    vec3 col = bgColor;
+
+                    float t = 0.0;
+                    float edge = 0.0;
+                    for(int i = 0; i < 100; i++) {
+                        vec3 p = ro + rd * t;
+                        float d = map(p);
+                        if(d < 0.001) {
+                            vec3 n = calcNormal(p);
+                            vec3 eldritchCol = eldritchColor(p * 0.1 + vec3(iTime * 0.05), n);
+
+                            vec3 bubbleColor = eldritchCol * 0.9 + 0.1;
+                            float alpha = 0.6 + 0.2 * sin(iTime + p.x * 10.0 + p.y * 8.0 + p.z * 6.0);
+                            
+                            float fresnel = pow(1.0 - max(dot(n, -rd), 0.0), 4.0);
+                            vec3 reflectionColor = vec3(1.0) * fresnel * 0.5;
+                            
+                            col = mix(col, col * bubbleColor + reflectionColor, alpha);
+                            
+                            edge = 1.0;
+                            break;
+                        }
+                        edge = max(edge, 1.0 - abs(d) / 0.01);
+                        t += d;
+                        if(t > 100.0) break;
+                    }
+
+                    col = mix(bgColor, col, smoothstep(0.0, 1.0, edge));
+
+                    float vignette = length(uv) * 0.5;
+                    vignette = smoothstep(0.2 + 0.1 * sin(iTime), 1.0, vignette);
+                    col *= 1.0 - vignette * 0.5;
+
+                    col = pow(col, vec3(0.4545));
+                    col = max(col, vec3(0.05));
+
+                    fragColor = vec4(col, 1.0);
+                }
+
+                void main() {
+                    mainImage(gl_FragColor, vUv * iResolution.xy);
+                }
+            `,
+            transparent: true,
+        });
+
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        let animationRunning = true;
+
+        function animate(time) {
+            if (animationRunning) {
+                requestAnimationFrame(animate);
+                material.uniforms.iTime.value = time * 0.000125;
+                material.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight, 1);
+                renderer.render(scene, camera);
+            }
+        }
+
+        animate(0);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            material.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight, 1);
+        });
+
+        let zoomLevel = 1.0;
+        const zoomSpeed = 0.01;
+        const minZoom = 0.9;
+        const maxZoom = 2.0;
+
+        window.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            const delta = Math.sign(event.deltaY);
+            zoomLevel += delta * zoomSpeed;
+            zoomLevel = Math.max(minZoom, Math.min(maxZoom, zoomLevel));
+            material.uniforms.zoom.value = zoomLevel;
+        }, { passive: false });
+
+        window.addEventListener('click', () => {
+            animationRunning = !animationRunning;
+            if (animationRunning) {
+                animate(0);
+            }
+        });
+    </script><p>Welcome to the Cosmic Horror Fractal Spheres experience! This mesmerizing visualization brings to life a surreal, eldritch landscape of interconnected spheres and bubbles, all pulsating and morphing in an otherworldly dance.</p>
+
+<p>What you're seeing is a real-time rendered scene using Three.js and WebGL shaders. The main elements are:</p>
+
+<ul>
+  <li>Fractal spheres: The larger, interconnected spheres that form the base structure of the scene.</li>
+  <li>Eldritch bubbles: Smaller, iridescent spheres that orbit and merge with the main fractal spheres.</li>
+  <li>Dynamic background: A shifting, cosmic gradient that responds to the movement of the spheres.</li>
+  <li>Horizontal mirroring: The scene is mirrored along the vertical axis, creating a symmetrical composition.</li>
+</ul>
+
+<p>You can interact with the visualization in the following ways:</p>
+
+<ul>
+  <li>Zoom: Use your mouse wheel to zoom in and out of the scene.</li>
+  <li>Pause/Resume: Click anywhere on the canvas to pause or resume the animation.</li>
+</ul>
+
+<p>As you gaze into this cosmic abyss, you might find yourself contemplating the nature of reality, the depths of the universe, or the limits of human perception. The ever-shifting forms and colors evoke a sense of the sublime and the unknowable, much like the works of H.P. Lovecraft or other cosmic horror authors.</p>
+
+<p>This visualization serves as a digital window into a realm beyond our comprehension, where mathematics and artistry collide to create beauty from chaos. Enjoy your journey through this mesmerizing digital dimension!</p>
+
+<h2>Related Explorations</h2>
+
+<ul>
+  <li><a href="https://threejs.websim.ai/mandelbulb-explorer">Mandelbulb Explorer</a> - Dive into the 3D extension of the famous Mandelbrot set.</li>
+  <li><a href="https://threejs.websim.ai/cosmic-nebula-generator">Cosmic Nebula Generator</a> - Create your own colorful space nebulas.</li>
+  <li><a href="https://threejs.websim.ai/quantum-foam-visualizer

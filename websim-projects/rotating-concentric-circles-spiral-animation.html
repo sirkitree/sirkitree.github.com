@@ -1,0 +1,136 @@
+<html><head><base href="https://www.mesmerizingspirals.com/animations/rotating-concentric-circles-spiral.html"><title>Rotating Concentric Circles Spiral Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    canvas {
+      display: block;
+    }
+    #controls {
+      position: absolute;
+      bottom: 10px;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      width: 100%;
+    }
+    a {
+      color: cyan;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div id="controls">
+  <label for="circles">Number of Circles:</label>
+  <input type="range" min="1" max="50" value="30" id="circles">
+  <label for="speed">Rotation Speed:</label>  
+  <input type="range" min="-10" max="10" value="1" id="speed" step="0.1"> 
+  <br>
+  Animation by <a href="/">MesmerizingSpirals.com</a>. Discover more <a href="/">mesmerizing spiral animations</a>!
+</div>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+let cx = width / 2;
+let cy = height / 2;
+
+let numCircles = 30;
+let rotateSpeed = 1;
+
+let maxRadius = Math.min(width, height) * 0.45;
+let radii = [];
+let speeds = [];
+let hues = [];
+
+const circlesSlider = document.getElementById('circles');
+const speedSlider = document.getElementById('speed');
+
+function updateSettings() {
+  numCircles = parseInt(circlesSlider.value);
+  rotateSpeed = parseFloat(speedSlider.value);
+  
+  radii = [];
+  speeds = [];
+  hues = [];
+  
+  for(let i=0; i < numCircles; i++) {
+    radii[i] = maxRadius * (1 - i/numCircles);
+    speeds[i] = (i+1) / numCircles * rotateSpeed;
+    hues[i] = i * 360 / numCircles;
+  }
+}
+
+circlesSlider.onchange = updateSettings;
+speedSlider.onchange = updateSettings;
+
+let t = 0;
+
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+  
+  for(let i=0; i < numCircles; i++) {
+    let radius = radii[i];
+    let speed = speeds[i];
+    ctx.fillStyle = `hsl(${(hues[i] + t) % 360}, 100%, 60%)`;
+    ctx.globalAlpha = 1 - i/numCircles;
+    
+    ctx.beginPath();
+    ctx.arc(cx + radius * Math.cos(speed*t), 
+            cy + radius * Math.sin(speed*t), 
+            radius/5, 0, Math.PI*2);
+    ctx.fill();
+  }
+  
+  t += 0.01;
+  requestAnimationFrame(draw);
+}
+
+updateSettings();
+draw();
+
+window.onresize = function() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+  cx = width / 2;
+  cy = height / 2;
+  maxRadius = Math.min(width, height) * 0.45;
+  updateSettings();
+}
+</script>
+
+</body></html>
+
+This animation features spiraling concentric circles that rotate at different speeds, creating a mesmerizing spiral effect. Here's how it works:
+
+1. The HTML sets up a fullscreen canvas and some controls for adjusting the number of circles and rotation speed.
+
+2. The JavaScript initializes arrays to store each circle's radius, rotation speed, and hue. 
+
+3. The updateSettings() function is called whenever the controls are adjusted. It updates numCircles and rotateSpeed, then recalculates the radius, speed and hue for each circle.
+
+4. The draw() function, called each animation frame:
+   - Clears the canvas 
+   - Loops through each circle
+   - Calculates the current position based on radius, speed and elapsed time
+   - Fills the circle with the color based on its hue value
+   - Reduces opacity for outer circles to emphasize the spiral
+
+5. The t variable accumulates a small value each frame to animate the rotation over time.  
+
+6. The onresize handler ensures the animation fills the window even if resized.
+
+The result is a captivating, colorful spiral that the user can customize by changing the number of circles and rotation speed. The individual circles orbiting at different rates create a hypnotic spiraling tunnel effect.
+
+Feel free to explore further variations by modifying the color scheme, circle opacity, size ratios, etc. The simple concentric circles setup provides an attractive foundation for all kinds of creative spiral designs!
+
+Let me know if you have any other questions!

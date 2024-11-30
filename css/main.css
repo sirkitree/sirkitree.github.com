@@ -460,3 +460,19 @@ footer {
 #disqus_thread {
   min-height: 200px;
 }
+
+/* Add this to your existing CSS */
+.websim-embed {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.websim-embed iframe {
+    border: none;
+    width: 100%;
+    min-height: 600px;
+}

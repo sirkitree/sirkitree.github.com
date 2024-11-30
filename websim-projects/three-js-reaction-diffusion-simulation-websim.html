@@ -1,0 +1,186 @@
+<html><head><base href="https://websim.ai"><title>Three.js Reaction-Diffusion Simulation - WebSim</title><style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+    #info {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+</style></head><body>
+<div id="info">Three.js Reaction-Diffusion Simulation<br>Click and drag to interact<br>Scroll to change brush size</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// Scene setup
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Shader code
+const vertexShader = `
+    varying vec2 vUv;
+    void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+`;
+
+const fragmentShader = `
+    uniform sampler2D tPrev;
+    uniform vec2 resolution;
+    uniform float time;
+    uniform vec2 mouse;
+    uniform bool isClicking;
+    uniform float brushSize;
+    varying vec2 vUv;
+
+    #define RS resolution
+    #define TF texture2D(tPrev, vUv)
+    #define TFE(x0,y0) texture2D(tPrev, vUv + vec2(x0,y0)/resolution)
+
+    vec4 diff(vec2 uv) {
+        int r = 6;
+        float sw = 0.;
+        vec4 sum = vec4(0);
+        for(int i=0; i*i<r; i++) {
+            for(int j=1; i*i+j*j<r; j++) {
+                float w = 1./float(i*i+j*j);
+                sum += (TFE(float(i),float(j))+TFE(float(j),-float(i))+TFE(-float(i),-float(j))+TFE(-float(j),float(i)))*w;
+                sw += w*4.;
+            }
+        }
+        return sum / sw - TF;
+    }
+
+    void main() {
+        vec4 old = TF;
+        float Da = 1.0;
+        float Db = 0.5;
+        float f = 0.04;
+        float k = 0.06;
+        float t = old.x * old.y * old.y;
+
+        vec4 d = diff(vUv);
+        vec4 new = old;
+        new.x = old.x + (Da * d.x - t + f * (1.0 - old.x));
+        new.y = old.y + (Db * d.y + t - (k + f) * old.y);
+
+        // Mouse interaction
+        vec2 mouseUV = mouse / resolution;
+        if (isClicking && length(vUv - mouseUV) < brushSize) {
+            new.x += 0.1;
+            new.y += 0.05;
+        }
+
+        new = clamp(new, 0.0, 1.0);
+        new.z = t;
+        new.w = 1.0;
+
+        gl_FragColor = new;
+    }
+`;
+
+// Create a plane for rendering
+const geometry = new THREE.PlaneGeometry(2, 2);
+const material = new THREE.ShaderMaterial({
+    uniforms: {
+        tPrev: { value: null },
+        resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+        time: { value: 0 },
+        mouse: { value: new THREE.Vector2() },
+        isClicking: { value: false },
+        brushSize: { value: 0.05 }
+    },
+    vertexShader: vertexShader,
+    fragmentShader: fragmentShader
+});
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+// Create render targets for ping-pong rendering
+const rtParams = {
+    minFilter: THREE.LinearFilter,
+    magFilter: THREE.LinearFilter,
+    format: THREE.RGBAFormat,
+    type: THREE.FloatType
+};
+const renderTarget1 = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, rtParams);
+const renderTarget2 = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, rtParams);
+
+// Initialize with random noise
+const initialTexture = new THREE.DataTexture(
+    new Float32Array(window.innerWidth * window.innerHeight * 4).map(() => Math.random()),
+    window.innerWidth,
+    window.innerHeight,
+    THREE.RGBAFormat,
+    THREE.FloatType
+);
+initialTexture.needsUpdate = true;
+renderer.setRenderTarget(renderTarget1);
+renderer.render(new THREE.Scene().add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: initialTexture }))), camera);
+
+// Animation loop
+let currentRenderTarget = renderTarget1;
+function animate() {
+    requestAnimationFrame(animate);
+
+    const prevRenderTarget = currentRenderTarget === renderTarget1 ? renderTarget2 : renderTarget1;
+    material.uniforms.tPrev.value = prevRenderTarget.texture;
+    material.uniforms.time.value += 0.01;
+
+    renderer.setRenderTarget(currentRenderTarget);
+    renderer.render(scene, camera);
+
+    renderer.setRenderTarget(null);
+    renderer.render(scene, camera);
+
+    currentRenderTarget = prevRenderTarget;
+}
+
+// Mouse interaction
+let isClicking = false;
+
+document.addEventListener('mousedown', () => {
+    isClicking = true;
+    material.uniforms.isClicking.value = true;
+});
+
+document.addEventListener('mouseup', () => {
+    isClicking = false;
+    material.uniforms.isClicking.value = false;
+});
+
+document.addEventListener('mousemove', (event) => {
+    material.uniforms.mouse.value.x = event.clientX;
+    material.uniforms.mouse.value.y = window.innerHeight - event.clientY;
+});
+
+// Scroll to change brush size
+document.addEventListener('wheel', (event) => {
+    const delta = event.deltaY;
+    let newBrushSize = material.uniforms.brushSize.value - delta * 0.0001;
+    newBrushSize = Math.max(0.01, Math.min(0.2, newBrushSize));
+    material.uniforms.brushSize.value = newBrushSize;
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(width, height);
+    renderTarget1.setSize(width, height);
+    renderTarget2.setSize(width, height);
+    material.uniforms.resolution.value.set(width, height);
+});
+
+animate();
+</script>
+</body></html>

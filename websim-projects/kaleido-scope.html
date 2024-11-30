@@ -1,0 +1,404 @@
+<html><head><base href="https://kaleido.scope"><title>Kaleido.Scope - Advanced Kaleidoscope Generator</title>
+<style>
+  body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    color: #fff;
+    background-color: #000;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .content {
+    display: flex;
+    align-items: flex-start;
+  }
+  .canvas-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    overflow: visible;
+    width: 100%;
+  }
+  canvas {
+    cursor: move;
+  }
+  .controls {
+    width: 250px;
+    padding-left: 30px;
+  }
+  .control-group {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="range"] {
+    width: 100%;
+    margin-top: 5px;
+  }
+  input[type="file"] {
+    display: none;
+  }
+  .file-upload, .save-image {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+    border: none;
+    font-size: 16px;
+    width: 100%;
+  }
+  .file-upload:hover, .save-image:hover {
+    background-color: #45a049;
+  }
+  .value-display {
+    text-align: right;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #4CAF50;
+  }
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  .switch-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="content">
+    <div class="canvas-container">
+      <canvas id="kaleidoscope" width="700" height="700"></canvas>
+    </div>
+    <div class="controls">
+      <h1>Kaleido.Scope</h1>
+      <label for="imageUpload" class="file-upload">Upload Image</label>
+      <input type="file" id="imageUpload" accept="image/*">
+      <div class="control-group">
+        <label for="segments">Segments: <span id="segmentsValue">6</span></label>
+        <input type="range" id="segments" min="2" max="20" value="6">
+      </div>
+      <div class="control-group">
+        <label for="focalZoom">Focal Zoom: <span id="focalZoomValue">1</span></label>
+        <input type="range" id="focalZoom" min="0.1" max="5" step="0.1" value="1">
+      </div>
+      <div class="control-group">
+        <label for="globalZoom">Global Zoom: <span id="globalZoomValue">1</span></label>
+        <input type="range" id="globalZoom" min="0.1" max="2" step="0.1" value="1">
+      </div>
+      <div class="control-group">
+        <label for="rotation">Rotation: <span id="rotationValue">0°</span></label>
+        <input type="range" id="rotation" min="0" max="360" value="0">
+      </div>
+      <div class="control-group">
+        <label for="focalRotation">Focal Rotation: <span id="focalRotationValue">0°</span></label>
+        <input type="range" id="focalRotation" min="0" max="360" value="0">
+      </div>
+      <div class="control-group">
+        <div class="switch-label">
+          <span>Invert Focal Point</span>
+          <label class="switch">
+            <input type="checkbox" id="invertFocalPoint">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="switch-label">
+          <span>Mirror Segments</span>
+          <label class="switch">
+            <input type="checkbox" id="mirrorSegments">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      <button class="save-image" id="saveImage">Save Image</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('kaleidoscope');
+const ctx = canvas.getContext('2d');
+let img = new Image();
+let isImageLoaded = false;
+let offsetX = 0;
+let offsetY = 0;
+let isDragging = false;
+let lastX, lastY;
+let invertFocalPoint = false;
+let globalZoom = 1;
+let mirrorSegments = false;
+
+function drawKaleidoscope() {
+  if (!isImageLoaded) return;
+
+  const segments = parseInt(document.getElementById('segments').value);
+  const focalZoom = parseFloat(document.getElementById('focalZoom').value);
+  const rotation = parseInt(document.getElementById('rotation').value);
+  const focalRotation = parseInt(document.getElementById('focalRotation').value);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.save();
+  ctx.translate(canvas.width / 2, canvas.height / 2);
+  ctx.rotate(rotation * Math.PI / 180);
+  ctx.scale(globalZoom, globalZoom);
+
+  const imgSize = Math.max(canvas.width, canvas.height) / 2;
+
+  if (segments === 2) {
+    drawHalfKaleidoscope(imgSize, focalZoom, focalRotation);
+    ctx.scale(-1, 1);
+    drawHalfKaleidoscope(imgSize, focalZoom, focalRotation);
+  } else {
+    drawSegmentedKaleidoscope(segments, imgSize, focalZoom, focalRotation);
+  }
+
+  ctx.restore();
+}
+
+function drawHalfKaleidoscope(imgSize, focalZoom, focalRotation) {
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(-canvas.width/2, -canvas.height/2, canvas.width/2, canvas.height);
+  ctx.clip();
+  applyFocalTransformations(focalZoom, focalRotation);
+  ctx.drawImage(img, offsetX - imgSize, offsetY - imgSize, imgSize*2, imgSize*2);
+  ctx.restore();
+}
+
+function drawSegmentedKaleidoscope(segments, imgSize, focalZoom, focalRotation) {
+  const triangleAngle = (Math.PI * 2) / segments;
+  for (let i = 0; i < segments; i++) {
+    ctx.save();
+    ctx.rotate(i * triangleAngle);
+    
+    // Draw first half of the segment
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(imgSize, 0);
+    ctx.lineTo(imgSize * Math.cos(triangleAngle/2), imgSize * Math.sin(triangleAngle/2));
+    ctx.closePath();
+    ctx.clip();
+    applyFocalTransformations(focalZoom, focalRotation);
+    ctx.drawImage(img, offsetX - imgSize, offsetY - imgSize, imgSize*2, imgSize*2);
+    ctx.restore();
+    
+    // Draw second half of the segment (mirrored)
+    ctx.save();
+    ctx.rotate(i * triangleAngle);
+    ctx.scale(-1, 1);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(imgSize, 0);
+    ctx.lineTo(imgSize * Math.cos(triangleAngle/2), imgSize * Math.sin(triangleAngle/2));
+    ctx.closePath();
+    ctx.clip();
+    applyFocalTransformations(focalZoom, focalRotation);
+    ctx.drawImage(img, offsetX - imgSize, offsetY - imgSize, imgSize*2, imgSize*2);
+    ctx.restore();
+  }
+}
+
+function applyFocalTransformations(focalZoom, focalRotation) {
+  ctx.rotate(focalRotation * Math.PI / 180);
+  if (invertFocalPoint) {
+    ctx.scale(-1, 1);
+  }
+  ctx.scale(focalZoom, focalZoom);
+}
+
+function updateValueDisplay(id) {
+  const input = document.getElementById(id);
+  const display = document.getElementById(id + 'Value');
+  display.textContent = (id === 'rotation' || id === 'focalRotation') ? input.value + '°' : input.value;
+}
+
+function handleImageUpload(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    img.onload = function() {
+      isImageLoaded = true;
+      offsetX = 0;
+      offsetY = 0;
+      drawKaleidoscope();
+    };
+    img.src = event.target.result;
+  }
+  reader.readAsDataURL(file);
+}
+
+function handleControlInput() {
+  if (this.id === 'globalZoom') {
+    globalZoom = parseFloat(this.value);
+  }
+  updateValueDisplay(this.id);
+  drawKaleidoscope();
+}
+
+function handleCanvasMouseDown(e) {
+  isDragging = true;
+  lastX = e.offsetX;
+  lastY = e.offsetY;
+}
+
+function handleCanvasMouseMove(e) {
+  if (isDragging) {
+    const deltaX = e.offsetX - lastX;
+    const deltaY = e.offsetY - lastY;
+    const zoom = globalZoom * parseFloat(document.getElementById('focalZoom').value);
+    offsetX += deltaX / zoom;
+    offsetY += deltaY / zoom;
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+    drawKaleidoscope();
+  }
+}
+
+function handleCanvasWheel(e) {
+  e.preventDefault();
+  const delta = e.deltaY * -0.001;
+  globalZoom = Math.min(Math.max(0.1, globalZoom + delta), 2);
+  document.getElementById('globalZoom').value = globalZoom;
+  updateValueDisplay('globalZoom');
+  drawKaleidoscope();
+}
+
+function saveImage() {
+  const link = document.createElement('a');
+  link.download = 'kaleidoscope.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+let animationId = null;
+let isAnimating = false;
+
+function toggleAnimation() {
+  isAnimating = !isAnimating;
+  if (isAnimating) {
+    animate();
+    document.getElementById('toggleAnimation').textContent = 'Stop Animation';
+  } else {
+    cancelAnimationFrame(animationId);
+    document.getElementById('toggleAnimation').textContent = 'Start Animation';
+  }
+}
+
+function animate() {
+  const focalRotationInput = document.getElementById('focalRotation');
+  let currentRotation = parseInt(focalRotationInput.value);
+  currentRotation = (currentRotation + 1) % 361;
+  focalRotationInput.value = currentRotation;
+  updateValueDisplay('focalRotation');
+  drawKaleidoscope();
+  animationId = requestAnimationFrame(animate);
+}
+
+document.getElementById('imageUpload').addEventListener('change', handleImageUpload);
+
+['segments', 'focalZoom', 'globalZoom', 'rotation', 'focalRotation'].forEach(id => {
+  const input = document.getElementById(id);
+  input.addEventListener('input', handleControlInput);
+  updateValueDisplay(id);
+});
+
+document.getElementById('invertFocalPoint').addEventListener('change', function() {
+  invertFocalPoint = this.checked;
+  drawKaleidoscope();
+});
+
+document.getElementById('mirrorSegments').addEventListener('change', function() {
+  mirrorSegments = this.checked;
+  drawKaleidoscope();
+});
+
+canvas.addEventListener('mousedown', handleCanvasMouseDown);
+canvas.addEventListener('mousemove', handleCanvasMouseMove);
+canvas.addEventListener('mouseup', () => isDragging = false);
+canvas.addEventListener('mouseleave', () => isDragging = false);
+canvas.addEventListener('wheel', handleCanvasWheel);
+
+document.getElementById('saveImage').addEventListener('click', saveImage);
+
+// Add animation toggle button
+const animationButton = document.createElement('button');
+animationButton.id = 'toggleAnimation';
+animationButton.className = 'save-image';
+animationButton.textContent = 'Start Animation';
+animationButton.addEventListener('click', toggleAnimation);
+document.querySelector('.controls').appendChild(animationButton);
+
+// Initial placeholder image
+img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="700" height="700"%3E%3Crect width="100%25" height="100%25" fill="%23000000"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial" font-size="20" fill="%23ffffff" text-anchor="middle" dy=".3em"%3EUpload an image to start%3C/text%3E%3C/svg%3E';
+img.onload = () => {
+  isImageLoaded = true;
+  drawKaleidoscope();
+};
+</script>
+</body></html>

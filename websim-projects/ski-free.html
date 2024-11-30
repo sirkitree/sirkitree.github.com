@@ -1,0 +1,1124 @@
+<html><head><base href="interface://ski-free.com"><title>SkiFree 2042: Cyber Slopes</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #daf0ff;
+    position: relative;
+    overflow: hidden;
+}
+.skier {
+    width: 32px;
+    height: 48px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    image-rendering: pixelated;
+}
+.skier-body {
+    width: 16px;
+    height: 24px;
+    background-color: #ff4500;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    transition: transform 0.5s ease;
+}
+.skier-head {
+    width: 12px;
+    height: 12px;
+    background-color: #ffd700;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transition: transform 0.5s ease;
+}
+.skier-face {
+    width: 8px;
+    height: 4px;
+    background-color: #000;
+    position: absolute;
+    top: 4px;
+    left: 2px;
+}
+.skier-arm-left, .skier-arm-right {
+    width: 4px;
+    height: 12px;
+    background-color: #ff4500;
+    position: absolute;
+    top: 12px;
+    transition: transform 0.2s ease;
+}
+.skier-arm-left {
+    left: 4px;
+}
+.skier-arm-right {
+    right: 4px;
+}
+.skier-leg-left, .skier-leg-right {
+    width: 4px;
+    height: 12px;
+    background-color: #0000ff;
+    position: absolute;
+    top: 32px;
+    transition: transform 0.2s ease;
+}
+.skier-leg-left {
+    left: 8px;
+}
+.skier-leg-right {
+    right: 8px;
+}
+.ski-left, .ski-right {
+    width: 4px;
+    height: 32px;
+    background-color: #1e90ff;
+    position: absolute;
+    bottom: -16px;
+    transition: transform 0.2s ease;
+}
+.ski-left {
+    left: 8px;
+}
+.ski-right {
+    right: 8px;
+}
+.tree {
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.tree-1 {
+    background-color: #228B22;
+}
+
+.tree-2 {
+    background-color: #008000;
+    clip-path: polygon(20% 0%, 0% 100%, 100% 100%, 80% 0%);
+}
+
+.tree-3 {
+    background-color: #006400;
+    clip-path: polygon(50% 0%, 0% 100%, 30% 70%, 70% 70%, 100% 100%);
+}
+
+.dog {
+    width: 30px;
+    height: 20px;
+    background-color: #8B4513;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.dog::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #8B4513;
+    border-radius: 50%;
+    left: -5px;
+    top: -5px;
+}
+
+.dog::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    background-color: #8B4513;
+    right: -3px;
+    top: 5px;
+    transform: rotate(45deg);
+}
+
+.other-skier {
+    width: 16px;
+    height: 24px;
+    background-color: #1E90FF;
+    position: absolute;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@keyframes walkAcross {
+    from { transform: translateX(-50px); }
+    to { transform: translateX(calc(100vw + 50px)); }
+}
+.log {
+    width: 40px;
+    height: 15px;
+    background-color: #8B4513;
+    position: absolute;
+    border-radius: 7px;
+}
+.rock {
+    width: 25px;
+    height: 20px;
+    background-color: #808080;
+    position: absolute;
+    border-radius: 10px 10px 5px 5px;
+}
+.yeti {
+    width: 80px;
+    height: 120px;
+    position: absolute;
+    z-index: 5;
+    image-rendering: pixelated;
+}
+.yeti-body {
+    width: 60px;
+    height: 80px;
+    background-color: #f0f0f0;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    border-radius: 30px 30px 0 0;
+    box-shadow: -5px 0 0 #d0d0d0, 5px 0 0 #d0d0d0;
+}
+.yeti-head {
+    width: 50px;
+    height: 40px;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    border-radius: 25px 25px 0 0;
+    box-shadow: -3px -3px 0 #d0d0d0, 3px -3px 0 #d0d0d0;
+}
+.yeti-eye-left, .yeti-eye-right {
+    width: 12px;
+    height: 12px;
+    background-color: #ff0000;
+    position: absolute;
+    top: 10px;
+    border-radius: 50%;
+    animation: glow 1s infinite alternate;
+}
+@keyframes glow {
+    from { box-shadow: 0 0 5px #ff0000; }
+    to { box-shadow: 0 0 20px #ff0000; }
+}
+.yeti-eye-left {
+    left: 10px;
+}
+.yeti-eye-right {
+    right: 10px;
+}
+.yeti-mouth {
+    width: 30px;
+    height: 15px;
+    background-color: #800000;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    border-radius: 0 0 15px 15px;
+    overflow: hidden;
+}
+.yeti-teeth {
+    width: 30px;
+    height: 10px;
+    background: repeating-linear-gradient(
+        90deg,
+        #fff,
+        #fff 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    position: absolute;
+    top: 0;
+}
+.yeti-arm-left, .yeti-arm-right {
+    width: 15px;
+    height: 50px;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 40px;
+}
+.yeti-arm-left {
+    left: 0;
+    transform: rotate(15deg);
+}
+.yeti-arm-right {
+    right: 0;
+    transform: rotate(-15deg);
+}
+.yeti-claw {
+    width: 20px;
+    height: 20px;
+    background-color: #d0d0d0;
+    position: absolute;
+    bottom: -10px;
+    left: -2.5px;
+    border-radius: 50% 50% 0 0;
+}
+.yeti-claw::before, .yeti-claw::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 15px;
+    background-color: #800000;
+    bottom: 0;
+}
+.yeti-claw::before {
+    left: 2px;
+    transform: rotate(-20deg);
+}
+.yeti-claw::after {
+    right: 2px;
+    transform: rotate(20deg);
+}
+.yeti-leg-left, .yeti-leg-right {
+    width: 20px;
+    height: 30px;
+    background-color: #f0f0f0;
+    position: absolute;
+    bottom: 0;
+}
+.yeti-leg-left {
+    left: 10px;
+}
+.yeti-leg-right {
+    right: 10px;
+}
+.score, .level {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    color: black;
+}
+.score {
+    right: 10px;
+}
+.level {
+    left: 10px;
+}
+.game-over, .level-complete, .title-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+    z-index: 100;
+}
+.title-screen {
+    display: block;
+}
+.title-screen h1 {
+    font-size: 48px;
+    color: #1e90ff;
+    text-shadow: 2px 2px #ff4500;
+}
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #ff4500;
+}
+.finish-line {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background: repeating-linear-gradient(
+        45deg,
+        #000,
+        #000 10px,
+        #fff 10px,
+        #fff 20px
+    );
+    z-index: 5;
+}
+.jump-shadow {
+    width: 32px;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }
+}
+@keyframes shadow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(0.8); opacity: 0.2; }
+}
+@keyframes crumple {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(10px) rotate(15deg); }
+    50% { transform: translateY(20px) rotate(-15deg); }
+    75% { transform: translateY(30px) rotate(10deg); }
+    100% { transform: translateY(40px) rotate(-10deg); }
+}
+@keyframes flyOffLeft {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-500px, -300px) rotate(-720deg); }
+}
+@keyframes flyOffRight {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(500px, -300px) rotate(720deg); }
+}
+@keyframes snowExplosion {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+.snow-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="game-container" id="gameContainer">
+    <div class="skier" id="skier">
+        <div class="skier-body"></div>
+        <div class="skier-head">
+            <div class="skier-face"></div>
+        </div>
+        <div class="skier-arm-left"></div>
+        <div class="skier-arm-right"></div>
+        <div class="skier-leg-left"></div>
+        <div class="skier-leg-right"></div>
+        <div class="ski-left"></div>
+        <div class="ski-right"></div>
+    </div>
+    <div class="jump-shadow" id="jumpShadow"></div>
+    <div class="score">Score: <span id="score">0</span></div>
+    <div class="level">Level: <span id="level">1</span></div>
+    <div class="finish-line" id="finishLine"></div>
+    <div class="game-over" id="gameOver">
+        <h2>Game Over!</h2>
+        <p>Your score: <span id="finalScore"></span></p>
+        <button id="restartButton">Restart</button>
+    </div>
+    <div class="level-complete" id="levelComplete">
+        <h2>Level Complete!</h2>
+        <p>Your score: <span id="levelScore"></span></p>
+        <button id="nextLevelButton">Next Level</button>
+    </div>
+    <div class="title-screen" id="titleScreen">
+        <h1>Ski Free!</h1>
+        <button id="startButton">Start Game</button>
+    </div>
+</div>
+
+<script>
+const gameContainer = document.getElementById('gameContainer');
+const skier = document.getElementById('skier');
+const skierBody = skier.querySelector('.skier-body');
+const skierHead = skier.querySelector('.skier-head');
+const skierArmLeft = skier.querySelector('.skier-arm-left');
+const skierArmRight = skier.querySelector('.skier-arm-right');
+const skierLegLeft = skier.querySelector('.skier-leg-left');
+const skierLegRight = skier.querySelector('.skier-leg-right');
+const skiLeft = skier.querySelector('.ski-left');
+const skiRight = skier.querySelector('.ski-right');
+const jumpShadow = document.getElementById('jumpShadow');
+const scoreElement = document.getElementById('score');
+const levelElement = document.getElementById('level');
+const gameOverElement = document.getElementById('gameOver');
+const levelCompleteElement = document.getElementById('levelComplete');
+const titleScreenElement = document.getElementById('titleScreen');
+const finalScoreElement = document.getElementById('finalScore');
+const levelScoreElement = document.getElementById('levelScore');
+const restartButton = document.getElementById('restartButton');
+const nextLevelButton = document.getElementById('nextLevelButton');
+const startButton = document.getElementById('startButton');
+const finishLine = document.getElementById('finishLine');
+
+let score = 0;
+let level = 1;
+let obstacles = [];
+let yeti = null;
+let gameLoop;
+let skierPosition = { x: 50, y: 10 }; // Start position at the top
+let isJumping = false;
+let isFlipping = false;
+let isGameOver = false;
+let jumpedObstacles = new Set();
+let lastJumpTime = 0;
+let gameSpeed = 5;
+let distanceTraveled = 0;
+let levelLength = 5000;
+let obstacleFrequency = 1200; // Increase initial number of obstacles by 40%
+let moveLeft = false;
+let moveRight = false;
+let moveUp = false;
+let moveDown = false;
+let yetiDirection = 1; // 1 for right, -1 for left
+
+function startGame() {
+    resetGame();
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+    gameLoop = setInterval(update, 16); // 60 FPS for smoother movement
+    setInterval(createObstacle, obstacleFrequency);
+    setInterval(createYeti, 10000);
+    titleScreenElement.style.display = 'none';
+}
+
+function resetGame() {
+    score = 0;
+    level = 1;
+    gameSpeed = 5;
+    levelLength = 5000;
+    obstacleFrequency = 2000; // Start with fewer obstacles
+    scoreElement.textContent = score;
+    levelElement.textContent = level;
+    obstacles.forEach(obstacle => obstacle.remove());
+    if (yeti) yeti.remove();
+    obstacles = [];
+    yeti = null;
+    jumpedObstacles.clear();
+    skierPosition = { x: 50, y: 10 }; // Reset to top
+    distanceTraveled = 0;
+    updateSkierPosition();
+    isJumping = false;
+    isFlipping = false;
+    isGameOver = false;
+    moveLeft = false;
+    moveRight = false;
+    moveUp = false;
+    moveDown = false;
+    gameOverElement.style.display = 'none';
+    levelCompleteElement.style.display = 'none';
+    updateSkierStyle('center');
+    positionFinishLine();
+    jumpShadow.style.opacity = 0;
+    skier.style.display = 'block';
+    skier.style.animation = 'none';
+    skiLeft.style.animation = 'none';
+    skiRight.style.animation = 'none';
+    removeSnowParticles();
+    removeJumpScare();
+}
+
+function removeSnowParticles() {
+    const particles = document.querySelectorAll('.snow-particle');
+    particles.forEach(particle => particle.remove());
+}
+
+function positionFinishLine() {
+    finishLine.style.bottom = `${-levelLength}px`;
+}
+
+function handleKeyDown(e) {
+    if (isGameOver) return;
+    switch(e.key) {
+        case 'ArrowLeft':
+        case 'a':
+            moveLeft = true;
+            updateSkierStyle('left');
+            break;
+        case 'ArrowRight':
+        case 'd':
+            moveRight = true;
+            updateSkierStyle('right');
+            break;
+        case 'ArrowUp':
+        case 'w':
+            moveUp = true;
+            break;
+        case 'ArrowDown':
+        case 's':
+            moveDown = true;
+            break;
+        case ' ':
+            const currentTime = Date.now();
+            if (currentTime - lastJumpTime < 300 && !isFlipping) {
+                flip();
+            } else {
+                jump();
+            }
+            lastJumpTime = currentTime;
+            break;
+    }
+}
+
+function handleKeyUp(e) {
+    switch(e.key) {
+        case 'ArrowLeft':
+        case 'a':
+            moveLeft = false;
+            break;
+        case 'ArrowRight':
+        case 'd':
+            moveRight = false;
+            break;
+        case 'ArrowUp':
+        case 'w':
+            moveUp = false;
+            break;
+        case 'ArrowDown':
+        case 's':
+            moveDown = false;
+            break;
+    }
+    if (!moveLeft && !moveRight) {
+        updateSkierStyle('center');
+    }
+}
+
+function updateSkierStyle(direction) {
+    if (isFlipping) return;
+    switch(direction) {
+        case 'left':
+            skiLeft.style.transform = 'rotate(15deg) translateX(2px)';
+            skiRight.style.transform = 'rotate(15deg) translateX(2px)';
+            break;
+        case 'right':
+            skiLeft.style.transform = 'rotate(-15deg) translateX(-2px)';
+            skiRight.style.transform = 'rotate(-15deg) translateX(-2px)';
+            break;
+        case 'jump':
+            skiLeft.style.transform = 'rotate(20deg) translateX(3px)';
+            skiRight.style.transform = 'rotate(-20deg) translateX(-3px)';
+            skierArmLeft.style.transform = 'rotate(-45deg)';
+            skierArmRight.style.transform = 'rotate(45deg)';
+            skierLegLeft.style.transform = 'rotate(30deg)';
+            skierLegRight.style.transform = 'rotate(-30deg)';
+            break;
+        default:
+            skiLeft.style.transform = 'none';
+            skiRight.style.transform = 'none';
+            skierArmLeft.style.transform = 'none';
+            skierArmRight.style.transform = 'none';
+            skierLegLeft.style.transform = 'none';
+            skierLegRight.style.transform = 'none';
+    }
+}
+
+function jump() {
+    if (isJumping || isFlipping) return;
+    isJumping = true;
+    updateSkierStyle('jump');
+    
+    let jumpHeight = 0;
+    const jumpDuration = 500; // ms
+    const startTime = Date.now();
+    let jumpedOverObstacle = false;
+    
+    function animateJump() {
+        const elapsedTime = Date.now() - startTime;
+        const progress = Math.min(elapsedTime / jumpDuration, 1);
+        jumpHeight = Math.sin(progress * Math.PI) * 40; // Max height of 40px
+        
+        skier.style.transform = `translateY(-${jumpHeight}px)`;
+        jumpShadow.style.opacity = 1 - (jumpHeight / 40);
+        jumpShadow.style.transform = `scale(${1 - (jumpHeight / 80)})`;
+        
+        // Check if skier jumped over an obstacle
+        const skierRect = skier.getBoundingClientRect();
+        obstacles.forEach(obstacle => {
+            const obstacleRect = obstacle.getBoundingClientRect();
+            if (
+                skierRect.left < obstacleRect.right &&
+                skierRect.right > obstacleRect.left &&
+                skierRect.bottom > obstacleRect.top &&
+                skierRect.top < obstacleRect.bottom
+            ) {
+                jumpedOverObstacle = true;
+                jumpedObstacles.add(obstacle);
+            }
+        });
+        
+        if (progress < 1) {
+            requestAnimationFrame(animateJump);
+        } else {
+            isJumping = false;
+            skier.style.transform = 'none';
+            jumpShadow.style.opacity = 0;
+            jumpShadow.style.transform = 'none';
+            updateSkierStyle('center');
+            
+            // Increase score only if jumped over an obstacle
+            if (jumpedOverObstacle) {
+                score += 10; // Increased from 2 to 10 for more points
+                scoreElement.textContent = score;
+                showPointsIndicator(10);
+            }
+        }
+    }
+    
+    requestAnimationFrame(animateJump);
+}
+
+function flip() {
+    if (isFlipping) return;
+    isFlipping = true;
+    isJumping = true;
+    
+    let rotation = 0;
+    let jumpHeight = 0;
+    const flipDuration = 1000; // ms
+    const startTime = Date.now();
+    let jumpedOverObstacle = false;
+    
+    function animateFlip() {
+        const elapsedTime = Date.now() - startTime;
+        const progress = Math.min(elapsedTime / flipDuration, 1);
+        rotation = progress * 360;
+        jumpHeight = Math.sin(progress * Math.PI) * 60; // Max height of 60px
+        
+        skier.style.transform = `translateY(-${jumpHeight}px) rotate(${rotation}deg)`;
+        jumpShadow.style.opacity = 1 - (jumpHeight / 60);
+        jumpShadow.style.transform = `scale(${1 - (jumpHeight / 120)})`;
+        
+        // Check if skier flipped over an obstacle
+        const skierRect = skier.getBoundingClientRect();
+        obstacles.forEach(obstacle => {
+            const obstacleRect = obstacle.getBoundingClientRect();
+            if (
+                skierRect.left < obstacleRect.right &&
+                skierRect.right > obstacleRect.left &&
+                skierRect.bottom > obstacleRect.top &&
+                skierRect.top < obstacleRect.bottom
+            ) {
+                jumpedOverObstacle = true;
+                jumpedObstacles.add(obstacle);
+            }
+        });
+        
+        if (progress < 1) {
+            requestAnimationFrame(animateFlip);
+        } else {
+            isFlipping = false;
+            isJumping = false;
+            skier.style.transform = 'none';
+            jumpShadow.style.opacity = 0;
+            jumpShadow.style.transform = 'none';
+            updateSkierStyle('center');
+            
+            // Increase score only if flipped over an obstacle
+            if (jumpedOverObstacle) {
+                score += 5; // More points for a flip
+                scoreElement.textContent = score;
+            }
+        }
+    }
+    
+    requestAnimationFrame(animateFlip);
+}
+
+function createObstacle() {
+    if (isGameOver) return;
+    const obstacleType = Math.random();
+    let obstacle;
+    
+    if (obstacleType < 0.5) {
+        // Tree types
+        const treeType = Math.floor(Math.random() * 3);
+        obstacle = document.createElement('div');
+        obstacle.className = `tree tree-${treeType + 1}`;
+    } else if (obstacleType < 0.7) {
+        obstacle = document.createElement('div');
+        obstacle.className = 'log';
+    } else if (obstacleType < 0.9) {
+        obstacle = document.createElement('div');
+        obstacle.className = 'rock';
+    } else if (obstacleType < 0.95) {
+        // Dog
+        obstacle = document.createElement('div');
+        obstacle.className = 'dog';
+        obstacle.style.animation = `walkAcross ${Math.random() * 5 + 5}s linear`;
+    } else {
+        // Other skier
+        obstacle = document.createElement('div');
+        obstacle.className = 'other-skier';
+    }
+    
+    obstacle.style.left = `${Math.random() * 100}%`;
+    obstacle.style.bottom = '-30px';
+    gameContainer.appendChild(obstacle);
+    obstacles.push(obstacle);
+}
+
+function createYeti() {
+    if (isGameOver || yeti) return;
+    yeti = document.createElement('div');
+    yeti.className = 'yeti';
+    yeti.innerHTML = `
+        <div class="yeti-body"></div>
+        <div class="yeti-head">
+            <div class="yeti-eye-left"></div>
+            <div class="yeti-eye-right"></div>
+            <div class="yeti-mouth">
+                <div class="yeti-teeth"></div>
+            </div>
+        </div>
+        <div class="yeti-arm-left">
+            <div class="yeti-claw"></div>
+        </div>
+        <div class="yeti-arm-right">
+            <div class="yeti-claw"></div>
+        </div>
+        <div class="yeti-leg-left"></div>
+        <div class="yeti-leg-right"></div>
+    `;
+    yetiDirection = Math.random() < 0.5 ? 1 : -1;
+    yeti.style.bottom = `${50 + Math.random() * 30}%`; // Start higher on the screen
+    yeti.style.left = yetiDirection === 1 ? '-80px' : '100%';
+    gameContainer.appendChild(yeti);
+}
+
+function updateSkierPosition() {
+    const moveSpeed = 0.5;
+    if (moveLeft && skierPosition.x > 0) skierPosition.x -= moveSpeed;
+    if (moveRight && skierPosition.x < 100) skierPosition.x += moveSpeed;
+    if (moveUp && skierPosition.y > 0) skierPosition.y -= moveSpeed;
+    if (moveDown && skierPosition.y < 100) skierPosition.y += moveSpeed;
+    
+    skier.style.left = `${skierPosition.x}%`;
+    skier.style.top = `${skierPosition.y}%`;
+    jumpShadow.style.left = `${skierPosition.x}%`;
+    jumpShadow.style.top = `${skierPosition.y + 6}%`;
+}
+
+function update() {
+    if (isGameOver) return;
+    distanceTraveled += gameSpeed;
+    
+    updateSkierPosition();
+    
+    obstacles.forEach((obstacle, index) => {
+        if (obstacle.className.includes('dog')) {
+            // Dogs have their own animation, no need to update their position
+            const dogRect = obstacle.getBoundingClientRect();
+            if (dogRect.right < 0 || dogRect.left > gameContainer.offsetWidth) {
+                obstacle.remove();
+                obstacles.splice(index, 1);
+            }
+        } else {
+            const bottom = parseFloat(obstacle.style.bottom) || 0;
+            if (bottom > gameContainer.offsetHeight) {
+                obstacle.remove();
+                obstacles.splice(index, 1);
+                jumpedObstacles.delete(obstacle);
+                score++;
+                scoreElement.textContent = score;
+            } else {
+                obstacle.style.bottom = `${bottom + gameSpeed}px`;
+            }
+        }
+    });
+
+    if (yeti) {
+        const yetiLeft = parseFloat(yeti.style.left) || 0;
+        yeti.style.left = `${yetiLeft + yetiDirection * gameSpeed}px`;
+        
+        if (
+            (yetiDirection === 1 && yetiLeft > gameContainer.offsetWidth) ||
+            (yetiDirection === -1 && yetiLeft < -80)
+        ) {
+            yeti.remove();
+            yeti = null;
+        }
+    }
+
+    finishLine.style.bottom = `${parseFloat(finishLine.style.bottom) + gameSpeed}px`;
+
+    checkCollision();
+}
+
+function checkCollision() {
+    if (isGameOver) return;
+
+    const skierRect = skier.getBoundingClientRect();
+    obstacles.forEach(obstacle => {
+        if (jumpedObstacles.has(obstacle)) return;
+
+        const obstacleRect = obstacle.getBoundingClientRect();
+        if (
+            skierRect.left < obstacleRect.right &&
+            skierRect.right > obstacleRect.left &&
+            skierRect.top < obstacleRect.bottom &&
+            skierRect.bottom > obstacleRect.top
+        ) {
+            if (isJumping || isFlipping) {
+                jumpedObstacles.add(obstacle);
+            } else {
+                crash();
+            }
+        }
+    });
+
+    if (yeti) {
+        const yetiRect = yeti.getBoundingClientRect();
+        if (
+            skierRect.left < yetiRect.right &&
+            skierRect.right > yetiRect.left &&
+            skierRect.top < yetiRect.bottom &&
+            skierRect.bottom > yetiRect.top
+        ) {
+            if (isJumping || isFlipping) {
+                // Successfully jumped over the yeti
+                score += 20; // Increased from 10 to 20 for yeti jump
+                scoreElement.textContent = score;
+                showPointsIndicator(20);
+            } else {
+                crash();
+            }
+        }
+    }
+
+    const finishLineRect = finishLine.getBoundingClientRect();
+    if (
+        skierRect.left < finishLineRect.right &&
+        skierRect.right > finishLineRect.left &&
+        skierRect.top < finishLineRect.bottom &&
+        skierRect.bottom > finishLineRect.top
+    ) {
+        levelComplete();
+    }
+}
+
+function crash() {
+    isGameOver = true;
+    clearInterval(gameLoop);
+
+    if (yeti) {
+        // Yeti caught the skier, show jump scare
+        showJumpScare();
+    } else {
+        // Normal crash
+        // Animate skier crumpling
+        skier.style.animation = 'crumple 1s forwards';
+
+        // Animate skis flying off
+        skiLeft.style.animation = 'flyOffLeft 1.5s forwards';
+        skiRight.style.animation = 'flyOffRight 1.5s forwards';
+
+        // Create snow explosion
+        createSnowExplosion();
+    }
+
+    // Show game over screen after animation
+    setTimeout(() => {
+        finalScoreElement.textContent = score;
+        gameOverElement.style.display = 'block';
+    }, 2000);
+}
+
+function showJumpScare() {
+    const jumpScare = document.createElement('div');
+    jumpScare.id = 'jumpScare';
+    jumpScare.style.position = 'fixed';
+    jumpScare.style.top = '0';
+    jumpScare.style.left = '0';
+    jumpScare.style.width = '100vw';
+    jumpScare.style.height = '100vh';
+    jumpScare.style.backgroundColor = 'black';
+    jumpScare.style.display = 'flex';
+    jumpScare.style.justifyContent = 'center';
+    jumpScare.style.alignItems = 'center';
+    jumpScare.style.zIndex = '1000';
+
+    const yetiFace = document.createElement('div');
+    yetiFace.style.width = '90vw';
+    yetiFace.style.height = '90vh';
+    yetiFace.style.position = 'relative';
+    yetiFace.style.backgroundColor = '#f0f0f0';
+    yetiFace.style.borderRadius = '40% 40% 60% 60%';
+    yetiFace.style.boxShadow = '0 0 50px red';
+
+    const leftEye = createEye('-20%');
+    const rightEye = createEye('20%');
+    const mouth = createMouth();
+
+    yetiFace.appendChild(leftEye);
+    yetiFace.appendChild(rightEye);
+    yetiFace.appendChild(mouth);
+    jumpScare.appendChild(yetiFace);
+    document.body.appendChild(jumpScare);
+
+    // Pulsating effect
+    let scale = 1;
+    const pulsateInterval = setInterval(() => {
+        scale = scale === 1 ? 1.1 : 1;
+        yetiFace.style.transform = `scale(${scale})`;
+    }, 100);
+
+    // Growling sound
+    const audio = new Audio('https://example.com/yeti-growl.mp3'); // Replace with actual growl sound URL
+    audio.play();
+
+    // Remove jump scare after 3 seconds
+    setTimeout(() => {
+        clearInterval(pulsateInterval);
+        audio.pause();
+        removeJumpScare();
+    }, 3000);
+}
+
+function createEye(leftPosition) {
+    const eye = document.createElement('div');
+    eye.style.width = '30%';
+    eye.style.height = '30%';
+    eye.style.position = 'absolute';
+    eye.style.top = '20%';
+    eye.style.left = leftPosition;
+    eye.style.backgroundColor = 'white';
+    eye.style.borderRadius = '50%';
+    eye.style.display = 'flex';
+    eye.style.justifyContent = 'center';
+    eye.style.alignItems = 'center';
+
+    const pupil = document.createElement('div');
+    pupil.style.width = '50%';
+    pupil.style.height = '50%';
+    pupil.style.backgroundColor = 'red';
+    pupil.style.borderRadius = '50%';
+    pupil.style.boxShadow = '0 0 10px red';
+
+    const bloodshot = document.createElement('div');
+    bloodshot.style.position = 'absolute';
+    bloodshot.style.width = '100%';
+    bloodshot.style.height = '100%';
+    bloodshot.style.background = 'radial-gradient(circle, transparent 30%, rgba(255,0,0,0.3) 70%)';
+    bloodshot.style.borderRadius = '50%';
+
+    eye.appendChild(bloodshot);
+    eye.appendChild(pupil);
+    return eye;
+}
+
+function createMouth() {
+    const mouth = document.createElement('div');
+    mouth.style.width = '70%';
+    mouth.style.height = '40%';
+    mouth.style.position = 'absolute';
+    mouth.style.bottom = '10%';
+    mouth.style.left = '15%';
+    mouth.style.backgroundColor = '#800000';
+    mouth.style.borderRadius = '0 0 100px 100px';
+    mouth.style.overflow = 'hidden';
+
+    const teeth = document.createElement('div');
+    teeth.style.width = '100%';
+    teeth.style.height = '50%';
+    teeth.style.background = 'repeating-linear-gradient(90deg, white, white 10%, transparent 10%, transparent 20%)';
+
+    mouth.appendChild(teeth);
+    return mouth;
+}
+
+function removeJumpScare() {
+    const jumpScare = document.getElementById('jumpScare');
+    if (jumpScare) {
+        jumpScare.remove();
+    }
+}
+
+function showPointsIndicator(points) {
+    const indicator = document.createElement('div');
+    indicator.textContent = `+${points}`;
+    indicator.style.position = 'absolute';
+    indicator.style.left = `${skierPosition.x}%`;
+    indicator.style.top = `${skierPosition.y - 5}%`;
+    indicator.style.color = '#FFD700';
+    indicator.style.fontWeight = 'bold';
+    indicator.style.fontSize = '24px';
+    indicator.style.textShadow = '2px 2px 4px rgba(0,0,0,0.5)';
+    indicator.style.pointerEvents = 'none';
+    gameContainer.appendChild(indicator);
+
+    // Animate the indicator
+    indicator.animate([
+        { transform: 'translateY(0)', opacity: 1 },
+        { transform: 'translateY(-50px)', opacity: 0 }
+    ], {
+        duration: 1000,
+        easing: 'ease-out',
+        fill: 'forwards'
+    }).onfinish = () => indicator.remove();
+}
+
+function createSnowExplosion() {
+    const particleCount = 50;
+    const skierRect = skier.getBoundingClientRect();
+    const centerX = skierRect.left + skierRect.width / 2;
+    const centerY = skierRect.top + skierRect.height / 2;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'snow-particle';
+        particle.style.left = `${centerX}px`;
+        particle.style.top = `${centerY}px`;
+        gameContainer.appendChild(particle);
+
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 5 + 2;
+        const dx = Math.cos(angle) * speed;
+        const dy = Math.sin(angle) * speed;
+
+        particle.animate([
+            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+            { transform: `translate(${dx * 20}px, ${dy * 20}px) scale(0)`, opacity: 0 }
+        ], {
+            duration: 1000,
+            easing: 'ease-out',
+            fill: 'forwards'
+        });
+    }
+}
+
+function levelComplete() {
+    clearInterval(gameLoop);
+    levelScoreElement.textContent = score;
+    levelCompleteElement.style.display = 'block';
+}
+
+function nextLevel() {
+    level++;
+    levelElement.textContent = level;
+    gameSpeed += 1;
+    levelLength += 1000;
+    obstacleFrequency = Math.max(200, obstacleFrequency - 200); // Increase obstacles more gradually
+    obstacles.forEach(obstacle => obstacle.remove());
+    if (yeti) yeti.remove();
+    obstacles = [];
+    yeti = null;
+    jumpedObstacles.clear();
+    distanceTraveled = 0;
+    skierPosition = { x: 50, y: 10 }; // Reset to top
+    updateSkierPosition();
+    levelCompleteElement.style.display = 'none';
+    positionFinishLine();
+    clearInterval(gameLoop);
+    gameLoop = setInterval(update, 16);
+    clearInterval(window.obstacleInterval);
+    window.obstacleInterval = setInterval(createObstacle, obstacleFrequency);
+}
+
+restartButton.addEventListener('click', startGame);
+nextLevelButton.addEventListener('click', nextLevel);
+startButton.addEventListener('click', startGame);
+
+</script>
+</body></html>

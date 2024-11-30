@@ -1,0 +1,279 @@
+<html><head><base href="https://groovy.math.simulations/interactive-light-grid/sacred-geometric-patterns/metatron's-cube?shape-selector=true&speed-selector=true&iteration-selector=true&persistance-toggle=on&particle-trails=groovy"><title>Metatron's Cube with Groovy Particle Trails - Interactive Light Grid</title>
+<style>
+body {
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+}
+
+#toolbar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+button, input, select {
+  padding: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  background: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover, select:hover {
+  background: #333;
+}
+
+canvas {
+  display: block;
+}
+</style>
+</head>
+<body>
+<div id="toolbar">
+  <button id="clear">Clear</button>
+  <button id="animate">Animate</button>
+  <button id="persistenceToggle">Toggle Persistence</button>
+  <input type="color" id="colorPicker" value="#ffffff">
+  <input type="range" id="gridSize" min="10" max="200" value="50">
+  <select id="shapeSelector">
+    <option value="Metatron's Cube">Metatron's Cube</option>
+    <option value="Flower of Life">Flower of Life</option>
+    <option value="Seed of Life">Seed of Life</option> 
+    <option value="Fruit of Life">Fruit of Life</option>
+    <option value="Egg of Life">Egg of Life</option>
+    <option value="Tree of Life">Tree of Life</option>
+  </select>
+  <select id="speedSelector">
+    <option value="1">1x</option>
+    <option value="2">2x</option>
+    <option value="3">3x</option>
+    <option value="5">5x</option>
+    <option value="10">10x</option>
+  </select>
+  <select id="iterationSelector">
+    <option value="1">1 Iteration</option>
+    <option value="2">2 Iterations</option>
+    <option value="3">3 Iterations</option>
+    <option value="5">5 Iterations</option>
+    <option value="10">10 Iterations</option>
+  </select>
+</div>
+<canvas></canvas>
+
+<script>
+let canvas = document.querySelector('canvas');
+let ctx = canvas.getContext('2d');
+let particles = [];
+let autoAnimate = false;
+let persistence = true;
+let pattern = "Metatron's Cube"; 
+let lightColor = '#ffffff';
+let gridSize = 50;
+let growthSpeed = 1;
+let numIterations = 1;
+let particleTrails = true;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight; 
+}
+
+function clearCanvas() {
+  particles = [];
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function addParticle(x, y) {
+  particles.push({
+    x: x, 
+    y: y,
+    radius: 0,
+    color: lightColor,
+    iteration: 0,
+    trail: []
+  });
+}
+
+function applyPattern(particle) {
+  let { x, y, radius } = particle;
+  ctx.strokeStyle = particle.color;
+
+  switch(pattern) {
+    case "Metatron's Cube":
+      for (let i = 0; i < 12; i++) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius * Math.cos(i * Math.PI / 6), y + radius * Math.sin(i * Math.PI / 6));
+        ctx.lineTo(x + radius * Math.cos((i + 6) * Math.PI / 6), y + radius * Math.sin((i + 6) * Math.PI / 6));
+        ctx.stroke();
+      }
+      break;
+
+    case "Flower of Life":
+      for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 6; j++) {
+          ctx.beginPath();
+          ctx.arc(x + radius * Math.cos(i * Math.PI / 3), y + radius * Math.sin(i * Math.PI / 3), radius/3, j * Math.PI / 3, (j + 1) * Math.PI / 3);
+          ctx.stroke();
+        }        
+      }
+      break;
+      
+    case "Seed of Life":
+      for (let i = 0; i < 6; i++) {
+        ctx.beginPath();
+        ctx.arc(x + radius * Math.cos(i * Math.PI / 3), y + radius * Math.sin(i * Math.PI / 3), radius/3, 0, Math.PI*2);
+        ctx.stroke();
+      }
+      break;
+      
+    case "Fruit of Life":
+      for (let i = 0; i < 6; i++) {
+        ctx.beginPath();
+        ctx.arc(x + radius * Math.cos(i * Math.PI / 3), y + radius * Math.sin(i * Math.PI / 3), radius/3, 0, Math.PI*2);
+        ctx.stroke();
+      }
+      ctx.beginPath();
+      ctx.arc(x, y, radius/3, 0, 2 * Math.PI);
+      ctx.stroke();
+      break;
+
+    case "Egg of Life":
+      ctx.beginPath();
+      ctx.arc(x, y, radius/3, 0, 2 * Math.PI);
+      ctx.stroke();
+      for (let i = 0; i < 8; i++) {
+        let xPos = x + (radius/2) * Math.cos(i * Math.PI / 4);
+        let yPos = y + (radius/2) * Math.sin(i * Math.PI / 4);
+        ctx.beginPath();
+        ctx.arc(xPos, yPos, radius/6, 0, 2 * Math.PI);
+        ctx.stroke();
+      }
+      break;
+    
+    case "Tree of Life":
+      for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.arc(x, y + i * (radius/2), radius/8, 0, 2 * Math.PI); 
+        ctx.stroke();
+      }
+      for (let i = 0; i < 2; i++) {
+        ctx.beginPath();
+        ctx.arc(x - (radius/4), y + ((i * 3 + 1)/2) * radius /5, radius/8, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(x + (radius/4), y + ((i * 3 + 1)/2) * radius /5, radius/8, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.beginPath(); 
+        ctx.arc(x - (radius/3), y + ((i + 1)/2) * radius, radius/8, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(x + (radius/3), y + ((i + 1)/2) * radius, radius/8, 0, 2 * Math.PI);
+        ctx.stroke();
+      }
+      break;
+  }
+}
+
+function updateParticles() {
+  particles.forEach(particle => {
+    particle.radius += growthSpeed;
+    applyPattern(particle);
+    
+    if (particleTrails) {
+      particle.trail.push({x: particle.x, y: particle.y, radius: particle.radius});
+    }
+    
+    if (particle.radius >= gridSize * numIterations) {
+      particle.iteration++;
+      particle.radius = 0;
+    }
+  });
+  
+  if (!persistence) {
+    particles = particles.filter(particle => particle.iteration < numIterations);
+  }
+}
+
+function drawTrails() {
+  ctx.lineWidth = 1;
+  particles.forEach(particle => {
+    let hue = Math.floor(Math.random()*360);
+    particle.trail.forEach((trail,i) => {
+      ctx.strokeStyle = `hsla(${hue}, 100%, ${100-i}%, ${1-i/particle.trail.length})`;
+      ctx.beginPath();
+      ctx.arc(trail.x, trail.y, trail.radius, 0, Math.PI * 2);
+      ctx.stroke();
+    });
+  });
+}
+
+function animate() {  
+  if (!persistence) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  updateParticles();
+  
+  if (particleTrails) {
+    drawTrails();
+  }
+  
+  if (autoAnimate) {
+    requestAnimationFrame(animate);
+  }
+}
+
+function handleResize() {
+  resizeCanvas();
+  if (!persistence) {
+    clearCanvas();
+  }
+}
+
+function handleClick(e) {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  addParticle(x, y);
+  if (!autoAnimate) {
+    animate();
+  }
+}
+
+document.getElementById('clear').addEventListener('click', clearCanvas);
+
+document.getElementById('animate').addEventListener('click', () => {
+  autoAnimate = !autoAnimate;
+  if (autoAnimate) animate();
+});
+
+document.getElementById('persistenceToggle').addEventListener('click', () => {
+  persistence = !persistence;
+});
+
+document.getElementById('colorPicker').addEventListener('input', e => lightColor = e.target.value);
+
+document.getElementById('gridSize').addEventListener('input', e => gridSize = Number(e.target.value));
+
+document.getElementById('shapeSelector').addEventListener('change', e => pattern = e.target.value);
+
+document.getElementById('speedSelector').addEventListener('change', e => growthSpeed = Number(e.target.value));
+
+document.getElementById('iterationSelector').addEventListener('change', e => numIterations = Number(e.target.value));
+
+window.addEventListener('resize', handleResize);
+
+canvas.addEventListener('click', handleClick);
+
+resizeCanvas();
+</script>
+</body>
+</html>

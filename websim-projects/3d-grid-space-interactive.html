@@ -1,0 +1,93 @@
+<html><head><base href="simulation://particles.sim/three.js/grid-space-3d&controls=wasd&animation=off"><title>3D Grid Space - Interactive</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  body { margin: 0; overflow: hidden; }
+  canvas { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 50;
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Create a grid of particles
+const gridSize = 20;
+const spacing = 5;
+const geometry = new THREE.BufferGeometry();
+const positions = [];
+const colors = [];
+
+for (let i = 0; i < gridSize; i++) {
+  for (let j = 0; j < gridSize; j++) {
+    for (let k = 0; k < gridSize; k++) {
+      positions.push(i * spacing - (gridSize * spacing) / 2, j * spacing - (gridSize * spacing) / 2, k * spacing - (gridSize * spacing) / 2);
+      colors.push(Math.random(), Math.random(), Math.random());
+    }
+  }  
+}
+
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+const material = new THREE.PointsMaterial({ size: 0.7, vertexColors: true, transparent: true });
+const particles = new THREE.Points(geometry, material);
+scene.add(particles);
+
+// WASD Controls
+const speed = 0.5;
+const keysPressed = {};
+
+document.addEventListener('keydown', (event) => {
+  keysPressed[event.key.toLowerCase()] = true;
+}, false);
+
+document.addEventListener('keyup', (event) => {
+  keysPressed[event.key.toLowerCase()] = false;
+}, false);
+
+function controls() {
+  if (keysPressed['w']) {
+    camera.position.y += speed;
+  }
+  if (keysPressed['a']) {
+    camera.position.x -= speed;
+  }
+  if (keysPressed['s']) {
+    camera.position.y -= speed;
+  }
+  if (keysPressed['d']) {
+    camera.position.x += speed;
+  }
+  camera.lookAt(scene.position);
+}
+
+// Render loop
+function animate() {
+  requestAnimationFrame(animate);
+  controls();
+  renderer.render(scene, camera);
+}
+
+animate();
+
+// Resize canvas on window resize 
+window.addEventListener('resize', onWindowResize, false);
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+</script>
+
+<div id="info" style="position:fixed; top:10px; left:10px; color: white;">
+  <p>Use WASD keys to move around the grid space.</p>
+  <a href="simulation://particles.sim">« All Simulations</a>
+</div>
+
+</body></html>

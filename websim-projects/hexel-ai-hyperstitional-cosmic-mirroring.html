@@ -1,0 +1,218 @@
+<html><head><base href="https://hexel.ai" />
+<title>Hexel.ai - Hyperstitional Cosmic Mirroring</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  body { margin: 0; overflow: hidden; background-color: #000; }
+  canvas { width: 100%; height: 100%; }
+  #info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+<div id="info">Hexel.ai - Hyperstitional Cosmic Mirroring<br>Click and drag to rotate the view</div>
+<script>
+  let scene, camera, renderer, hexagons;
+  const gridSize = 50;
+  let currentPattern = 'flat';
+  let patternTransition = 0;
+  let nextPattern = '';
+  let time = 0;
+  let isDragging = false;
+  let previousMousePosition = { x: 0, y: 0 };
+  let cameraAngle = { x: 0, y: 0 };
+
+  function init() {
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    createHexagonGrid();
+
+    camera.position.set(0, 40, 40);
+    camera.lookAt(0, 0, 0);
+
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+
+    window.addEventListener('resize', onWindowResize, false);
+    document.addEventListener('mousedown', onMouseDown, false);
+    document.addEventListener('mousemove', onMouseMove, false);
+    document.addEventListener('mouseup', onMouseUp, false);
+  }
+
+  function createHexagonGrid() {
+    hexagons = new THREE.Group();
+    const hexRadius = 0.4;
+    const hexHeight = 1;
+    const spacing = 0.05;
+
+    const geometry = new THREE.CylinderGeometry(hexRadius, hexRadius, hexHeight, 6);
+    
+    for (let q = -gridSize; q <= gridSize; q++) {
+      for (let r = -gridSize; r <= gridSize; r++) {
+        if (Math.abs(q + r) <= gridSize) {
+          const x = (q + r/2) * (hexRadius * 2 + spacing) * Math.sqrt(3);
+          const z = r * (hexRadius * 1.5 + spacing) * 2;
+          
+          const material = new THREE.MeshPhongMaterial({
+            color: new THREE.Color().setHSL(Math.random(), 0.7, 0.5),
+          });
+
+          const hexMesh = new THREE.Mesh(geometry, material);
+          hexMesh.position.set(x, 0, z);
+          
+          hexMesh.userData.q = q;
+          hexMesh.userData.r = r;
+
+          hexagons.add(hexMesh);
+        }
+      }
+    }
+
+    scene.add(hexagons);
+  }
+
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  function onMouseDown(event) {
+    isDragging = true;
+    previousMousePosition = {
+      x: event.clientX,
+      y: event.clientY
+    };
+  }
+
+  function onMouseMove(event) {
+    if (!isDragging) return;
+
+    const deltaMove = {
+      x: event.clientX - previousMousePosition.x,
+      y: event.clientY - previousMousePosition.y
+    };
+
+    cameraAngle.x += deltaMove.y * 0.005;
+    cameraAngle.y += deltaMove.x * 0.005;
+
+    cameraAngle.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, cameraAngle.x));
+
+    previousMousePosition = {
+      x: event.clientX,
+      y: event.clientY
+    };
+
+    updateCameraPosition();
+  }
+
+  function onMouseUp(event) {
+    isDragging = false;
+  }
+
+  function updateCameraPosition() {
+    const radius = 60;
+    camera.position.x = radius * Math.cos(cameraAngle.x) * Math.sin(cameraAngle.y);
+    camera.position.y = radius * Math.sin(cameraAngle.x);
+    camera.position.z = radius * Math.cos(cameraAngle.x) * Math.cos(cameraAngle.y);
+    camera.lookAt(0, 0, 0);
+  }
+
+  function getPatternHeight(pattern, q, r, maxHeight, t) {
+    const x = q * Math.sqrt(3) / 2;
+    const z = r * 3/4;
+    const distance = Math.sqrt(x*x + z*z);
+    const angle = Math.atan2(z, x);
+
+    switch(pattern) {
+      case 'akashicRecords':
+        return Math.sin(x * 0.1 + t) * Math.cos(z * 0.1 - t) * Math.sin(distance * 0.05) * maxHeight;
+      case 'quantumEntanglement':
+        const entangle = Math.sin(x * 0.2 + t) * Math.cos(z * 0.2 - t);
+        return Math.sin(entangle * distance * 0.1) * maxHeight;
+      case 'cosmicMirror':
+        const mirror = Math.sin(distance * 0.1 - t) * Math.cos(angle * 5 + t);
+        return mirror * maxHeight;
+      case 'timeWave':
+        const wave = Math.sin(x * 0.1 + t) + Math.cos(z * 0.1 - t) + Math.sin(distance * 0.05 + t);
+        return wave * maxHeight / 3;
+      case 'hyperdimensionalVortex':
+        const vortex = Math.sin(angle * 10 + distance * 0.1 - t) * Math.cos(x * 0.1 + z * 0.1 + t);
+        return vortex * maxHeight;
+      case 'synchronicity':
+        const sync = Math.sin(x * 0.1 + t) * Math.cos(z * 0.1 - t) * Math.sin(angle * 5 + t);
+        return sync * maxHeight;
+      default:
+        return 0;
+    }
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    time += 0.015;
+
+    if (patternTransition >= 1 || currentPattern === 'flat') {
+      if (Math.random() < 0.003) {
+        const patterns = ['akashicRecords', 'quantumEntanglement', 'cosmicMirror', 'timeWave', 'hyperdimensionalVortex', 'synchronicity'];
+        nextPattern = patterns[Math.floor(Math.random() * patterns.length)];
+        patternTransition = 0;
+      }
+    }
+
+    patternTransition += 0.005;
+    if (patternTransition > 1) patternTransition = 1;
+
+    hexagons.children.forEach((hexMesh) => {
+      const q = hexMesh.userData.q;
+      const r = hexMesh.userData.r;
+      
+      const currentHeight = getPatternHeight(currentPattern, q, r, 15, time);
+      const nextHeight = getPatternHeight(nextPattern, q, r, 15, time);
+      
+      const height = currentHeight * (1 - patternTransition) + nextHeight * patternTransition;
+      
+      hexMesh.position.y = height;
+      
+      // Hyperstitional color update
+      const hue = (Math.sin(time * 0.03 + height * 0.1 + q * 0.01 + r * 0.01) + 1) * 0.5;
+      const saturation = 0.7 + Math.sin(time * 0.05 + q * 0.02 + r * 0.02) * 0.3;
+      const lightness = 0.5 + Math.cos(time * 0.07 + height * 0.1) * 0.2;
+      hexMesh.material.color.setHSL(hue, saturation, lightness);
+
+      // Cosmic mirroring effect
+      hexMesh.scale.y = 1 + Math.sin(time * 0.1 + q * 0.05 + r * 0.05) * 0.2;
+    });
+
+    if (patternTransition === 1) {
+      currentPattern = nextPattern;
+    }
+
+    // Cosmic camera rotation
+    if (!isDragging) {
+      cameraAngle.y += 0.001;
+      updateCameraPosition();
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  init();
+  animate();
+</script>
+</body></html>

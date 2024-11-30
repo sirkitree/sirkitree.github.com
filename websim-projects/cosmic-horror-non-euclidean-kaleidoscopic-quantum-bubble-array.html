@@ -1,0 +1,148 @@
+<html><head><base href="threejs://soapfilm.bubbles">
+<title>Cosmic Horror Non-Euclidean Kaleidoscopic Quantum Bubble Array</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{margin:0;overflow:hidden;background-color:#000}canvas{width:100%;height:100%}#audioPlayer{position:absolute;bottom:10px;left:10px;right:10px;background:rgba(0,0,0,.5);color:#fff;padding:10px;border-radius:5px}
+</style>
+</head>
+<body>
+<div id="audioPlayer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const scene=new THREE.Scene,camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,.1,1e3),renderer=new THREE.WebGLRenderer({antialias:!0});renderer.setSize(window.innerWidth,window.innerHeight),document.body.appendChild(renderer.domElement);const bubbleMaterial=new THREE.ShaderMaterial({uniforms:{time:{value:0},resolution:{value:new THREE.Vector2(window.innerWidth,window.innerHeight)},juliaC:{value:-.8},zoom:{value:1},colorOffset:{value:0},colorFactor:{value:1},energyLevel:{value:.5},bubbleCenter:{value:new THREE.Vector3},distortionCenter:{value:new THREE.Vector3(0,0,0)},distortionStrength:{value:2},audioLevel:{value:0},cognitiveDissonance:{value:0},cosmicHorror:{value:0}},vertexShader:`
+uniform vec3 bubbleCenter;
+uniform vec3 distortionCenter;
+uniform float distortionStrength;
+uniform float audioLevel;
+uniform float cognitiveDissonance;
+uniform float cosmicHorror;
+varying vec3 vNormal;
+varying vec3 vPosition;
+varying vec2 vUv;
+
+// Cosmic horror function
+vec3 cosmicDistortion(vec3 p) {
+    float n = sin(dot(p, vec3(100.3, 57.3, 23.7)) * 0.1 + cosmicHorror);
+    p += n * normalize(p) * cosmicHorror;
+    return p;
+}
+
+vec3 distortPosition(vec3 pos) {
+    vec3 direction = pos - distortionCenter;
+    float distance = length(direction);
+    float distortionFactor = 1.0 / (1.0 + exp((distance - 1.0) * distortionStrength));
+    return mix(pos, distortionCenter + normalize(direction) * distance, distortionFactor);
+}
+
+void main() {
+    vNormal = normal;
+    vPosition = position;
+    vUv = uv;
+    
+    vec3 audioReactivePosition = position * (1.0 + audioLevel * 0.2);
+    
+    // Non-Euclidean distortion
+    float angle = length(position.xy) * cognitiveDissonance;
+    mat2 rotation = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+    audioReactivePosition.xy = rotation * audioReactivePosition.xy;
+    
+    // Apply cosmic horror distortion
+    audioReactivePosition = cosmicDistortion(audioReactivePosition);
+    
+    vec3 worldPos = (modelMatrix * vec4(audioReactivePosition, 1.0)).xyz;
+    vec3 distortedPos = distortPosition(worldPos);
+    
+    // Hyperbolic distortion
+    float hyperbolicFactor = 1.0 / (1.0 + exp(-length(distortedPos) * cognitiveDissonance));
+    distortedPos *= hyperbolicFactor;
+    
+    gl_Position = projectionMatrix * viewMatrix * vec4(distortedPos, 1.0);
+}
+`,fragmentShader:`
+uniform float time;
+uniform vec2 resolution;
+uniform float juliaC;
+uniform float zoom;
+uniform float colorOffset;
+uniform float colorFactor;
+uniform float energyLevel;
+uniform float audioLevel;
+uniform float cognitiveDissonance;
+uniform float cosmicHorror;
+varying vec3 vNormal;
+varying vec3 vPosition;
+varying vec2 vUv;
+
+vec2 cmul(vec2 a, vec2 b) {
+    return vec2(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x);
+}
+
+vec2 cdiv(vec2 a, vec2 b) {
+    float d = dot(b,b);
+    return vec2(dot(a,b), a.y*b.x - a.x*b.y) / d;
+}
+
+vec3 hsv2rgb(vec3 c) {
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+// Cosmic horror function for coloring
+float cosmicNoise(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453) * cosmicHorror;
+}
+
+void main() {
+    vec3 normal = normalize(vNormal);
+    vec3 viewDir = normalize(cameraPosition - vPosition);
+    
+    float fresnel = pow(1.0 - dot(normal, viewDir), 3.0);
+    
+    vec2 c = vec2(juliaC, 0.156 + audioLevel * 0.1);
+    vec2 z = (vUv - 0.5) * 4.0 * zoom * (1.0 + audioLevel * 0.5);
+    
+    // Non-Euclidean distortion in fragment shader
+    float angle = length(z) * cognitiveDissonance;
+    z = vec2(z.x * cos(angle) - z.y * sin(angle), z.x * sin(angle) + z.y * cos(angle));
+    
+    // Cosmic horror influence on Julia set
+    c += vec2(cosmicNoise(z), cosmicNoise(z + vec2(1.0)));
+    
+    float iter = 0.0;
+    const float MAX_ITER = 256.0;
+    for(float i = 0.0; i < MAX_ITER; i++) {
+        z = cdiv(vec2(1.0, 0.0), cmul(z, z)) + c;
+        if(length(z) > 2.0 + cosmicHorror) {
+            iter = i;
+            break;
+        }
+    }
+    
+    float smooth_iter = iter - log2(log2(dot(z,z))) + 4.0;
+    float hue = mod(smooth_iter * 0.01 + colorOffset + audioLevel * 0.2 + cosmicHorror * 0.5, 1.0);
+    float sat = 0.8 + audioLevel * 0.2 - cosmicHorror * 0.3;
+    float val = energyLevel + audioLevel * 0.3 + cosmicHorror * 0.2;
+    
+    if(iter == MAX_ITER) {
+        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+    } else {
+        vec3 color = hsv2rgb(vec3(hue, sat, val));
+        color *= colorFactor;
+        color = mix(color, vec3(1.0), fresnel * 0.5);
+        
+        float fluctuation = sin(time * 10.0 + vPosition.x * 10.0) * 0.5 + 0.5;
+        color = mix(color, 1.0 - color, fluctuation * 0.2 * (1.0 + audioLevel));
+        
+        // Cognitive dissonance effect
+        color = mix(color, 1.0 - color, sin(cognitiveDissonance * 10.0 + vPosition.y * 5.0) * 0.5 + 0.5);
+        
+        // Cosmic horror effect
+        color = mix(color, vec3(cosmicNoise(vUv), cosmicNoise(vUv + 0.1), cosmicNoise(vUv + 0.2)), cosmicHorror * 0.5);
+        
+        gl_FragColor = vec4(color, 0.7 + fresnel * 0.2 + audioLevel * 0.1 + cosmicHorror * 0.3);
+    }
+}
+`,transparent:!0,side:THREE.DoubleSide});function createBubbleArray(){const e=[],t=5,n=.5,o=.75,r=.7;for(let i=0;i<2*t-1;i++){const a=Math.abs(i-(t-1)),s=n*Math.pow(o,a),l=new THREE.SphereGeometry(s,64,64),c=new THREE.Mesh(l,bubbleMaterial.clone()),u=(i-(t-1))*r*o;c.position.set(u,0,0),e.push(c),c.material.uniforms.bubbleCenter.value.copy(c.position)}return e}function createKaleidoscopeGroup(){const e=new THREE.Group;for(let t=0;t<6;t++){const n=createBubbleArray(),o=new THREE.Group;n.forEach((e,t)=>{const n=new THREE.Group;n.add(e),o.add(n)});const r=Math.PI*2/6*t;o.rotation.z=r,o.position.set(3*Math.cos(r),3*Math.sin(r),0),e.add(o)}return e}const kaleidoscopeGroup1=createKaleidoscopeGroup(),kaleidoscopeGroup2=createKaleidoscopeGroup(),kaleidoscopeGroup3=createKaleidoscopeGroup();kaleidoscopeGroup2.rotation.x=Math.PI/2,kaleidoscopeGroup3.rotation.y=Math.PI/2;const sceneGroup=new THREE.Group;sceneGroup.add(kaleidoscopeGroup1),sceneGroup.add(kaleidoscopeGroup2),sceneGroup.add(kaleidoscopeGroup3),scene.add(sceneGroup),camera.position.z=15;const light=new THREE.PointLight(16777215,1,100);light.position.set(0,0,20),scene.add(light);const audioContext=new(window.AudioContext||window.webkitAudioContext),analyzer=audioContext.createAnalyser();analyzer.fftSize=1024;const bufferLength=analyzer.frequencyBinCount,dataArray=new Uint8Array(bufferLength),audioElement=new Audio;audioElement.crossOrigin="anonymous";const source=audioContext.createMediaElementSource(audioElement);source.connect(analyzer),analyzer.connect(audioContext.destination);const audioPlayer=document.getElementById("audioPlayer");audioPlayer.innerHTML='\n  <button id="playPause">Play</button>\n  <input type="range" id="volume" min="0" max="1" step="0.1" value="1">\n  <select id="station">\n    <option value="https://streaming.radio.co/s774887f7b/listen">Quantum Jazz Fluctuations</option>\n    <option value="https://ice5.somafm.com/sonicuniverse-128-mp3">Interstellar Groove Nebula</option>\n    <option value="https://ice4.somafm.com/gsclassic-128-mp3">Temporal Jazz Anomalies</option>\n    <option value="https://ice2.somafm.com/deepspaceone-128-mp3">Hyperdimensional Bebop</option>\n  </select>\n';const playPauseButton=document.getElementById("playPause"),volumeControl=document.getElementById("volume"),stationSelect=document.getElementById("station");function getAverageAudioLevel(){analyzer.getByteFrequencyData(dataArray);return dataArray.reduce((e,t)=>e+t,0)/bufferLength/255}function animateKaleidoscopeGroup(e,t,n,o,r){e.children.forEach((e,i)=>{e.children.forEach((e,a)=>{const s=e.children[0];s.material.uniforms.time.value=t,s.material.uniforms.audioLevel.value=n,s.material.uniforms.cognitiveDissonance.value=o,s.material.uniforms.cosmicHorror.value=r;const l=.5+.5*n;s.material.uniforms.energyLevel.value=l,s.material.uniforms.zoom.value=1.5+.5*n,s.material.uniforms.colorOffset.value=.1*t+.2*n;const c=Math.sin(2*t+.5*a+.3*i)*.05*(1+n);s.position.y=c;const u=1+.2*n;s.scale.set(u,u,u),s.material.uniforms.bubbleCenter.value.copy(s.position);const d=.2+.1*a+.5*n;e.rotation.z+=.01*d})}),e.rotation.z+=.005+.02*n}let zoomFactor=1,cognitiveDissonanceLevel=0,cosmicHorrorLevel=0;function animate(e){requestAnimationFrame(animate);const t=.001*e,n=getAverageAudioLevel();cognitiveDissonanceLevel=.5+.5*Math.sin(.1*t),cosmicHorrorLevel=.5+.5*Math.sin(.05*t),animateKaleidoscopeGroup(kaleidoscopeGroup1,t,n,cognitiveDissonanceLevel,cosmicHorrorLevel),animateKaleidoscopeGroup(kaleidoscopeGroup2,t,n,cognitiveDissonanceLevel,cosmicHorrorLevel),animateKaleidoscopeGroup(kaleidoscopeGroup3,t,n,cognitiveDissonanceLevel,cosmicHorrorLevel),sceneGroup.rotation.y+=.005+.01*n,sceneGroup.rotation.x=Math.sin(.5*t)*.1*(1+n),sceneGroup.rotation.z=Math.cos(.3*t)*.1*(1+n),zoomFactor=1+.5*Math.sin(.1*t),camera.position.z=15/zoomFactor,renderer.render(scene,camera)}playPauseButton.addEventListener("click",()=>{"suspended"===audioContext.state&&audioContext.resume(),audioElement.paused?(audioElement.play(),playPauseButton.textContent="Pause"):(audioElement.pause(),playPauseButton.textContent="Play")}),volumeControl.addEventListener("input",()=>{audioElement.volume=volumeControl.value}),stationSelect.addEventListener("change",()=>{audioElement.src=stationSelect.value,audioElement.play(),playPauseButton.textContent="Pause"}),audioElement.src=stationSelect.value,animate(),window.addEventListener("resize",()=>{camera.aspect=window.innerWidth/window.innerHeight,camera.updateProjectionMatrix(),renderer.setSize(window.innerWidth,window.innerHeight),sceneGroup.children.forEach(e=>{e.children.forEach(e=>{e.children.forEach(e=>{e.children[0].material.uniforms.resolution.value.set(window.innerWidth,window.innerHeight)})})})});
+</script>
+</body></html>

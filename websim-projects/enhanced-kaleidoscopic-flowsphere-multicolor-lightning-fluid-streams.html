@@ -1,0 +1,368 @@
+<html><head><base href="https://websim.ai"/><title>Enhanced Kaleidoscopic FlowSphere - Multicolor Lightning Fluid Streams</title><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><style>body{margin:0;overflow:hidden;background:#000}canvas{display:block}</style></head><body><script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setClearColor(0x000000, 0);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const sphereRadius = 10;
+const pinGeometry = new THREE.CylinderGeometry(0.05, 0.05, 2, 8);
+const invisibleMaterial = new THREE.MeshBasicMaterial({ visible: false });
+
+const pins = [];
+const pinCount = 200;
+const angleIncrement = Math.PI * (3 - Math.sqrt(5));
+
+for (let i = 0; i < pinCount; i++) {
+  const pin = new THREE.Mesh(pinGeometry, invisibleMaterial);
+  const t = i / pinCount;
+  const angle = i * angleIncrement;
+  const dist = sphereRadius * Math.sqrt(t);
+  pin.position.set(
+    dist * Math.cos(angle),
+    dist * Math.sin(angle),
+    0
+  );
+  pin.quaternion.setFromUnitVectors(
+    new THREE.Vector3(0, 1, 0),
+    pin.position.clone().normalize()
+  );
+  pins.push(pin);
+}
+
+const fluidVertexShader = `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const fluidFragmentShader = `
+  uniform float time;
+  uniform vec3 color;
+  uniform float flowSpeed;
+  uniform float turbulence;
+  uniform float fadeStart;
+  uniform float fadeDuration;
+  uniform float lightningTime;
+  varying vec2 vUv;
+
+  // Simplex noise function (from ashima/webgl-noise)
+  vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
+  vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}
+  vec4 permute(vec4 x){return mod289(((x*34.)+1.)*x);}
+  vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+  float snoise(vec3 v){
+    const vec2 C=vec2(1./6.,1./3.);
+    const vec4 D=vec4(0.,.5,1.,2.);
+    vec3 i=floor(v+dot(v,C.yyy));
+    vec3 x0=v-i+dot(i,C.xxx);
+    vec3 g=step(x0.yzx,x0.xyz);
+    vec3 l=1.-g;
+    vec3 i1=min(g.xyz,l.zxy);
+    vec3 i2=max(g.xyz,l.zxy);
+    vec3 x1=x0-i1+C.xxx;
+    vec3 x2=x0-i2+C.yyy;
+    vec3 x3=x0-D.yyy;
+    i=mod289(i);
+    vec4 p=permute(permute(permute(i.z+vec4(0.,i1.z,i2.z,1.))+i.y+vec4(0.,i1.y,i2.y,1.))+i.x+vec4(0.,i1.x,i2.x,1.));
+    float n_=.142857142857;
+    vec3 ns=n_*D.wyz-D.xzx;
+    vec4 j=p-49.*floor(p*ns.z*ns.z);
+    vec4 x_=floor(j*ns.z);
+    vec4 y_=floor(j-7.*x_);
+    vec4 x=x_*ns.x+ns.yyyy;
+    vec4 y=y_*ns.x+ns.yyyy;
+    vec4 h=1.-abs(x)-abs(y);
+    vec4 b0=vec4(x.xy,y.xy);
+    vec4 b1=vec4(x.zw,y.zw);
+    vec4 s0=floor(b0)*2.+1.;
+    vec4 s1=floor(b1)*2.+1.;
+    vec4 sh=-step(h,vec4(0.));
+    vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;
+    vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+    vec3 p0=vec3(a0.xy,h.x);
+    vec3 p1=vec3(a0.zw,h.y);
+    vec3 p2=vec3(a1.xy,h.z);
+    vec3 p3=vec3(a1.zw,h.w);
+    vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+    p0*=norm.x;
+    p1*=norm.y;
+    p2*=norm.z;
+    p3*=norm.w;
+    vec4 m=max(.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.);
+    m=m*m;
+    return 42.*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+  }
+
+  void main() {
+    float noise = snoise(vec3(vUv * 5.0, time * flowSpeed)) * 0.5 + 0.5;
+    float turbulenceEffect = snoise(vec3(vUv * 10.0, time * flowSpeed * 2.0)) * turbulence;
+    
+    // Lightning effect
+    float lightningDuration = 0.1;
+    float lightningFade = clamp(1.0 - (time - lightningTime) / lightningDuration, 0.0, 1.0);
+    float lightning = step(0.95, fract(lightningTime * 5.0 + noise * 10.0)) * lightningFade;
+    vec3 lightningColor = vec3(1.0, 1.0, 1.0);
+    
+    vec3 finalColor = mix(color, lightningColor, lightning);
+    finalColor = mix(finalColor, vec3(0.5, 0.5, 1.0), noise + turbulenceEffect);
+    
+    float alpha = smoothstep(0.3, 0.7, noise + turbulenceEffect);
+    float fadeAmount = clamp((time - fadeStart) / fadeDuration, 0.0, 1.0);
+    alpha *= 1.0 - fadeAmount;
+    
+    gl_FragColor = vec4(finalColor, alpha);
+  }
+`;
+
+const kaleidoscopeVertexShader = `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const kaleidoscopeFragmentShader = `
+  uniform sampler2D tDiffuse;
+  uniform float time;
+  uniform float aspectRatio;
+  varying vec2 vUv;
+
+  #define PI 3.14159265358979323846
+
+  vec2 kaleidoscope(vec2 uv, float segments) {
+    vec2 center = vec2(0.5, 0.5);
+    vec2 pos = uv - center;
+    pos.y /= aspectRatio;
+    float r = length(pos);
+    float angle = atan(pos.y, pos.x);
+    
+    angle = mod(angle, 2.0 * PI / segments);
+    angle = abs(angle - PI / segments);
+    
+    pos = vec2(cos(angle), sin(angle)) * r;
+    pos.y *= aspectRatio;
+    return pos + center;
+  }
+
+  void main() {
+    float segments = 6.0 + sin(time * 0.2) * 2.0;
+    vec2 kUv = kaleidoscope(vUv, segments);
+    gl_FragColor = texture2D(tDiffuse, kUv);
+  }
+`;
+
+function getRandomColor() {
+  return new THREE.Color(
+    Math.random() * 0.7 + 0.3,
+    Math.random() * 0.7 + 0.3,
+    Math.random() * 0.7 + 0.3
+  );
+}
+
+function createFluidMaterial() {
+  return new THREE.ShaderMaterial({
+    uniforms: {
+      time: { value: 0 },
+      color: { value: getRandomColor() },
+      flowSpeed: { value: 0.2 + Math.random() * 0.3 },
+      turbulence: { value: 0.1 + Math.random() * 0.2 },
+      fadeStart: { value: 0 },
+      fadeDuration: { value: 3.0 },
+      lightningTime: { value: 0 }
+    },
+    vertexShader: fluidVertexShader,
+    fragmentShader: fluidFragmentShader,
+    transparent: true,
+    blending: THREE.AdditiveBlending
+  });
+}
+
+const streams = [];
+
+function createStream(startPin, isReflection = false, endPin = null) {
+  endPin = endPin || pins[Math.floor(Math.random() * pins.length)];
+  const curvePoints = [];
+  
+  for (let i = 0; i <= 20; i++) {
+    const t = i / 20;
+    const pos = new THREE.Vector3().lerpVectors(startPin.position, endPin.position, t);
+    
+    if (i > 0 && i < 20) {
+      pos.add(new THREE.Vector3().random().subScalar(0.5).multiplyScalar(1.0));
+    }
+    
+    if (isReflection) pos.x = -pos.x;
+    
+    curvePoints.push(pos);
+  }
+  
+  const curve = new THREE.CatmullRomCurve3(curvePoints);
+  const tubeGeometry = new THREE.TubeGeometry(curve, 64, 0.1, 8, false);
+  const material = createFluidMaterial();
+  const stream = new THREE.Mesh(tubeGeometry, material);
+  
+  streams.push({ 
+    mesh: stream, 
+    start: startPin, 
+    end: endPin, 
+    isReflection, 
+    creationTime: performance.now() / 1000,
+    material: material,
+    lifetime: 0
+  });
+  scene.add(stream);
+}
+
+for (let i = 0; i < 50; i++) {
+  const startPin = pins[Math.floor(Math.random() * pins.length)];
+  createStream(startPin);
+  createStream(startPin, true);
+}
+
+camera.position.z = 20;
+
+// Set up render targets and post-processing
+const renderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+const kaleidoscopeScene = new THREE.Scene();
+const kaleidoscopeCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const kaleidoscopeMaterial = new THREE.ShaderMaterial({
+  uniforms: {
+    tDiffuse: { value: null },
+    time: { value: 0 },
+    aspectRatio: { value: window.innerWidth / window.innerHeight }
+  },
+  vertexShader: kaleidoscopeVertexShader,
+  fragmentShader: kaleidoscopeFragmentShader
+});
+const kaleidoscopeQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), kaleidoscopeMaterial);
+kaleidoscopeScene.add(kaleidoscopeQuad);
+
+let autorotationEnabled = false;
+const rotationSpeed = 0.0005;
+let isPaused = false;
+let lastTime = 0;
+
+function animate(time) {
+  requestAnimationFrame(animate);
+  
+  if (!isPaused) {
+    const deltaTime = (time - lastTime) * 0.001;
+    lastTime = time;
+
+    streams.forEach((stream, index) => {
+      stream.lifetime += deltaTime;
+      const streamTime = stream.material.uniforms.time.value + deltaTime;
+      stream.material.uniforms.time.value = streamTime;
+      stream.material.uniforms.fadeStart.value = stream.lifetime;
+      
+      // Randomly trigger lightning
+      if (Math.random() < 0.01) {
+        stream.material.uniforms.lightningTime.value = streamTime;
+      }
+      
+      // Remove and replace faded out streams
+      if (stream.lifetime > stream.material.uniforms.fadeDuration.value) {
+        scene.remove(stream.mesh);
+        streams.splice(index, 1);
+        createStream(pins[Math.floor(Math.random() * pins.length)], stream.isReflection);
+      }
+    });
+
+    if (autorotationEnabled) {
+      pins.forEach(pin => {
+        pin.position.applyAxisAngle(new THREE.Vector3(1, 0, 0), rotationSpeed);
+        pin.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), rotationSpeed);
+        pin.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), pin.position.clone().normalize());
+      });
+    }
+
+    // Render the scene to the render target
+    renderer.setRenderTarget(renderTarget);
+    renderer.render(scene, camera);
+
+    // Apply kaleidoscope effect
+    kaleidoscopeMaterial.uniforms.tDiffuse.value = renderTarget.texture;
+    kaleidoscopeMaterial.uniforms.time.value = time * 0.001;
+
+    // Render the final result to the screen
+    renderer.setRenderTarget(null);
+    renderer.render(kaleidoscopeScene, kaleidoscopeCamera);
+  }
+}
+
+function addConnectionPoint(event) {
+  if (isPaused) return;
+
+  const mouse = new THREE.Vector2(
+    (event.clientX / window.innerWidth) * 2 - 1,
+    -(event.clientY / window.innerHeight) * 2 + 1
+  );
+
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersection = new THREE.Vector3();
+  raycaster.ray.intersectSphere(new THREE.Sphere(new THREE.Vector3(), sphereRadius), intersection);
+
+  const newPin = new THREE.Mesh(pinGeometry, invisibleMaterial);
+  newPin.position.copy(intersection);
+  newPin.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), newPin.position.clone().normalize());
+
+  pins.push(newPin);
+
+  createStream(newPin);
+  createStream(newPin, true);
+
+  for (let i = 0; i < 3; i++) {
+    const randomPin = pins[Math.floor(Math.random() * (pins.length - 1))];
+    createStream(randomPin, false, newPin);
+    createStream(randomPin, true, newPin);
+  }
+}
+
+function updateStreamColors() {
+  streams.forEach(stream => {
+    stream.material.uniforms.color.value = getRandomColor();
+  });
+}
+
+function toggleAutorotation() {
+  autorotationEnabled = !autorotationEnabled;
+}
+
+function togglePause() {
+  isPaused = !isPaused;
+  if (!isPaused) {
+    lastTime = performance.now();
+  }
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderTarget.setSize(window.innerWidth, window.innerHeight);
+  kaleidoscopeMaterial.uniforms.aspectRatio.value = window.innerWidth / window.innerHeight;
+});
+
+document.addEventListener('click', (event) => {
+  if (event.shiftKey) {
+    togglePause();
+  } else {
+    togglePause();
+    addConnectionPoint(event);
+  }
+});
+document.addEventListener('dblclick', updateStreamColors);
+document.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+  toggleAutorotation();
+});
+
+animate(0);
+</script></body></html>

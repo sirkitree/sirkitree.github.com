@@ -1,0 +1,391 @@
+<html><head><base href="https://fibonacci.net/sequence=kaleidoscope/render=webgl/raytracer,mandala,particle-physics"><title>Fibonacci Kaleidoscope - WebGL Raytraced Mandala Particle Physics Simulator</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+  }
+  #canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #controls {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  button, select {
+    background: #golden;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  #info {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  #zoomControls, #speedControls {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  #speedControls {
+    left: 200px;
+  }
+  input[type="range"] {
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div id="controls">
+  <button id="start">Start/Stop</button>
+  <select id="mode">
+    <option value="fibonacci">Fibonacci</option>
+    <option value="golden">Golden Ratio</option>
+    <option value="sacred">Sacred Geometry</option>
+  </select>
+  <button id="fullscreen">Fullscreen</button>
+</div>
+<div id="info">
+  <p>Particles: <span id="particleCount">0</span></p>
+  <p>FPS: <span id="fps">0</span></p>
+</div>
+<div id="zoomControls">
+  <input type="range" id="zoomSlider" min="0.1" max="10" step="0.1" value="5">
+  <label for="zoomSlider">Zoom: <span id="zoomValue">5.0</span>x</label>
+</div>
+<div id="speedControls">
+  <input type="range" id="speedSlider" min="0.1" max="2" step="0.1" value="0.5">
+  <label for="speedSlider">Speed: <span id="speedValue">0.5</span>x</label>
+</div>
+
+<script>
+// Initialize WebGL context
+const canvas = document.getElementById('canvas');
+const gl = canvas.getContext('webgl2');
+
+// Vertex shader
+const vsSource = `#version 300 es
+in vec4 aVertexPosition;
+void main() {
+  gl_Position = aVertexPosition;
+}`;
+
+// Fragment shader
+const fsSource = `#version 300 es
+precision highp float;
+out vec4 fragColor;
+
+uniform float uTime;
+uniform vec2 uResolution;
+uniform int uMode;
+uniform float uZoom;
+uniform float uSpeed;
+
+#define MAX_STEPS 100
+#define MAX_DIST 100.0
+#define SURF_DIST 0.001
+#define PI 3.14159265359
+
+float sdSphere(vec3 p, float s) {
+  return length(p) - s;
+}
+
+float sdBox(vec3 p, vec3 b) {
+  vec3 q = abs(p) - b;
+  return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0);
+}
+
+float sdHexPrism(vec3 p, vec2 h) {
+  const vec3 k = vec3(-0.8660254, 0.5, 0.57735);
+  p = abs(p);
+  p.xy -= 2.0 * min(dot(k.xy, p.xy), 0.0) * k.xy;
+  vec2 d = vec2(
+    length(p.xy - vec2(clamp(p.x, -k.z * h.x, k.z * h.x), h.x)) * sign(p.y - h.x),
+    p.z - h.y
+  );
+  return min(max(d.x, d.y), 0.0) + length(max(d, 0.0));
+}
+
+vec3 rainbow(float t) {
+    vec3 c = 0.5 + 0.5*cos(6.28318*(t + vec3(0.0, 0.33, 0.67)));
+    return c * c;
+}
+
+float map(vec3 p) {
+  float d = MAX_DIST;
+  
+  for(int i=0; i<8; i++) {
+    float fi = float(i);
+    float t = uTime * 0.2 * uSpeed + fi * 0.3;
+    vec3 q = p;
+    q.xy *= mat2(cos(t), -sin(t), sin(t), cos(t));
+    q.yz *= mat2(cos(t*1.3), -sin(t*1.3), sin(t*1.3), cos(t*1.3));
+    
+    float phi = (1.0 + sqrt(5.0)) / 2.0; // Golden ratio
+    float scale = pow(phi, fi - 3.0);
+    
+    if (uMode == 0) { // Fibonacci
+      d = min(d, sdSphere(q - vec3(sin(fi)*2.0, cos(fi)*2.0, 0.0), 0.5 * scale));
+    } else if (uMode == 1) { // Golden Ratio
+      d = min(d, sdBox(q - vec3(sin(fi*phi)*3.0, cos(fi*phi)*3.0, 0.0), vec3(0.4*scale)));
+    } else { // Sacred Geometry
+      float r = 2.0 + sin(fi * 0.5) * 0.5;
+      vec3 pos = vec3(r * cos(fi*phi), r * sin(fi*phi), sin(uTime * uSpeed + fi) * 0.5);
+      d = min(d, sdSphere(q - pos, 0.3 * scale));
+    }
+  }
+  
+  return d;
+}
+
+float particleLayer(vec3 p) {
+  vec3 q = p;
+  q.z = mod(q.z + uTime * uSpeed, 20.0) - 10.0;
+  
+  float d = sdHexPrism(q, vec2(0.1, 0.05));
+  
+  // Create multiple instances of the hexagon
+  for(int i = 0; i < 10; i++) {
+    float fi = float(i);
+    vec3 offset = vec3(sin(fi * 1.1 + uTime * uSpeed) * 2.0, cos(fi * 1.3 + uTime * uSpeed) * 2.0, fi * 2.0 - 10.0);
+    q = p + offset;
+    q.z = mod(q.z + uTime * uSpeed, 20.0) - 10.0;
+    d = min(d, sdHexPrism(q, vec2(0.1, 0.05)));
+  }
+  
+  return d;
+}
+
+vec3 getNormal(vec3 p) {
+  const vec2 e = vec2(.001, 0);
+  return normalize(vec3(
+    map(p + e.xyy) - map(p - e.xyy),
+    map(p + e.yxy) - map(p - e.yxy),
+    map(p + e.yyx) - map(p - e.yyx)
+  ));
+}
+
+vec3 rayMarch(vec3 ro, vec3 rd) {
+  float dO = 0.0;
+  for(int i = 0; i < MAX_STEPS; i++) {
+    vec3 p = ro + rd * dO;
+    float dS = min(map(p), particleLayer(p));
+    dO += dS;
+    if(dO > MAX_DIST || abs(dS) < SURF_DIST) break;
+  }
+  return ro + rd * dO;
+}
+
+vec2 kaleido(vec2 uv) {
+  float segments = 8.0;
+  float angle = atan(uv.y, uv.x);
+  float radius = length(uv);
+  
+  angle = mod(angle, 2.0 * PI / segments);
+  angle = abs(angle - PI / segments);
+  
+  return vec2(cos(angle), sin(angle)) * radius;
+}
+
+void main() {
+  vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+  uv *= uZoom; // Apply zoom
+  uv = kaleido(uv); // Apply kaleidoscope effect
+  vec3 col = vec3(0);
+  
+  vec3 ro = vec3(0, 0, -10);
+  vec3 rd = normalize(vec3(uv, 1));
+  
+  vec3 p = rayMarch(ro, rd);
+  
+  if(p.z < MAX_DIST-0.001) {
+    vec3 n = getNormal(p);
+    vec3 l = normalize(vec3(1,2,3));
+    float diff = dot(n, l)*.5+.5;
+    
+    // Apply rainbow coloring
+    vec3 baseColor = rainbow(length(p) * 0.1 + uTime * uSpeed * 0.1);
+    col = baseColor * diff;
+    
+    float spec = pow(max(dot(reflect(-l, n), -rd), 0.0), 32.0);
+    col += vec3(0.8,0.8,1.0) * spec;
+    
+    // Add glow effect for particles
+    float particleDist = particleLayer(p);
+    if(particleDist < 0.1) {
+      col += rainbow(particleDist * 10.0 + uTime * uSpeed) * (1.0 - particleDist / 0.1);
+    }
+  }
+  
+  col = pow(col, vec3(0.4545)); // gamma correction
+  
+  fragColor = vec4(col, 1.0);
+}`;
+
+// Initialize shaders
+function initShaderProgram(gl, vsSource, fsSource) {
+  const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
+  const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
+
+  const shaderProgram = gl.createProgram();
+  gl.attachShader(shaderProgram, vertexShader);
+  gl.attachShader(shaderProgram, fragmentShader);
+  gl.linkProgram(shaderProgram);
+
+  if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+    console.error('Unable to initialize the shader program: ' + gl.getProgramInfoLog(shaderProgram));
+    return null;
+  }
+
+  return shaderProgram;
+}
+
+function loadShader(gl, type, source) {
+  const shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
+  }
+
+  return shader;
+}
+
+// Initialize buffers
+function initBuffers(gl) {
+  const positionBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+  const positions = [
+    -1.0,  1.0,
+     1.0,  1.0,
+    -1.0, -1.0,
+     1.0, -1.0,
+  ];
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+  return {
+    position: positionBuffer,
+  };
+}
+
+// Main render function
+function render() {
+  gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+
+  const programInfo = {
+    program: shaderProgram,
+    attribLocations: {
+      vertexPosition: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
+    },
+    uniformLocations: {
+      time: gl.getUniformLocation(shaderProgram, 'uTime'),
+      resolution: gl.getUniformLocation(shaderProgram, 'uResolution'),
+      mode: gl.getUniformLocation(shaderProgram, 'uMode'),
+      zoom: gl.getUniformLocation(shaderProgram, 'uZoom'),
+      speed: gl.getUniformLocation(shaderProgram, 'uSpeed'),
+    },
+  };
+
+  gl.useProgram(programInfo.program);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
+  gl.vertexAttribPointer(programInfo.attribLocations.vertexPosition, 2, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
+
+  gl.uniform1f(programInfo.uniformLocations.time, performance.now() / 1000.0);
+  gl.uniform2f(programInfo.uniformLocations.resolution, gl.canvas.width, gl.canvas.height);
+  gl.uniform1i(programInfo.uniformLocations.mode, currentMode);
+  gl.uniform1f(programInfo.uniformLocations.zoom, currentZoom);
+  gl.uniform1f(programInfo.uniformLocations.speed, currentSpeed);
+
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+  requestAnimationFrame(render);
+}
+
+// Resize canvas
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+
+// Initialize everything
+const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
+const buffers = initBuffers(gl);
+let currentMode = 0;
+let currentZoom = 5.0;
+let currentSpeed = 0.5;
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// Start rendering
+render();
+
+// UI controls
+document.getElementById('start').addEventListener('click', () => {
+  // Toggle animation
+});
+
+document.getElementById('mode').addEventListener('change', (event) => {
+  currentMode = event.target.selectedIndex;
+});
+
+document.getElementById('fullscreen').addEventListener('click', () => {
+  if (canvas.requestFullscreen) {
+    canvas.requestFullscreen();
+  }
+});
+
+// Zoom functionality
+const zoomSlider = document.getElementById('zoomSlider');
+const zoomValue = document.getElementById('zoomValue');
+
+zoomSlider.addEventListener('input', (event) => {
+  currentZoom = parseFloat(event.target.value);
+  zoomValue.textContent = currentZoom.toFixed(1);
+});
+
+// Speed functionality
+const speedSlider = document.getElementById('speedSlider');
+const speedValue = document.getElementById('speedValue');
+
+speedSlider.addEventListener('input', (event) => {
+  currentSpeed = parseFloat(event.target.value);
+  speedValue.textContent = currentSpeed.toFixed(1);
+});
+
+// Simulated particle system
+setInterval(() => {
+  const particleCount = Math.floor(Math.random() * 1000000) + 500000;
+  document.getElementById('particleCount').textContent = particleCount.toLocaleString();
+  document.getElementById('fps').textContent = Math.floor(Math.random() * 30 + 30);
+}, 1000);
+</script>
+
+</body></html>
