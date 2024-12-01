@@ -609,6 +609,7 @@ footer {
 /* Add spacing between Disqus sections */
 #disqus_recommendations {
   margin-bottom: 2rem;
+  display: none;
 }
 
 #disqus_recommendations iframe,
@@ -635,4 +636,99 @@ footer {
     border: none;
     width: 100%;
     min-height: 600px;
+}
+
+/* Social Icons */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color var(--transition-speed);
+}
+
+.social-link:hover {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Related Posts */
+.related-posts {
+  margin: 4rem 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.related-posts h2 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.related-post {
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px 12px 0 12px;
+  box-shadow: var(--card-shadow);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%
+  );
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.related-post:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.related-post h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.related-post h3 a {
+  color: var(--post-title-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+.related-post h3 a:hover {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.related-post .meta {
+  font-size: 0.9rem;
+  color: var(--meta-color);
+  margin-bottom: 1rem;
+}
+
+.related-post .excerpt {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  margin: 0;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .related-posts-grid {
+    grid-template-columns: 1fr;
+  }
 }

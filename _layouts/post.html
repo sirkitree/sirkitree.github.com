@@ -17,6 +17,48 @@ layout: default
     {{ content }}
   </section>  
   
+  {% if page.category %}
+  <section class="related-posts mt-5">
+    <h2>Related Posts</h2>
+    <div class="related-posts-grid">
+      {% assign tags = page.category | split: ", " %}
+      {% assign max_related = 3 %}
+      {% assign related_count = 0 %}
+      
+      {% for post in site.posts %}
+        {% if post.url != page.url %}
+          {% assign has_common_tag = false %}
+          {% assign post_tags = post.category | split: ", " %}
+          
+          {% for tag in tags %}
+            {% if post_tags contains tag %}
+              {% assign has_common_tag = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if has_common_tag and related_count < max_related %}
+            <div class="related-post">
+              <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+              <div class="meta">
+                <time>{{ post.date | date: "%B %d, %Y" }}</time>
+                {% if post.category %}
+                  <span class="ms-2 me-2">•</span>
+                  <span class="category">{{ post.category }}</span>
+                {% endif %}
+              </div>
+              {% if post.excerpt %}
+                <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+              {% endif %}
+            </div>
+            {% assign related_count = related_count | plus: 1 %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+  
   {% if page.comments != false %}
   <section class="comments mt-5">
     <div id="disqus_thread"></div>
@@ -35,6 +77,9 @@ layout: default
           this.page.url = disqus_url;
           this.page.identifier = '{{ page.id }}';
           this.page.colorScheme = 'dark';
+          this.page.integration = {
+            hide: ['recommendations', 'discovery']
+          };
         };
 
         (function() {
