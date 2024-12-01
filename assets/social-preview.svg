@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Background with subtle tech pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2563eb" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="#1e293b"/>
+  <rect width="400" height="400" fill="url(#grid)"/>
+  
+  <!-- Abstract circuit board design -->
+  <g stroke="#3b82f6" stroke-width="2" fill="none">
+    <path d="M 100 200 L 300 200" />
+    <path d="M 200 100 L 200 300" />
+    <circle cx="200" cy="200" r="80" />
+    <circle cx="200" cy="200" r="40" />
+    
+    <!-- Connection points -->
+    <circle cx="200" cy="120" r="8" fill="#60a5fa"/>
+    <circle cx="200" cy="280" r="8" fill="#60a5fa"/>
+    <circle cx="120" cy="200" r="8" fill="#60a5fa"/>
+    <circle cx="280" cy="200" r="8" fill="#60a5fa"/>
+  </g>
+  
+  <!-- Animated pulse effect -->
+  <circle cx="200" cy="200" r="10" fill="#93c5fd">
+    <animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Code-like elements -->
+  <g fill="#e2e8f0" font-family="monospace" font-size="12">
+    <text x="50" y="50">&lt;/&gt;</text>
+    <text x="330" y="350">{...}</text>
+    <text x="50" y="350">[ ]</text>
+    <text x="330" y="50">// :</text>
+  </g>
+</svg>
