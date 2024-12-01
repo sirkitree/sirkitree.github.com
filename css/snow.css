@@ -1,0 +1,80 @@
+/* Snow container */
+.snow-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Individual snowflakes */
+.snowflake {
+  --size: 8px;
+  width: var(--size);
+  height: var(--size);
+  background: currentColor;
+  border-radius: 50%;
+  position: absolute;
+  filter: blur(2px);
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Accumulated snowflake */
+.snowflake.accumulated {
+  animation: none !important;
+  opacity: 0.8;
+  filter: blur(1.5px);
+  transform-origin: center bottom;
+}
+
+/* Light theme snowflakes */
+:root[data-theme="light"] .snowflake {
+  color: rgba(200, 200, 255, 0.9);
+}
+
+:root[data-theme="light"] .snowflake.accumulated {
+  color: rgba(200, 200, 255, 0.95);
+  box-shadow: 0 0 3px rgba(200, 200, 255, 0.3);
+}
+
+/* Dark theme snowflakes */
+:root[data-theme="dark"] .snowflake {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="dark"] .snowflake.accumulated {
+  color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Pile effect */
+.snow-pile {
+  position: absolute;
+  background: currentColor;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.5;
+  pointer-events: none;
+  transition: all 0.5s ease-out;
+}
