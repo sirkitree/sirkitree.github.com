@@ -54,6 +54,12 @@
             <h1><a href="/">{{ site.name }}</a></h1>
           </div>
           
+          <button class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          
           <nav>
             <a href="/">Home</a>
             <div class="dropdown">
@@ -131,10 +137,46 @@
           
           localStorage.setItem('theme', newTheme);
           
-          // Dispatch theme change event
           document.dispatchEvent(new CustomEvent('themeChanged', { 
             detail: { theme: newTheme }
           }));
+        });
+
+        // Initialize Bootstrap dropdowns
+        const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+        const dropdownList = [...dropdownElementList].map(dropdownToggleEl => {
+          return new bootstrap.Dropdown(dropdownToggleEl, {
+            autoClose: 'outside'
+          });
+        });
+
+        // Hamburger menu
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('open');
+          nav.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!hamburger.contains(e.target) && 
+              !nav.contains(e.target)) {
+            hamburger.classList.remove('open');
+            nav.classList.remove('open');
+          }
+        });
+
+        // Handle navigation clicks
+        nav.addEventListener('click', (e) => {
+          // Only close mobile menu for regular links
+          if (e.target.tagName === 'A' && 
+              !e.target.classList.contains('dropdown-toggle') && 
+              !e.target.closest('.dropdown-menu')) {
+            hamburger.classList.remove('open');
+            nav.classList.remove('open');
+          }
         });
       </script>
     </body>

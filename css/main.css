@@ -742,3 +742,118 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger span {
+  width: 2rem;
+  height: 0.25rem;
+  background: var(--nav-link-color);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    max-width: 300px;
+    background: var(--bg-color);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    padding: 5rem 2rem;
+    gap: 1rem;
+    transition: right 0.3s ease-in-out;
+  }
+
+  nav.open {
+    right: 0;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .dropdown {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--nav-link-color);
+    text-decoration: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    display: block;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin: 0.5rem 0 0 1rem;
+    border: none;
+    border-left: 2px solid var(--border-color);
+    background: var(--bg-color);
+    padding: 0 0 0 1rem;
+  }
+
+  .dropdown-item {
+    padding: 0.5rem 0;
+    background: var(--bg-color);
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background: var(--code-bg);
+  }
+
+  .hamburger.open span:first-child {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  header .container {
+    position: relative;
+  }
+}
