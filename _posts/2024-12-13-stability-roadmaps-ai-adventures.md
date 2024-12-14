@@ -4,7 +4,7 @@ title: "Stability Roadmaps and AI Adventures: A Week in the Life"
 created: 1702512000
 permalink: /blog/stability-roadmaps-ai-adventures
 category: "tech"
-
+---
 *Holy optimization, Batman!* 🚀 This week has been quite the adventure - my first week on Lullabot's Support and Maintenance team. And let me tell you, it's been a blast.
 
 ## New Team, Familiar Face
