@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Democratic Ink</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat #f3e9db;
+      color: #2c2c2c;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('imgs/title.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+
+    .section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section img {
+      width: 53%;
+      max-width: 500px;
+      border-radius: 6px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+      transition: all 1.5s ease-in-out;
+      cursor: pointer;
+    }
+
+    .grayscale {
+      filter: grayscale(100%) blur(2px);
+    }
+
+    .grayscale.visible {
+      filter: grayscale(0%) blur(0);
+    }
+
+    .section p {
+      width: 43%;
+      font-size: 1.3rem;
+      text-align: left;
+      max-width: 400px;
+      text-indent: 0;
+      white-space: nowrap;
+    }
+
+    .section p::first-letter {
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 1;
+      margin-right: 0.05em;
+    }
+
+    .section.center {
+      justify-content: center;
+    }
+
+    .section.center img {
+      width: auto;
+      max-width: 500px;
+    }
+
+    .hero {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 6rem 2rem;
+      box-shadow: inset 0 -1px 0 #ddd;
+      opacity: 0.5
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;;
+    }
+
+    .hero p {
+      font-style: italic;
+      color: #444;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: flex;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, background-color 0.3s ease, visibility 0s linear 0.3s;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+      background-color: rgba(0, 0, 0, 0.8);
+      transition: opacity 0.3s ease, background-color 0.3s ease, visibility 0s linear;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.9);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    .lightbox-text {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      width: 100%;
+      max-width: 800px;
+      line-height: 1.6;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 8px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .lightbox-text.empty {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Democratic Ink</h1>
+    <p>A reflection on the 2005 elections in Ramadi, Iraq</p>
+  </div>
+
+  <div class="section">
+    <img src="imgs/panel1.png" alt="Panel 1: Voters in line" />
+    <p>Democratic Ink colored her thumb blue.<br>
+    Pride, this day, beamed from smiles in the Wild West.<br>
+    Our eyes met, I saw humanity, too.<br>
+    Freedom to choose, maybe, freedom to rest.</p>
+  </div>
+
+  <div class="section reverse">
+    <img src="imgs/panel2.png" alt="Panel 2: Woman's gaze" />
+    <p>The collection of Liberties:<br>
+    Freedom of Expression, to protest.<br>
+    Freedom of Thought, to think.<br>
+    Freedom of Press, to write.<br>
+    Autonomy the right to self-governance.</p>
+  </div>
+
+  <div class="section">
+    <img src="imgs/panel3.png" alt="Panel 3: The mark of ink" class="grayscale" />
+    <p>Taken these for granted, my own privilege.<br>
+    Only, by virtue of where I was born.<br>
+    Tragedy is, though, without this knowledge,<br>
+     my freedoms, ultimately, may be torn</p>
+  </div>
+
+  <div class="section reverse">
+    <img src="imgs/panel4.png" alt="Panel 4: Silent soldier" />
+    <p>I said no words that day.<br>
+    I gave them space to practice.<br>
+    I watched with pride.<br>
+    I witnessed history.</p>
+  </div>
+
+  <div class="section">
+    <img src="imgs/panel5.png" alt="Panel 5: Watchtower" />
+    <p>Regardless of the border closing down.<br>
+    Despite the limited curfew hours.<br>
+    Notwithstanding the traffic bans in town.<br>
+    Our troops stand guard in high-armored towers.</p>
+  </div>
+
+  <div class="section reverse">
+    <img src="imgs/panel6.png" alt="Panel 6: Blue thumb raised" class="grayscale" />
+    <p>Ink is proof they are no longer oppressed.<br>
+    Victory in Al Anbar; Wild Wild West.</p>
+  </div>
+
+  <div class="section center">
+    <img src="imgs/panel7.png" alt="Panel 7: Thumbprint icon" />
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Democratic Ink Project. All rights reserved.
+  </div>
+
+  <!-- Lightbox element -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <div class="lightbox-content">
+      <img class="lightbox-image" id="lightbox-img" src="" alt="Enlarged image">
+      <div class="lightbox-text" id="lightbox-text"></div>
+    </div>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const image = entry.target.querySelector('img.grayscale');
+          if (image) image.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxText = document.getElementById('lightbox-text');
+    const closeButton = document.querySelector('.close-lightbox');
+    
+    // Get all images in sections
+    const images = document.querySelectorAll('.section img');
+    
+    // Add click event to all images
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        // Get the parent section
+        const section = img.closest('.section');
+        // Get the paragraph text from the same section
+        const text = section.querySelector('p')?.innerHTML || '';
+        
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxText.innerHTML = text;
+        
+        // Toggle empty class based on text content
+        if (text.trim() === '') {
+          lightboxText.classList.add('empty');
+        } else {
+          lightboxText.classList.remove('empty');
+        }
+        
+        lightbox.classList.add('active');
+      });
+    });
+    
+    // Close lightbox when clicking close button
+    closeButton.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+    
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+    
+    // Close lightbox when pressing escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
