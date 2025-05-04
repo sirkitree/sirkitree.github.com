@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Viewer with Zoom</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .controls {
+            display: flex;
+            gap: 8px;
+        }
+        button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #3367d6;
+        }
+        button.reset {
+            background-color: #757575;
+        }
+        button.reset:hover {
+            background-color: #616161;
+        }
+        .viewer {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+            cursor: move;
+        }
+        .svg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            transform-origin: center;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 16px;
+            background-color: white;
+            border-top: 1px solid #e0e0e0;
+            font-size: 14px;
+            color: #616161;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <div class="title">SVG Viewer</div>
+            <div class="controls">
+                <button id="zoom-in" title="Zoom In">+</button>
+                <button id="zoom-out" title="Zoom Out">−</button>
+                <button id="reset" class="reset" title="Reset View">Reset</button>
+            </div>
+        </div>
+        <div class="viewer" id="viewer">
+            <div class="svg-container" id="svg-container">
+                <!-- Your SVG will be loaded here -->
+            </div>
+        </div>
+        <div class="status-bar">
+            <div id="zoom-level">Zoom: 100%</div>
+            <div>Drag to pan • Scroll to zoom</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const viewer = document.getElementById('viewer');
+            const svgContainer = document.getElementById('svg-container');
+            const zoomInBtn = document.getElementById('zoom-in');
+            const zoomOutBtn = document.getElementById('zoom-out');
+            const resetBtn = document.getElementById('reset');
+            const zoomLevelElem = document.getElementById('zoom-level');
+            
+            // State variables
+            let scale = 1;
+            let position = { x: 0, y: 0 };
+            let isDragging = false;
+            let startPosition = { x: 0, y: 0 };
+
+            // Load SVG
+            // For a blog, you should embed the SVG content directly in this spot
+            const svgContent = `
+                <!-- Paste your SVG content here -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <!-- This is a placeholder. Replace with your actual SVG content -->
+                    <circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+                </svg>
+            `;
+            svgContainer.innerHTML = svgContent;
+            
+            // Set initial transform
+            updateTransform();
+
+            // Zoom with mouse wheel
+            viewer.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                const delta = e.deltaY * -0.01;
+                const newScale = Math.max(0.1, Math.min(10, scale + delta));
+                scale = newScale;
+                updateTransform();
+                updateZoomLevel();
+            });
+
+            // Pan with mouse drag
+            viewer.addEventListener('mousedown', function(e) {
+                if (e.button === 0) { // Left mouse button
+                    isDragging = true;
+                    startPosition = {
+                        x: e.clientX - position.x,
+                        y: e.clientY - position.y
+                    };
+                }
+            });
+
+            viewer.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    position = {
+                        x: e.clientX - startPosition.x,
+                        y: e.clientY - startPosition.y
+                    };
+                    updateTransform();
+                }
+            });
+
+            viewer.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+
+            viewer.addEventListener('mouseleave', function() {
+                isDragging = false;
+            });
+
+            // Zoom controls
+            zoomInBtn.addEventListener('click', function() {
+                scale = Math.min(10, scale + 0.2);
+                updateTransform();
+                updateZoomLevel();
+            });
+
+            zoomOutBtn.addEventListener('click', function() {
+                scale = Math.max(0.1, scale - 0.2);
+                updateTransform();
+                updateZoomLevel();
+            });
+
+            resetBtn.addEventListener('click', function() {
+                scale = 1;
+                position = { x: 0, y: 0 };
+                updateTransform();
+                updateZoomLevel();
+            });
+
+            // Touch support for mobile
+            let touchStartX, touchStartY, initialPinchDistance;
+            let initialScale;
+
+            viewer.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 1) {
+                    // Single touch - prepare for panning
+                    isDragging = true;
+                    touchStartX = e.touches[0].clientX - position.x;
+                    touchStartY = e.touches[0].clientY - position.y;
+                } else if (e.touches.length === 2) {
+                    // Two touches - prepare for pinch zooming
+                    isDragging = false;
+                    initialPinchDistance = getPinchDistance(e);
+                    initialScale = scale;
+                }
+                e.preventDefault();
+            });
+
+            viewer.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 1 && isDragging) {
+                    // Single touch - panning
+                    position = {
+                        x: e.touches[0].clientX - touchStartX,
+                        y: e.touches[0].clientY - touchStartY
+                    };
+                    updateTransform();
+                } else if (e.touches.length === 2) {
+                    // Two touches - pinch zooming
+                    const currentDistance = getPinchDistance(e);
+                    const pinchRatio = currentDistance / initialPinchDistance;
+                    scale = Math.max(0.1, Math.min(10, initialScale * pinchRatio));
+                    updateTransform();
+                    updateZoomLevel();
+                }
+                e.preventDefault();
+            });
+
+            viewer.addEventListener('touchend', function() {
+                isDragging = false;
+            });
+
+            // Helper functions
+            function updateTransform() {
+                svgContainer.style.transform = `translate(${position.x}px, ${position.y}px) scale(${scale})`;
+            }
+
+            function updateZoomLevel() {
+                zoomLevelElem.textContent = `Zoom: ${Math.round(scale * 100)}%`;
+            }
+
+            function getPinchDistance(e) {
+                return Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+            }
+        });
+    </script>
+</body>
+</html>
