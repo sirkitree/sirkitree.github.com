@@ -159,9 +159,8 @@
                         svgContainer.innerHTML = svgContent;
                         // First center the SVG
                         centerSVG();
-                        // Then apply desired offset from center position
-                        position.x += 200; // Adjust these values as needed
-                        position.y -= 100; // Adjust these values as needed
+                        // Use exact coordinates from manual positioning
+                        position = { x: -1168, y: -7 };
                         updateTransform();
                         updateReadouts();
                         loading.style.display = 'none';
