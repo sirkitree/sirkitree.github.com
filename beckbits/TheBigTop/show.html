@@ -24,7 +24,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 8px 16px;
-            background-color: white;
+            background-color: black;
+            color: white;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .title {
@@ -69,13 +70,14 @@
             width: fit-content;
             height: fit-content;
             transform-origin: center;
+            background-color: black;
         }
         .status-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 8px 16px;
-            background-color: white;
+            background-color: black;
             border-top: 1px solid #e0e0e0;
             font-size: 14px;
             color: #616161;
@@ -139,7 +141,7 @@
             let scale = 0.4; // Start at 40% zoom
             let position = { x: 0, y: 0 };
             let isDragging = false;
-            let startPosition = { x: 400, y: 400 };
+            let startPosition = { x: 1177, y: -4 };
 
             // Load external SVG file
             const svgUrl = 'TheBigTopShow_optimized.svg'; // Path to your SVG file
