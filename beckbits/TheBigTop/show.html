@@ -157,8 +157,13 @@
                     })
                     .then(svgContent => {
                         svgContainer.innerHTML = svgContent;
-                        position = { x: 1177, y: -4 }; // Use your desired position
+                        // First center the SVG
+                        centerSVG();
+                        // Then apply desired offset from center position
+                        position.x += 200; // Adjust these values as needed
+                        position.y -= 100; // Adjust these values as needed
                         updateTransform();
+                        updateReadouts();
                         loading.style.display = 'none';
                     })
                     .catch(error => {
