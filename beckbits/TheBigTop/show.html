@@ -157,9 +157,8 @@
                     })
                     .then(svgContent => {
                         svgContainer.innerHTML = svgContent;
+                        position = { x: 1177, y: -4 }; // Use your desired position
                         updateTransform();
-                        
-                        // Hide loading indicator
                         loading.style.display = 'none';
                     })
                     .catch(error => {
