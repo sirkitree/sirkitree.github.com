@@ -7,7 +7,7 @@ category : "story"
 ---
 Darkness quivered in the back of Draken's mind, threatening to disperse his current spell, still held in his commanding thoughts. He could feel the attack coming before it hit and struggled to get enough mana harnessed in order cast the protective one that he now held in preparation.
 
-"Just a little more", he thought to himself. Then just as the darkness was about to overwhelm him, he case his spell, feeling forces gather around him and cling to his mind, shielding it. A sharp gong sounded as his head reeled from the mental force of the impact from the blast he had just barely been able to sheild himself from.
+"Just a little more", he thought to himself. Then just as the darkness was about to overwhelm him, he cast his spell, feeling forces gather around him and cling to his mind, shielding it. A sharp gong sounded as his head reeled from the mental force of the impact from the blast he had just barely been able to sheild himself from.
 
 Rubbing his cambrinth ring, shaped as a scorpion, he began to draw mana from it's reserves as as the diminishing resources around himself. The darkness, still oozing the in the back of his mind, grew as he added mana to it. Draken had been saving this spell for just such a battle and planned ot use it to it's fullest deadly potential this time. He'd used it in experimentation before, against the likes of wood trolls and creepers, but never to a lethal extent.
 
