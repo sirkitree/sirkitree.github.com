@@ -15,7 +15,13 @@ renderer.setPixelRatio(window.devicePixelRatio);
 // Create voxels
 const gridSize = 40;
 const cellSize = 1;
-const voxelGeometry = new THREE.BoxGeometry(cellSize * 0.95, cellSize, cellSize * 0.95);
+// Use a hexagonal prism instead of a cube
+const voxelGeometry = new THREE.CylinderGeometry(
+    cellSize * 0.5, // radiusTop
+    cellSize * 0.5, // radiusBottom
+    cellSize,       // height
+    6               // radialSegments creates a hexagon
+);
 
 // Create edge geometry for outline
 const edgeGeometry = new THREE.EdgesGeometry(voxelGeometry);
