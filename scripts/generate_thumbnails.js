@@ -4,6 +4,12 @@ const path = require('path');
 const http = require('http');
 const handler = require('serve-handler');
 
+// The script lives in the "scripts" directory but most of the resources it
+// needs (websim-projects, assets, node_modules) live at the repository root.
+// Resolve all paths relative to the repo root so the script can be executed
+// from anywhere without failing to locate these directories.
+const ROOT_DIR = path.join(__dirname, '..');
+
 async function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -11,7 +17,9 @@ async function delay(ms) {
 async function startServer() {
   const server = http.createServer((request, response) => {
     return handler(request, response, {
-      public: __dirname
+      // Serve files from the repository root so that websim-projects and other
+      // assets can be found correctly.
+      public: ROOT_DIR
     });
   });
   
@@ -36,8 +44,8 @@ async function generateThumbnails() {
   const page = await browser.newPage();
   await page.setViewport({ width: 800, height: 600 });
   
-  const websimDir = path.join(__dirname, 'websim-projects');
-  const thumbnailDir = path.join(__dirname, 'assets', 'websim-thumbnails');
+  const websimDir = path.join(ROOT_DIR, 'websim-projects');
+  const thumbnailDir = path.join(ROOT_DIR, 'assets', 'websim-thumbnails');
   
   // Create thumbnails directory if it doesn't exist
   if (!fs.existsSync(thumbnailDir)) {
@@ -85,9 +93,15 @@ async function generateThumbnails() {
 }
 
 // Install serve-handler if not already installed
-if (!fs.existsSync(path.join(__dirname, 'node_modules', 'serve-handler'))) {
+// The script might be executed before dependencies are installed. Check for
+// serve-handler inside the repo's node_modules directory and install it if
+// missing.
+if (!fs.existsSync(path.join(ROOT_DIR, 'node_modules', 'serve-handler'))) {
   console.log('Installing serve-handler...');
-  require('child_process').execSync('npm install serve-handler', { stdio: 'inherit' });
+  require('child_process').execSync('npm install serve-handler', {
+    stdio: 'inherit',
+    cwd: ROOT_DIR,
+  });
 }
 
 generateThumbnails().catch(console.error); 
