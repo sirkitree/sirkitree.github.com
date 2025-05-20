@@ -75,11 +75,15 @@ for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
         voxelGroup.add(edges);
         
         // Calculate base height using distance from center
-        const distance = Math.abs(x / (gridSize/2));
+        const distance = Math.abs(x / (gridSize/4));
         const baseHeight = Math.max(0.1, distance * 0.8);
-        
+
+        let xPos = x * cellSize;
+        if (rowIndex % 2 !== 0) {
+            xPos += cellSize * 0.5;
+        }
         voxelGroup.position.set(
-            x * cellSize,
+            xPos,
             0,
             0
         );
@@ -104,7 +108,7 @@ for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
                 (isLeftSide ? columnFromEdge : edgeDepth + columnFromEdge); // Column position
             
             // Decrease base animation amplitude as we move inward
-            voxelGroup.userData.edgeFactor = 1 - (columnFromEdge / edgeDepth);
+            voxelGroup.userData.edgeFactor = 12 - (columnFromEdge / edgeDepth);
         }
         
         // Add slight color variation based on height
