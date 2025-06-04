@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Evaluation Infographic: Williamsport vs. Cogan Station</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful (Adapted) -->
+    <!-- Application Structure Plan: A top-down, single-page scrolling infographic. The narrative starts with the main conclusion (The Verdict), then drills down into supporting data: Market Comparison, Property Head-to-Head, Financial Investment, and Risk Profile, before a final summary. This structure is chosen for maximum clarity, presenting the most critical takeaway first and then providing the evidence in a logical, digestible flow. -->
+    <!-- Visualization & Content Choices: Data Point -> Goal -> Viz -> Justification. 1. Go/No-Go -> Inform -> Large Text/Cards -> Instant high-impact communication. 2. Market Metrics -> Compare -> Horizontal Bar Chart -> Clear comparison of different metrics across two locations. 3. Financials -> Compare Composition -> Stacked Bar Chart -> Shows the total investment breakdown (offer + reno costs) effectively. 4. Environmental Risks -> Compare -> Radar Chart -> Provides a quick, holistic "risk signature" for each property across multiple categories. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            font-size: 1.125rem;
+            text-align: center;
+            color: #475569;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3rem;
+        }
+        .go-glow {
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
+        }
+        .no-go-glow {
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+
+        <header class="text-center mb-16 md:mb-24">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Real Estate Investment Analysis</h1>
+            <p class="text-lg md:text-xl text-slate-600">A Comparative Evaluation of Two Fixer-Upper Properties in Lycoming County, PA</p>
+        </header>
+
+        <!-- Section 1: The Verdict -->
+        <section id="verdict" class="mb-16 md:mb-24">
+            <h2 class="section-title">The Verdict: Go vs. No-Go</h2>
+            <p class="section-subtitle">Based on a comprehensive analysis of market conditions, property state, and potential costs, here is the final recommendation for each property.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="card go-glow border-green-300">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">1987 State Rt 654, Williamsport</h3>
+                    <div class="text-5xl font-extrabold text-green-600 mb-4">GO</div>
+                    <p class="text-slate-600 mb-4">A viable, but conditional, opportunity in a buyer's market. Requires significant due diligence.</p>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <div class="text-sm font-semibold text-green-800">Recommended "Go" Price</div>
+                        <div class="text-3xl font-bold text-green-700">$100,000</div>
+                    </div>
+                </div>
+                <div class="card no-go-glow border-red-300">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">1855 Fairlawn Ave, Cogan Station</h3>
+                    <div class="text-5xl font-extrabold text-red-600 mb-4">NO-GO</div>
+                    <p class="text-slate-600 mb-4">An exceptionally high-risk acquisition due to severe market decline and poor property condition.</p>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <div class="text-sm font-semibold text-red-800">Maximum "Go" Price (High Risk)</div>
+                        <div class="text-3xl font-bold text-red-700">$50,000</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Market Head-to-Head -->
+        <section id="market" class="mb-16 md:mb-24">
+            <h2 class="section-title">Market Head-to-Head</h2>
+            <p class="section-subtitle">The two locations present drastically different market dynamics. Williamsport (17702) is a buyer's market offering negotiation leverage, while Cogan Station (17728) is experiencing a severe downturn.</p>
+            <div class="card">
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: Tale of Two Properties -->
+        <section id="properties" class="mb-16 md:mb-24">
+            <h2 class="section-title">A Tale of Two 1950s Homes</h2>
+            <p class="section-subtitle">Both properties were built in the mid-20th century and require substantial work. Here's how their core features stack up against each other.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Williamsport Property</h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-center"><span class="text-2xl mr-4">🏠</span> Built in 1950</li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">🛏️</span> 3 Bedrooms / 1 Bathroom</li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">🌳</span> Huge 1.75 Acre Lot</li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">💨</span> Has Forced Air Heating</li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">❄️</span> <span class="text-red-600 font-semibold">No Central AC</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Cogan Station Property</h3>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-center"><span class="text-2xl mr-4">🏠</span> Built in 1955</li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">🛏️</span> 3 Bedrooms / 1 Bathroom</li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">🌳</span> Modest 0.26 Acre Lot</li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">🔥</span> <span class="text-red-600 font-semibold">No Furnace or Heating</span></li>
+                        <li class="flex items-center"><span class="text-2xl mr-4">❄️</span> <span class="text-red-600 font-semibold">No Central AC</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: The Investment Breakdown -->
+        <section id="financials" class="mb-16 md:mb-24">
+            <h2 class="section-title">The Full Investment Picture</h2>
+            <p class="section-subtitle">The purchase price is just the beginning. This chart shows the proposed offer price plus the estimated range of renovation costs, revealing the true potential "all-in" investment for each property.</p>
+            <div class="card">
+                <div class="chart-container">
+                    <canvas id="financialsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Risk Profile -->
+        <section id="risks" class="mb-16 md:mb-24">
+            <h2 class="section-title">Environmental Risk Profile</h2>
+            <p class="section-subtitle">Both properties face significant environmental hazards over the next 30 years. The radar chart below compares the percentage of properties in each zip code at risk from flood, wildfire, and extreme heat.</p>
+            <div class="card">
+                <div class="chart-container">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Conclusion -->
+        <section id="conclusion">
+            <h2 class="section-title">The Bottom Line</h2>
+            <p class="section-subtitle">While both are fixer-uppers requiring major investment, the market stability and property condition create a clear distinction in their risk profiles.</p>
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-green-700 mb-3">Williamsport: A Calculated Risk</h3>
+                        <p class="text-slate-600">The more viable opportunity due to a stable, buyer-friendly local market and fewer immediate systemic issues. The large lot is a major benefit. However, the 'Go' is strictly contingent on resolving data inconsistencies and passing all inspections.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-700 mb-3">Cogan Station: A High-Risk Gamble</h3>
+                        <p class="text-slate-600">The combination of a severely declining market, 'as-is' condition, and lack of a furnace makes this an extremely risky investment. It is only suitable for a buyer with very high risk tolerance and deep capital reserves.</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-slate-200 text-center">
+                    <p class="font-bold text-slate-800">Critical Next Step for Both: Comprehensive professional inspections are non-negotiable.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const chartColors = {
+        williamsport: 'rgba(0, 168, 232, 0.7)', // #00A8E8
+        coganStation: 'rgba(242, 158, 7, 0.7)', // #F29E07
+        renoMin: 'rgba(242, 227, 7, 0.7)', // #F2E307
+        renoMax: 'rgba(217, 74, 43, 0.7)', // #D94A2B
+        williamsportBorder: 'rgb(0, 168, 232)',
+        coganStationBorder: 'rgb(242, 158, 7)',
+    };
+    
+    function processLabel(label) {
+        const maxLength = 16;
+        if (typeof label !== 'string' || label.length <= maxLength) {
+            return label;
+        }
+        const words = label.split(' ');
+        const lines = [];
+        let currentLine = '';
+        for (const word of words) {
+            if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
+                lines.push(currentLine);
+                currentLine = word;
+            } else {
+                currentLine = currentLine ? currentLine + ' ' + word : word;
+            }
+        }
+        lines.push(currentLine);
+        return lines;
+    }
+
+    const tooltipTitleCallback = (tooltipItems) => {
+        const item = tooltipItems[0];
+        let label = item.chart.data.labels[item.dataIndex];
+        return Array.isArray(label) ? label.join(' ') : label;
+    };
+    
+    // Market Chart
+    const marketCtx = document.getElementById('marketChart').getContext('2d');
+    new Chart(marketCtx, {
+        type: 'bar',
+        data: {
+            labels: [processLabel('YoY Median Price Change (%)'), processLabel('Median Days on Market'), processLabel('Sale-to-List Ratio (%)')],
+            datasets: [
+                {
+                    label: 'Williamsport (17702)',
+                    data: [17.6, 55, 98.27],
+                    backgroundColor: chartColors.williamsport,
+                    borderColor: chartColors.williamsportBorder,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Cogan Station (17728)',
+                    data: [-39.5, 59, 90.5],
+                    backgroundColor: chartColors.coganStation,
+                     borderColor: chartColors.coganStationBorder,
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: { display: true, text: 'Key Market Indicators', font: { size: 18, weight: '600' }, padding: { bottom: 20 } },
+                legend: { position: 'bottom' },
+                tooltip: { callbacks: { title: tooltipTitleCallback, label: (context) => `${context.dataset.label}: ${context.raw.toFixed(1)}%` } }
+            },
+            scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
+        }
+    });
+
+    // Financials Chart
+    const financialsCtx = document.getElementById('financialsChart').getContext('2d');
+    new Chart(financialsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['1987 State Rt 654, Williamsport', '1855 Fairlawn Ave, Cogan Station'],
+            datasets: [
+                { label: 'Offer Price', data: [100000, 50000], backgroundColor: chartColors.williamsport, stack: 'Stack 0' },
+                { label: 'Min Renovation', data: [30000, 31900], backgroundColor: chartColors.renoMin, stack: 'Stack 0' },
+                { label: 'Additional Max Renovation', data: [90000, 106500], backgroundColor: chartColors.renoMax, stack: 'Stack 0' }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, ticks: { callback: (value) => `$${value/1000}k` } } },
+            plugins: {
+                title: { display: true, text: 'Estimated "All-In" Investment', font: { size: 18, weight: '600' }, padding: { bottom: 20 } },
+                legend: { position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback,
+                        label: (context) => {
+                            let label = context.dataset.label || '';
+                            if (label) label += ': ';
+                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(context.raw);
+                            return label;
+                        },
+                        footer: (tooltipItems) => {
+                            let total = tooltipItems.reduce((sum, item) => sum + item.raw, 0);
+                            return 'Total: ' + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(total);
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    // Risk Chart
+    const riskCtx = document.getElementById('riskChart').getContext('2d');
+    new Chart(riskCtx, {
+        type: 'radar',
+        data: {
+            labels: ['Flood Risk (%)', 'Wildfire Risk (%)', 'Extreme Heat Risk (%)'],
+            datasets: [{
+                label: 'Williamsport',
+                data: [32, 89, 97],
+                fill: true,
+                backgroundColor: 'rgba(0, 168, 232, 0.2)',
+                borderColor: 'rgb(0, 168, 232)',
+                pointBackgroundColor: 'rgb(0, 168, 232)',
+            }, {
+                label: 'Cogan Station',
+                data: [33, 98, 97],
+                fill: true,
+                backgroundColor: 'rgba(242, 158, 7, 0.2)',
+                borderColor: 'rgb(242, 158, 7)',
+                pointBackgroundColor: 'rgb(242, 158, 7)',
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: { display: true, text: '30-Year Environmental Hazards (% of Properties Affected)', font: { size: 18, weight: '600' }, padding: { bottom: 20 } },
+                legend: { position: 'bottom' },
+                tooltip: { callbacks: { title: tooltipTitleCallback } }
+            },
+            scales: {
+                r: {
+                    angleLines: { display: true },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    pointLabels: { font: { size: 14 } },
+                    ticks: { backdropColor: 'rgba(255,255,255,0.75)', backdropPadding: 4 }
+                }
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>
+

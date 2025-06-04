@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Property Evaluation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A comparative dashboard SPA with a sticky top nav. The core layout is a side-by-side comparison using a responsive grid. The user flow is top-down: from a high-level Go/No-Go summary to detailed sections for Market, Property Details, Financials, and Risks. This structure was chosen because the user's primary task is to compare two options. It provides the final recommendation immediately while allowing for a deep-dive exploration of the supporting data in a logical, digestible manner. -->
+    <!-- Visualization & Content Choices: Market data is a horizontal bar chart for clear metric comparison. Financials use a stacked bar chart to visualize the crucial "all-in cost" (offer + renovation). Environmental risks are shown on a single radar chart for a quick, holistic comparison of risk profiles. Qualitative benefits/risks are handled by interactive HTML lists with toggles to prevent UI clutter and focus the user's attention. All choices support the goal of direct, intuitive comparison. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #4A4A4A;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .sticky-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .go-glow {
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+        }
+        .no-go-glow {
+             box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+        }
+        .contingency-list li::before {
+            content: '⚠️';
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-[#FDFBF8]/80 backdrop-blur-lg sticky-nav shadow-sm">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-gray-800">Property Evaluation</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#summary" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Summary</a>
+                        <a href="#market" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Market</a>
+                        <a href="#properties" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Properties</a>
+                        <a href="#financials" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Financials</a>
+                        <a href="#risks" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Risks</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        
+        <section id="summary" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Final Recommendation</h2>
+            <p class="text-center text-lg text-gray-600 mb-8 max-w-3xl mx-auto">This is a high-level summary of the analysis. The Williamsport property is a conditional "Go," while the Cogan Station property is a "No-Go" due to significant risks and market decline.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div id="summary-williamsport" class="bg-white p-6 rounded-xl border border-gray-200 go-glow"></div>
+                <div id="summary-cogan-station" class="bg-white p-6 rounded-xl border border-gray-200 no-go-glow"></div>
+            </div>
+        </section>
+
+        <hr class="my-12 border-gray-200">
+
+        <section id="market" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Market Comparison</h2>
+            <p class="text-center text-lg text-gray-600 mb-8 max-w-3xl mx-auto">This section compares the real estate market conditions for both locations. Williamsport (17702) presents a buyer's market, offering negotiation leverage, while Cogan Station (17728) is in a significant downturn.</p>
+            <div class="bg-white p-6 rounded-xl border border-gray-200">
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="my-12 border-gray-200">
+
+        <section id="properties" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Property Deep Dive</h2>
+            <p class="text-center text-lg text-gray-600 mb-8 max-w-3xl mx-auto">Here is a side-by-side look at the key details, benefits, and risks for each property. Both homes were built in the 1950s and will require significant upgrades. Use the toggle buttons to switch between viewing benefits and risks.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div id="property-williamsport" class="bg-white p-6 rounded-xl border border-gray-200 space-y-4"></div>
+                <div id="property-cogan-station" class="bg-white p-6 rounded-xl border border-gray-200 space-y-4"></div>
+            </div>
+        </section>
+
+        <hr class="my-12 border-gray-200">
+        
+        <section id="financials" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Financial Breakdown</h2>
+            <p class="text-center text-lg text-gray-600 mb-8 max-w-3xl mx-auto">This chart visualizes the total potential investment for each property, comparing the proposed offer price to the range of estimated renovation costs. This highlights the significant capital required beyond the initial purchase.</p>
+            <div class="bg-white p-6 rounded-xl border border-gray-200">
+                <div class="chart-container">
+                    <canvas id="financialsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-12 border-gray-200">
+        
+        <section id="risks" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Environmental Risk Profile</h2>
+            <p class="text-center text-lg text-gray-600 mb-8 max-w-3xl mx-auto">Both locations face environmental risks. This visualization compares the risk of flood, wildfire, and extreme heat over the next 30 years for each property's zip code. Both have a major flood risk.</p>
+            <div class="bg-white p-6 rounded-xl border border-gray-200">
+                <div class="chart-container" style="max-height: 400px; height: 400px;">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-gray-100 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Property Evaluation. This is an interactive analysis based on the provided report.</p>
+        </div>
+    </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const reportData = {
+        williamsport: {
+            address: '1987 State Route 654, Williamsport, PA 17702',
+            recommendation: 'Go',
+            goPrice: 100000,
+            offerRange: [100000, 125000],
+            summaryText: 'Offers a generous lot size and proximity to amenities but faces significant age-related risks, environmental hazards, and data inconsistencies requiring thorough due diligence.',
+            contingencies: [
+                "Comprehensive inspections must be conducted.",
+                "Official property records must be verified.",
+                "A detailed renovation budget must be confirmed.",
+                "Flood risk and insurance premiums must be assessed."
+            ],
+            market: {
+                condition: "Buyer's Market",
+                medianSalePrice: 155250,
+                daysOnMarket: 55,
+                saleToListRatio: 98.27
+            },
+            details: {
+                yearBuilt: 1950,
+                bedrooms: 3,
+                bathrooms: 1,
+                sqft: 1336,
+                lotSize: '1.75 acres',
+                heating: 'Forced Air',
+                cooling: 'None'
+            },
+            benefits: [
+                "Generous lot size (1.75-1.94 acres)",
+                "Proximity to city amenities and universities",
+                "Access to recreational and cultural attractions",
+                "Dog-friendly neighborhood",
+                "Negotiation leverage in a buyer's market",
+                "Attached garage and partially finished basement"
+            ],
+            risks: [
+                "Age-related issues (electrical, plumbing, foundation)",
+                "Potential for lead paint and asbestos",
+                "Major flood risk (32% of properties)",
+                "Moderate wildfire risk (89% of properties)",
+                "Traffic noise from State Route 654",
+                "Lack of central cooling system"
+            ],
+            financials: {
+                renovationMin: 30000,
+                renovationMax: 120000
+            },
+            environmental: {
+                flood: 32,
+                wildfire: 89,
+                heat: 97
+            }
+        },
+        coganStation: {
+            address: '1855 Fairlawn Ave, Cogan Station, PA 17728',
+            recommendation: 'No-Go',
+            goPrice: 50000,
+            offerRange: [50000, 75000],
+            summaryText: 'The "as-is" condition, lack of a furnace, and a severely depreciating local market present substantial risks and high renovation costs.',
+            contingencies: [
+                "Only proceed if all comprehensive inspections are passed.",
+                "A fully-funded, detailed renovation budget is essential.",
+                "Flood zone and insurance must be confirmed.",
+                "Buyer must have high risk tolerance and long-term vision."
+            ],
+            market: {
+                condition: "Strong Buyer's Market",
+                medianSalePrice: 190000,
+                daysOnMarket: 59,
+                saleToListRatio: 90.5
+            },
+            details: {
+                yearBuilt: 1955,
+                bedrooms: 3,
+                bathrooms: 1,
+                sqft: 912,
+                lotSize: '0.26 acres',
+                heating: 'None (Requires full system)',
+                cooling: 'None'
+            },
+            benefits: [
+                "Attached garage and partially finished basement",
+                "Modest, manageable lot size",
+                "Proximity to Fairlawn Community Center",
+                "Highly-rated elementary school nearby",
+                "Clear opportunity for value-add through renovation"
+            ],
+            risks: [
+                '"As-is" sale with no furnace or central heating',
+                'Severe local market depreciation (-39.5% YoY)',
+                "Age-related issues (electrical, plumbing, foundation)",
+                "Potential for lead paint and asbestos",
+                "Major flood risk (33% of properties)",
+                "Moderate wildfire risk (98% of properties)"
+            ],
+            financials: {
+                renovationMin: 31900,
+                renovationMax: 138400
+            },
+            environmental: {
+                flood: 33,
+                wildfire: 98,
+                heat: 97
+            }
+        }
+    };
+    
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(value);
+    }
+    
+    function populateContent() {
+        const { williamsport, coganStation } = reportData;
+
+        document.getElementById('summary-williamsport').innerHTML = `
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${williamsport.address}</h3>
+            <div class="flex items-center mb-4">
+                <span class="text-2xl font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full">Go</span>
+                <span class="ml-4 text-lg font-semibold text-gray-700">"Go" Price: ${formatCurrency(williamsport.goPrice)}</span>
+            </div>
+            <p class="text-gray-600 mb-4">${williamsport.summaryText}</p>
+            <h4 class="font-semibold text-gray-700 mb-2">Key Contingencies:</h4>
+            <ul class="list-none space-y-1 text-sm text-gray-600 contingency-list">${williamsport.contingencies.map(c => `<li>${c}</li>`).join('')}</ul>
+        `;
+
+        document.getElementById('summary-cogan-station').innerHTML = `
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${coganStation.address}</h3>
+            <div class="flex items-center mb-4">
+                <span class="text-2xl font-bold text-red-600 bg-red-100 px-3 py-1 rounded-full">No-Go</span>
+                 <span class="ml-4 text-lg font-semibold text-gray-700">"Go" Price: ${formatCurrency(coganStation.goPrice)}</span>
+            </div>
+            <p class="text-gray-600 mb-4">${coganStation.summaryText}</p>
+            <h4 class="font-semibold text-gray-700 mb-2">Key Contingencies (if proceeding):</h4>
+            <ul class="list-none space-y-1 text-sm text-gray-600 contingency-list">${coganStation.contingencies.map(c => `<li>${c}</li>`).join('')}</ul>
+        `;
+        
+        document.getElementById('property-williamsport').innerHTML = generatePropertyCard(williamsport, 'williamsport');
+        document.getElementById('property-cogan-station').innerHTML = generatePropertyCard(coganStation, 'cogan-station');
+
+        addToggleListeners();
+    }
+    
+    function generatePropertyCard(data, idPrefix) {
+        const benefitsList = data.benefits.map(item => `<li><span class="text-green-500 mr-2">✓</span>${item}</li>`).join('');
+        const risksList = data.risks.map(item => `<li><span class="text-red-500 mr-2">✗</span>${item}</li>`).join('');
+
+        return `
+            <h3 class="text-xl font-bold text-gray-800">${data.address}</h3>
+            <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                <div class="bg-gray-50 p-3 rounded-lg"><strong>Built:</strong> ${data.details.yearBuilt}</div>
+                <div class="bg-gray-50 p-3 rounded-lg"><strong>Size:</strong> ${data.details.sqft} sqft</div>
+                <div class="bg-gray-50 p-3 rounded-lg"><strong>Lot:</strong> ${data.details.lotSize}</div>
+                <div class="bg-gray-50 p-3 rounded-lg"><strong>Beds/Baths:</strong> ${data.details.bedrooms}/${data.details.bathrooms}</div>
+                <div class="bg-gray-50 p-3 rounded-lg col-span-2"><strong>Heating:</strong> <span class="${data.details.heating.includes('None') ? 'text-red-600 font-semibold' : ''}">${data.details.heating}</span></div>
+            </div>
+            <div class="mt-4">
+                <div class="flex border border-gray-200 rounded-lg p-1 bg-gray-100">
+                    <button id="${idPrefix}-benefits-btn" class="flex-1 px-4 py-2 text-sm font-semibold rounded-md bg-white shadow text-gray-800">Benefits</button>
+                    <button id="${idPrefix}-risks-btn" class="flex-1 px-4 py-2 text-sm font-semibold rounded-md text-gray-600">Risks</button>
+                </div>
+                <div id="${idPrefix}-benefits-content" class="mt-4 text-gray-700 space-y-2 text-sm">
+                    <ul class="list-none space-y-2">${benefitsList}</ul>
+                </div>
+                <div id="${idPrefix}-risks-content" class="mt-4 text-gray-700 space-y-2 text-sm hidden">
+                     <ul class="list-none space-y-2">${risksList}</ul>
+                </div>
+            </div>
+        `;
+    }
+
+    function addToggleListeners() {
+        ['williamsport', 'cogan-station'].forEach(prefix => {
+            const benefitsBtn = document.getElementById(`${prefix}-benefits-btn`);
+            const risksBtn = document.getElementById(`${prefix}-risks-btn`);
+            const benefitsContent = document.getElementById(`${prefix}-benefits-content`);
+            const risksContent = document.getElementById(`${prefix}-risks-content`);
+
+            benefitsBtn.addEventListener('click', () => {
+                benefitsBtn.classList.add('bg-white', 'shadow', 'text-gray-800');
+                benefitsBtn.classList.remove('text-gray-600');
+                risksBtn.classList.remove('bg-white', 'shadow', 'text-gray-800');
+                risksBtn.classList.add('text-gray-600');
+                benefitsContent.classList.remove('hidden');
+                risksContent.classList.add('hidden');
+            });
+
+            risksBtn.addEventListener('click', () => {
+                risksBtn.classList.add('bg-white', 'shadow', 'text-gray-800');
+                risksBtn.classList.remove('text-gray-600');
+                benefitsBtn.classList.remove('bg-white', 'shadow', 'text-gray-800');
+                benefitsBtn.classList.add('text-gray-600');
+                risksContent.classList.remove('hidden');
+                benefitsContent.classList.add('hidden');
+            });
+        });
+    }
+
+    function createMarketChart() {
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Median Sale Price ($)', 'Days on Market'],
+                datasets: [
+                    {
+                        label: 'Williamsport (17702)',
+                        data: [reportData.williamsport.market.medianSalePrice, reportData.williamsport.market.daysOnMarket],
+                        backgroundColor: 'rgba(52, 142, 204, 0.7)',
+                        borderColor: 'rgba(52, 142, 204, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Cogan Station (17728)',
+                        data: [reportData.coganStation.market.medianSalePrice, reportData.coganStation.market.daysOnMarket],
+                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                           callback: function(value, index, values) {
+                                if (this.getLabelForValue(value).includes('$')) {
+                                    return '$' + value / 1000 + 'k';
+                                }
+                                return value;
+                           }
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Key Market Indicators Comparison',
+                        font: { size: 16 }
+                    },
+                    tooltip: {
+                         callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    if(context.label.includes('$')) {
+                                        label += formatCurrency(context.parsed.x);
+                                    } else {
+                                        label += context.parsed.x + ' days';
+                                    }
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createFinancialsChart() {
+        const ctx = document.getElementById('financialsChart').getContext('2d');
+        const { williamsport, coganStation } = reportData;
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Williamsport', 'Cogan Station'],
+                datasets: [
+                    {
+                        label: 'Proposed Offer ("Go" Price)',
+                        data: [williamsport.goPrice, coganStation.goPrice],
+                        backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Min Renovation Estimate',
+                        data: [williamsport.financials.renovationMin, coganStation.financials.renovationMin],
+                         backgroundColor: 'rgba(255, 206, 86, 0.7)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Max Renovation Estimate',
+                        data: [williamsport.financials.renovationMax - williamsport.financials.renovationMin, coganStation.financials.renovationMax - coganStation.financials.renovationMin],
+                        backgroundColor: 'rgba(239, 68, 68, 0.6)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        ticks: {
+                           callback: function(value) {
+                               return '$' + value / 1000 + 'k';
+                           }
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Total Estimated Investment (Offer + Renovation Costs)',
+                        font: { size: 16 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                let value = context.parsed.y;
+                                if(context.datasetIndex === 2){ // Max Reno
+                                    const minReno = context.chart.data.datasets[1].data[context.dataIndex];
+                                    label = 'Max Renovation Total: ' + formatCurrency(minReno + value);
+                                } else {
+                                     label += formatCurrency(value);
+                                }
+                                return label;
+                            },
+                            footer: function(tooltipItems) {
+                                const wData = williamsport;
+                                const cData = coganStation;
+                                let totalMin = 0;
+                                let totalMax = 0;
+                                
+                                if (tooltipItems[0].dataIndex === 0) { // Williamsport
+                                    totalMin = wData.goPrice + wData.financials.renovationMin;
+                                    totalMax = wData.goPrice + wData.financials.renovationMax;
+                                } else { // Cogan Station
+                                    totalMin = cData.goPrice + cData.financials.renovationMin;
+                                    totalMax = cData.goPrice + cData.financials.renovationMax;
+                                }
+
+                                return `Total All-In: ${formatCurrency(totalMin)} - ${formatCurrency(totalMax)}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function createRiskChart() {
+        const ctx = document.getElementById('riskChart').getContext('2d');
+        const { williamsport, coganStation } = reportData;
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Flood Risk (%)', 'Wildfire Risk (%)', 'Heat Risk (%)'],
+                datasets: [{
+                    label: 'Williamsport',
+                    data: [williamsport.environmental.flood, williamsport.environmental.wildfire, williamsport.environmental.heat],
+                    fill: true,
+                    backgroundColor: 'rgba(52, 142, 204, 0.2)',
+                    borderColor: 'rgb(52, 142, 204)',
+                    pointBackgroundColor: 'rgb(52, 142, 204)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(52, 142, 204)'
+                }, {
+                    label: 'Cogan Station',
+                    data: [coganStation.environmental.flood, coganStation.environmental.wildfire, coganStation.environmental.heat],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: false
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        pointLabels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '30-Year Environmental Risk (% of properties affected)',
+                        font: { size: 16 }
+                    }
+                }
+            }
+        });
+    }
+
+    populateContent();
+    createMarketChart();
+    createFinancialsChart();
+    createRiskChart();
+});
+</script>
+</body>
+</html>
+
