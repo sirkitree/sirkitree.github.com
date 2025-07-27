@@ -934,38 +934,39 @@ footer {
 
 /* Archive Page Styling */
 #home .posts {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
+  list-style: none !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  margin: 1rem 0 !important;
 }
 
 #home .posts li {
-  margin: 0;
-  padding: 0;
-  border: none;
-  display: inline-block;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  display: inline-block !important;
 }
 
 #home .posts li a {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
+  display: inline-block !important;
+  padding: 0.25rem 0.75rem !important;
   background-color: var(--code-bg) !important;
-  border-radius: 1rem;
-  font-size: 0.875rem;
-  text-decoration: none;
-  color: var(--text-color);
-  transition: all var(--transition-speed);
+  border-radius: 1rem !important;
+  font-size: 0.875rem !important;
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  transition: all var(--transition-speed) !important;
 }
 
 #home .posts li a:hover {
   background-color: var(--link-color) !important;
-  color: var(--bg-color);
-  transform: translateY(-2px);
+  color: var(--bg-color) !important;
+  transform: translateY(-2px) !important;
+  text-decoration: none !important;
 }
 
 #home .posts li span {
-  display: none;
+  display: none !important;
 }
