@@ -857,3 +857,33 @@ footer {
     position: relative;
   }
 }
+
+/* Tags Styling */
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.tag {
+  color: var(--muted-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color var(--transition-speed);
+}
+
+.tag:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.tag-separator {
+  color: var(--muted-text);
+  margin: 0 0.125rem;
+}
+
+.post-meta .tags,
+.meta .tags {
+  margin-left: 0.25rem;
+}
