@@ -4,6 +4,9 @@ title : "Jerad goes to New York"
 created : 1185751629
 permalink : /blog/jerad-goes-new-york
 category : "blog"
+tags:
+  - personal
+  - travel
 ---
 So it's been a long time since I've posted, and there has been so much going on in my life. I've moved to New York City to work with Sony BMG making websites for rockstars. I gotta say, it's been a HUGE change for me. My calm, collected country life where I lived all alone in the woods with the ability to go camping in my back yard was replaced by the hustle and bustle of New York City, staying in a studio apartment next to the Empire State building.
 
