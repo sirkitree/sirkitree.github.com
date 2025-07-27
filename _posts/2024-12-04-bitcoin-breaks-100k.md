@@ -5,7 +5,7 @@ date: '2024-12-04 09:30'
 comments: true
 published: true
 tags:
-  - technology
+  - tech
 ---
 
 Hot damn, it finally happened! 🚀 Bitcoin just smashed through the psychological barrier of $100,000, hitting an astounding $103,000. For those of us who've been in the crypto space for years, this isn't just another price milestone – it's the culmination of a vision that many thought impossible when Bitcoin was dismissed as just "magic internet money."
