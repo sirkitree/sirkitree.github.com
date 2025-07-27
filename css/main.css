@@ -5,6 +5,7 @@
   --meta-color: #666666;
   --link-color: #e31818;
   --code-bg: #f8f8f8;
+  --code-text: #333333;
   --border-color: #eee;
   --header-bg: rgba(255, 255, 255, 0.8);
   --footer-bg: #f6f8fa;
@@ -24,6 +25,7 @@
   --meta-color: #b0b0b0;
   --link-color: #ff6b6b;
   --code-bg: #000000;
+  --code-text: #ffffff;
   --border-color: #333333;
   --header-bg: rgba(28, 28, 28, 0.8);
   --footer-bg: #2d2d2d;
@@ -403,6 +405,7 @@ nav a:focus {
 /* Code blocks */
 pre, code {
   background: var(--code-bg);
+  color: var(--code-text);
   border-radius: 8px;
   font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 0.95em;
