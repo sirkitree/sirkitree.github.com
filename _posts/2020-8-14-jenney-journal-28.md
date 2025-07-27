@@ -4,7 +4,9 @@ title: 'Jenney Journal, part 28'
 date: '2020-08-14 05:00'
 comments: true
 published: true
-category: 'blog, jenney'
+tags:
+  - blog
+  - jenney
 ---
 I believe that Jenney will be healed, fully and completely, and by the grace of God will see her children grow and meet her grandchildren. 
 

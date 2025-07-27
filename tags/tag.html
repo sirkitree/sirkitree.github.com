@@ -1,0 +1,87 @@
+---
+layout: default
+title: Tag
+permalink: /tags/tag/
+---
+
+<h1 id="tag-title">Posts tagged with ""</h1>
+
+<div class="posts" id="tag-posts">
+  <!-- Posts will be loaded by JavaScript -->
+</div>
+
+<div class="all-tags mt-5">
+  <h3>Browse all tags:</h3>
+  <div class="tag-cloud">
+    {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+    {% for tag in all_tags %}
+      {% if tag != "" %}
+        <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag me-2 mb-2">{{ tag }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+// Get tag from URL parameter
+const urlParams = new URLSearchParams(window.location.search);
+const tag = urlParams.get('tag');
+
+if (tag) {
+  // Update page title
+  document.getElementById('tag-title').textContent = `Posts tagged with "${tag}"`;
+  document.title = `Posts tagged with "${tag}" | {{ site.title }}`;
+  
+  // Posts data
+  const posts = [
+    {% for post in site.posts %}
+    {
+      title: {{ post.title | jsonify }},
+      url: {{ post.url | jsonify }},
+      date: {{ post.date | date: "%B %-d, %Y" | jsonify }},
+      excerpt: {{ post.excerpt | strip_html | truncatewords: 30 | jsonify }},
+      tags: {{ post.tags | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+  
+  // Filter posts by tag
+  const tagPosts = posts.filter(post => post.tags && post.tags.includes(tag));
+  
+  // Display posts
+  const postsContainer = document.getElementById('tag-posts');
+  
+  if (tagPosts.length === 0) {
+    postsContainer.innerHTML = '<p>No posts found with this tag.</p>';
+  } else {
+    tagPosts.forEach(post => {
+      const article = document.createElement('article');
+      article.className = 'post';
+      
+      const tagsHtml = post.tags.map(t => 
+        `<a href="/tags/tag/?tag=${encodeURIComponent(t)}" class="tag">${t}</a>`
+      ).join('<span class="tag-separator">, </span>');
+      
+      article.innerHTML = `
+        <h2 class="post-title">
+          <a href="${post.url}">${post.title}</a>
+        </h2>
+        <div class="post-meta">
+          <time>${post.date}</time>
+          <span class="ms-2 me-2">•</span>
+          <span class="tags">${tagsHtml}</span>
+        </div>
+        <div class="post-content">
+          ${post.excerpt}
+          <a href="${post.url}" class="read-more">read on</a>
+        </div>
+      `;
+      
+      postsContainer.appendChild(article);
+    });
+  }
+} else {
+  // Redirect to tags index if no tag specified
+  window.location.href = '/tags/';
+}
+</script>

@@ -4,7 +4,9 @@ title: Mandala Portfolio
 date: "2020-04-22 05:00"
 comments: true
 published: true
-category: blog, mandalas
+tags:
+  - blog
+  - mandalas
 ---
 This is a portfolio of the mandalas I create.
 

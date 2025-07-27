@@ -10,14 +10,10 @@ layout: default
         <span class="ms-2 me-2">•</span>
         <span class="tags">
           {% for tag in page.tags %}
-            <a href="/tags/{{ tag | slugify }}.html" class="tag">{{ tag }}</a>
+            <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag">{{ tag }}</a>
             {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
           {% endfor %}
         </span>
-      {% endif %}
-      {% if page.category %}
-        <span class="ms-2 me-2">•</span>
-        <span class="category">{{ page.category }}</span>
       {% endif %}
     </div>
   </header>
@@ -26,21 +22,19 @@ layout: default
     {{ content }}
   </section>  
   
-  {% if page.category %}
+  {% if page.tags %}
   <section class="related-posts mt-5">
     <h2>Related Posts</h2>
     <div class="related-posts-grid">
-      {% assign tags = page.category | split: ", " %}
       {% assign max_related = 3 %}
       {% assign related_count = 0 %}
       
       {% for post in site.posts %}
-        {% if post.url != page.url %}
+        {% if post.url != page.url and post.tags %}
           {% assign has_common_tag = false %}
-          {% assign post_tags = post.category | split: ", " %}
           
-          {% for tag in tags %}
-            {% if post_tags contains tag %}
+          {% for tag in page.tags %}
+            {% if post.tags contains tag %}
               {% assign has_common_tag = true %}
               {% break %}
             {% endif %}
@@ -51,9 +45,14 @@ layout: default
               <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
               <div class="meta">
                 <time>{{ post.date | date: "%B %d, %Y" }}</time>
-                {% if post.category %}
+                {% if post.tags %}
                   <span class="ms-2 me-2">•</span>
-                  <span class="category">{{ post.category }}</span>
+                  <span class="tags">
+                    {% for tag in post.tags %}
+                      <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag">{{ tag }}</a>
+                      {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
+                    {% endfor %}
+                  </span>
                 {% endif %}
               </div>
               {% if post.excerpt %}

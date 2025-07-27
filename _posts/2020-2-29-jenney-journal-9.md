@@ -4,7 +4,9 @@ title: Jenney Journal, part 9
 date: "2020-02-29 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 Saturday morning the Dr came to see us with a message of hope. The CT scan showed that Jenney's chest, abdomen, liver, bones, and lungs look good. They did find some subcutaneous nodules on her left shoulder and flank under the skin, above the muscle, which would be easy to biopsy with some local anesthesia to check and be sure. If these were benign, they saw no reason why we would need to do any chemical treatment, which also means she should be able to carry the baby to full term. 

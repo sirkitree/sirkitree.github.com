@@ -4,7 +4,9 @@ title: Jenney Journal, part 12
 date: "2020-03-03 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 > Feeling gratitude and not expressing it is like wrapping a present and not giving it. <br/>&mdash; William Arthur Ward
 

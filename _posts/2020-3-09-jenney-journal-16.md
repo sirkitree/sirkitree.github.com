@@ -4,7 +4,9 @@ title: Jenney Journal, part 16
 date: "2020-03-09 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 We had a really good weekend. Saturday we did pretty much nothing at all, just rested. Jenney took some naps and had a headache in the morning and another in the evening, small ones that some Tylenol took care of. But overall we just played with the kids. 
 

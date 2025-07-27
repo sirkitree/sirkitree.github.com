@@ -4,7 +4,9 @@ title: Jenney Journal, part 14
 date: "2020-03-05 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 At 3am they woke us to draw blood, and to prep us for one last CT scan of Jenney's head to compare it to the first one taken post-op. We woke up a while and by 3:15 they had a spot for Jenney in radiology. I stayed in the room, telling her to "smile pretty" for the camera as they wheeled her away. She was back in about 20 minutes and we tried to get back to sleep.
 

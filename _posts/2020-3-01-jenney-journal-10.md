@@ -4,7 +4,9 @@ title: Jenney Journal, part 10
 date: "2020-03-01 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 Sunday Jeanne messaged me to tell us Jenney woke up feeling pretty well. She'd gotten at least some sleep, and felt at least marginally better. The doctor came in around 7:15am while she was eating breakfast and said it would be ok to take more of the IV's out (she had like three of them in) and didn't need to be monitored as much for blood pressure (which was every hour so far). He said they would attempt to close the drain on Tuesday and see how she did. 

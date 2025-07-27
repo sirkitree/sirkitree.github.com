@@ -4,7 +4,9 @@ title: 'Jenney Journal, part 31'
 date: '2020-11-08 05:00'
 comments: true
 published: true
-category: 'blog, jenney'
+tags:
+  - blog
+  - jenney
 ---
 On Oct 21, Jenney started to get nauseous and diarrhea. She became very dehydrated quickly, and had a seizure. I called our oncologist who said we should call 911 and get her into the ER. We spent the day in the ER where they ran various tests and could find no real cause for the seizure. They started her on Kepra and sent us home. The diarrhea continued. Imodium had no effect. Stronger medications had no effect. I had to take her in every other day to get an IV for fluids, and her potassium keeps getting low. Finally, a week after having constant diarrhea (10-20 times per day) the oncologist said she needed to be admitted to the hospital.
 

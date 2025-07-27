@@ -4,7 +4,9 @@ title: Jenney Journal, part 21
 date: "2020-05-01 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 April was a blessed month. I've described it as the eye of the storm; peaceful and calm for us, yet with a storm wall on either side. The second wall is about to hit, yet during this time we've been able to recharge our batteries, to concentrate on those things that matter most; our family and our faith. God is with us, and no matter the outcome, all things work for good to those who love God.
 

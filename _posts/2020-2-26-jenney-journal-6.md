@@ -4,7 +4,9 @@ title: Jenney Journal, part 6
 date: "2020-02-26 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 They woke us at 5am to start prepping for the post-op MRI. There was some confusion as to where to go as there are two different MRI's in this hospital and they had to find someone who knew how to get to the outpatient MRI station, which does a lower resolution (non-contrast) MRI, deemed slightly safer for a baby. The OB has since explained there is a lot that is very safe for a baby, we just try not to do them needlessly, and everyone at the hospital gets on-edge when there's a pregnancy involved.

@@ -4,7 +4,9 @@ title: Jenney Journal, part 26
 date: "2020-06-08 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 Looking for words to describe the past couple of weeks; stressful, joyful at times, peaceful, some frustrations, a lot of gratitude. Overall Jenney continues to recover from her second craniotomy remarkably well. 
 

@@ -4,7 +4,9 @@ title: 'Jenney Journal, part 32'
 date: '2021-01-31 05:00'
 comments: true
 published: true
-category: 'blog, jenney'
+tags:
+  - blog
+  - jenney
 ---
 Things have been going really well as Jenney heals at home. She's back to doing everything she was always able to do, and our latest scans have shown no signs of cancer growth! Praise God!
 

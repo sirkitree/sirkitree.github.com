@@ -4,7 +4,9 @@ title: Jenney Journal, part 8
 date: "2020-02-28 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 Friday morning I awoke to the oncologist coming into the room, turning on the lights. I scrambled for my phone to take notes as he started talking.

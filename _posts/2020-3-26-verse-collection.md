@@ -4,7 +4,9 @@ title: Verse Collection
 date: "2020-03-26 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 This is a collection of Bible verses that are helping us through these times, providing encouragement, reducing anxiety, and building our faith. I wrote in my last entry that I was looking for some, and I've had so, so many shared with me that have helped us over the last week. I've put them all here for you and others to read and share alike, that you too may be encouraged, find strength, and hopefully help you get through these troubled times.
 

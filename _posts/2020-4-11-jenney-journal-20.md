@@ -4,7 +4,9 @@ title: Jenney Journal, part 20
 date: "2020-04-11 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 The last couple of weeks seem to have flown by. Still some ups and downs, some hard days, but most full of blessed peace. Here's some highlights.
 

@@ -4,7 +4,9 @@ title: Jenney Journal, part 5
 date: "2020-02-25 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 After a quick cup of coffee and a hug from Jim, I drove to the hospital to be with Jenney before the surgery. When I got to the room, curled up in the hospital bed with her and we held each other and cried. At 6am they came in to prep for surgery, then wheeled her down to the pre-surgery area. I remember an area where there were lots of lights and alcoves. In one of the alcoves they placed us and put a monitor on the baby to get a read on his heartbeat. The quick pulse was comforting to our ears. Jenney mentioned double vision, and they noted it during another eval.

@@ -4,7 +4,8 @@ title: 'The No-BS Guide to AI-Powered Coding Assistants'
 date: '2024-11-27 14:00'
 comments: true
 published: true
-category: 'tech'
+tags:
+  - tech
 permalink: /blog/ai-coding-assistants
 ---
 

@@ -4,7 +4,9 @@ title: Jenney Journal, part 23
 date: "2020-05-09 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 This has been one of the hardest weeks yet. Jenney continues to have memory issues, and trouble controlling herself. Sometimes she won't take her meds, but the steroids are at least helping. She's confused a good bit of the time, and she needs help with personal care. She can shower on her own, though at one point she turned off the water before conditioning her hair. Small things. Yet last night she read a whole book to the boys for bedtime, and prayed with them.
 

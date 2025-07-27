@@ -4,7 +4,9 @@ title: Jenney Journal, part 3
 date: "2020-02-23 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 Jenney fell again while I was helping her to the bathroom, and I caught her. She had been having a headache and thought she needed to pee, but once it subsided realized she in fact did not. I took her back to bed and didn't give her the option this time. We were going to the ER.

@@ -4,7 +4,9 @@ title: Pentecost
 date: '2020-06-02 05:00'
 comments: true
 published: true
-category: 'blog, poem'
+tags:
+  - blog
+  - poem
 ---
 ```
 Dead and gone are the aspirations of self

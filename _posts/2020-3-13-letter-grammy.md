@@ -4,7 +4,8 @@ title: A letter to my grandmother
 date: "2020-03-16 05:00"
 comments: true
 published: true
-category: blog
+tags:
+  - blog
 ---
 Last night, after another panic attack, I cracked my bible for the first time in what feels like a very long time. I looked up the Lord's prayer. After reading it I noticed on the very same page, "The cure for anxiety". Matthew 6 and 7 have so much wisdom in such a relatively small part of the bible. Matthew 6:25 talks about the birds of the air and how we are worth more. "So do not worry about tomorrow; for tomorrow will care for itself. Each day has enough trouble of its own."
 
