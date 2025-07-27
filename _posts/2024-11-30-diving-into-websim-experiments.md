@@ -5,7 +5,7 @@ date: '2024-11-30 09:00'
 comments: true
 published: true
 tags:
-  - technology
+  - tech
 permalink: /blog/diving-into-websim-experiments
 ---
 
