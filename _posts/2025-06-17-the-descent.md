@@ -4,8 +4,10 @@ title: "The Descent"
 date: 2025-06-17
 permalink: /short-stories/the-descent
 tags:
-  - story
-tags: ["fiction", "horror", "vampire", "short-story"]
+  - fiction
+  - horror
+  - vampire
+  - short-story
 ---
 
 *Based on a [dream from January 2010](/blog/vampire-dream)*

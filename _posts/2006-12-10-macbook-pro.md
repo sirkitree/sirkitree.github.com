@@ -4,6 +4,8 @@ title : "Macbook Pro"
 created : 1165777710
 permalink : /blog/macbook-pro
 category : "blog"
+tags:
+  - creative-writing
 ---
 <img src="/files/medium_macbookpro.jpg" title="macbook pro" style="float:right" />I purchased a new Macbook Pro, 15" with 1G RAM and 256VRAM ATI Graphics and it is incredible! Not only does everything look so much better then windoze, but the operating system is just so much better. 
 

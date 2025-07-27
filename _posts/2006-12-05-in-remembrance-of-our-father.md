@@ -4,6 +4,9 @@ title : "In remembrance of our father"
 created : 1165376504
 permalink : /blog/remembrance-our-father
 category : "blog"
+tags:
+  - personal
+  - creative-writing
 ---
 So my brothers and I have wanted to get a tattoo for a while now that is in remembrance of our father who died one month ago today. Here is a preliminary sketch I did in Illustrator. We're going to have this the basis of the tattoo and have the artist get more creative with it, personalize each one.
 

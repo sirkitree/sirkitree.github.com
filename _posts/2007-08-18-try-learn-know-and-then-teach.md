@@ -4,6 +4,12 @@ title : "Try, Learn, Know and then Teach"
 created : 1187418214
 permalink : /blog/try-learn-know-and-then-teach
 category : "blog"
+tags:
+  - tech
+  - personal
+  - travel
+  - drupal
+  - tutorial
 ---
 I make cool stuff at work. I learn something every day that makes me excited and in awe that I get paid to learn, and use, while being taught by the most <a href="http://lullabot.com">enigmatic geniuses</a> that I could even call friend, after a month or so of work comradere. Darkness turns to light with the slightest of gestures from the hands of such as these, that one might stop... and wonders how they, <em>themselves</em> could become something of such magnitude... if only they try, learn, know and then teach. 
 <h3>Try, Learn, Know and then Teach.</h3>

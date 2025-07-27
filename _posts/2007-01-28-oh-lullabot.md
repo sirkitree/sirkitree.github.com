@@ -4,6 +4,12 @@ title : "oh Lullabot"
 created : 1170006307
 permalink : /blog/oh-lullabot
 category : "blog"
+tags:
+  - tech
+  - personal
+  - travel
+  - drupal
+  - tutorial
 ---
 <img src="/sites/jeradbitner.com/files/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" />
 <h3>The family side</h3>
