@@ -818,10 +818,29 @@ footer {
     font-weight: 500;
     color: var(--nav-link-color);
     text-decoration: none;
-    padding: 0;
+    padding: 0.5rem 1rem;
     width: 100%;
     text-align: left;
     display: block;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .dropdown-toggle:hover,
+  .dropdown-toggle:focus {
+    background: var(--code-bg);
+    color: var(--link-color);
+  }
+
+  .dropdown-toggle::after {
+    content: "▼";
+    float: right;
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+  }
+
+  .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
   }
 
   .dropdown-menu {
@@ -833,6 +852,11 @@ footer {
     border-left: 2px solid var(--border-color);
     background: var(--bg-color);
     padding: 0 0 0 1rem;
+    display: none;
+  }
+
+  .dropdown-menu.show {
+    display: block;
   }
 
   .dropdown-item {
