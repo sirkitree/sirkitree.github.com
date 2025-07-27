@@ -139,13 +139,15 @@
           }));
         });
 
-        // Initialize Bootstrap dropdowns
-        const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
-        const dropdownList = [...dropdownElementList].map(dropdownToggleEl => {
-          return new bootstrap.Dropdown(dropdownToggleEl, {
-            autoClose: 'outside'
+        // Initialize Bootstrap dropdowns only on desktop
+        if (window.innerWidth > 768) {
+          const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+          const dropdownList = [...dropdownElementList].map(dropdownToggleEl => {
+            return new bootstrap.Dropdown(dropdownToggleEl, {
+              autoClose: 'outside'
+            });
           });
-        });
+        }
 
         // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
@@ -167,6 +169,16 @@
 
         // Handle navigation clicks
         nav.addEventListener('click', (e) => {
+          // Handle dropdown toggle on mobile
+          if (e.target.classList.contains('dropdown-toggle')) {
+            e.preventDefault();
+            const dropdownMenu = e.target.nextElementSibling;
+            dropdownMenu.classList.toggle('show');
+            e.target.setAttribute('aria-expanded', 
+              dropdownMenu.classList.contains('show') ? 'true' : 'false');
+            return;
+          }
+          
           // Only close mobile menu for regular links
           if (e.target.tagName === 'A' && 
               !e.target.classList.contains('dropdown-toggle') && 
