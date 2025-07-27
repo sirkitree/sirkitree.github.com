@@ -2,7 +2,7 @@
 layout: post
 title: "love.b[e|u]ty"
 date: 2025-07-26
-tags: [poetry, code-poetry, love, experimental]
+tags: [poem, code-poetry, love, experimental]
 ---
 
 ```
