@@ -4,7 +4,7 @@
   --text-color: #333333;
   --meta-color: #666666;
   --link-color: #e31818;
-  --code-bg: #f6f8fa;
+  --code-bg: #f8f8f8;
   --border-color: #eee;
   --header-bg: rgba(255, 255, 255, 0.8);
   --footer-bg: #f6f8fa;
@@ -23,7 +23,7 @@
   --text-color: #ffffff;
   --meta-color: #b0b0b0;
   --link-color: #ff6b6b;
-  --code-bg: #2d2d2d;
+  --code-bg: #000000;
   --border-color: #333333;
   --header-bg: rgba(28, 28, 28, 0.8);
   --footer-bg: #2d2d2d;
