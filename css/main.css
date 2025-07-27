@@ -495,7 +495,7 @@ footer {
 .pagination a,
 .pagination span {
   padding: 0.25rem 0.75rem;
-  background-color: var(--code-bg);
+  background-color: var(--code-bg) !important;
   border-radius: 1rem;
   color: var(--text-color);
   text-decoration: none;
@@ -505,13 +505,13 @@ footer {
 }
 
 .pagination a:hover {
-  background-color: var(--link-color);
+  background-color: var(--link-color) !important;
   color: var(--bg-color);
   transform: translateY(-2px);
 }
 
 .pagination .current {
-  background-color: var(--link-color);
+  background-color: var(--link-color) !important;
   color: var(--bg-color);
 }
 
@@ -927,4 +927,42 @@ footer {
 
 .post-list li:last-child {
   border-bottom: none;
+}
+
+/* Archive Page Styling */
+#home .posts {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+#home .posts li {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: inline-block;
+}
+
+#home .posts li a {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--code-bg) !important;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: all var(--transition-speed);
+}
+
+#home .posts li a:hover {
+  background-color: var(--link-color) !important;
+  color: var(--bg-color);
+  transform: translateY(-2px);
+}
+
+#home .posts li span {
+  display: none;
 }
