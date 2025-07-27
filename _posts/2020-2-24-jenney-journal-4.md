@@ -4,7 +4,9 @@ title: Jenney Journal, part 4
 date: "2020-02-24 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 In the morning the Neurologist, Dr. Hammer came to see us. She said she had referred us to Dr. Goldman as she would be out later in the week and wanted to ensure we had continuity of care. She answered our questions, showed us the MRI, explained how an operation might proceed, assured us that this was a very good time for the pregnancy for an operation, and assured us that the chances of success for where the tumor was located were very good. Dr. Goldman would be in to see us later that morning to evaluate Jenney and would most likely want to operate as soon as possible.

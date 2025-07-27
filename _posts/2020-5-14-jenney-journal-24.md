@@ -4,7 +4,9 @@ title: Jenney Journal, part 24
 date: "2020-05-14 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 Jenney's second craniotomy is complete. The operation took over 7 hours. There was some complications in that they lost a piece of cotton during the operation and had to open her back up to search for it. They spent over 2 hours just doing that. It never showed on the X-ray and they never found it, so we hope and pray that it's not still inside. If it is, there will be complications. But so far, Jenney has woken up and is speaking in full sentences. She's ok. Praise the Lord!
 

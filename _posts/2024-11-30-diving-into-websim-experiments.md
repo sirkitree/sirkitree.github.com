@@ -4,7 +4,8 @@ title: 'Diving Into WebSim.ai Experiments: Where Math Meets Art'
 date: '2024-11-30 09:00'
 comments: true
 published: true
-category: 'technology'
+tags:
+  - technology
 permalink: /blog/diving-into-websim-experiments
 ---
 

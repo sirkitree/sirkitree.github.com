@@ -887,3 +887,43 @@ footer {
 .meta .tags {
   margin-left: 0.25rem;
 }
+
+/* Tag Cloud Styling */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tag-cloud .tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--code-bg);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--muted-text);
+  transition: all var(--transition-speed);
+}
+
+.tag-cloud .tag:hover {
+  background-color: var(--link-color);
+  color: var(--bg-color);
+  transform: translateY(-2px);
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.post-list li:last-child {
+  border-bottom: none;
+}

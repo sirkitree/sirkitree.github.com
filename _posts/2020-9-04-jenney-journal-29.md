@@ -4,7 +4,9 @@ title: 'Jenney Journal, part 29'
 date: '2020-09-04 05:00'
 comments: true
 published: true
-category: 'blog, jenney'
+tags:
+  - blog
+  - jenney
 ---
 It's been a full three weeks since I last wrote. In that time Jenney was
 - in the hospital for a total of 10 days,

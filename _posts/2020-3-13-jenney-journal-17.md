@@ -4,7 +4,9 @@ title: Jenney Journal, part 17
 date: "2020-03-13 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 It's been a long week. We've had another share of ups and downs, but mostly ups I think. Lots of appointments, some disappointments, but overall we're feeling optimistic having such amazing support from our community, the new doctors we've met, and Jenney's returning strength.
 

@@ -4,7 +4,8 @@ title: 'Web Development in the AI Era: A Paradigm Shift'
 date: '2024-11-26 14:00'
 comments: true
 published: true
-category: 'technology'
+tags:
+  - technology
 ---
 
 The landscape of web development is undergoing a profound transformation, one that reminds me of the early days of responsive design or the shift to mobile-first thinking. But this time, the change is more fundamental - AI isn't just another tool in our toolkit, it's reshaping how we approach the entire development process.

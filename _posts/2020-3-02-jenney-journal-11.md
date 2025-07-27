@@ -4,7 +4,9 @@ title: Jenney Journal, part 11
 date: "2020-03-02 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 Jenney awoke at 2:30am with a headache. Tylenol, then tried to get back to sleep. At 5:42 she still had a headache and asked for more meds. She got her typical meds and some more Tylenol at 5:55.

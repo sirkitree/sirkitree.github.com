@@ -1,26 +1,36 @@
 ---
 layout: default
-title: Tags
+title: All Tags
 ---
 
 <h1>All Tags</h1>
 
-<div class="tag-cloud">
-  {% for tag in site.tags %}
-    <a href="/tags/{{ tag[0] }}" class="tag">{{ tag[0] }} ({{ tag[1].size }})</a>
+<div class="tag-cloud mb-5">
+  {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+  {% for tag in all_tags %}
+    {% if tag != "" %}
+      {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
+      <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag me-2 mb-2">
+        {{ tag }} ({{ tag_posts.size }})
+      </a>
+    {% endif %}
   {% endfor %}
 </div>
 
 <div class="tag-list">
-  {% for tag in site.tags %}
-    <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
-    <ul>
-      {% for post in tag[1] %}
-        <li>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-          <span class="date">({{ post.date | date: "%B %-d, %Y" }})</span>
-        </li>
-      {% endfor %}
-    </ul>
+  {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+  {% for tag in all_tags %}
+    {% if tag != "" %}
+      <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
+      <ul class="post-list">
+        {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
+        {% for post in tag_posts %}
+          <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <span class="date ms-2">({{ post.date | date: "%B %-d, %Y" }})</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   {% endfor %}
-</div> 
+</div>

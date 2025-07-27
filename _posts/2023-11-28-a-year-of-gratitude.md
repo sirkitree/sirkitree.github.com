@@ -4,7 +4,8 @@ title: 'A Year of Gratitude'
 date: '2024-11-29 09:00'
 comments: true
 published: true
-category: 'blog'
+tags:
+  - blog
 permalink: /blog/year-of-gratitude-2024
 ---
 

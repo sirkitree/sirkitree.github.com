@@ -4,7 +4,9 @@ title: Jenney Journal, part 13
 date: "2020-03-04 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 Jeanne reported in to me in the morning. Around 7:30am the neurologist came in and said Jenney was doing better than he anticipated with the drain clamped. One more day and then it most likely can come out. Woohoo! He said he was meeting with oncology and OB the following day to discuss next steps. Jenney still had a small headache and double vision from the trauma of the migraines, but she was doing better than expected as he didn't think her body was going to tolerate the drain being clamped yet.

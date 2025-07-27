@@ -4,7 +4,9 @@ title: Jenney Journal, Jenney's Team
 date: "2020-03-12 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 Jenney's support team of doctors, resources, and ways you can help.
 

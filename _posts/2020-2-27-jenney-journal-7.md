@@ -4,7 +4,9 @@ title: Jenney Journal, part 7
 date: "2020-02-27 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 This was a hard, terrible day.

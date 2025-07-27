@@ -4,7 +4,9 @@ title: 'Jenney Journal, part 30'
 date: '2020-10-15 05:00'
 comments: true
 published: true
-category: 'blog, jenney'
+tags:
+  - blog
+  - jenney
 ---
 Jenney was diagnosed in February of 2020 with stage 4 metastatic melanoma which had spread to her brain. The survival rate of stage 4 metastatic melanoma is about 25%. After 2 brain surgeries, a C-section operation to deliver our son Marcus, an extensive recovery from encephalitis caused by the immune therapy, and hives from a reaction to an antibiotic... there are now no signs of the cancer. We had a Pet scan and an MRI of her brain and they found no signs of the cancer or growth. The visible lumps under her skin in 5 different places are gone. The spot on her lung is gone. The spots in her brain are gone. There is still scar tissue from the surgeries in her brain but they show no signs of growth. 9 months after what could have been a death sentence, Jenney is healed!
 

@@ -4,7 +4,9 @@ title: Jenney Journal, part 19
 date: "2020-03-27 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 Since my last post I've had a lot of encouragement from so many people sharing verses with us. I'm compiling a list of them and will share them in their own post. I think the biggest help has been this:

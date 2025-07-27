@@ -3,7 +3,8 @@ layout: post
 title: "The Descent"
 date: 2025-06-17
 permalink: /short-stories/the-descent
-category: "story"
+tags:
+  - story
 tags: ["fiction", "horror", "vampire", "short-story"]
 ---
 

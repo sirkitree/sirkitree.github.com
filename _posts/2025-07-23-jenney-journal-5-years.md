@@ -4,7 +4,9 @@ title: 'Jenney Journal: Five Years Cancer Free!'
 date: '2025-07-23 05:00'
 comments: true
 published: true
-category: 'blog, jenney'
+tags:
+  - blog
+  - jenney
 ---
 Five years. I can hardly believe I'm writing these words. Five years since that terrifying February when our world turned upside down. Five years since brain surgery, since watching Jenney relearn our children's names, since those endless nights in the ICU. And we just received the news we've been praying for – Jenney is officially cancer free, no more scans needed, just annual visits. Praise God!
 

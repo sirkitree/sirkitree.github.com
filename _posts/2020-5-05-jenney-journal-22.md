@@ -4,7 +4,9 @@ title: Jenney Journal, part 22
 date: "2020-05-05 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 Praise the Lord, all went well with the delivery and Marcus Ezequiel was born May 4th at 12:19pm. He weighed 3lbs 12oz and is 42.3cm or between 16.5 - 16.75in. He is strong and breathing on his own. They have a CPAP machine on him but have already lowered that to room oxygen and it's only assisting him slightly. They plan to take it off today. He's moving, crying, and being feisty already (almost pulled out his IV!). He's a fighter, and he's so so tiny. You should have seen him throw a fit when they took his temperature with a thermometer under his arm!
 

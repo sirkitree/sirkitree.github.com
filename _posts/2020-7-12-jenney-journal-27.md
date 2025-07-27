@@ -4,7 +4,9 @@ title: Jenney Journal, part 27
 date: "2020-07-12 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 This past month has been a blessing. It reminds me of April which was a calm in the eye of the storm as Jenney recovered from her first brain surgery. We knew there would be the other side of the storm to go through, knowing Marcus was going to be born and that we would have to start treatments, but we didn't know it was going to be so extremely harrowing with the additional brain surgery. But this last half of June and first half of July have been like April, with not only Jenney recovering again, but also with Marcus growing so big and so strong.
 

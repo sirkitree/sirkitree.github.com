@@ -4,7 +4,9 @@ title: Jenney Journal, part 25
 date: "2020-05-20 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 Yesterday was a joyous day! For the first time in over 2 weeks my family was all reunited under one roof again. God is good, all the time.
 

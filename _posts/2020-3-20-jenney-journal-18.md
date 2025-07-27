@@ -4,7 +4,9 @@ title: Jenney Journal, part 18
 date: "2020-03-20 05:00"
 comments: true
 published: true
-category: blog, jenney
+tags:
+  - blog
+  - jenney
 ---
 
 This week we started learning how to homeschool. We're taking it easy at first, just a couple hours a day, mostly worksheets from teachers, and online exercises. 6 weeks off of school though means that we have to try to do something. The kids are handling it pretty well, they're resilient like that. They don't really understand the chaos the world is in, and that's ok... we'll keep them on the blue pill for as long as we can (that's a Matrix reference if you're not a Sci-fi fan).
