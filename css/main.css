@@ -805,69 +805,6 @@ footer {
     border-radius: 8px;
   }
 
-  .dropdown {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  .dropdown-toggle {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--nav-link-color);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    text-align: left;
-    display: block;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-
-  .dropdown-toggle:hover,
-  .dropdown-toggle:focus {
-    background: var(--code-bg);
-    color: var(--link-color);
-  }
-
-  .dropdown-toggle::after {
-    content: "▼";
-    float: right;
-    font-size: 0.8rem;
-    transition: transform 0.3s;
-  }
-
-  .dropdown-toggle[aria-expanded="true"]::after {
-    transform: rotate(180deg);
-  }
-
-  .dropdown-menu {
-    position: static;
-    width: 100%;
-    max-width: none;
-    margin: 0.5rem 0 0 1rem;
-    border: none;
-    border-left: 2px solid var(--border-color);
-    background: var(--bg-color);
-    padding: 0 0 0 1rem;
-    display: none;
-  }
-
-  .dropdown-menu.show {
-    display: block;
-  }
-
-  .dropdown-item {
-    padding: 0.5rem 0;
-    background: var(--bg-color);
-  }
-
-  .dropdown-item:hover,
-  .dropdown-item:focus {
-    background: var(--code-bg);
-  }
 
   .hamburger.open span:first-child {
     transform: rotate(45deg);

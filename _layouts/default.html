@@ -59,22 +59,10 @@
           
           <nav>
             <a href="/">Home</a>
-            <div class="dropdown">
-              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Jenney Journals
-              </a>
-              <ul class="dropdown-menu">
-                {% assign posts = site.posts | reverse %}
-                {% for post in posts %}
-                  {% assign tags = post.category | split: ", " %}
-                  {% for tag in tags %}
-                    {% if tag == 'jenney' %}
-                      <li><a class="dropdown-item" href="{{ post.url }}">{{ post.title }}</a></li>
-                    {% endif %}
-                  {% endfor %}
-                {% endfor %}
-              </ul>
-            </div>
+            {% assign jenney_posts = site.posts | where_exp: "post", "post.category contains 'jenney'" | reverse %}
+            {% for post in jenney_posts %}
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            {% endfor %}
             <a href="/websim">WebSim</a>
             <a href="/archive">Archive</a>
             <button id="theme-toggle" aria-label="Toggle dark mode">
@@ -139,17 +127,7 @@
           }));
         });
 
-        // Initialize Bootstrap dropdowns only on desktop
-        if (window.innerWidth > 768) {
-          const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
-          const dropdownList = [...dropdownElementList].map(dropdownToggleEl => {
-            return new bootstrap.Dropdown(dropdownToggleEl, {
-              autoClose: 'outside'
-            });
-          });
-        }
-
-        // Hamburger menu
+        // Simple hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const nav = document.querySelector('nav');
         
@@ -160,29 +138,15 @@
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-          if (!hamburger.contains(e.target) && 
-              !nav.contains(e.target)) {
+          if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
             hamburger.classList.remove('open');
             nav.classList.remove('open');
           }
         });
 
-        // Handle navigation clicks
+        // Close menu when clicking any link
         nav.addEventListener('click', (e) => {
-          // Handle dropdown toggle on mobile
-          if (e.target.classList.contains('dropdown-toggle')) {
-            e.preventDefault();
-            const dropdownMenu = e.target.nextElementSibling;
-            dropdownMenu.classList.toggle('show');
-            e.target.setAttribute('aria-expanded', 
-              dropdownMenu.classList.contains('show') ? 'true' : 'false');
-            return;
-          }
-          
-          // Only close mobile menu for regular links
-          if (e.target.tagName === 'A' && 
-              !e.target.classList.contains('dropdown-toggle') && 
-              !e.target.closest('.dropdown-menu')) {
+          if (e.target.tagName === 'A') {
             hamburger.classList.remove('open');
             nav.classList.remove('open');
           }
