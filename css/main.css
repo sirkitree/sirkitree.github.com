@@ -487,31 +487,32 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   margin: 3rem 0;
   flex-wrap: wrap;
 }
 
 .pagination a,
 .pagination span {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--code-bg);
+  border-radius: 1rem;
   color: var(--text-color);
   text-decoration: none;
   transition: all var(--transition-speed);
+  border: none;
+  font-size: 0.875rem;
 }
 
 .pagination a:hover {
-  background: var(--code-bg);
-  color: var(--link-color);
-  border-color: var(--link-color);
+  background-color: var(--link-color);
+  color: var(--bg-color);
+  transform: translateY(-2px);
 }
 
 .pagination .current {
-  background: var(--link-color);
+  background-color: var(--link-color);
   color: var(--bg-color);
-  border-color: var(--link-color);
 }
 
 .pagination .disabled {
