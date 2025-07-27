@@ -23,8 +23,13 @@ title: Jerad Bitner
         {% endif %}
       </div>
       <div class="post-content">
-        {{ post.excerpt }} 
-        <a href="{{ post.url }}" class="read-more">read on</a>
+        {% assign content_start = post.content | strip | truncate: 10, "" %}
+        {% if content_start contains '```' or content_start contains '<pre>' or post.content contains '    ' %}
+          {{ post.content }}
+        {% else %}
+          {{ post.excerpt }} 
+          <a href="{{ post.url }}" class="read-more">read on</a>
+        {% endif %}
       </div>
     </article>
   {% endfor %}
