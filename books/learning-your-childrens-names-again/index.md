@@ -35,9 +35,10 @@ permalink: /books/learning-your-childrens-names-again/
 
 <section class="journals">
   <h2>From the Journals</h2>
-  {% assign jenney_posts = site.posts | reverse %}
-  {% assign jenney_posts = jenney_posts | where_exp: "p", "p.category contains 'jenney'" %}
-  {% assign jenney_posts = jenney_posts | slice: 0, 6 %}
+  {% assign jenney_by_category = site.posts | where_exp: "p", "p.category and p.category contains 'jenney'" %}
+  {% assign jenney_by_tag = site.posts | where_exp: "p", "p.tags and p.tags contains 'jenney'" %}
+  {% assign jenney_posts = jenney_by_category | concat: jenney_by_tag %}
+  {% assign jenney_posts = jenney_posts | uniq | sort: 'date' | reverse | slice: 0, 6 %}
   <div class="journal-grid">
     {% for post in jenney_posts %}
       <article class="journal-card">
