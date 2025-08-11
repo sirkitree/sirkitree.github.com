@@ -1,0 +1,138 @@
+// ESM three.js module with OrbitControls via CDN
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/controls/OrbitControls.js';
+
+function clampDevicePixelRatio(maxRatio) {
+  const ratio = Math.min(window.devicePixelRatio || 1, maxRatio);
+  return isFinite(ratio) ? ratio : 1;
+}
+
+function createBookMesh({ frontUrl, backUrl, spineUrl }) {
+  // Book dimensions in arbitrary units
+  const width = 1.0; // cover width
+  const height = 1.5; // cover height
+  const depth = 0.08; // thickness
+
+  const geometry = new THREE.BoxGeometry(width, height, depth);
+
+  const loader = new THREE.TextureLoader();
+  const front = frontUrl ? new THREE.MeshStandardMaterial({ map: loader.load(frontUrl) }) : new THREE.MeshStandardMaterial({ color: 0x334155 });
+  const back = backUrl ? new THREE.MeshStandardMaterial({ map: loader.load(backUrl) }) : new THREE.MeshStandardMaterial({ color: 0x1f2937 });
+  const spine = spineUrl ? new THREE.MeshStandardMaterial({ map: loader.load(spineUrl) }) : new THREE.MeshStandardMaterial({ color: 0x111827 });
+  const pages = new THREE.MeshStandardMaterial({ color: 0xe5e7eb, roughness: 0.9, metalness: 0.0 });
+
+  // Box material order: [px, nx, py, ny, pz, nz]
+  // Map: right, left, top, bottom, front, back
+  const materials = [
+    spine, // px (right) — spine
+    pages, // nx (left) — page edge
+    pages, // py (top)
+    pages, // ny (bottom)
+    front, // pz (front cover)
+    back   // nz (back cover)
+  ];
+
+  const mesh = new THREE.Mesh(geometry, materials);
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  return mesh;
+}
+
+function init() {
+  const container = document.getElementById('book3d');
+  if (!container) return;
+
+  // Progressive enhancement: bail out on missing WebGL
+  const gl = document.createElement('canvas').getContext('webgl2') || document.createElement('canvas').getContext('webgl');
+  if (!gl) {
+    container.innerHTML = '<div style="display:grid;place-items:center;height:100%"><img alt="Book cover" src="' + (container.dataset.coverFront || '') + '" style="max-width:100%;max-height:100%"/></div>';
+    return;
+  }
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b0f14);
+
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(1.8, 1.2, 2.2);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.shadowMap.enabled = true;
+  renderer.setPixelRatio(clampDevicePixelRatio(1.8));
+  container.appendChild(renderer.domElement);
+
+  // Lighting
+  const hemi = new THREE.HemisphereLight(0xffffff, 0x111111, 0.8);
+  scene.add(hemi);
+  const key = new THREE.DirectionalLight(0xffffff, 1.0);
+  key.position.set(3, 4, 2);
+  key.castShadow = true;
+  scene.add(key);
+
+  // Ground for subtle shadow
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 10),
+    new THREE.ShadowMaterial({ opacity: 0.15 })
+  );
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -0.8;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  // Book
+  const book = createBookMesh({
+    frontUrl: container.dataset.coverFront,
+    backUrl: container.dataset.coverBack,
+    spineUrl: container.dataset.coverSpine
+  });
+  scene.add(book);
+
+  // Controls
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.enablePan = false;
+  controls.minDistance = 1.5;
+  controls.maxDistance = 4.0;
+  controls.target.set(0, 0, 0);
+
+  // Auto-rotate gently
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.6;
+
+  function resize() {
+    const rect = container.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / Math.max(1, height);
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  let running = true;
+  const observer = new IntersectionObserver((entries) => {
+    running = entries.some(e => e.isIntersecting);
+  }, { threshold: 0.1 });
+  observer.observe(container);
+
+  document.addEventListener('visibilitychange', () => {
+    running = document.visibilityState === 'visible';
+  });
+
+  function animate() {
+    if (running) {
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+
