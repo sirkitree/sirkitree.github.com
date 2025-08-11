@@ -2,6 +2,7 @@
 layout: page
 title: "Mockup"
 permalink: /books/learning-your-childrens-names-again/mockup/
+published: false
 ---
 
 <div class="mockup-wrap">
@@ -11,9 +12,9 @@ permalink: /books/learning-your-childrens-names-again/mockup/
        data-cover-spine="/assets/books/learning-your-childrens-names-again/cover-spine.jpg"
        data-autorotate="false"
        data-rotate-y="12"
-       data-camera-azimuth="-45"
+       data-camera-azimuth="-35"
        data-camera-elevation="12"
-       data-camera-distance="3.5"
+       data-camera-distance="2.5"
        data-bg="#f6f5f2"
        style="width: 100%; height: 820px;">
   </div>
