@@ -2,57 +2,12 @@
 layout: default
 ---
 
-<article class="page">
-  <h1>{{ page.title }}</h1>
+<article class="page post">
+  <header>
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
   
-  <div class="page-content">
+  <section class="content">
     {{ content }}
-  </div>
+  </section>
 </article>
-
-<style>
-  .page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  .page h1 {
-    margin-bottom: 30px;
-  }
-
-  .page-content {
-    line-height: 1.6;
-  }
-
-  .page-content table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-
-  .page-content th,
-  .page-content td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  .page-content th {
-    font-weight: bold;
-    background-color: var(--background-color);
-  }
-
-  .page-content tr:hover {
-    background-color: var(--hover-color);
-  }
-
-  .page-content a {
-    color: var(--link-color);
-    text-decoration: none;
-  }
-
-  .page-content a:hover {
-    text-decoration: underline;
-  }
-</style> 

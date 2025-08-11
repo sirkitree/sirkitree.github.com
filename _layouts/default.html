@@ -58,11 +58,8 @@
           </button>
           
           <nav>
-            <a href="/">Home</a>
-            {% assign jenney_posts = site.posts | where_exp: "post", "post.category contains 'jenney'" | reverse %}
-            {% for post in jenney_posts %}
-              <a href="{{ post.url }}">{{ post.title }}</a>
-            {% endfor %}
+            <a href="/">Home</a>            
+            <a href="/books/">Books</a>
             <a href="/websim">WebSim</a>
             <a href="/archive">Archive</a>
             <button id="theme-toggle" aria-label="Toggle dark mode">
