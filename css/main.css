@@ -474,15 +474,15 @@ footer {
 .book-meta .tagline { margin: 0 0 12px; color: var(--meta-color); }
 
 /* Book detail */
-.book-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center; margin-bottom: 24px; }
-.book-hero .sub { color: var(--meta-color); margin: 8px 0 16px; }
-.book-hero-visual { min-height: 360px; }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center; margin-bottom: 24px; }
+.hero .sub { color: var(--meta-color); margin: 8px 0 16px; }
+.hero-visual { min-height: 360px; }
 #book3d { width: 100%; height: 360px; background: var(--code-bg); border-radius: 8px; overflow: hidden; position: relative; }
 .journals .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .journal-card { padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--card-bg); }
 .journal-card .meta { color: var(--meta-color); font-size: 12px; margin: 6px 0; }
 .highlights ul { padding-left: 18px; }
-@media (max-width: 900px) { .book-hero { grid-template-columns: 1fr; } .book-hero-visual { order: -1; } }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .hero-visual { order: -1; } }
 @media (max-width: 640px) { .journals .journal-grid { grid-template-columns: 1fr; } }
 
 /* Theme toggle */
