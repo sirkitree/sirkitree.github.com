@@ -12,8 +12,15 @@ Learning Your Children's Names Again is a memoir chronicling a family's journey 
 
 ## Author
 
-- Short bio: [to be provided]
-- Long bio: [to be provided]
+- Short bio: Jerad Bitner lives in Gig Harbor, Washington with his wife Jenney and their four children. A longtime technology professional and former atheist, his faith was reignited during his wife's cancer diagnosis. When not working or writing, he explores the Pacific Northwest with his family and captures nature through photography.
+- Long bio:
+
+  Jerad Bitner lives in Gig Harbor, Washington with his wife Jenney and their four
+  children. A technology professional who spent twenty years as a self-proclaimed
+  atheist, Jerad found his faith reignited in the crucible of his wife's cancer
+  diagnosis. When not working or writing, he can be found exploring the Pacific
+  Northwest with his family, capturing moments through nature photography, and
+  learning that miracles often come disguised as medical crises.
 - Headshot: <a href="/assets/books/learning-your-childrens-names-again/author-headshot.jpg">Download</a>
 
 ## Blurbs / Advance Praise
