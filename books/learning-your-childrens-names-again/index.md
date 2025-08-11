@@ -39,7 +39,7 @@ permalink: /books/learning-your-childrens-names-again/
   {% assign jenney_by_category = site.posts | where_exp: "post", "post.category contains 'jenney'" %}
   {% assign jenney_by_tag = site.posts | where_exp: "post", "post.tags contains 'jenney'" %}
   {% assign jenney_posts = jenney_by_category | concat: jenney_by_tag %}
-  {% assign jenney_posts = jenney_posts | uniq | sort: 'date' | reverse | slice: 0, 6 %}
+  {% assign jenney_posts = jenney_posts | uniq | sort: 'date'  | slice: 0, 6 %}
   <div class="journal-grid">
     {% for post in jenney_posts %}
       <article class="journal-card">
