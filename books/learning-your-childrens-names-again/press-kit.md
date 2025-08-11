@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Press Kit — Learning Your Children's Names Again
+title: Press Kit
 permalink: /books/learning-your-childrens-names-again/press-kit/
 ---
 

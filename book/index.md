@@ -5,21 +5,19 @@ permalink: /book/
 ---
 
 <section class="books-intro">
-  <h1>Books</h1>
   <p>Explore current and upcoming works.</p>
 </section>
 
 <section class="books-grid">
   <article class="book-card">
     <div class="book-cover">
-      <img src="/assets/books/learning-your-childrens-names-again/cover-front.jpg" alt="Learning Your Children's Names Again cover" onerror="this.style.display='none'">
-      <div class="cover-fallback" aria-hidden="true">Cover Coming Soon</div>
+      <img src="/assets/books/learning-your-childrens-names-again/cover-front.jpg" alt="Learning Your Children's Names Again cover">
     </div>
     <div class="book-meta">
       <h2>Learning Your Children's Names Again</h2>
-      <p class="tagline">A husband's journal through brain surgery, recovery, and relearning everything—including names.</p>
+      <p class="tagline">A family's journey through a wife's brain surgery, recovery, and relearning everything — including names.</p>
       <p>
-        <a class="btn" href="/books/learning-your-childrens-names-again/">View Book</a>
+        <a class="btn btn-primary" href="/books/learning-your-childrens-names-again/">View Book</a>
         <a class="btn secondary" href="/books/learning-your-childrens-names-again/preview">Read Preview</a>
       </p>
     </div>

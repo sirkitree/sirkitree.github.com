@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Chapter One: The Headaches Begin"
+title: "Preview"
 permalink: /books/learning-your-childrens-names-again/preview/
 ---
 

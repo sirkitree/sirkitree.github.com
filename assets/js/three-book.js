@@ -1,6 +1,6 @@
 // ESM three.js module with OrbitControls via CDN
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
+import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls.js';
 
 function clampDevicePixelRatio(maxRatio) {
   const ratio = Math.min(window.devicePixelRatio || 1, maxRatio);

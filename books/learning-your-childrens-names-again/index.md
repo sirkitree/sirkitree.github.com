@@ -6,7 +6,6 @@ permalink: /books/learning-your-childrens-names-again/
 
 <section class="hero">
   <div class="hero-text">
-    <h1>Learning Your Children's Names Again</h1>
     <p class="sub">A true story of love through medical crisis, family resilience, and the miracles in between.</p>
     <p>
       <a class="btn" href="/books/learning-your-childrens-names-again/preview">Read Preview</a>
@@ -61,7 +60,7 @@ permalink: /books/learning-your-childrens-names-again/
 </section>
 
 <section class="cta">
-  <a class="btn" href="/books/learning-your-childrens-names-again/preview">Read the First Chapter</a>
+  <a class="btn btn-primary" href="/books/learning-your-childrens-names-again/preview">Read the First Chapter</a>
   <a class="btn secondary" href="/books/learning-your-childrens-names-again/press-kit">Press Kit</a>
   <a class="btn secondary" href="/book">Back to Books</a>
   
@@ -74,7 +73,8 @@ permalink: /books/learning-your-childrens-names-again/
 .hero-text .sub { color: var(--muted-color); margin: 8px 0 16px; }
 .hero-visual { min-height: 360px; }
 #book3d { width: 100%; height: 360px; background: var(--hover-color); border-radius: 8px; overflow: hidden; position: relative; }
-.btn { display: inline-block; padding: 8px 12px; border-radius: 6px; background: var(--link-color); color: #fff; text-decoration: none; margin-right: 8px; }
+.btn { display: inline-block; padding: 8px 12px; border-radius: 6px; text-decoration: none; margin-right: 8px; }
+.btn.btn-primary { background: var(--link-color); color: #fff; }
 .btn.secondary { background: transparent; color: var(--link-color); border: 1px solid var(--link-color); }
 .journals .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .journal-card { padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--background-color); }
