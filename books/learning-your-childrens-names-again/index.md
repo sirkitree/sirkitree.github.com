@@ -62,26 +62,12 @@ permalink: /books/learning-your-childrens-names-again/
 <section class="cta">
   <a class="btn btn-primary" href="/books/learning-your-childrens-names-again/preview">Read the First Chapter</a>
   <a class="btn secondary" href="/books/learning-your-childrens-names-again/press-kit">Press Kit</a>
-  <a class="btn secondary" href="/book">Back to Books</a>
+  <a class="btn secondary" href="/books/">Back to Books</a>
   
 </section>
 
 <script type="module" src="/assets/js/three-book.js"></script>
 
-<style>
-.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center; margin-bottom: 24px; }
-.hero-text .sub { color: var(--muted-color); margin: 8px 0 16px; }
-.hero-visual { min-height: 360px; }
-#book3d { width: 100%; height: 360px; background: var(--hover-color); border-radius: 8px; overflow: hidden; position: relative; }
-.btn { display: inline-block; padding: 8px 12px; border-radius: 6px; text-decoration: none; margin-right: 8px; }
-.btn.btn-primary { background: var(--link-color); color: #fff; }
-.btn.secondary { background: transparent; color: var(--link-color); border: 1px solid var(--link-color); }
-.journals .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.journal-card { padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--background-color); }
-.journal-card .meta { color: var(--muted-color); font-size: 12px; margin: 6px 0; }
-.highlights ul { padding-left: 18px; }
-@media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .hero-visual { order: -1; } }
-@media (max-width: 640px) { .journals .journal-grid { grid-template-columns: 1fr; } }
-</style>
+
 
 
