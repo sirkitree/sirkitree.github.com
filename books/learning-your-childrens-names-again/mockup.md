@@ -14,6 +14,7 @@ permalink: /books/learning-your-childrens-names-again/mockup/
        data-camera-azimuth="-45"
        data-camera-elevation="12"
        data-camera-distance="3.5"
+       data-bg="#f6f5f2"
        style="width: 100%; height: 820px;">
   </div>
   <p class="hint">This page is for capturing a clean 3D mockup image.</p>

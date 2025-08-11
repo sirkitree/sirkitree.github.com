@@ -50,7 +50,11 @@ function init() {
   }
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0b0f14);
+  // Allow page to override background via data attribute (e.g., data-bg="#f6f5f2")
+  const bgAttr = (container.dataset.bg || container.dataset.background || '').trim();
+  const defaultBg = 0x0b0f14;
+  const bgColor = bgAttr ? new THREE.Color(bgAttr) : new THREE.Color(defaultBg);
+  scene.background = bgColor;
 
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
   camera.position.set(1.8, 1.2, 2.2);
@@ -58,6 +62,8 @@ function init() {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.shadowMap.enabled = true;
   renderer.setPixelRatio(clampDevicePixelRatio(1.8));
+  // Ensure the canvas clears to the same background color
+  renderer.setClearColor(bgColor, 1);
   container.appendChild(renderer.domElement);
 
   // Lighting
@@ -71,7 +77,7 @@ function init() {
   // Ground for subtle shadow
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(10, 10),
-    new THREE.ShadowMaterial({ opacity: 0.15 })
+    new THREE.ShadowMaterial({ opacity: bgAttr ? 0.28 : 0.15 })
   );
   ground.rotation.x = -Math.PI / 2;
   ground.position.y = -0.8;
