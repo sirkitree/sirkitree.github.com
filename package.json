@@ -10,7 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": "^23.9.0",
+    "puppeteer": "^22.15.0",
     "serve-handler": "^6.1.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirkitree/sirkitree.github.com.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sirkitree/sirkitree.github.com/issues"
+  },
+  "homepage": "https://github.com/sirkitree/sirkitree.github.com#readme"
 }
