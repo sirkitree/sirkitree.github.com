@@ -24,8 +24,8 @@ function createBookMesh({ frontUrl, backUrl, spineUrl }) {
   // Box material order: [px, nx, py, ny, pz, nz]
   // Map: right, left, top, bottom, front, back
   const materials = [
-    spine, // px (right) — spine
-    pages, // nx (left) — page edge
+    pages, // px (right) — page edge
+    spine, // nx (left) — spine (so spine is on the left when viewing the front cover)
     pages, // py (top)
     pages, // ny (bottom)
     front, // pz (front cover)
