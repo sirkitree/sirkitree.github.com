@@ -10,10 +10,11 @@ permalink: /books/learning-your-childrens-names-again/mockup/
        data-cover-back="/assets/books/learning-your-childrens-names-again/cover-back.jpg"
        data-cover-spine="/assets/books/learning-your-childrens-names-again/cover-spine.jpg"
        data-autorotate="false"
-       data-rotate-y="15"
-       data-camera-azimuth="-35"
-       data-camera-elevation="10"
-       style="width: 100%; height: 680px;">
+       data-rotate-y="12"
+       data-camera-azimuth="-45"
+       data-camera-elevation="12"
+       data-camera-distance="3.5"
+       style="width: 100%; height: 820px;">
   </div>
   <p class="hint">This page is for capturing a clean 3D mockup image.</p>
   
@@ -24,7 +25,7 @@ permalink: /books/learning-your-childrens-names-again/mockup/
 <style>
 /* Hide header/footer for clean capture */
 header, footer { display: none; }
-.mockup-wrap { max-width: 1200px; margin: 48px auto; }
+.mockup-wrap { max-width: 1600px; margin: 48px auto; }
 .hint { color: var(--meta-color); font-size: 0.9rem; }
 </style>
 
