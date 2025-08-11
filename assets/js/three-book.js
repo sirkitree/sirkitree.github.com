@@ -94,6 +94,14 @@ function init() {
   }
   scene.add(book);
 
+  // Compute a fit distance for framing the book, unless an explicit camera distance is provided
+  const box = new THREE.Box3().setFromObject(book);
+  const sphere = new THREE.Sphere();
+  box.getBoundingSphere(sphere);
+  const fitMultiplier = 1.3;
+  const vFov = THREE.MathUtils.degToRad(camera.fov);
+  const fitDistance = (sphere.radius * fitMultiplier) / Math.sin(vFov / 2);
+
   // Controls
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
@@ -110,6 +118,16 @@ function init() {
   if (!shouldAutoRotate) {
     controls.enableRotate = false;
   }
+
+  // Optional camera spherical positioning to expose spine clearly
+  const azimuthDeg = Number(container.dataset.cameraAzimuth || container.dataset.azimuth || -35);
+  const elevationDeg = Number(container.dataset.cameraElevation || container.dataset.elevation || 12);
+  const distance = Number(container.dataset.cameraDistance || container.dataset.distance || fitDistance);
+  const theta = THREE.MathUtils.degToRad(azimuthDeg); // around Y axis
+  const phi = Math.PI / 2 - THREE.MathUtils.degToRad(elevationDeg); // from Y axis
+  const spherical = new THREE.Spherical(distance, phi, theta);
+  camera.position.setFromSpherical(spherical);
+  camera.lookAt(controls.target);
 
   function resize() {
     const rect = container.getBoundingClientRect();

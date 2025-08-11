@@ -21,12 +21,13 @@ async function run() {
 
   // wait a moment for three to settle auto-rotate
   await page.waitForSelector('#book3d canvas', { timeout: 20000 });
-  await new Promise(r => setTimeout(r, 1200));
+  // ensure final render frame
+  await new Promise(r => setTimeout(r, 800));
 
   const element = await page.$('#book3d');
   if (!element) throw new Error('book3d element not found');
 
-  const buf = await element.screenshot({ type: 'jpeg', quality: 90 });
+  const buf = await element.screenshot({ type: 'jpeg', quality: 92 });
   fs.writeFileSync(outPath, buf);
   console.log('Saved', outPath);
   await browser.close();
