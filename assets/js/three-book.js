@@ -84,6 +84,14 @@ function init() {
     backUrl: container.dataset.coverBack,
     spineUrl: container.dataset.coverSpine
   });
+  // Optional initial rotations from data attributes
+  const degToRad = (deg) => (Number(deg) || 0) * Math.PI / 180;
+  if (container.dataset.rotateY) {
+    book.rotation.y = degToRad(container.dataset.rotateY);
+  }
+  if (container.dataset.rotateX) {
+    book.rotation.x = degToRad(container.dataset.rotateX);
+  }
   scene.add(book);
 
   // Controls
@@ -94,9 +102,14 @@ function init() {
   controls.maxDistance = 4.0;
   controls.target.set(0, 0, 0);
 
-  // Auto-rotate gently
-  controls.autoRotate = true;
+  // Auto-rotate gently (configurable)
+  const autoRotateAttr = container.dataset.autorotate;
+  const shouldAutoRotate = autoRotateAttr === undefined || autoRotateAttr === '' || autoRotateAttr === 'true';
+  controls.autoRotate = shouldAutoRotate;
   controls.autoRotateSpeed = 0.6;
+  if (!shouldAutoRotate) {
+    controls.enableRotate = false;
+  }
 
   function resize() {
     const rect = container.getBoundingClientRect();

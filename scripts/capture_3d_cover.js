@@ -7,9 +7,9 @@ const path = require('path');
 
 async function run() {
   const puppeteer = require('puppeteer');
-  const url = process.env.URL || 'http://127.0.0.1:4000/books/learning-your-childrens-names-again/';
+  const url = process.env.URL || 'http://127.0.0.1:4000/books/learning-your-childrens-names-again/mockup/';
   const outPath = path.resolve(__dirname, '..', 'assets', 'books', 'learning-your-childrens-names-again', 'cover-3d.jpg');
-  const viewport = { width: 1600, height: 1000, deviceScaleFactor: 2 };
+  const viewport = { width: 1920, height: 1080, deviceScaleFactor: 2 };
 
   const browser = await puppeteer.launch({
     headless: true,
@@ -26,21 +26,7 @@ async function run() {
   const element = await page.$('#book3d');
   if (!element) throw new Error('book3d element not found');
 
-  const clip = await element.boundingBox();
-  // Add padding around element for composition
-  const pad = 20;
-  const clipRect = {
-    x: Math.max(0, clip.x - pad),
-    y: Math.max(0, clip.y - pad),
-    width: clip.width + pad * 2,
-    height: clip.height + pad * 2
-  };
-
-  const buf = await page.screenshot({
-    type: 'jpeg',
-    quality: 90,
-    clip: clipRect,
-  });
+  const buf = await element.screenshot({ type: 'jpeg', quality: 90 });
   fs.writeFileSync(outPath, buf);
   console.log('Saved', outPath);
   await browser.close();
