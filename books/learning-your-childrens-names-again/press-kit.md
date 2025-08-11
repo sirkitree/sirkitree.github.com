@@ -23,10 +23,6 @@ Learning Your Children's Names Again is a memoir chronicling a family's journey 
   learning that miracles often come disguised as medical crises.
 - Headshot: <a href="/assets/books/learning-your-childrens-names-again/author-headshot.png">Download</a>
 
-## Blurbs / Advance Praise
-
-[to be provided]
-
 ## Cover Images
 
 - Front cover: <a href="/assets/books/learning-your-childrens-names-again/cover-front.jpg">Download</a>
