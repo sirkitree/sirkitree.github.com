@@ -21,7 +21,7 @@ Learning Your Children's Names Again is a memoir chronicling a family's journey 
   diagnosis. When not working or writing, he can be found exploring the Pacific
   Northwest with his family, capturing moments through nature photography, and
   learning that miracles often come disguised as medical crises.
-- Headshot: <a href="/assets/books/learning-your-childrens-names-again/author-headshot.jpg">Download</a>
+- Headshot: <a href="/assets/books/learning-your-childrens-names-again/author-headshot.png">Download</a>
 
 ## Blurbs / Advance Praise
 
