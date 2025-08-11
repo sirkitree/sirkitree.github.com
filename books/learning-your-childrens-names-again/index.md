@@ -4,7 +4,7 @@ title: Learning Your Children's Names Again
 permalink: /books/learning-your-childrens-names-again/
 ---
 
-<section class="hero">
+<section class="book-hero">
   <div class="hero-text">
     <p class="sub">A true story of love through medical crisis, family resilience, and the miracles in between.</p>
     <p>
@@ -12,7 +12,7 @@ permalink: /books/learning-your-childrens-names-again/
       <a class="btn secondary" href="/books/learning-your-childrens-names-again/press-kit">Press Kit</a>
     </p>
   </div>
-  <div class="hero-visual">
+  <div class="book-hero-visual">
     <div id="book3d" 
          data-cover-front="/assets/books/learning-your-childrens-names-again/cover-front.jpg"
          data-cover-back="/assets/books/learning-your-childrens-names-again/cover-back.jpg"
@@ -67,7 +67,5 @@ permalink: /books/learning-your-childrens-names-again/
 </section>
 
 <script type="module" src="/assets/js/three-book.js"></script>
-
-
 
 
