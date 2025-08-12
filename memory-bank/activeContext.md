@@ -2,16 +2,17 @@
 
 ## Current Work Focus
 
-- Initializing the Memory Bank for project documentation and onboarding.
-- Indexing the codebase to capture technologies, patterns, and workflows.
+- Cover reveal assets and marketing setup for "Learning Your Children's Names Again".
+- Newsletter onboarding and pre-launch funnel.
 
 ## Recent Changes
 
-- Added and reviewed project configuration, automation scripts, and layouts.
-- Confirmed use of Jekyll, Ruby, Node.js, Python, and AngularJS in subprojects.
+- Generated and committed blurred teaser images (1200x630, 1080x1080 partial reveal) for the book page assets.
+- Launched newsletter at https://lycna.jeradbitner.com (ConvertKit/Kit) and connected subscribe flow.
+- Posted first Facebook teaser with blurred partial cover.
 
 ## Next Steps
 
-- Finalize and review Memory Bank documentation.
-- Update as new features or workflows are introduced.
-- Maintain documentation as the project evolves.
+- Week 2 of reveal plan: Title-only teaser with newsletter CTA.
+- Draft and schedule 3-email welcome series; attach free first chapter lead magnet.
+- Prepare full cover reveal and pre-order announcement assets.
