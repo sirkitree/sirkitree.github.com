@@ -464,6 +464,50 @@ footer {
 .btn { display: inline-block; padding: 8px 12px; border-radius: 6px; text-decoration: none; margin-right: 8px; }
 .btn.btn-primary { background: var(--link-color); color: #fff; }
 .btn.secondary { background: transparent; color: var(--link-color); border: 1px solid var(--link-color); }
+.btn.btn-newsletter { background: #007acc; color: #fff; padding: 12px 24px; font-weight: 600; transition: background-color 0.3s ease; }
+.btn.btn-newsletter:hover { background: #0056b3; }
+
+/* Newsletter Signup Section */
+.newsletter-signup {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  position: relative;
+}
+
+.newsletter-signup::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #007acc;
+  border-radius: 4px 0 0 4px;
+}
+
+.newsletter-content h3 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.newsletter-content p {
+  color: var(--meta-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.newsletter-note {
+  color: var(--meta-color);
+  margin-top: 1rem !important;
+  font-size: 0.9rem !important;
+}
 
 /* Books listing */
 .books-grid { display: grid; gap: 24px; }

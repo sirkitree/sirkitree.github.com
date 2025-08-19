@@ -10,6 +10,7 @@ permalink: /books/learning-your-childrens-names-again/
     <p>
       <a class="btn" href="/books/learning-your-childrens-names-again/preview">Read Preview</a>
       <a class="btn secondary" href="/books/learning-your-childrens-names-again/press-kit">Press Kit</a>
+      <a class="btn secondary" href="https://lycna.jeradbitner.com">Newsletter</a>
     </p>
   </div>
   <div class="hero-visual">
@@ -59,6 +60,13 @@ permalink: /books/learning-your-childrens-names-again/
     <li>Family resilience and community care</li>
     <li>Moments of faith, fear, and fierce hope</li>
   </ul>
+</section>
+
+
+<section class="newsletter">
+  <h2>Stay Connected</h2>
+  <p>Get updates on the book release, author events, and exclusive content.</p>
+  <script async data-uid="f5ff9be78a" src="https://sirkitree.kit.com/f5ff9be78a/index.js"></script>
 </section>
 
 <section class="cta">
