@@ -234,6 +234,10 @@ header {
   transition: background-color var(--transition-speed);
 }
 
+main article header {
+  padding: 0.5rem 2rem;
+}
+
 header .container {
   display: flex;
   align-items: center;
