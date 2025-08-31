@@ -9,6 +9,8 @@ permalink: /books/learning-your-childrens-names-again/
     <p class="sub">A true story of love through medical crisis, family resilience, and the miracles in between.</p>
     <p>
       <a class="btn" href="/books/learning-your-childrens-names-again/preview">Read Preview</a>
+      <a class="btn primary" href="https://www.amazon.com/dp/B0FNPS91C2">Kindle eBook</a>
+      <a class="btn primary" href="https://www.amazon.com/dp/B0FPB63T63">Paperback</a>
       <a class="btn secondary" href="/books/learning-your-childrens-names-again/press-kit">Press Kit</a>
       <a class="btn secondary" href="https://lycna.jeradbitner.com">Newsletter</a>
     </p>
@@ -70,6 +72,8 @@ permalink: /books/learning-your-childrens-names-again/
 </section>
 
 <section class="cta">
+  <a class="btn btn-primary" href="https://www.amazon.com/dp/B0FNPS91C2">Get Kindle eBook</a>
+  <a class="btn btn-primary" href="https://www.amazon.com/dp/B0FPB63T63">Get Paperback</a>
   <a class="btn btn-primary" href="/books/learning-your-childrens-names-again/preview">Read the First Chapter</a>
   <a class="btn secondary" href="/books/learning-your-childrens-names-again/press-kit">Press Kit</a>
   <a class="btn secondary" href="/books/">Back to Books</a>
