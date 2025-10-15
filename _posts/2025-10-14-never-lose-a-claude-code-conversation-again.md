@@ -16,7 +16,7 @@ Yeah, that was driving me nuts too.
 
 So I did what any reasonable developer would do: I built a system to auto-save every single conversation, make them searchable, and never lose context again.
 
-**Update:** This is now available as a Claude Code plugin! Install with `/plugin add https://github.com/sirkitree/claude-conversation-saver`
+**Update:** This is now available as a Claude Code plugin! Install with `/plugin marketplace add https://github.com/sirkitree/claude-conversation-saver` then restart Claude Code.
 
 <!--more-->
 
@@ -122,11 +122,14 @@ It uses good old `grep` under the hood but wraps it in a friendly interface that
 
 ### The Easy Way: Install as a Plugin
 
-Claude Code now supports plugins! Install with one command:
+Claude Code now supports plugins! Install in two simple steps:
 
+**Step 1:** Add the marketplace:
 ```bash
-/plugin add https://github.com/sirkitree/claude-conversation-saver
+/plugin marketplace add https://github.com/sirkitree/claude-conversation-saver
 ```
+
+**Step 2:** Restart Claude Code to load the plugin.
 
 That's it! The plugin automatically:
 - Installs the SessionEnd hook
