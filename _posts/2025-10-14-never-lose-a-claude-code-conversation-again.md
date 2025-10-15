@@ -16,6 +16,8 @@ Yeah, that was driving me nuts too.
 
 So I did what any reasonable developer would do: I built a system to auto-save every single conversation, make them searchable, and never lose context again.
 
+**Update:** This is now available as a Claude Code plugin! Install with `/plugin add https://github.com/sirkitree/claude-conversation-saver`
+
 <!--more-->
 
 ## The Problem: Conversations Are Ephemeral
@@ -118,9 +120,20 @@ It uses good old `grep` under the hood but wraps it in a friendly interface that
 
 ## How to Set This Up
 
-### Step 1: Install Dependencies
+### The Easy Way: Install as a Plugin
 
-You need `jq` for JSON parsing and Python 3 for the conversation parser:
+Claude Code now supports plugins! Install with one command:
+
+```bash
+/plugin add https://github.com/sirkitree/claude-conversation-saver
+```
+
+That's it! The plugin automatically:
+- Installs the SessionEnd hook
+- Sets up all the scripts
+- Adds slash commands: `/convo-search`, `/convo-list`, `/convo-recent`
+
+**Prerequisites:** Make sure you have `jq` and `python3` installed first:
 
 ```bash
 # Termux
@@ -133,310 +146,12 @@ brew install jq python3
 sudo apt install jq python3
 ```
 
-### Step 2: Create the Directory Structure
+Once installed, use the convenient slash commands:
+- `/convo-search hooks` - Search for a term
+- `/convo-list` - List all conversations
+- `/convo-recent 5` - Show recent conversations
 
-```bash
-mkdir -p ~/.claude/hooks
-mkdir -p ~/.claude/scripts
-mkdir -p ~/.claude/conversation-logs
-```
-
-### Step 3: Install the Hook
-
-Create `~/.claude/hooks/session-end.sh` with the script above and make it executable:
-
-```bash
-chmod +x ~/.claude/hooks/session-end.sh
-```
-
-### Step 4: Create the Parser
-
-Create `~/.claude/hooks/parse-conversation.py` with the following content:
-
-```python
-#!/usr/bin/env python3
-"""
-Parse Claude Code conversation JSONL files into readable markdown format
-"""
-import json
-import sys
-from pathlib import Path
-
-
-def parse_conversation(jsonl_path, output_path, session_id="unknown"):
-    """Parse a JSONL conversation file into markdown"""
-
-    with open(output_path, 'w') as outfile:
-        # Write header
-        from datetime import datetime
-        outfile.write("# Conversation Log\n")
-        outfile.write(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        outfile.write(f"Session ID: {session_id}\n")
-        outfile.write("\n---\n\n")
-
-        # Process each line
-        with open(jsonl_path, 'r') as infile:
-            for line in infile:
-                try:
-                    data = json.loads(line)
-
-                    msg_type = data.get('type')
-                    message = data.get('message', {})
-                    role = message.get('role')
-
-                    # Process user messages
-                    if msg_type == 'user' and role == 'user':
-                        content = message.get('content')
-
-                        # Skip if content is a list (tool results)
-                        if isinstance(content, list):
-                            continue
-
-                        # Skip meta messages
-                        if not content or 'Caveat:' in content:
-                            continue
-                        if '<command-name>' in content or '<local-command-stdout>' in content:
-                            continue
-
-                        outfile.write("## USER\n\n")
-                        outfile.write(f"{content}\n\n")
-
-                    # Process assistant messages
-                    elif msg_type == 'assistant' and role == 'assistant':
-                        content_list = message.get('content', [])
-
-                        if not isinstance(content_list, list):
-                            continue
-
-                        has_content = False
-                        assistant_text = []
-                        tool_uses = []
-
-                        for item in content_list:
-                            if item.get('type') == 'text':
-                                text = item.get('text', '').strip()
-                                if text:
-                                    assistant_text.append(text)
-                                    has_content = True
-
-                            elif item.get('type') == 'tool_use':
-                                tool_name = item.get('name', 'unknown')
-                                tool_input = item.get('input', {})
-                                tool_uses.append((tool_name, tool_input))
-                                has_content = True
-
-                        if has_content:
-                            outfile.write("## ASSISTANT\n\n")
-
-                            # Write text content
-                            for text in assistant_text:
-                                outfile.write(f"{text}\n\n")
-
-                            # Write tool uses
-                            if tool_uses:
-                                for tool_name, tool_input in tool_uses:
-                                    outfile.write(f"**Tool:** `{tool_name}`\n")
-                                    if tool_input:
-                                        # Only show a few key fields to keep it readable
-                                        if 'file_path' in tool_input:
-                                            outfile.write(f"- file_path: `{tool_input['file_path']}`\n")
-                                        if 'pattern' in tool_input:
-                                            outfile.write(f"- pattern: `{tool_input['pattern']}`\n")
-                                        if 'command' in tool_input:
-                                            cmd = tool_input['command']
-                                            if len(cmd) > 100:
-                                                cmd = cmd[:100] + '...'
-                                            outfile.write(f"- command: `{cmd}`\n")
-                                    outfile.write("\n")
-
-                except json.JSONDecodeError:
-                    continue
-                except Exception as e:
-                    # Don't let parsing errors stop the whole process
-                    print(f"Warning: Error processing line: {e}", file=sys.stderr)
-                    continue
-
-
-if __name__ == '__main__':
-    if len(sys.argv) < 3:
-        print("Usage: parse-conversation.py <input.jsonl> <output.md> [session_id]")
-        sys.exit(1)
-
-    jsonl_path = sys.argv[1]
-    output_path = sys.argv[2]
-    session_id = sys.argv[3] if len(sys.argv) > 3 else "unknown"
-
-    parse_conversation(jsonl_path, output_path, session_id)
-```
-
-Make it executable:
-
-```bash
-chmod +x ~/.claude/hooks/parse-conversation.py
-```
-
-### Step 5: Install the Search Tool
-
-Create `~/.claude/scripts/search-conversations.sh` with the following content:
-
-```bash
-#!/bin/bash
-# Search through saved conversation logs
-
-LOGS_DIR="$HOME/.claude/conversation-logs"
-
-# Check if logs directory exists
-if [ ! -d "$LOGS_DIR" ]; then
-    echo "No conversation logs found at $LOGS_DIR"
-    exit 1
-fi
-
-# Show usage if no arguments
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <search-term> [options]"
-    echo ""
-    echo "Search through conversation logs in $LOGS_DIR"
-    echo ""
-    echo "Options:"
-    echo "  -l, --list       List all available conversation logs"
-    echo "  -r, --recent N   Show N most recent conversations (default: 5)"
-    echo "  -c, --context N  Show N lines of context around matches (default: 2)"
-    echo ""
-    echo "Examples:"
-    echo "  $0 --list                    # List all conversations"
-    echo "  $0 --recent 3                # Show 3 most recent conversations"
-    echo "  $0 'hooks'                   # Search for 'hooks' in all conversations"
-    echo "  $0 'git commit' --context 5  # Search with 5 lines of context"
-    exit 0
-fi
-
-# Parse arguments
-SEARCH_TERM=""
-CONTEXT_LINES=2
-ACTION="search"
-RECENT_COUNT=5
-
-while [[ $# -gt 0 ]]; do
-    case $1 in
-        -l|--list)
-            ACTION="list"
-            shift
-            ;;
-        -r|--recent)
-            ACTION="recent"
-            RECENT_COUNT="$2"
-            shift 2
-            ;;
-        -c|--context)
-            CONTEXT_LINES="$2"
-            shift 2
-            ;;
-        *)
-            SEARCH_TERM="$1"
-            shift
-            ;;
-    esac
-done
-
-# List all conversations
-if [ "$ACTION" = "list" ]; then
-    echo "Available conversation logs:"
-    echo ""
-    ls -lh "$LOGS_DIR"/*.md 2>/dev/null | while read -r line; do
-        file=$(echo "$line" | awk '{print $NF}')
-        size=$(echo "$line" | awk '{print $5}')
-        date=$(basename "$file" | sed 's/conversation_\(.*\)\.md/\1/' | tr '_' ' ')
-        echo "  $date ($size)"
-    done
-    exit 0
-fi
-
-# Show recent conversations
-if [ "$ACTION" = "recent" ]; then
-    echo "Most recent $RECENT_COUNT conversations:"
-    echo ""
-    ls -t "$LOGS_DIR"/conversation_*.md 2>/dev/null | head -n "$RECENT_COUNT" | while read -r file; do
-        date=$(basename "$file" | sed 's/conversation_\(.*\)\.md/\1/' | tr '_' ' ')
-        size=$(wc -l < "$file")
-        echo "=== $date ($size lines) ==="
-        head -20 "$file"
-        echo ""
-        echo "... (use 'cat $file' to see full conversation)"
-        echo ""
-    done
-    exit 0
-fi
-
-# Search for term
-if [ -z "$SEARCH_TERM" ]; then
-    echo "Error: No search term provided"
-    exit 1
-fi
-
-echo "Searching for '$SEARCH_TERM' in conversation logs..."
-echo ""
-
-# Search through markdown files with context
-grep -r -i -C "$CONTEXT_LINES" "$SEARCH_TERM" "$LOGS_DIR"/*.md 2>/dev/null | while IFS=: read -r file content; do
-    # Skip empty lines and separators
-    if [[ -z "$file" ]] || [[ "$file" == "--" ]]; then
-        echo ""
-        continue
-    fi
-
-    # Extract filename only if we have a valid file path
-    if [[ -f "$file" ]]; then
-        filename=$(basename "$file" | sed 's/conversation_\(.*\)\.md/\1/' | tr '_' ' ')
-        echo "[$filename] $content"
-    fi
-done
-
-# Count matches
-MATCH_COUNT=$(grep -r -i -l "$SEARCH_TERM" "$LOGS_DIR"/*.md 2>/dev/null | wc -l)
-echo ""
-echo "Found matches in $MATCH_COUNT conversation(s)"
-```
-
-Make it executable:
-
-```bash
-chmod +x ~/.claude/scripts/search-conversations.sh
-```
-
-### Step 6: Configure Claude Code
-
-Update your `~/.claude/settings.json` to enable the hook:
-
-```json
-{
-  "hooks": {
-    "SessionEnd": ["~/.claude/hooks/session-end.sh"]
-  }
-}
-```
-
-### Step 7: Add Search Shortcuts (Optional)
-
-I added this to my `~/.claude/CLAUDE.md` so Claude knows about the search functionality:
-
-```markdown
-## Conversation History
-All conversations are automatically saved to `~/.claude/conversation-logs/`.
-
-### Searching Conversation Logs
-To search through previous conversations:
-
-```bash
-# List all saved conversations
-~/.claude/scripts/search-conversations.sh --list
-
-# Show recent conversations
-~/.claude/scripts/search-conversations.sh --recent 5
-
-# Search for a specific term
-~/.claude/scripts/search-conversations.sh "hooks"
-```
-```
+For more details on manual installation or to view the source code, check out the [GitHub repository](https://github.com/sirkitree/claude-conversation-saver).
 
 ## How It Works in Practice
 
