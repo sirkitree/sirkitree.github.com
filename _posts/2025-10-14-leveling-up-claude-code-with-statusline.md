@@ -52,6 +52,7 @@ npm install -g ccusage
 Download the statusline script directly from the repo:
 
 ```bash
+mkdir -p ~/.claude
 curl -o ~/.claude/statusline.sh https://raw.githubusercontent.com/hell0github/claude-statusline/main/statusline.sh
 chmod +x ~/.claude/statusline.sh
 ```
