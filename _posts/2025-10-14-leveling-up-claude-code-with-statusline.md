@@ -95,7 +95,7 @@ While I went with hell0github's version, there are some other seriously cool opt
 - **[chongdashu/cc-statusline](https://github.com/chongdashu/cc-statusline)** - Interactive setup with multiple layout options
 - **[Owloops/claude-powerline](https://github.com/Owloops/claude-powerline)** - Vim-style powerline with theme support
 - **[rz1989s/claude-code-statusline](https://github.com/rz1989s/claude-code-statusline)** - 18+ atomic components you can mix and match
-- **[CCometixLine](https://github.com/Haleclipse/CCometixLine)** - Rust-based for maximum speed
+- **[CCometLine](https://github.com/Haleclipse/CCometLine)** - Rust-based for maximum speed
 
 Each has its own vibe and feature set. Can't go wrong with any of 'em, honestly.
 
