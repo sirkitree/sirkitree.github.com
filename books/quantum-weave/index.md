@@ -10,7 +10,7 @@ permalink: /books/quantum-weave/
     <p class="sub">A science-fantasy novel where magic is forgotten nanotechnology, and reality itself refuses to stay singular.</p>
     <p>
       <a class="btn primary" href="#newsletter">Get Updates</a>
-      <a class="btn" href="/archive?tag=quantum-weave">Read Narratives</a>
+      <a class="btn" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
     </p>
   </div>
 </section>
@@ -42,7 +42,7 @@ permalink: /books/quantum-weave/
       </article>
     {% endfor %}
   </div>
-  <p><a class="inline" href="/archive?tag=quantum-weave">Explore all Quantum Weave content →</a></p>
+  <p><a class="inline" href="/tags/tag/?tag=quantum-weave">Explore all Quantum Weave content →</a></p>
   {% else %}
   <p>Stories coming soon. Sign up below to be notified when new narratives are published.</p>
   {% endif %}
@@ -82,6 +82,6 @@ permalink: /books/quantum-weave/
 </section>
 
 <section class="cta">
-  <a class="btn btn-primary" href="/archive?tag=quantum-weave">Read Narratives</a>
+  <a class="btn btn-primary" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
   <a class="btn secondary" href="/books/">Back to Books</a>
 </section>

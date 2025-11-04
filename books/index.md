@@ -35,7 +35,7 @@ permalink: /books/
       <p class="status" style="font-style: italic; color: var(--text-muted, #666);">In Development</p>
       <p>
         <a class="btn btn-primary" href="/books/quantum-weave/">Explore the World</a>
-        <a class="btn secondary" href="/archive?tag=quantum-weave">Read Narratives</a>
+        <a class="btn secondary" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
       </p>
     </div>
   </article>
