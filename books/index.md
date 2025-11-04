@@ -24,8 +24,10 @@ permalink: /books/
   </article>
 
   <article class="book-card">
-    <div class="book-cover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; min-height: 300px; color: white; font-size: 2em; font-weight: bold; text-align: center; padding: 2rem;">
-      Quantum<br>Weave
+    <div class="book-cover">
+      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; aspect-ratio: 1131/1600; width: 100%; color: white; font-size: 2em; font-weight: bold; text-align: center; padding: 2rem;">
+        Quantum<br>Weave
+      </div>
     </div>
     <div class="book-meta">
       <h2>Quantum Weave</h2>
