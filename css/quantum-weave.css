@@ -37,12 +37,39 @@ body::after {
 .qw-btn:hover,
 .related-post:hover {
   transform: translateY(-2px) !important;
-  transition: transform 0.2s ease !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .qw-discipline-card:hover .qw-discipline-icon {
   transform: scale(1.05) !important;
   transition: transform 0.2s ease !important;
+}
+
+/* Re-enable border color transitions and subtle glow effects on hover */
+.qw-card:hover {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 229, 255, 0.1) !important;
+}
+
+.qw-narrative-card:hover {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 229, 255, 0.15) !important;
+}
+
+.qw-discipline-card:hover {
+  border-color: var(--discipline-color) !important;
+}
+
+.qw-btn:hover {
+  border-color: var(--qw-quantum-cyan) !important;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3) !important;
+}
+
+.qw-discipline-badge:hover {
+  border-color: currentColor !important;
+  box-shadow: 0 0 15px currentColor !important;
+  transform: translateY(-1px) !important;
+  transition: all 0.3s ease !important;
 }
 
 /* Disable the hexagonal pattern background */
