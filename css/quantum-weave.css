@@ -4,6 +4,21 @@
  */
 
 /* ================================
+   DISABLE MAIN SITE BACKGROUNDS
+   ================================ */
+
+/* Hide the main site's Three.js animated grid canvas on QW pages */
+#grid-canvas {
+  display: none !important;
+}
+
+/* Hide the main site's gradient background effects on QW pages */
+body::before,
+body::after {
+  display: none !important;
+}
+
+/* ================================
    QUANTUM WEAVE COLOR PALETTE
    ================================ */
 
