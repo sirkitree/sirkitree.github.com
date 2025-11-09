@@ -10,7 +10,6 @@ excerpt: "An 800-year-old Thinking Oak shares wisdom through Floramancy, remembe
 
 ---
 
-# Rings of Memory
 *A poem shared by The Elderroot through Floramancy link, transcribed by Greenwarden Thera Moss*
 
 ---

@@ -6,7 +6,6 @@ permalink: /books/quantum-weave/
 
 <section class="hero">
   <div class="hero-text">
-    <h1>Quantum Weave</h1>
     <p class="sub">A science-fantasy novel where magic is forgotten nanotechnology, and reality itself refuses to stay singular.</p>
     <p>
       <a class="btn primary" href="#newsletter">Get Updates</a>

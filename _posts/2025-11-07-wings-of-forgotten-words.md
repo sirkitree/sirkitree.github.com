@@ -10,7 +10,6 @@ excerpt: "A Luminal Moth carries fragments of pre-collapse data in its wings, dr
 
 ---
 
-# Wings of Forgotten Words
 *A Luminal Moth's Perspective*
 
 I do not know why I fly toward you.
