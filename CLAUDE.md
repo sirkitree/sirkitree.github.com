@@ -107,3 +107,5 @@ Three.js-powered hexagonal voxel grid with ambient lighting that responds to the
 - WebSim projects: `websim-projects/descriptive-filename.html`
 - Thumbnails: `assets/websim-thumbnails/filename.png`
 - Tag pages: `tags/tagname.html`
+- add <br> tags at the end of each line when publishing poetry to ensure the line breaks render correctly in Markdown. This is important
+  for maintaining the poetic structure and formatting.
