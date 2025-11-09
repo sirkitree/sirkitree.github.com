@@ -137,6 +137,18 @@ body::after {
   animation: none !important;
 }
 
+/* Re-enable radial glow background on hero (static atmospheric effect) */
+.qw-hero-background {
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 229, 255, 0.1) 0%,
+    transparent 70%
+  ) !important;
+  pointer-events: none !important;
+}
+
 /* ================================
    QUANTUM WEAVE COLOR PALETTE
    ================================ */
