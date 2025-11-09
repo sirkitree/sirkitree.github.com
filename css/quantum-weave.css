@@ -17,16 +17,20 @@
   --qw-quantum-glow: rgba(0, 229, 255, 0.15);
   --qw-quantum-glow-strong: rgba(0, 229, 255, 0.3);
 
-  /* Discipline Colors */
-  --qw-infomancy: #00E5FF;
-  --qw-fabricurgy: #8E8E93;
-  --qw-corpus: #34C759;
-  --qw-pyrosonics: #FF9500;
-  --qw-spectra: #BF5AF2;
-  --qw-cryoarchitectonics: #5AC8FA;
-  --qw-luxomancy: #FF2D55;
-  --qw-terraducts: #A2845E;
-  --qw-floramancy: #30D158;
+  /* Discipline Colors - Canonical Thread Signatures */
+  --qw-infomancy: #00E5FF;           /* Sc1: Electric blue/cyan */
+  --qw-fabricurgy: #C0C0C0;          /* Sc2: Silver-grey */
+  --qw-corpus: #A8D5BA;              /* Sc3: Pale green */
+  --qw-pyrosonics: #FF5722;          /* Sc4: Orange-red */
+  --qw-spectra: #C77DFF;             /* Sc5: Rainbow iridescent (violet base) */
+  --qw-cryoarchitectonics: #B0E0E6;  /* Sc6: Pale blue/crystalline */
+  --qw-luxomancy: #FFB84D;           /* Sc7: Amber/gold */
+  --qw-terraducts: #5D4E37;          /* Sc8: Deep brown/metallic grey */
+  --qw-floramancy: #52B788;          /* Sc9: Living green/chlorophyll gold */
+
+  /* Special Discipline Gradients */
+  --qw-spectra-gradient: linear-gradient(135deg, #FF6B6B, #FFD93D, #6BCF7F, #4D96FF, #C77DFF, #FF6B9D);
+  --qw-floramancy-gradient: linear-gradient(135deg, #52B788, #95D5B2, #D4A574);
 
   /* Semantic Colors */
   --qw-text-primary: #FFFFFF;
@@ -257,6 +261,26 @@
 .qw-discipline-luxomancy { color: var(--qw-luxomancy); }
 .qw-discipline-terraducts { color: var(--qw-terraducts); }
 .qw-discipline-floramancy { color: var(--qw-floramancy); }
+
+/* Special gradient effects for Spectra (rainbow iridescent) */
+.qw-discipline-spectra.qw-discipline-badge::before {
+  background: var(--qw-spectra-gradient);
+  animation: qw-pulse 2s ease-in-out infinite;
+}
+
+.qw-discipline-spectra.qw-discipline-badge {
+  background: linear-gradient(135deg, rgba(199, 125, 255, 0.1), rgba(255, 107, 109, 0.1));
+  border-color: var(--qw-spectra);
+}
+
+/* Special gradient effects for Floramancy (living green/chlorophyll gold) */
+.qw-discipline-floramancy.qw-discipline-badge::before {
+  background: var(--qw-floramancy-gradient);
+}
+
+.qw-discipline-floramancy.qw-discipline-badge {
+  background: linear-gradient(135deg, rgba(82, 183, 136, 0.1), rgba(212, 165, 116, 0.1));
+}
 
 /* ================================
    DISCIPLINE GRID

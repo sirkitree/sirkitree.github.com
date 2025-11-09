@@ -21,16 +21,16 @@
 --qw-quantum-glow: rgba(0, 229, 255, 0.15);  /* Subtle glow */
 ```
 
-**Discipline-Specific Colors:**
-- Infomancy: Electric Blue (#00E5FF)
-- Fabricurgy: Textile Gray (#8E8E93)
-- Corpus: Life Green (#34C759)
-- Pyrosonics: Heat Orange (#FF9500)
-- Spectra: Light Purple (#BF5AF2)
-- Cryoarchitectonics: Ice Blue (#5AC8FA)
-- Luxomancy: Emotion Pink (#FF2D55)
-- Terraducts: Earth Brown (#A2845E)
-- Floramancy: Growth Green (#30D158)
+**Discipline-Specific Colors (Canonical Thread Signatures):**
+- Sc1: Infomancy - Electric blue/cyan (#00E5FF)
+- Sc2: Fabricurgy - Silver-grey (#C0C0C0)
+- Sc3: Corpus - Pale green (#A8D5BA)
+- Sc4: Pyrosonics - Orange-red (#FF5722)
+- Sc5: Spectra - Rainbow iridescent (#C77DFF + gradient)
+- Sc6: Cryoarchitectonics - Pale blue/crystalline (#B0E0E6)
+- Sc7: Luxomancy - Amber/gold (#FFB84D)
+- Sc8: Terraducts - Deep brown/metallic grey (#5D4E37)
+- Sc9: Floramancy - Living green/chlorophyll gold (#52B788 + gradient)
 
 ## Typography System
 
