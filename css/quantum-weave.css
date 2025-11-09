@@ -28,9 +28,21 @@ body::after {
 
   /* Disable animations that might cause flicker */
   animation: none !important;
+}
 
-  /* Simplify transitions */
-  transition: opacity 0.2s ease, transform 0.2s ease !important;
+/* Re-enable lightweight hover transforms (GPU accelerated, very performant) */
+.qw-card:hover,
+.qw-narrative-card:hover,
+.qw-discipline-card:hover,
+.qw-btn:hover,
+.related-post:hover {
+  transform: translateY(-2px) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.qw-discipline-card:hover .qw-discipline-icon {
+  transform: scale(1.05) !important;
+  transition: transform 0.2s ease !important;
 }
 
 /* Disable the hexagonal pattern background */
