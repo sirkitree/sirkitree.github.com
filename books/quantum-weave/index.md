@@ -10,8 +10,8 @@ permalink: /books/quantum-weave/
 </script>
 <link rel="stylesheet" href="/css/quantum-weave.css">
 <style>
-  /* Hide the site header H1 on the main QW page */
-  header h1 {
+  /* Hide the entire site header on the main QW page */
+  body > header {
     display: none !important;
   }
 </style>
