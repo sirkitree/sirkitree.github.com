@@ -4,6 +4,10 @@ title: Quantum Weave
 permalink: /books/quantum-weave/
 ---
 
+<script>
+  // Prevent grid.js from initializing on QW pages
+  window.DISABLE_GRID = true;
+</script>
 <link rel="stylesheet" href="/css/quantum-weave.css">
 
 <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>

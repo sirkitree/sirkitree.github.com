@@ -10,12 +10,33 @@
 /* Hide the main site's Three.js animated grid canvas on QW pages */
 #grid-canvas {
   display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Hide the main site's gradient background effects on QW pages */
 body::before,
 body::after {
   display: none !important;
+}
+
+/* Disable intensive rendering effects temporarily */
+* {
+  /* Disable backdrop-filter which causes major repaints */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  /* Disable animations that might cause flicker */
+  animation: none !important;
+
+  /* Simplify transitions */
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+/* Disable the hexagonal pattern background */
+.qw-hex-pattern {
+  background-image: none !important;
+  opacity: 0 !important;
 }
 
 /* ================================
