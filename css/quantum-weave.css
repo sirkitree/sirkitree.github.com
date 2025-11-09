@@ -72,10 +72,32 @@ body::after {
   transition: all 0.3s ease !important;
 }
 
-/* Disable the hexagonal pattern background */
+/* Re-enable subtle hexagonal pattern background (static, no animation) */
 .qw-hex-pattern {
-  background-image: none !important;
-  opacity: 0 !important;
+  opacity: 0.3 !important;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 229, 255, 0.03) 40px,
+      rgba(0, 229, 255, 0.03) 41px
+    ),
+    repeating-linear-gradient(
+      60deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 229, 255, 0.03) 40px,
+      rgba(0, 229, 255, 0.03) 41px
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 229, 255, 0.03) 40px,
+      rgba(0, 229, 255, 0.03) 41px
+    ) !important;
+  background-size: 80px 140px !important;
 }
 
 /* ================================
