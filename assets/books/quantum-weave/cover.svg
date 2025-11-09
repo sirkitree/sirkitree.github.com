@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1131 1600" fill="none">
+  <defs>
+    <!-- Gradient for title -->
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0A84FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BF5AF2;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Hexagonal pattern -->
+    <pattern id="hexPattern" x="0" y="0" width="80" height="140" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="140" stroke="#00E5FF" stroke-width="0.3" opacity="0.1"/>
+      <line x1="0" y1="0" x2="69.28" y2="40" stroke="#00E5FF" stroke-width="0.3" opacity="0.1" transform="rotate(60 0 0)"/>
+      <line x1="0" y1="0" x2="69.28" y2="40" stroke="#00E5FF" stroke-width="0.3" opacity="0.1" transform="rotate(-60 0 0)"/>
+    </pattern>
+  </defs>
+
+  <!-- Dark background -->
+  <rect width="1131" height="1600" fill="#0D0D0D"/>
+
+  <!-- Hexagonal pattern overlay -->
+  <rect width="1131" height="1600" fill="url(#hexPattern)" opacity="0.5"/>
+
+  <!-- Radial glow from center -->
+  <ellipse cx="565.5" cy="800" rx="500" ry="600" fill="url(#titleGradient)" opacity="0.15"/>
+
+  <!-- Sacred geometry - Metatron's Cube centered -->
+  <g transform="translate(565.5, 800)" opacity="0.3" filter="url(#glow)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="200" stroke="#00E5FF" stroke-width="1" fill="none"/>
+
+    <!-- Central node -->
+    <circle cx="0" cy="0" r="15" stroke="#00E5FF" stroke-width="1.5" fill="none"/>
+
+    <!-- Six surrounding nodes -->
+    <circle cx="0" cy="-120" r="12" stroke="#00E5FF" stroke-width="1" fill="none"/>
+    <circle cx="103.92" cy="-60" r="12" stroke="#00E5FF" stroke-width="1" fill="none"/>
+    <circle cx="103.92" cy="60" r="12" stroke="#00E5FF" stroke-width="1" fill="none"/>
+    <circle cx="0" cy="120" r="12" stroke="#00E5FF" stroke-width="1" fill="none"/>
+    <circle cx="-103.92" cy="60" r="12" stroke="#00E5FF" stroke-width="1" fill="none"/>
+    <circle cx="-103.92" cy="-60" r="12" stroke="#00E5FF" stroke-width="1" fill="none"/>
+
+    <!-- Six outer nodes -->
+    <circle cx="0" cy="-180" r="10" stroke="#0A84FF" stroke-width="0.8" fill="none"/>
+    <circle cx="155.88" cy="-90" r="10" stroke="#0A84FF" stroke-width="0.8" fill="none"/>
+    <circle cx="155.88" cy="90" r="10" stroke="#0A84FF" stroke-width="0.8" fill="none"/>
+    <circle cx="0" cy="180" r="10" stroke="#0A84FF" stroke-width="0.8" fill="none"/>
+    <circle cx="-155.88" cy="90" r="10" stroke="#0A84FF" stroke-width="0.8" fill="none"/>
+    <circle cx="-155.88" cy="-90" r="10" stroke="#0A84FF" stroke-width="0.8" fill="none"/>
+
+    <!-- Lines connecting nodes (Metatron's Cube pattern) -->
+    <!-- From center to inner ring -->
+    <line x1="0" y1="0" x2="0" y2="-120" stroke="#00E5FF" stroke-width="0.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="103.92" y2="-60" stroke="#00E5FF" stroke-width="0.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="103.92" y2="60" stroke="#00E5FF" stroke-width="0.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#00E5FF" stroke-width="0.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="-103.92" y2="60" stroke="#00E5FF" stroke-width="0.5" opacity="0.6"/>
+    <line x1="0" y1="0" x2="-103.92" y2="-60" stroke="#00E5FF" stroke-width="0.5" opacity="0.6"/>
+
+    <!-- Hexagon connections -->
+    <line x1="0" y1="-120" x2="103.92" y2="-60" stroke="#00E5FF" stroke-width="0.5" opacity="0.4"/>
+    <line x1="103.92" y1="-60" x2="103.92" y2="60" stroke="#00E5FF" stroke-width="0.5" opacity="0.4"/>
+    <line x1="103.92" y1="60" x2="0" y2="120" stroke="#00E5FF" stroke-width="0.5" opacity="0.4"/>
+    <line x1="0" y1="120" x2="-103.92" y2="60" stroke="#00E5FF" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-103.92" y1="60" x2="-103.92" y2="-60" stroke="#00E5FF" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-103.92" y1="-60" x2="0" y2="-120" stroke="#00E5FF" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- Outer connections -->
+    <line x1="0" y1="-120" x2="0" y2="-180" stroke="#0A84FF" stroke-width="0.5" opacity="0.3"/>
+    <line x1="103.92" y1="-60" x2="155.88" y2="-90" stroke="#0A84FF" stroke-width="0.5" opacity="0.3"/>
+    <line x1="103.92" y1="60" x2="155.88" y2="90" stroke="#0A84FF" stroke-width="0.5" opacity="0.3"/>
+    <line x1="0" y1="120" x2="0" y2="180" stroke="#0A84FF" stroke-width="0.5" opacity="0.3"/>
+    <line x1="-103.92" y1="60" x2="-155.88" y2="90" stroke="#0A84FF" stroke-width="0.5" opacity="0.3"/>
+    <line x1="-103.92" y1="-60" x2="-155.88" y2="-90" stroke="#0A84FF" stroke-width="0.5" opacity="0.3"/>
+  </g>
+
+  <!-- Decorative threads at top -->
+  <g transform="translate(565.5, 200)" opacity="0.4">
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="url(#titleGradient)" stroke-width="1"/>
+    <circle cx="-150" cy="0" r="3" fill="#00E5FF" filter="url(#glow)"/>
+    <circle cx="-50" cy="0" r="3" fill="#0A84FF" filter="url(#glow)"/>
+    <circle cx="50" cy="0" r="3" fill="#BF5AF2" filter="url(#glow)"/>
+    <circle cx="150" cy="0" r="3" fill="#00E5FF" filter="url(#glow)"/>
+  </g>
+
+  <!-- Title -->
+  <text x="565.5" y="380"
+        font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
+        font-size="120"
+        font-weight="700"
+        text-anchor="middle"
+        fill="url(#titleGradient)"
+        letter-spacing="-3">
+    QUANTUM
+  </text>
+
+  <text x="565.5" y="490"
+        font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
+        font-size="120"
+        font-weight="700"
+        text-anchor="middle"
+        fill="url(#titleGradient)"
+        letter-spacing="-3">
+    WEAVE
+  </text>
+
+  <!-- Subtitle -->
+  <text x="565.5" y="1350"
+        font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif"
+        font-size="28"
+        font-weight="400"
+        text-anchor="middle"
+        fill="#B8B8B8"
+        opacity="0.8">
+    <tspan x="565.5" dy="0">Where magic is forgotten nanotechnology,</tspan>
+    <tspan x="565.5" dy="40">and reality refuses to stay singular</tspan>
+  </text>
+
+  <!-- Decorative threads at bottom -->
+  <g transform="translate(565.5, 1450)" opacity="0.4">
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="url(#titleGradient)" stroke-width="1"/>
+    <circle cx="-150" cy="0" r="3" fill="#00E5FF" filter="url(#glow)"/>
+    <circle cx="-50" cy="0" r="3" fill="#0A84FF" filter="url(#glow)"/>
+    <circle cx="50" cy="0" r="3" fill="#BF5AF2" filter="url(#glow)"/>
+    <circle cx="150" cy="0" r="3" fill="#00E5FF" filter="url(#glow)"/>
+  </g>
+
+  <!-- Author name -->
+  <text x="565.5" y="1520"
+        font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif"
+        font-size="32"
+        font-weight="500"
+        text-anchor="middle"
+        fill="#FFFFFF"
+        letter-spacing="2">
+    J.R. BITNER
+  </text>
+</svg>

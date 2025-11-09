@@ -27,11 +27,6 @@ body::after {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Disable animations by default (specific ones re-enabled below) */
-*:not(.qw-hero-title) {
-  animation: none !important;
-}
-
 /* Re-enable lightweight hover transforms (GPU accelerated, very performant) */
 .qw-card:hover,
 .qw-narrative-card:hover,
@@ -174,7 +169,7 @@ body::after {
   background: white !important;
 }
 
-/* Hero title with gradient text (no animation) */
+/* Hero title with moving gradient text */
 .qw-hero-title {
   font-size: clamp(2.5rem, 8vw, 5rem) !important;
   font-weight: 700 !important;
@@ -186,9 +181,11 @@ body::after {
     var(--qw-quantum-blue) 50%,
     var(--qw-quantum-purple) 100%
   ) !important;
+  background-size: 200% 200% !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
+  animation: qw-shimmer 3s ease-in-out infinite !important;
 }
 
 @keyframes qw-shimmer {
@@ -526,8 +523,8 @@ body::after {
 }
 
 .qw-discipline-icon {
-  width: 48px;
-  height: 48px;
+  width: 128px;
+  height: 128px;
   margin: 0 auto 1rem;
   color: var(--discipline-color);
   filter: drop-shadow(0 0 8px var(--discipline-color));

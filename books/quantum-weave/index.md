@@ -9,6 +9,7 @@ permalink: /books/quantum-weave/
   window.DISABLE_GRID = true;
 </script>
 <link rel="stylesheet" href="/css/quantum-weave.css">
+<script src="/js/quantum-weave.js" defer></script>
 
 <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
 
@@ -59,9 +60,25 @@ permalink: /books/quantum-weave/
   <div class="qw-discipline-grid">
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-infomancy);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Metatron's Cube - interconnected sacred geometry representing data flow -->
+          <circle cx="12" cy="12" r="2"/>
+          <circle cx="6" cy="6" r="1.5"/>
+          <circle cx="18" cy="6" r="1.5"/>
+          <circle cx="6" cy="18" r="1.5"/>
+          <circle cx="18" cy="18" r="1.5"/>
+          <circle cx="12" cy="4" r="1.5"/>
+          <circle cx="12" cy="20" r="1.5"/>
+          <circle cx="4" cy="12" r="1.5"/>
+          <circle cx="20" cy="12" r="1.5"/>
+          <line x1="12" y1="12" x2="6" y2="6"/>
+          <line x1="12" y1="12" x2="18" y2="6"/>
+          <line x1="12" y1="12" x2="6" y2="18"/>
+          <line x1="12" y1="12" x2="18" y2="18"/>
+          <line x1="12" y1="12" x2="12" y2="4"/>
+          <line x1="12" y1="12" x2="12" y2="20"/>
+          <line x1="12" y1="12" x2="4" y2="12"/>
+          <line x1="12" y1="12" x2="20" y2="12"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Infomancy</div>
@@ -70,10 +87,17 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-fabricurgy);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="3" y1="9" x2="21" y2="9"></line>
-          <line x1="9" y1="21" x2="9" y2="9"></line>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Hexagonal tessellation - representing woven materials and fabric structure -->
+          <polygon points="12,4 16,7 16,13 12,16 8,13 8,7"/>
+          <polygon points="8,7 12,4 12,10 8,13"/>
+          <polygon points="16,7 12,4 12,10 16,13"/>
+          <polygon points="12,16 8,13 8,19 12,22"/>
+          <polygon points="12,16 16,13 16,19 12,22"/>
+          <line x1="4" y1="10" x2="8" y2="7"/>
+          <line x1="20" y1="10" x2="16" y2="7"/>
+          <line x1="4" y1="14" x2="8" y2="13"/>
+          <line x1="20" y1="14" x2="16" y2="13"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Fabricurgy</div>
@@ -82,8 +106,15 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-corpus);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Flower of Life - sacred geometry representing life, creation, and healing -->
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="12" cy="8" r="4"/>
+          <circle cx="12" cy="16" r="4"/>
+          <circle cx="8.5" cy="10" r="4"/>
+          <circle cx="15.5" cy="10" r="4"/>
+          <circle cx="8.5" cy="14" r="4"/>
+          <circle cx="15.5" cy="14" r="4"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Corpus</div>
@@ -92,9 +123,19 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-pyrosonics);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Golden Spiral with radiating waves - representing sound waves and heat propagation -->
+          <circle cx="12" cy="12" r="2"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="12" cy="12" r="8"/>
+          <line x1="12" y1="4" x2="12" y2="6"/>
+          <line x1="12" y1="18" x2="12" y2="20"/>
+          <line x1="4" y1="12" x2="6" y2="12"/>
+          <line x1="18" y1="12" x2="20" y2="12"/>
+          <line x1="6.34" y1="6.34" x2="7.76" y2="7.76"/>
+          <line x1="16.24" y1="16.24" x2="17.66" y2="17.66"/>
+          <line x1="6.34" y1="17.66" x2="7.76" y2="16.24"/>
+          <line x1="16.24" y1="7.76" x2="17.66" y2="6.34"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Pyrosonics</div>
@@ -103,16 +144,17 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-spectra);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Star of David / Merkaba - overlapping triangles representing light refraction and prismatic illusion -->
+          <polygon points="12,5 17,15 7,15"/>
+          <polygon points="12,19 7,9 17,9"/>
+          <circle cx="12" cy="12" r="1"/>
+          <line x1="12" y1="5" x2="12" y2="8"/>
+          <line x1="12" y1="16" x2="12" y2="19"/>
+          <line x1="8.5" y1="9.5" x2="10" y2="11"/>
+          <line x1="14" y1="13" x2="15.5" y2="14.5"/>
+          <line x1="15.5" y1="9.5" x2="14" y2="11"/>
+          <line x1="10" y1="13" x2="8.5" y2="14.5"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Spectra</div>
@@ -121,10 +163,21 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-cryoarchitectonics);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="2" x2="12" y2="22"></line>
-          <path d="M17 7l-5 5 5 5"></path>
-          <path d="M7 7l5 5-5 5"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Crystalline snowflake - hexagonal sacred geometry representing ice, crystals, and preservation -->
+          <line x1="12" y1="3" x2="12" y2="21"/>
+          <line x1="5.64" y1="6.34" x2="18.36" y2="17.66"/>
+          <line x1="5.64" y1="17.66" x2="18.36" y2="6.34"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="6.34" y1="5.64" x2="17.66" y2="18.36"/>
+          <line x1="17.66" y1="5.64" x2="6.34" y2="18.36"/>
+          <circle cx="12" cy="12" r="2"/>
+          <circle cx="12" cy="3" r="1"/>
+          <circle cx="12" cy="21" r="1"/>
+          <circle cx="3" cy="12" r="1"/>
+          <circle cx="21" cy="12" r="1"/>
+          <circle cx="6.34" cy="6.34" r="1"/>
+          <circle cx="17.66" cy="17.66" r="1"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Cryoarchitectonics</div>
@@ -133,8 +186,16 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-luxomancy);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Vesica Piscis - two overlapping circles representing connection, unity, and emotional bonds -->
+          <circle cx="9" cy="12" r="7"/>
+          <circle cx="15" cy="12" r="7"/>
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <circle cx="9" cy="12" r="3"/>
+          <circle cx="15" cy="12" r="3"/>
+          <circle cx="12" cy="12" r="1.5"/>
+          <path d="M9,12 Q12,8 15,12"/>
+          <path d="M9,12 Q12,16 15,12"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Luxomancy</div>
@@ -143,8 +204,19 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-terraducts);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Cube (Platonic Solid) - sacred geometry representing earth, stability, and material form -->
+          <path d="M12,3 L20,7 L20,17 L12,21 L4,17 L4,7 Z"/>
+          <line x1="12" y1="3" x2="12" y2="21"/>
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="17" x2="12" y2="21"/>
+          <line x1="20" y1="17" x2="12" y2="21"/>
+          <line x1="12" y1="3" x2="4" y2="7"/>
+          <line x1="12" y1="3" x2="20" y2="7"/>
+          <circle cx="12" cy="12" r="2"/>
+          <line x1="12" y1="10" x2="12" y2="7"/>
+          <line x1="10" y1="12" x2="7" y2="11"/>
+          <line x1="14" y1="12" x2="17" y2="11"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Terraducts</div>
@@ -153,8 +225,18 @@ permalink: /books/quantum-weave/
 
     <div class="qw-discipline-card" style="--discipline-color: var(--qw-floramancy);">
       <div class="qw-discipline-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 20v-6M6 10a6 6 0 1 1 12 0c0 2-1 4-2 6l-4 4-4-4c-1-2-2-4-2-6z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+          <!-- Pentagon with golden spiral - sacred geometry representing plant growth and natural patterns -->
+          <polygon points="12,3 20,9.5 16.5,19 7.5,19 4,9.5"/>
+          <circle cx="12" cy="12" r="6"/>
+          <line x1="12" y1="6" x2="12" y2="3"/>
+          <line x1="12" y1="6" x2="16.2" y2="8.3"/>
+          <line x1="12" y1="6" x2="7.8" y2="8.3"/>
+          <!-- Fibonacci spiral starting from center -->
+          <path d="M 12 12 Q 12.5 12 13 12.5 Q 13 13.5 12 14 Q 10.5 14 10 12.5 Q 10 10.5 12 10 Q 14 10 15 12 Q 15 14.5 12 15.5" fill="none"/>
+          <line x1="12" y1="18" x2="12" y2="21"/>
+          <line x1="12" y1="18" x2="9" y2="19.5"/>
+          <line x1="12" y1="18" x2="15" y2="19.5"/>
         </svg>
       </div>
       <div class="qw-discipline-name">Floramancy</div>

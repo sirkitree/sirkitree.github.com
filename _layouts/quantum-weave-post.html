@@ -6,8 +6,9 @@ layout: default
   window.DISABLE_GRID = true;
 </script>
 <link rel="stylesheet" href="/css/quantum-weave.css">
+<script src="/js/quantum-weave.js" defer></script>
 
-<article class="qw-post">
+<article class="qw-post post">
   <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
 
   <header class="qw-post-header">
@@ -127,16 +128,6 @@ layout: default
 
 <style>
   /* Override main site styles for QW posts */
-  body {
-    background-color: var(--qw-quantum-void) !important;
-  }
-
-  /* Ensure consistent dark background */
-  .qw-post,
-  main,
-  .container {
-    background-color: var(--qw-quantum-void) !important;
-  }
 
   .qw-post-content a {
     color: var(--qw-quantum-cyan);
