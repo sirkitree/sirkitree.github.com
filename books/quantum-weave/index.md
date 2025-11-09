@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: quantum-weave-page
 title: Quantum Weave
 permalink: /books/quantum-weave/
 ---
@@ -9,12 +9,6 @@ permalink: /books/quantum-weave/
   window.DISABLE_GRID = true;
 </script>
 <link rel="stylesheet" href="/css/quantum-weave.css">
-<style>
-  /* Hide the main article header H1 on the main QW page */
-  main article header h1 {
-    display: none !important;
-  }
-</style>
 
 <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
 
