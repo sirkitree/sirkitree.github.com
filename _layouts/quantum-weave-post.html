@@ -20,6 +20,8 @@ layout: default
       </div>
       {% endif %}
 
+      <h1 class="qw-post-title qw-display">{{ page.title }}</h1>
+
       <div class="qw-post-meta">
         <time pubdate="pubdate">{{ page.date | date: "%B %d, %Y" }}</time>
         {% if page.tags %}
