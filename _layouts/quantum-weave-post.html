@@ -1,0 +1,152 @@
+---
+layout: default
+---
+<link rel="stylesheet" href="/css/quantum-weave.css">
+
+<article class="qw-post">
+  <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
+
+  <header class="qw-post-header">
+    <div class="container">
+      {% if page.discipline %}
+      <div style="margin-bottom: 1rem;">
+        <span class="qw-discipline-badge qw-discipline-{{ page.discipline | downcase }}">
+          {{ page.discipline }}
+        </span>
+      </div>
+      {% endif %}
+
+      <h1 class="qw-post-title qw-display">{{ page.title }}</h1>
+
+      <div class="qw-post-meta">
+        <time pubdate="pubdate">{{ page.date | date: "%B %d, %Y" }}</time>
+        {% if page.tags %}
+          <span>•</span>
+          <span class="tags">
+            {% for tag in page.tags %}
+              <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag">{{ tag }}</a>
+              {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <section class="qw-post-content">
+    {{ content }}
+  </section>
+
+  <div class="qw-thread-divider" style="max-width: 720px; margin: 4rem auto;"></div>
+
+  {% if page.tags %}
+  <section class="related-posts" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
+    <h2 class="qw-title" style="text-align: center; margin-bottom: 2rem; color: var(--qw-text-primary);">More from Quantum Weave</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+      {% assign max_related = 3 %}
+      {% assign related_count = 0 %}
+
+      {% for post in site.posts %}
+        {% if post.url != page.url and post.tags %}
+          {% assign has_common_tag = false %}
+
+          {% for tag in page.tags %}
+            {% if post.tags contains tag %}
+              {% assign has_common_tag = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if has_common_tag and related_count < max_related %}
+            <div class="qw-narrative-card">
+              <div class="qw-narrative-meta">
+                <time>{{ post.date | date: "%b %d, %Y" }}</time>
+                {% if post.discipline %}
+                  <span>•</span>
+                  <span class="qw-discipline-badge qw-discipline-{{ post.discipline | downcase }}" style="padding: 0.25rem 0.625rem; font-size: 0.625rem;">
+                    {{ post.discipline }}
+                  </span>
+                {% endif %}
+              </div>
+              <h3 class="qw-narrative-title">
+                <a href="{{ post.url }}">{{ post.title }}</a>
+              </h3>
+              {% if post.excerpt %}
+                <p class="qw-narrative-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+              {% endif %}
+            </div>
+            {% assign related_count = related_count | plus: 1 %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <div class="qw-thread-divider" style="max-width: 720px; margin: 4rem auto;"></div>
+
+  {% if page.comments != false %}
+  <section class="comments mt-5" style="max-width: 720px; margin: 0 auto; padding: 0 2rem;">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'jbitner';
+        var disqus_url = window.location.href;
+        if (disqus_url.indexOf('#') >= 0) {
+          disqus_url = disqus_url.split('#')[0];
+        }
+        var last_char = disqus_url[disqus_url.length-1]
+        if (last_char == '/') {
+          disqus_url = disqus_url.substring(0, disqus_url.length-1);
+        }
+
+        var disqus_config = function () {
+          this.page.url = disqus_url;
+          this.page.identifier = '{{ page.id }}';
+          this.page.colorScheme = 'dark';
+          this.page.integration = {
+            hide: ['recommendations', 'discovery']
+          };
+        };
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>
+  {% endif %}
+</article>
+
+<style>
+  /* Override main site styles for QW posts */
+  body {
+    background-color: var(--qw-quantum-void);
+  }
+
+  .qw-post-content a {
+    color: var(--qw-quantum-cyan);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .qw-post-content a:hover {
+    border-bottom-color: var(--qw-quantum-cyan);
+  }
+
+  .qw-post-content hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--qw-border-subtle),
+      transparent
+    );
+    margin: 2rem 0;
+  }
+</style>

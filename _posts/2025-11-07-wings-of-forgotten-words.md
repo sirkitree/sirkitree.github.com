@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: quantum-weave-post
 title: "Wings of Forgotten Words"
 date: 2025-11-07
 tags: [quantum-weave, fiction, narrative, science-fantasy]
+discipline: Infomancy
 excerpt: "A Luminal Moth carries fragments of pre-collapse data in its wings, drawn to Weavers by instincts older than memory, bearing messages it cannot read."
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: quantum-weave-post
 title: "The Threshold"
 date: 2025-11-03
 tags: [quantum-weave, fiction, narrative, science-fantasy]

@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: quantum-weave-post
 title: "Rings of Memory"
 date: 2025-11-09
 tags: [quantum-weave, fiction, narrative, science-fantasy, poetry]
+discipline: Floramancy
 excerpt: "An 800-year-old Thinking Oak shares wisdom through Floramancy, remembering when trees walked and warning of patterns that spiral toward a second fall."
 ---
 
