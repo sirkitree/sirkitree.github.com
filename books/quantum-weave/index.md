@@ -13,6 +13,9 @@ permalink: /books/quantum-weave/
       <a class="btn" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
     </p>
   </div>
+  <div class="hero-image">
+    <img src="/assets/books/quantum-weave/threads-hand.png" alt="A hand with glowing quantum threads - representing the nanotechnology that Weavers believe is magic" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);">
+  </div>
 </section>
 
 <section class="about">
