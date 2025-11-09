@@ -186,7 +186,20 @@ body::after {
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  animation: qw-shimmer 3s ease-in-out infinite !important;
+  animation: qw-hero-enter 1s ease-out forwards, qw-shimmer 3s ease-in-out 1s infinite !important;
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+}
+
+@keyframes qw-hero-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes qw-shimmer {
