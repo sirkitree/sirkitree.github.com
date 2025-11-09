@@ -25,8 +25,10 @@ body::after {
   /* Disable backdrop-filter which causes major repaints */
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+}
 
-  /* Disable animations that might cause flicker */
+/* Disable animations by default (specific ones re-enabled below) */
+*:not(.qw-hero-title) {
   animation: none !important;
 }
 
@@ -122,20 +124,6 @@ body::after {
   right: 20% !important;
 }
 
-/* Re-enable gradient text effect on hero title (static, no animation) */
-.qw-hero-title {
-  background: linear-gradient(
-    135deg,
-    var(--qw-quantum-cyan) 0%,
-    var(--qw-quantum-blue) 50%,
-    var(--qw-quantum-purple) 100%
-  ) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  /* Keep animation disabled for now */
-  animation: none !important;
-}
 
 /* Re-enable radial glow background on hero (static atmospheric effect) */
 .qw-hero-background {
@@ -147,6 +135,67 @@ body::after {
     transparent 70%
   ) !important;
   pointer-events: none !important;
+}
+
+/* Re-enable link underline animations (very lightweight) */
+.qw-narrative-title a {
+  background: linear-gradient(to right, var(--qw-quantum-cyan), var(--qw-quantum-cyan)) !important;
+  background-size: 0% 2px !important;
+  background-position: 0 100% !important;
+  background-repeat: no-repeat !important;
+  transition: background-size 0.3s ease !important;
+}
+
+.qw-narrative-title a:hover {
+  background-size: 100% 2px !important;
+}
+
+/* Re-enable enhanced discipline icon glow on hover */
+.qw-discipline-card:hover .qw-discipline-icon {
+  filter: drop-shadow(0 0 16px var(--discipline-color)) !important;
+}
+
+/* Re-enable button hover background overlay */
+.qw-btn::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: var(--qw-quantum-cyan) !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  pointer-events: none !important;
+}
+
+.qw-btn:hover::before {
+  opacity: 0.1 !important;
+}
+
+.qw-btn-primary::before {
+  background: white !important;
+}
+
+/* Re-enable shimmer animation on gradient title (moderate) */
+.qw-hero-title {
+  background: linear-gradient(
+    135deg,
+    var(--qw-quantum-cyan) 0%,
+    var(--qw-quantum-blue) 50%,
+    var(--qw-quantum-purple) 100%
+  ) !important;
+  background-size: 200% 200% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: qw-shimmer 3s ease-in-out infinite !important;
+}
+
+@keyframes qw-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* ================================
