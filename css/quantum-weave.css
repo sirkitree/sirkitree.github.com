@@ -174,7 +174,7 @@ body::after {
   background: white !important;
 }
 
-/* Re-enable shimmer animation on gradient title (moderate) */
+/* Hero title with gradient text (no animation) */
 .qw-hero-title {
   font-size: clamp(2.5rem, 8vw, 5rem) !important;
   font-weight: 700 !important;
@@ -186,11 +186,9 @@ body::after {
     var(--qw-quantum-blue) 50%,
     var(--qw-quantum-purple) 100%
   ) !important;
-  background-size: 200% 200% !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  animation: qw-shimmer 3s ease-in-out infinite !important;
 }
 
 @keyframes qw-shimmer {
