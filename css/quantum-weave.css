@@ -122,6 +122,21 @@ body::after {
   right: 20% !important;
 }
 
+/* Re-enable gradient text effect on hero title (static, no animation) */
+.qw-hero-title {
+  background: linear-gradient(
+    135deg,
+    var(--qw-quantum-cyan) 0%,
+    var(--qw-quantum-blue) 50%,
+    var(--qw-quantum-purple) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  /* Keep animation disabled for now */
+  animation: none !important;
+}
+
 /* ================================
    QUANTUM WEAVE COLOR PALETTE
    ================================ */
