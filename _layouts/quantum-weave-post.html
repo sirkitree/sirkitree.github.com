@@ -20,8 +20,6 @@ layout: default
       </div>
       {% endif %}
 
-      <h1 class="qw-post-title qw-display">{{ page.title }}</h1>
-
       <div class="qw-post-meta">
         <time pubdate="pubdate">{{ page.date | date: "%B %d, %Y" }}</time>
         {% if page.tags %}
@@ -128,7 +126,14 @@ layout: default
 <style>
   /* Override main site styles for QW posts */
   body {
-    background-color: var(--qw-quantum-void);
+    background-color: var(--qw-quantum-void) !important;
+  }
+
+  /* Ensure consistent dark background */
+  .qw-post,
+  main,
+  .container {
+    background-color: var(--qw-quantum-void) !important;
   }
 
   .qw-post-content a {
@@ -153,4 +158,45 @@ layout: default
     );
     margin: 2rem 0;
   }
+
+  /* Discipline-specific highlighting */
+  {% if page.discipline %}
+    {% assign discipline_lower = page.discipline | downcase %}
+
+    /* Emphasized text uses discipline color */
+    .qw-post-content em {
+      color: var(--qw-{{ discipline_lower }}) !important;
+      font-style: italic;
+    }
+
+    /* Strong text uses discipline color */
+    .qw-post-content strong {
+      color: var(--qw-{{ discipline_lower }}) !important;
+      font-weight: 600;
+    }
+
+    /* Links use discipline color */
+    .qw-post-content a {
+      color: var(--qw-{{ discipline_lower }}) !important;
+    }
+
+    .qw-post-content a:hover {
+      border-bottom-color: var(--qw-{{ discipline_lower }}) !important;
+    }
+
+    /* Blockquotes get discipline-colored border */
+    .qw-post-content blockquote {
+      border-left-color: var(--qw-{{ discipline_lower }}) !important;
+    }
+
+    /* Post header border glow in discipline color */
+    .qw-post-header::after {
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--qw-{{ discipline_lower }}),
+        transparent
+      ) !important;
+    }
+  {% endif %}
 </style>
