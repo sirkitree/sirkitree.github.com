@@ -12,6 +12,24 @@
   }
 
   // ================================
+  // DEVICE AND PERFORMANCE DETECTION
+  // ================================
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  const isLowPerformance = isMobile || navigator.hardwareConcurrency <= 2;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Performance budget based on device
+  const performanceBudget = {
+    particles: isLowPerformance ? 8 : (isMobile ? 12 : 25),
+    enableParallax: !isMobile,
+    enableCursorGlow: !isTouchDevice,
+    enable3DTilt: !isTouchDevice && !isLowPerformance,
+    enableConnections: !isLowPerformance
+  };
+
+  // ================================
   // PARTICLE ANIMATION SYSTEM
   // ================================
 
@@ -118,14 +136,21 @@
     }
 
     drawConnections() {
+      // Skip connections on low-performance devices
+      if (!performanceBudget.enableConnections) {
+        return;
+      }
+
+      const maxDistance = isMobile ? 100 : 150;
+
       for (let i = 0; i < this.particles.length; i++) {
         for (let j = i + 1; j < this.particles.length; j++) {
           const dx = this.particles[i].x - this.particles[j].x;
           const dy = this.particles[i].y - this.particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 150) {
-            const opacity = (1 - distance / 150) * 0.15;
+          if (distance < maxDistance) {
+            const opacity = (1 - distance / maxDistance) * 0.15;
             this.ctx.strokeStyle = `rgba(0, 229, 255, ${opacity})`;
             this.ctx.lineWidth = 0.5;
             this.ctx.beginPath();
@@ -155,32 +180,47 @@
     const cards = document.querySelectorAll('.qw-discipline-card');
 
     cards.forEach(card => {
-      // 3D tilt effect on mouse move
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+      // 3D tilt effect on mouse move (desktop only)
+      if (performanceBudget.enable3DTilt) {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
 
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-      });
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
 
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      }
 
-      // Click to pulse animation
-      card.addEventListener('click', () => {
-        card.style.animation = 'qw-pulse 0.6s ease-out';
-        setTimeout(() => {
-          card.style.animation = '';
-        }, 600);
-      });
+      // Touch feedback for mobile
+      if (isTouchDevice) {
+        card.addEventListener('touchstart', () => {
+          card.style.opacity = '0.9';
+        });
+
+        card.addEventListener('touchend', () => {
+          card.style.opacity = '';
+        });
+      }
+
+      // Click/tap to pulse animation (skip if reduced motion preferred)
+      if (!prefersReducedMotion) {
+        card.addEventListener('click', () => {
+          card.style.animation = 'qw-pulse 0.6s ease-out';
+          setTimeout(() => {
+            card.style.animation = '';
+          }, 600);
+        });
+      }
     });
   }
 
@@ -212,7 +252,10 @@
 
           el.style.opacity = '0';
           el.style.transform = 'translateY(30px)';
-          el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+
+          // Faster transitions on mobile for snappier feel
+          const transitionDuration = isMobile ? '0.4s' : '0.6s';
+          el.style.transition = `opacity ${transitionDuration} ease-out, transform ${transitionDuration} ease-out`;
 
           this.elements.push({
             element: el,
@@ -222,11 +265,12 @@
       });
 
       // Use Intersection Observer for performance
+      // Adjust threshold for mobile to trigger earlier
       this.observer = new IntersectionObserver(
         (entries) => this.handleIntersection(entries),
         {
-          threshold: 0.1,
-          rootMargin: '50px'
+          threshold: isMobile ? 0.05 : 0.1,
+          rootMargin: isMobile ? '30px' : '50px'
         }
       );
 
@@ -240,8 +284,9 @@
         if (entry.isIntersecting) {
           const item = this.elements.find(el => el.element === entry.target);
           if (item && !item.animated) {
-            // Stagger animation slightly for cards in a row
-            const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 100;
+            // Reduced stagger on mobile for faster feel
+            const staggerDelay = isMobile ? 50 : 100;
+            const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * staggerDelay;
 
             setTimeout(() => {
               entry.target.style.opacity = '1';
@@ -249,6 +294,9 @@
             }, delay);
 
             item.animated = true;
+
+            // Unobserve after animation to save resources
+            this.observer.unobserve(entry.target);
           }
         }
       });
@@ -266,6 +314,11 @@
   // ================================
 
   function initHeroParallax() {
+    // Skip parallax on mobile devices for better performance
+    if (!performanceBudget.enableParallax || prefersReducedMotion) {
+      return;
+    }
+
     const hero = document.querySelector('.qw-hero');
     const heroBackground = document.querySelector('.qw-hero-background');
 
@@ -288,7 +341,7 @@
         });
         ticking = true;
       }
-    });
+    }, { passive: true }); // Passive listener for better scroll performance
   }
 
   // ================================
@@ -296,6 +349,11 @@
   // ================================
 
   function initCursorGlow() {
+    // Skip cursor glow on touch devices
+    if (!performanceBudget.enableCursorGlow) {
+      return;
+    }
+
     const hero = document.querySelector('.qw-hero');
     if (!hero) return;
 
@@ -339,28 +397,41 @@
       return;
     }
 
-    // Initialize particle system on hero
+    // Initialize particle system on hero with device-appropriate particle count
     const hero = document.querySelector('.qw-hero');
-    if (hero) {
+    if (hero && !prefersReducedMotion) {
       hero.id = 'qw-hero-particles';
       setTimeout(() => {
-        new ParticleSystem('qw-hero-particles', 25);
+        new ParticleSystem('qw-hero-particles', performanceBudget.particles);
       }, 100);
     }
 
-    // Initialize scroll animations
-    new ScrollAnimations();
+    // Initialize scroll animations (skip if reduced motion preferred)
+    if (!prefersReducedMotion) {
+      new ScrollAnimations();
+    }
 
     // Initialize discipline card interactions
     initDisciplineCards();
 
-    // Initialize hero parallax
+    // Initialize hero parallax (desktop only)
     initHeroParallax();
 
-    // Initialize cursor glow
+    // Initialize cursor glow (desktop only)
     initCursorGlow();
 
-    console.log('✨ Quantum Weave interactive enhancements loaded');
+    // Log performance settings for debugging
+    if (window.location.search.includes('debug')) {
+      console.log('✨ Quantum Weave loaded with settings:', {
+        isMobile,
+        isTouchDevice,
+        isLowPerformance,
+        prefersReducedMotion,
+        performanceBudget
+      });
+    } else {
+      console.log('✨ Quantum Weave interactive enhancements loaded');
+    }
   }
 
   // Start initialization
