@@ -7,12 +7,9 @@
    DISABLE MAIN SITE BACKGROUNDS
    ================================ */
 
-/* Hide the main site's Three.js animated grid canvas on QW pages */
-#grid-canvas {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
+/* The quantum grid uses the same #grid-canvas element as the main site grid */
+/* The DISABLE_GRID flag prevents grid.js from initializing */
+/* grid-quantum.js takes over the canvas for Quantum Weave pages */
 
 /* Hide the main site's gradient background effects on QW pages */
 body::before,
