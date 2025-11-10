@@ -14,7 +14,7 @@
   "tags": ["markdown", "markup", "html"],
   "devDependencies": {
     "markdown": "*",
-    "showdown": "*",
+    "showdown": ">=1.9.1",
     "robotskirt": "*"
   },
   "scripts": { "test": "node test", "bench": "node test --bench" }
