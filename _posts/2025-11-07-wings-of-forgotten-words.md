@@ -9,6 +9,8 @@ excerpt: "A Luminal Moth carries fragments of pre-collapse data in its wings, dr
 
 *From the world of [Quantum Weave](/books/quantum-weave/), where magic is forgotten nanotechnology and failed spells leave reality fractured.*
 
+![Luminal Moth](/assets/books/quantum-weave/luminal-moth.png)
+
 ---
 
 *A Luminal Moth's Perspective*
