@@ -153,6 +153,24 @@ layout: default
     margin: 2rem 0;
   }
 
+  /* Responsive images */
+  .qw-post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Optimize for mobile */
+  @media (max-width: 768px) {
+    .qw-post-content img {
+      margin: 1.5rem auto;
+      border-radius: 4px;
+    }
+  }
+
   /* Discipline-specific highlighting */
   {% if page.discipline %}
     {% assign discipline_lower = page.discipline | downcase %}
