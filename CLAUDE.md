@@ -64,6 +64,33 @@ python scripts/websim_to_blog.py        # Import WebSim projects as blog posts
 2. Test locally with `bundle exec jekyll serve`
 3. Commit and push (automatic deployment)
 
+### Adding Quantum Weave Narratives
+When posting Quantum Weave stories, follow this spell reference protocol:
+
+1. **Identify spell mentions** in the narrative text (e.g., "THERM-lock", "Forge-Heart")
+2. **Search the spell catalog** in `/Users/sirkitree/repos/books/Jerad Bitner/QW/worldbuilding/disciplines/` for matching spells
+3. **Add spell data** to `js/spell-tooltips.js` if not already present:
+   ```javascript
+   'spell-id': {
+     name: 'Spell Name',
+     altName: 'Alternative Name',
+     discipline: 'Discipline Name',
+     disciplineColor: '#HEX',
+     tier: 'Novice/Intermediate/Advanced',
+     function: 'Brief description...',
+     duration: 'Duration info',
+     threadCost: 'Thread cost info',
+     link: '/books/quantum-weave/disciplines/...'
+   }
+   ```
+4. **Mark up spells** in the post with:
+   ```html
+   <span class="qw-spell" data-spell="spell-id">Spell Name</span>
+   ```
+5. **Verify tooltips** display correctly with hover
+
+This creates interactive hover panels showing spell details without leaving the narrative.
+
 ### Working with WebSim Projects
 - HTML files in `websim-projects/` are standalone interactive experiments
 - Use `generate_thumbnails.js` to create preview images
