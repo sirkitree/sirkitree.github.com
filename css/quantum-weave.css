@@ -845,6 +845,156 @@ body::after {
   font-style: italic;
 }
 
+/* Universe links - distinctive quantum glow style */
+.qw-post-content em a {
+  color: var(--qw-quantum-cyan);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 2px;
+  border-bottom: 2px solid var(--qw-quantum-cyan);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.qw-post-content em a:hover {
+  color: var(--qw-quantum-blue);
+  border-bottom-color: var(--qw-quantum-blue);
+  text-shadow:
+    0 0 10px rgba(0, 229, 255, 0.6),
+    0 0 20px rgba(0, 229, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ================================
+   SPELL TOOLTIPS
+   ================================ */
+
+.qw-spell {
+  position: relative;
+  color: var(--qw-quantum-cyan);
+  cursor: help;
+  border-bottom: 1px dotted var(--qw-quantum-cyan);
+  transition: all 0.2s ease;
+}
+
+.qw-spell:hover {
+  color: var(--qw-quantum-blue);
+  border-bottom-color: var(--qw-quantum-blue);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+.qw-spell-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  margin-bottom: 8px;
+  width: 320px;
+  max-width: 90vw;
+  background: rgba(13, 13, 13, 0.98);
+  border: 1px solid var(--qw-quantum-cyan);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 229, 255, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.qw-spell:hover .qw-spell-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.qw-spell-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--qw-quantum-cyan);
+}
+
+.qw-spell-tooltip-title {
+  font-weight: 600;
+  color: var(--qw-quantum-cyan);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qw-spell-tooltip-discipline {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.qw-spell-tooltip-tier {
+  font-size: 0.75rem;
+  color: var(--qw-text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.qw-spell-tooltip-description {
+  color: var(--qw-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.qw-spell-tooltip-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--qw-text-tertiary);
+  border-top: 1px solid rgba(0, 229, 255, 0.2);
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.qw-spell-tooltip-meta strong {
+  color: var(--qw-quantum-cyan);
+}
+
+.qw-spell-tooltip-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--qw-quantum-cyan);
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.qw-spell-tooltip-link:hover {
+  color: var(--qw-quantum-blue);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+/* Mobile adjustments for spell tooltips */
+@media (max-width: 768px) {
+  .qw-spell-tooltip {
+    width: 280px;
+    font-size: 0.8125rem;
+    padding: 0.875rem;
+  }
+
+  .qw-spell-tooltip-title {
+    font-size: 0.9375rem;
+  }
+}
+
 .qw-post-content strong {
   color: var(--qw-text-primary);
   font-weight: 600;
