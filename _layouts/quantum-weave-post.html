@@ -13,30 +13,24 @@ layout: default
 <article class="qw-post post">
   <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
 
-  <header class="qw-post-header">
-    <div class="container">
-      {% if page.discipline %}
-      <div style="margin-bottom: 1rem;">
-        <span class="qw-discipline-badge qw-discipline-{{ page.discipline | downcase }}">
-          {{ page.discipline }}
-        </span>
-      </div>
-      {% endif %}
+  <header class="qw-post-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding: 6rem 2rem 4rem;">
+    <div class="container" style="max-width: 800px; margin: 0 auto; display: block;">
 
-      <h1 class="qw-post-title qw-display">{{ page.title }}</h1>
+      <h1 class="qw-post-title" style="font-size: clamp(2.25rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 2rem 0; color: var(--qw-text-primary); text-align: center; display: block; width: 100%;">
+        {{ page.title }}
+      </h1>
 
-      <div class="qw-post-meta">
-        <time pubdate="pubdate">{{ page.date | date: "%B %d, %Y" }}</time>
-        {% if page.tags %}
-          <span>•</span>
-          <span class="tags">
-            {% for tag in page.tags %}
-              <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag">{{ tag }}</a>
-              {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
-            {% endfor %}
+      <div style="display: block; width: 100%; text-align: center; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.4; font-weight: 500; line-height: 2; clear: both;">
+        <div style="display: block;"><time pubdate="pubdate">{{ page.date | date: "%B %d, %Y" }}</time></div>
+        {% if page.discipline %}
+        <div style="display: block; margin-top: 0.75rem;">
+          <span class="qw-discipline-badge qw-discipline-{{ page.discipline | downcase | replace: ' ', '-' }}" style="font-size: 0.625rem; padding: 0.4rem 1rem; opacity: 1;">
+            {{ page.discipline }}
           </span>
+        </div>
         {% endif %}
       </div>
+
     </div>
   </header>
 
