@@ -1,11 +1,13 @@
 ---
-layout: post
+layout: quantum-weave-post
 title: "The Geometry of Hunger"
 date: 2025-11-20
-tags: quantum-weave narrative horror shadow
+tags: [quantum-weave, fiction, narrative, science-fantasy, horror]
+discipline: Failed Genesis Experiment
+excerpt: "Subject 23 should be dead. Instead, she exists as a living shadow—a two-dimensional predator that hungers for light and quantum threads, trapped between fading memories of humanity and an insatiable need to consume."
 ---
 
-*A perspective from the darkness—from something that was once human, now reduced to two dimensions and an endless, consuming need.*
+*From the world of [Quantum Weave](/books/quantum-weave/), where magic is forgotten nanotechnology and failed spells leave reality fractured.*
 
 ---
 
