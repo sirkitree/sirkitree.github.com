@@ -45,6 +45,21 @@ permalink: /books/quantum-weave/
 <div class="qw-thread-divider container" style="max-width: 1200px;"></div>
 
 <section class="container" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
+  <h2 class="qw-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--qw-text-primary);">The Magic System</h2>
+  <p class="qw-body" style="text-align: center; color: var(--qw-text-secondary); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+    Nine disciplines. Infinite possibilities. Click to explore the full infographic.
+  </p>
+  <div style="text-align: center;">
+    <a href="/assets/books/quantum-weave/infographic-2x.png" target="_blank" style="display: inline-block;">
+      <img src="/assets/books/quantum-weave/infographic-thumb.jpg" alt="Quantum Weave Magic System Infographic - The Nine Disciplines" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0, 229, 255, 0.2); cursor: zoom-in; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 0 60px rgba(0, 229, 255, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 40px rgba(0, 229, 255, 0.2)';">
+    </a>
+    <p class="qw-caption" style="margin-top: 1rem; font-size: 0.875rem; color: var(--qw-text-tertiary);">Click to view full resolution</p>
+  </div>
+</section>
+
+<div class="qw-thread-divider container" style="max-width: 1200px;"></div>
+
+<section class="container" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
   <h2 class="qw-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--qw-text-primary);">The Nine Disciplines</h2>
   <p class="qw-body" style="text-align: center; color: var(--qw-text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
     Magic in Quantum Weave is organized into nine disciplines, each grounded in quantum mechanics
