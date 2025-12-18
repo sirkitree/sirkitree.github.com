@@ -24,5 +24,5 @@ root: /
 permalink: /:year/:month/:title/
 
 #GitHub Overrides
-safe: true
+# safe: true  # Disabled locally for pagination to work
 lsi: false
