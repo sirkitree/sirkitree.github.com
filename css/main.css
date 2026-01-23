@@ -685,30 +685,6 @@ footer {
   color: var(--link-color);
 }
 
-/* Disqus sections */
-.comments,
-#disqus_recommendations {
-  border-radius: 8px;
-  background: var(--code-bg);
-  border: 1px solid var(--border-color);
-}
-
-/* Add spacing between Disqus sections */
-#disqus_recommendations {
-  margin-bottom: 2rem;
-  display: none;
-}
-
-#disqus_recommendations iframe,
-#disqus_thread iframe {
-  color-scheme: auto !important;
-}
-
-/* Style the loading state */
-#disqus_thread {
-  min-height: 200px;
-}
-
 /* Add this to your existing CSS */
 .websim-embed {
     position: relative;
