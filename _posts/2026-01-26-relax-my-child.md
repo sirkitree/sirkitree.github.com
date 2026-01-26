@@ -10,7 +10,7 @@ tags:
   - trust
 ---
 
-Yesterday's sermon at St. John's was about being "Safe But Uncomfortable," a theme the church has been exploring during Epiphany. Eric talked about walking in darkness versus sitting in it, about political instability, protesters being killed in Minnesota, a bishop warning clergy to prepare for martyrdom. He mentioned having his will in order, his life insurance sorted.
+Yesterday's sermon at St. John's was about being "Safe But Uncomfortable," a theme the church has been exploring during Epiphany. Eric talked about walking in darkness versus sitting in it, about political instability, protesters being killed in Minnesota, a bishop warning clergy to prepare for martyrdom. He mentioned having his will in order, his life insurance sorted. ([Recording here](https://www.youtube.com/watch?v=PGM5bLVMk4w).)
 
 Honest? Yes. Timely? Sure. But I left feeling heavier, not lighter.
 
