@@ -64,6 +64,31 @@ python scripts/websim_to_blog.py        # Import WebSim projects as blog posts
 2. Test locally with `bundle exec jekyll serve`
 3. Commit and push (automatic deployment)
 
+### Blog writing voice
+
+Write in first person as someone thinking out loud, not presenting. The tone sits between casual warmth and analytical substance — personal but not performative, opinionated but honest about uncertainty.
+
+**Do:**
+- Use "I" freely. "I've noticed...", "I keep coming back to...", "Here's what gets me..."
+- State opinions and react to things. "which, okay, but..." is fine.
+- Back claims with specifics — numbers, links to repos/issues/docs, concrete examples.
+- Vary sentence length. Short punchy lines. Then longer ones that take their time.
+- Acknowledge mixed feelings and trade-offs instead of picking a winner.
+- Use analogies that come naturally (pickup trucks, dashboards, etc.).
+- Link inline and contextually throughout the text, not in a "Resources" section.
+- Include a `<!--more-->` break after the opening hook.
+
+**Don't:**
+- Use emojis in blog posts.
+- Use slang or hype language ("hot damn", "ya dig", "game-changer", "revolutionary").
+- End with rallying cries ("Stay curious, fellow code wranglers!").
+- Use rule-of-three parallelism ("It's X. It's Y. And it's Z.").
+- Use bold-label bullet lists (**Thing:** description) when prose would work.
+- Hedge with "genuinely", "fundamental", "crucial", "pivotal".
+- Write generic positive conclusions. End with a specific thought or observation.
+
+**Reference post:** `_posts/2026-02-10-comparing-cursor-memory-bank-and-compound-engineering.md`
+
 ### Adding Quantum Weave Narratives
 When posting Quantum Weave stories, follow this spell reference protocol:
 
