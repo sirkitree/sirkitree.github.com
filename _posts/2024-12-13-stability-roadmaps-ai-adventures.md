@@ -5,6 +5,7 @@ created: 1702512000
 permalink: /blog/stability-roadmaps-ai-adventures
 tags:
   - tech
+  - ai
 ---
 *Holy optimization, Batman!* 🚀 This week has been quite the adventure - my first week on Lullabot's Support and Maintenance team. And let me tell you, it's been a blast.
 

@@ -6,6 +6,7 @@ comments: true
 published: true
 tags:
   - tech
+  - ai
 permalink: /blog/claude-code-statusline
 ---
 

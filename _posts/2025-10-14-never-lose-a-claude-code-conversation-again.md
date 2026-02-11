@@ -6,6 +6,7 @@ comments: true
 published: true
 tags:
   - tech
+  - ai
   - automation
 permalink: /blog/claude-code-auto-save-conversations
 ---

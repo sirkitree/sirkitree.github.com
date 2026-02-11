@@ -6,6 +6,7 @@ comments: true
 published: true
 tags:
   - tech
+  - ai
 ---
 
 The world of technology never ceases to amaze me with its rapid evolution and unexpected convergences. Recently, I've been deeply involved with an exciting project at the intersection of artificial intelligence and cryptocurrency - the [@ai16z/eliza](https://github.com/ai16z/eliza) project.

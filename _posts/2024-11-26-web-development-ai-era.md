@@ -6,6 +6,7 @@ comments: true
 published: true
 tags:
   - tech
+  - ai
 ---
 
 The landscape of web development is undergoing a profound transformation, one that reminds me of the early days of responsive design or the shift to mobile-first thinking. But this time, the change is more fundamental - AI isn't just another tool in our toolkit, it's reshaping how we approach the entire development process.
