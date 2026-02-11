@@ -6,6 +6,7 @@ comments: true
 published: true
 tags:
   - tech
+  - ai
 permalink: /blog/comparing-ai-coding-memory-tools
 ---
 
