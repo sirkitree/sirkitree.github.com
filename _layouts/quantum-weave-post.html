@@ -48,7 +48,7 @@ layout: default
       {% assign related_count = 0 %}
 
       {% for post in site.posts %}
-        {% if post.url != page.url and post.tags %}
+        {% if post.url != page.url and post.layout == "quantum-weave-post" and post.tags %}
           {% assign has_common_tag = false %}
 
           {% for tag in page.tags %}
