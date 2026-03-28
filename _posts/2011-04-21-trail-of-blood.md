@@ -1,9 +1,11 @@
 ---
-layout : post
-title : "Trail of Blood"
-created : 1303420999
-permalink : /short-stories/trail-of-blood
-category : "story"
+layout: short-stories-story
+title: "Trail of Blood"
+created: 1303420999
+permalink: /short-stories/trail-of-blood
+genre: "Fantasy"
+reading_time: "5 min"
+category: "story"
 ---
 The young appearing warrior elf moved with gentle but fierce and deadly grace. He swooped around to my left and right with his ever-glowing sky blue sword. I swung around to face him at each turn, then suddenly shifted my great sword to my right hand and took an expert chop at the small bright-eyed elf. He jumped over me and with a fleeting glance at my defenseless back, sliced at the belt on my loincloth, which subsequently fell to my knees.
 

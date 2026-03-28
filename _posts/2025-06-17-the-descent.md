@@ -1,8 +1,10 @@
 ---
-layout: post
+layout: short-stories-story
 title: "The Descent"
 date: 2025-06-17
 permalink: /short-stories/the-descent
+genre: "Horror"
+reading_time: "8 min"
 tags:
   - fiction
   - horror
