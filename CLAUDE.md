@@ -64,6 +64,9 @@ python scripts/websim_to_blog.py        # Import WebSim projects as blog posts
 2. Test locally with `bundle exec jekyll serve`
 3. Commit and push (automatic deployment)
 
+### Tags
+Before adding tags to a post, search existing posts for the tag you want to use: `grep -r "  - " _posts/ | sort -t'-' -k4 | uniq -f1`. Always reuse existing tags with their exact casing (e.g. `ai` not `AI`, `tech` not `Tech`). Only create a new tag if no existing tag fits.
+
 ### Blog writing voice
 
 Write in first person as someone thinking out loud, not presenting. The tone sits between casual warmth and analytical substance — personal but not performative, opinionated but honest about uncertainty.

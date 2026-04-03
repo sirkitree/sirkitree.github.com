@@ -5,7 +5,7 @@ date: 2026-04-03
 tags:
   - tech
   - design
-  - AI
+  - ai
   - lullabot
 ---
 
