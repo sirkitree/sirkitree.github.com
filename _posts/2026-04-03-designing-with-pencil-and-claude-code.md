@@ -38,25 +38,40 @@ OpptyNet imports it. Upstraker imports it. When I start the next internal tool, 
 
 Once I had the foundation, the purpose statement, the content model, the design tokens, I started iterating in Pencil. Because the feedback loop is just *conversation*, the iterations came fast.
 
-![OpptyNet Dashboard](/img/pencil-post/opptynet-dashboard.png)
-*The OpptyNet dashboard: stat cards, top opportunities, score distribution, platform breakdown, and activity feed.*
-
-![OpptyNet Opportunities list](/img/pencil-post/opptynet-opportunities.png)
-*The opportunities list with score badges, filter pills, and one-line AI summaries.*
-
 V1 was card-based. A list of opportunity cards with a filter bar and pagination. Standard stuff, but too much visual weight per item. Jenna needs to scan 20-50 opportunities. Cards are too heavy for that.
+
+![OpptyNet V1 — card-based list](/img/pencil-post/opptynet-v1-cards.png)
+*V1: opportunity cards with score badges, platform tags, and deadline countdowns. Looks nice, scans slow.*
 
 V2 went dense, a table layout with inline score bars. Better for scanning. But it lost the warmth. Felt like a spreadsheet, and the whole point was to be *better* than the spreadsheet she already has.
 
+![OpptyNet V2 — dense table](/img/pencil-post/opptynet-v2-dense-table.png)
+*V2: compact table rows with stat ribbon. Faster to scan, but sterile.*
+
 V3 tried a split panel, like an email client. List on the left, preview on the right. This was the layout that stuck. You scan on the left, evaluate on the right. No page transitions, no context switching.
 
+![OpptyNet V3 — split panel](/img/pencil-post/opptynet-v3-split-panel.png)
+*V3: the split panel layout that stuck. List left, detail right.*
+
 V4 and V5 were mashups, combining the split panel with a dark hero banner for the selected opportunity, stat cards, score breakdowns alongside contacts. Getting closer, but cluttered.
+
+![OpptyNet V4 — dark hero mashup](/img/pencil-post/opptynet-v4-mashup.png)
+*V4: dark hero banner meets split panel. The layout is finding its shape.*
+
+![OpptyNet V5 — final mashup](/img/pencil-post/opptynet-v5-final-mashup.png)
+*V5: stats, contacts, notes, and AI chat all present. Too much competing for space.*
 
 Then I ran the Ponchot critique against V5. The stats were eating too much vertical space. There were no filters, which is a bad miss when your design principle is "spreadsheet speed." The Ask AI feature, which is arguably the differentiator, was hidden in a tab.
 
 V6 fixed all of that. Stats compressed to a single ribbon. Filter pills below the list header. Ask AI pinned to the bottom, always visible. Keywords gone because they were redundant with the score breakdown.
 
+![OpptyNet V6 — refined](/img/pencil-post/opptynet-v6-refined.png)
+*V6: filters added, stats compressed, Ask AI always visible at the bottom.*
+
 V7 was polish. Starbridge, the $15K/year tool we're replacing, has this restrained luxury feel. So I added ambient glows on score badges. A subtle gradient on the dark left panel instead of flat color. Red glow on action buttons. Cards with soft shadows instead of borders. Nothing that changes the information architecture, just surfaces that feel *crafted*.
+
+![OpptyNet V7 — polished](/img/pencil-post/opptynet-v7-polished.png)
+*V7: the final design. Ambient glows, gradient panel, soft shadows. Same bones as V6, better skin.*
 
 Seven versions. One conversation thread. Maybe three hours of actual work. That last part still surprises me.
 
