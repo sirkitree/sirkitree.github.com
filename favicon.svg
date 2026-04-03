@@ -5,11 +5,9 @@
       <stop offset="100%" stop-color="#2d2d2d"/>
     </linearGradient>
   </defs>
-  <!-- Dark rounded background -->
-  <rect width="32" height="32" rx="6" fill="url(#bg)"/>
-  <!-- Hexagon outline echoing the Three.js grid -->
+  <!-- Hexagon background with thick outline -->
   <polygon points="16,3 27.3,9.5 27.3,22.5 16,29 4.7,22.5 4.7,9.5"
-           fill="none" stroke="#ff6b6b" stroke-width="1.5" opacity="0.35"/>
+           fill="url(#bg)" stroke="#ff6b6b" stroke-width="2.5" opacity="1"/>
   <!-- J letter path -->
   <path d="M7 10 h5 v0.5 h-2 v9 q0 2.5 -2.5 2.5 q-1.5 0 -2 -1 l1 -0.8 q0.3 0.6 1 0.6 q1.2 0 1.2 -1.5 v-9.3 h-1.7 z"
         fill="#ff6b6b"/>
