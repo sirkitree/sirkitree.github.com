@@ -408,7 +408,8 @@ nav a:focus {
   line-height: 1.7;
 }
 
-.post-content img {
+.post-content img,
+.post .content img {
   max-width: 100%;
   height: auto;
 }
