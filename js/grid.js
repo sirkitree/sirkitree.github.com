@@ -4,7 +4,7 @@ if (window.DISABLE_GRID) {
 } else {
   // Import and initialize Three.js grid only when not disabled
   (async () => {
-    const THREE = await import('https://cdn.skypack.dev/three@0.136.0');
+    const THREE = await import('https://unpkg.com/three@0.136.0/build/three.module.js');
 
     // Set up scene
     const scene = new THREE.Scene();

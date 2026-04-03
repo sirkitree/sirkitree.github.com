@@ -50,13 +50,14 @@ body {
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--text-color);
-  background-color: var(--bg-color);
+  background-color: transparent;
   margin: 0;
   padding: 0;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
+  transition: color var(--transition-speed);
   position: relative;
   overflow-x: hidden;
 }
+
 
 /* Background Effects */
 body::before,
@@ -99,6 +100,7 @@ body::after {
   width: 100%;
   height: 100%;
   z-index: -2;
+  background-color: var(--bg-color);
 }
 
 /* Container */
