@@ -8,7 +8,11 @@ tags: [memoir, jenney, book, announcement]
 
 Today, I'm revealing the title and cover of my memoir: **"Learning Your Children's Names Again: A Memoir of Love, Brain Surgery, and the Miracles in Between."**
 
-![Book Cover](/assets/books/learning-your-childrens-names-again/cover-front.jpg)
+**The book is available now:**
+<a href="https://www.amazon.com/dp/B0FNPS91C2" class="btn btn-primary">Kindle eBook</a>
+<a href="https://www.amazon.com/dp/B0FPB63T63" class="btn secondary">Paperback</a>
+
+<img src="/assets/books/learning-your-childrens-names-again/cover-front.jpg" alt="Book Cover" style="max-width: 300px;">
 
 ## Why This Title?
 
