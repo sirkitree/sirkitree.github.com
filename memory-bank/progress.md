@@ -6,7 +6,6 @@
 - Custom layouts, theming, and navigation
 - Disqus comments integration
 - Automation scripts for thumbnail generation and project import
-- AngularJS subprojects and experiments
  - Newsletter live at https://lycna.jeradbitner.com with subscribe flow
  - Teaser image set created (blur + partial reveal) and used on Facebook
 
@@ -21,4 +20,3 @@
 
 ## Known Issues
 - Must ensure all automation scripts remain compatible with Jekyll and GitHub Pages
-- AngularJS subprojects are legacy and may require updates for modern browsers 

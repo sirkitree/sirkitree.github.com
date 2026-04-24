@@ -92,16 +92,4 @@ async function generateThumbnails() {
   server.close();
 }
 
-// Install serve-handler if not already installed
-// The script might be executed before dependencies are installed. Check for
-// serve-handler inside the repo's node_modules directory and install it if
-// missing.
-if (!fs.existsSync(path.join(ROOT_DIR, 'node_modules', 'serve-handler'))) {
-  console.log('Installing serve-handler...');
-  require('child_process').execSync('npm install serve-handler', {
-    stdio: 'inherit',
-    cwd: ROOT_DIR,
-  });
-}
-
 generateThumbnails().catch(console.error); 

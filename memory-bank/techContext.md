@@ -9,7 +9,6 @@
 - **Disqus** for comments
 - **Node.js** (with Puppeteer, serve-handler) for automation scripts
 - **Python** (with BeautifulSoup4) for automation scripts
-- **AngularJS 1.0.7** for subproject demos/experiments
 - **Bootstrap 5** for dropdowns and UI components
 
 ## Development Setup
@@ -32,4 +31,3 @@
 - Node.js: puppeteer, serve-handler
 - Python: beautifulsoup4
 - Frontend: Bootstrap 5, Google Fonts, custom CSS/JS
-- AngularJS and related libraries for subprojects

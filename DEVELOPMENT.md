@@ -50,10 +50,9 @@ pip install beautifulsoup4
 - `css/`, `js/`        : Stylesheets and JavaScript files
 - `assets/`            : Static assets (images, thumbnails, etc.)
 - `scripts/`           : Utility scripts for automation
-- `ng-views/`          : AngularJS partial views
 - `tags/`              : Tag listing pages
 - `websim-projects/`   : Archived WebSim.ai project HTML files
-- `archive/`, `angular-google-auth/`, `beckbits/`, `hublog-ng/`: Standalone pages and subprojects
+- `archive/`, `beckbits/`: Standalone pages and subprojects
 - `Gemfile`, `package.json`, `_config.yml`, `CNAME` : Configuration and dependency files
 - `_site/`             : Generated site (ignored by version control)
 
@@ -123,7 +122,6 @@ python scripts/websim_to_blog.py
 - **Layouts**   : `_layouts/` (`default.html`, `post.html`, `page.html`, `tag.html`, etc.)
 - **Includes**  : `_includes/`
 - **Styles**    : `css/` (update `main.css`, `normalize.css`, `syntax.css`)
-- **AngularJS** : Partial views in `ng-views/`
 
 ## Dependencies
 

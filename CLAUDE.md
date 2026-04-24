@@ -37,14 +37,14 @@ python scripts/websim_to_blog.py        # Import WebSim projects as blog posts
 
 ### Jekyll Structure
 - `_posts/`: Blog posts in Markdown with YAML front matter (100+ posts from 2006-2025)
-- `_layouts/`: Template files (default.html, post.html, page.html, tag.html, new.html)
+- `_layouts/`: Template files (default.html, post.html, page.html, tag.html)
 - `_config.yml`: Main Jekyll configuration with pagination, kramdown, and timezone settings
 - `_site/`: Generated output (never edit directly)
 
 ### Content Management
 - **WebSim Projects**: `websim-projects/` contains 26+ interactive HTML experiments from WebSim.ai
 - **Memory Bank**: `memory-bank/` stores project documentation and context
-- **Special Collections**: `beckbits/` (creative projects), `ipe/` (real estate tools), `hublog-ng/` (AngularJS blog interface)
+- **Special Collections**: `beckbits/` (creative projects), `ipe/` (real estate tools)
 
 ### Frontend Architecture
 - **Theme System**: CSS custom properties with localStorage persistence for dark/light mode

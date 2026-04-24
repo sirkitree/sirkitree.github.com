@@ -5,7 +5,6 @@
 - Hosted on GitHub Pages with custom domain support.
 - Blog posts and pages use custom layouts and Liquid templates.
 - Automation scripts (Node.js, Python) for asset and content management.
-- AngularJS (1.0.7) used in subprojects for interactive demos and experiments.
 
 ## Key Technical Decisions
 - Use of Jekyll for static site generation for simplicity and portability.

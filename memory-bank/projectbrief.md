@@ -16,7 +16,6 @@ A personal blog and website for Jerad Bitner, built with Jekyll and hosted on Gi
 - Automated thumbnail generation and project import scripts.
 - Host on GitHub Pages with custom domain support.
 - Integrate with Disqus for comments.
-- Support for AngularJS-based subprojects and experiments.
 
 ## Goals
 

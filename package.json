@@ -1,0 +1,13 @@
+{
+  "name": "sirkitree.github.com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal Jekyll site automation scripts.",
+  "scripts": {
+    "generate-thumbnails": "node scripts/generate_thumbnails.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.15.0",
+    "serve-handler": "^6.1.6"
+  }
+}
