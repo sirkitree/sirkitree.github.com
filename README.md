@@ -20,3 +20,12 @@ My personal blog and website, built with [Jekyll](https://jekyllrb.com) and host
 ## Developer Guide
 
 For detailed instructions on setting up, building, and working with this codebase, see [DEVELOPMENT.md](DEVELOPMENT.md).
+
+## Automation
+
+Generate WebSim thumbnails with:
+
+```bash
+npm install
+npm run generate-thumbnails
+```

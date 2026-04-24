@@ -1,4 +1,4 @@
-url: http://jeradbitner.com
+url: https://jeradbitner.com
 name: Jerad Bitner
 author: Jerad Bitner
 
@@ -8,13 +8,13 @@ markdown: kramdown
 # Add jekyll-paginate to plugins list if you're using pagination
 plugins:
   - jekyll-paginate
+  - jekyll-redirect-from
 
 # Pagination settings
 paginate: 5
 paginate_path: "/page:num/"
 
-# Show future posts
-future: true
+future: false
 
 # Site settings
 timezone: America/New_York
@@ -22,6 +22,21 @@ encoding: utf-8
 
 root: /
 permalink: /:year/:month/:title/
+
+exclude:
+  - CLAUDE.md
+  - DEVELOPMENT.md
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - README.md
+  - QUANTUM_WEAVE_DESIGN_PLAN.md
+  - memory-bank/
+  - node_modules/
+  - scripts/
+  - venv/
+  - .cursor/
 
 #GitHub Overrides
 # safe: true  # Disabled locally for pagination to work

@@ -100,7 +100,7 @@ Several utility scripts help automate common tasks:
 
 | Script                            | Description                                                       |
 | --------------------------------- | ----------------------------------------------------------------- |
-| `scripts/generate_thumbnails.js`  | Generate PNG thumbnails for WebSim projects using Puppeteer       |
+| `npm run generate-thumbnails`     | Generate PNG thumbnails for WebSim projects using Puppeteer       |
 | `scripts/rename_websim_files.py`  | Slugify and rename HTML files in `websim-projects/`               |
 | `scripts/websim_to_blog.py`       | Import WebSim.ai projects into blog posts under `_posts/`         |
 
@@ -108,7 +108,7 @@ Usage examples:
 
 ```bash
 # Generate thumbnails (requires Node.js dependencies)
-node scripts/generate_thumbnails.js
+npm run generate-thumbnails
 
 # Slugify and rename WebSim HTML files (requires BeautifulSoup4)
 python scripts/rename_websim_files.py
