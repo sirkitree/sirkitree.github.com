@@ -12,11 +12,12 @@ if (window.DISABLE_GRID) {
     const renderer = new THREE.WebGLRenderer({
         canvas: document.querySelector('#grid-canvas'),
         alpha: true,
-        antialias: true
+        antialias: true,
+        powerPreference: 'high-performance'
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Create voxels
     const gridSize = 40;
@@ -39,7 +40,7 @@ if (window.DISABLE_GRID) {
 
     const voxelMaterial = new THREE.MeshPhongMaterial({
         color: 0x220000,
-        transparent: false,
+        transparent: true,
         opacity: 1,
         shininess: 20,
         specular: 0x110000
@@ -143,28 +144,51 @@ if (window.DISABLE_GRID) {
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
+    // Pre-cache edgeFactor^0.7 for all voxels to avoid Math.pow in the hot loop
+    rows.forEach((row) => {
+        row.children.forEach((voxelGroup) => {
+            if (voxelGroup.userData.isEdge) {
+                voxelGroup.userData.edgeFactorPow =
+                    Math.pow(voxelGroup.userData.edgeFactor, 0.7);
+            }
+        });
+    });
+
     // Animation loop
     function animate() {
         requestAnimationFrame(animate);
         const time = Date.now() * 0.001;
         const speed = 0.5;
+        const cameraZ = camera.position.z;
+
+        // Track minimum row Z incrementally so we don't rescan all rows when wrapping
+        let minRowZ = Infinity;
+        for (let r = 0; r < rows.length; r++) {
+            if (rows[r].position.z < minRowZ) minRowZ = rows[r].position.z;
+        }
 
         rows.forEach((row) => {
             row.position.z += speed * 0.016;
 
-            if (row.position.z > camera.position.z + 5) {
-                let farthestZ = row.position.z;
-                rows.forEach(r => {
-                    if (r.position.z < farthestZ) {
-                        farthestZ = r.position.z;
-                    }
-                });
-                row.position.z = farthestZ - cellSize;
+            if (row.position.z > cameraZ + 5) {
+                row.position.z = minRowZ - cellSize;
+                minRowZ = row.position.z;
+            } else if (row.position.z < minRowZ) {
+                minRowZ = row.position.z;
             }
 
             const distanceToCamera = Math.min(1, Math.max(0,
-                (row.position.z - (camera.position.z - 30)) / 60
+                (row.position.z - (cameraZ - 30)) / 60
             ));
+
+            // Opacity depends only on row's Z, so compute once per row
+            const distanceFromCamera = Math.abs(row.position.z - cameraZ);
+            const normalizedDistance = distanceFromCamera / 30;
+            const opacity = Math.max(0, Math.min(1,
+                1 - (normalizedDistance * normalizedDistance)
+            ));
+            row.visible = opacity > 0.01;
+            if (!row.visible) return;
 
             row.children.forEach((voxelGroup) => {
                 const baseHeight = voxelGroup.userData.baseHeight;
@@ -176,34 +200,23 @@ if (window.DISABLE_GRID) {
                 if (voxelGroup.userData.isEdge) {
                     const edgeIndex = voxelGroup.userData.edgeIndex;
                     const offset = randomOffsets[edgeIndex];
-                    const speed = randomSpeeds[edgeIndex];
+                    const edgeSpeed = randomSpeeds[edgeIndex];
                     const amplitude = randomAmplitudes[edgeIndex];
-                    const edgeFactor = Math.pow(voxelGroup.userData.edgeFactor, 0.7); // Less aggressive falloff
+                    const edgeFactor = voxelGroup.userData.edgeFactorPow;
 
-                    // Combine two sine waves for more organic movement
                     heightIncrease += (
-                        Math.sin(time * speed + offset) * amplitude +
-                        Math.sin(time * speed * 0.7 + offset * 1.3) * amplitude * 0.7
+                        Math.sin(time * edgeSpeed + offset) * amplitude +
+                        Math.sin(time * edgeSpeed * 0.7 + offset * 1.3) * amplitude * 0.7
                     ) * edgeFactor;
                 }
 
                 voxelGroup.scale.y = baseHeight + heightIncrease;
 
-                // Calculate opacity based on distance
-                const maxDistance = 30;
-                const distanceFromCamera = Math.abs(row.position.z - camera.position.z);
-                const normalizedDistance = distanceFromCamera / maxDistance;
-                const opacity = Math.max(0, Math.min(1,
-                    1 - (normalizedDistance * normalizedDistance)
-                ));
-
-                voxelGroup.children.forEach(mesh => {
-                    if (mesh.material.transparent !== undefined) {
-                        mesh.material.transparent = true;
-                        mesh.material.opacity = opacity;
-                        mesh.material.needsUpdate = true;
-                    }
-                });
+                const meshes = voxelGroup.children;
+                for (let i = 0; i < meshes.length; i++) {
+                    const m = meshes[i].material;
+                    if (m.opacity !== opacity) m.opacity = opacity;
+                }
             });
         });
 

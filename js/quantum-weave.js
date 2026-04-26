@@ -33,6 +33,27 @@
   // PARTICLE ANIMATION SYSTEM
   // ================================
 
+  // Pre-render the cyan glow sprite once.
+  // Replaces per-particle ctx.shadowBlur (one of canvas2D's most expensive ops).
+  function createGlowSprite() {
+    const size = 64;
+    const sprite = document.createElement('canvas');
+    sprite.width = size;
+    sprite.height = size;
+    const sctx = sprite.getContext('2d');
+    const cx = size / 2;
+    const grad = sctx.createRadialGradient(cx, cx, 0, cx, cx, cx);
+    grad.addColorStop(0, 'rgba(0, 229, 255, 1)');
+    grad.addColorStop(0.25, 'rgba(0, 229, 255, 0.6)');
+    grad.addColorStop(0.6, 'rgba(0, 229, 255, 0.15)');
+    grad.addColorStop(1, 'rgba(0, 229, 255, 0)');
+    sctx.fillStyle = grad;
+    sctx.fillRect(0, 0, size, size);
+    return sprite;
+  }
+
+  const glowSprite = createGlowSprite();
+
   class QuantumParticle {
     constructor(canvas, ctx) {
       this.canvas = canvas;
@@ -66,15 +87,16 @@
     draw() {
       const pulseFactor = Math.sin(this.pulsePhase) * 0.3 + 0.7;
       const alpha = this.opacity * pulseFactor;
+      const drawSize = (this.size + 8) * 2;
 
-      this.ctx.fillStyle = `rgba(0, 229, 255, ${alpha})`;
-      this.ctx.beginPath();
-      this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      this.ctx.fill();
-
-      // Add glow
-      this.ctx.shadowBlur = 10;
-      this.ctx.shadowColor = `rgba(0, 229, 255, ${alpha * 0.5})`;
+      this.ctx.globalAlpha = alpha;
+      this.ctx.drawImage(
+        glowSprite,
+        this.x - drawSize / 2,
+        this.y - drawSize / 2,
+        drawSize,
+        drawSize
+      );
     }
   }
 
@@ -99,12 +121,17 @@
       this.particles = [];
       this.particleCount = particleCount;
       this.animationId = null;
+      this.animateBound = this.animate.bind(this);
 
       this.resize();
       this.init();
 
-      // Handle resize
-      window.addEventListener('resize', () => this.resize());
+      // Debounced resize — avoids re-laying-out the canvas on every resize event
+      let resizeTimer = null;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => this.resize(), 150);
+      });
     }
 
     resize() {
@@ -123,40 +150,47 @@
     animate() {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      // Update and draw particles
-      this.particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
+      // Stamp the cached glow sprite for each particle (cheap drawImage + globalAlpha)
+      this.ctx.globalCompositeOperation = 'lighter';
+      const particles = this.particles;
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      this.ctx.globalAlpha = 1;
+      this.ctx.globalCompositeOperation = 'source-over';
 
-      // Draw connections between nearby particles
       this.drawConnections();
 
-      this.animationId = requestAnimationFrame(() => this.animate());
+      this.animationId = requestAnimationFrame(this.animateBound);
     }
 
     drawConnections() {
-      // Skip connections on low-performance devices
       if (!performanceBudget.enableConnections) {
         return;
       }
 
       const maxDistance = isMobile ? 100 : 150;
+      const maxDistanceSq = maxDistance * maxDistance;
+      const particles = this.particles;
+      const ctx = this.ctx;
+      ctx.lineWidth = 0.5;
 
-      for (let i = 0; i < this.particles.length; i++) {
-        for (let j = i + 1; j < this.particles.length; j++) {
-          const dx = this.particles[i].x - this.particles[j].x;
-          const dy = this.particles[i].y - this.particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+      for (let i = 0; i < particles.length; i++) {
+        const pi = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const pj = particles[j];
+          const dx = pi.x - pj.x;
+          const dy = pi.y - pj.y;
+          const distSq = dx * dx + dy * dy;
 
-          if (distance < maxDistance) {
-            const opacity = (1 - distance / maxDistance) * 0.15;
-            this.ctx.strokeStyle = `rgba(0, 229, 255, ${opacity})`;
-            this.ctx.lineWidth = 0.5;
-            this.ctx.beginPath();
-            this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
-            this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
-            this.ctx.stroke();
+          if (distSq < maxDistanceSq) {
+            const opacity = (1 - Math.sqrt(distSq) / maxDistance) * 0.15;
+            ctx.strokeStyle = `rgba(0, 229, 255, ${opacity})`;
+            ctx.beginPath();
+            ctx.moveTo(pi.x, pi.y);
+            ctx.lineTo(pj.x, pj.y);
+            ctx.stroke();
           }
         }
       }

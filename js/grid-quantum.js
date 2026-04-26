@@ -59,30 +59,25 @@ console.log('Quantum grid script loading...');
     // Create edge geometry for glowing hexagon outlines
     const edgeGeometry = new THREE.EdgesGeometry(voxelGeometry);
 
-    // Shared materials (reuse instead of creating new ones)
+    // Shared materials (reuse instead of creating new ones).
+    // Note: emissive/emissiveIntensity are not supported on MeshBasicMaterial — omitted.
     const sharedVoxelMaterials = {
       cyan: new THREE.MeshBasicMaterial({
         color: colors.cyan,
         transparent: true,
         opacity: 0.3,
-        emissive: colors.cyan,
-        emissiveIntensity: 0.5,
         blending: THREE.AdditiveBlending
       }),
       magenta: new THREE.MeshBasicMaterial({
         color: colors.magenta,
         transparent: true,
         opacity: 0.3,
-        emissive: colors.magenta,
-        emissiveIntensity: 0.5,
         blending: THREE.AdditiveBlending
       }),
       electricBlue: new THREE.MeshBasicMaterial({
         color: colors.electricBlue,
         transparent: true,
         opacity: 0.3,
-        emissive: colors.electricBlue,
-        emissiveIntensity: 0.5,
         blending: THREE.AdditiveBlending
       })
     };
@@ -306,105 +301,94 @@ console.log('Quantum grid script loading...');
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // Animation loop - optimized
-    let lastTime = 0;
-    const targetFPS = 60;
-    const frameInterval = 1000 / targetFPS;
+    // Pre-cache edgeFactor^0.7 so we don't call Math.pow in the hot loop
+    rows.forEach((row) => {
+      row.children.forEach((child) => {
+        if (child.type === 'Group' && child.userData.isEdge) {
+          child.userData.edgeFactorPow = Math.pow(child.userData.edgeFactor, 0.7);
+        }
+      });
+    });
 
+    // Animation loop
     function animate(currentTime) {
       requestAnimationFrame(animate);
 
-      // Throttle to target FPS
-      const deltaTime = currentTime - lastTime;
-      if (deltaTime < frameInterval) return;
-      lastTime = currentTime - (deltaTime % frameInterval);
-
       const time = currentTime * 0.001;
       const speed = 0.5;
+      const cameraZ = camera.position.z;
+
+      // Track minimum row Z incrementally — avoids O(n²) rescan when wrapping
+      let minRowZ = Infinity;
+      for (let r = 0; r < rows.length; r++) {
+        if (rows[r].position.z < minRowZ) minRowZ = rows[r].position.z;
+      }
 
       rows.forEach((row) => {
         row.position.z += speed * 0.016;
 
-        // Wrap around when too far
-        if (row.position.z > camera.position.z + 5) {
-          let farthestZ = row.position.z;
-          rows.forEach(r => {
-            if (r.position.z < farthestZ) {
-              farthestZ = r.position.z;
-            }
-          });
-          row.position.z = farthestZ - cellSize;
+        if (row.position.z > cameraZ + 5) {
+          row.position.z = minRowZ - cellSize;
+          minRowZ = row.position.z;
+        } else if (row.position.z < minRowZ) {
+          minRowZ = row.position.z;
         }
 
-        // Calculate distance-based opacity once per row
-        const distanceFromCamera = Math.abs(row.position.z - camera.position.z);
+        const distanceFromCamera = Math.abs(row.position.z - cameraZ);
         const normalizedDistance = distanceFromCamera / 30;
         const opacity = Math.max(0, Math.min(1, 1 - (normalizedDistance * normalizedDistance)));
-        const distanceToCamera = Math.min(1, Math.max(0, (row.position.z - (camera.position.z - 30)) / 60));
+        const distanceToCamera = Math.min(1, Math.max(0, (row.position.z - (cameraZ - 30)) / 60));
 
-        row.children.forEach((child) => {
-          // Handle voxel groups (hexagons)
-          if (child.type === 'Group') {
-            const baseHeight = child.userData.baseHeight;
-            const xPosition = child.userData.xPosition;
-            let heightIncrease = xPosition * distanceToCamera * 2;
+        // Cull whole row when fully faded — also resets correctly when row wraps back
+        row.visible = opacity > 0.05;
+        if (!row.visible) return;
 
-            // Add edge animations
-            if (child.userData.isEdge) {
-              const edgeIndex = child.userData.edgeIndex;
-              const offset = randomOffsets[edgeIndex];
-              const animSpeed = randomSpeeds[edgeIndex];
-              const amplitude = randomAmplitudes[edgeIndex];
-              const edgeFactor = Math.pow(child.userData.edgeFactor, 0.7);
+        // Per-voxel scale work; opacity handled once per frame on shared materials below
+        const children = row.children;
+        for (let i = 0; i < children.length; i++) {
+          const child = children[i];
+          if (child.type !== 'Group') continue;
 
-              heightIncrease += (
-                Math.sin(time * animSpeed + offset) * amplitude +
-                Math.sin(time * animSpeed * 0.7 + offset * 1.3) * amplitude * 0.7
-              ) * edgeFactor;
-            }
+          const baseHeight = child.userData.baseHeight;
+          const xPosition = child.userData.xPosition;
+          let heightIncrease = xPosition * distanceToCamera * 2;
 
-            child.scale.y = baseHeight + heightIncrease;
+          if (child.userData.isEdge) {
+            const edgeIndex = child.userData.edgeIndex;
+            const offset = randomOffsets[edgeIndex];
+            const animSpeed = randomSpeeds[edgeIndex];
+            const amplitude = randomAmplitudes[edgeIndex];
+            const edgeFactor = child.userData.edgeFactorPow;
 
-            // Simplified pulsing
-            const pulse = (Math.sin(time * 1.5 + child.position.x) + 1) * 0.5;
-
-            // Update only visible objects
-            if (opacity > 0.05) {
-              child.children.forEach(mesh => {
-                if (mesh.type === 'Mesh') {
-                  mesh.material.opacity = opacity * (0.3 + pulse * 0.2);
-                  mesh.material.emissiveIntensity = 0.5 + pulse * 0.5;
-                } else {
-                  mesh.material.opacity = opacity * 0.8;
-                }
-              });
-            } else {
-              child.visible = false;
-            }
+            heightIncrease += (
+              Math.sin(time * animSpeed + offset) * amplitude +
+              Math.sin(time * animSpeed * 0.7 + offset * 1.3) * amplitude * 0.7
+            ) * edgeFactor;
           }
-          // Handle thread lines
-          else if (child.type === 'Line') {
-            if (opacity > 0.05) {
-              child.material.opacity = opacity * 0.3;
-              child.visible = true;
-            } else {
-              child.visible = false;
-            }
-          }
-        });
+
+          child.scale.y = baseHeight + heightIncrease;
+        }
       });
 
-      // Animate particles - simplified
+      // Pulse the shared voxel materials once per frame.
+      // Materials are shared across all voxels — writing per-voxel was a no-op race that
+      // only the last write won. A single global pulse reads the same on screen.
+      const pulse = (Math.sin(time * 1.5) + 1) * 0.5;
+      const voxelOpacity = 0.3 + pulse * 0.2;
+      sharedVoxelMaterials.cyan.opacity = voxelOpacity;
+      sharedVoxelMaterials.magenta.opacity = voxelOpacity;
+      sharedVoxelMaterials.electricBlue.opacity = voxelOpacity;
+
+      // Animate particles
       const particlePositions = particles.geometry.attributes.position.array;
       for (let i = 0; i < particleCount; i++) {
         particlePositions[i * 3 + 2] += speed * 0.02;
-
         if (particlePositions[i * 3 + 2] > 30) {
           particlePositions[i * 3 + 2] = -30;
         }
       }
       particles.geometry.attributes.position.needsUpdate = true;
-      particles.rotation.y = time * 0.01;  // Slower rotation
+      particles.rotation.y = time * 0.01;
 
       renderer.render(scene, camera);
     }
