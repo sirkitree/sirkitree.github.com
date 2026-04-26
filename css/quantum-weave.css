@@ -1373,3 +1373,368 @@ body::after {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   Character profile pages
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap');
+
+.character-hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 4rem auto 2rem;
+  padding: 0 2rem;
+}
+
+.character-hero .qw-hero-title,
+.character-hero .qw-hero-subtitle {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
+
+.character-portrait {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 16px;
+  border: 1px solid var(--character-color, var(--qw-quantum-cyan));
+  box-shadow: 0 0 60px rgba(0, 229, 255, 0.2);
+}
+
+.character-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.character-quick-stats .stat {
+  background: rgba(13, 13, 13, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.character-quick-stats .stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--qw-text-tertiary);
+  margin-bottom: 0.25rem;
+}
+
+.character-quick-stats .stat-value {
+  color: var(--qw-text-primary);
+  font-size: 0.95rem;
+}
+
+.character-narrative {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.character-narrative h2 {
+  font-family: var(--qw-font-display, 'Orbitron', sans-serif);
+  font-size: 1.6rem;
+  margin: 3rem 0 1rem;
+  color: var(--character-color, var(--qw-quantum-cyan));
+}
+
+.character-narrative p {
+  color: var(--qw-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+}
+
+.character-narrative p:first-of-type::first-letter {
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  float: left;
+  font-size: 5rem;
+  line-height: 0.9;
+  padding: 0.4rem 0.85rem 0 0.1rem;
+  color: var(--character-color, var(--qw-quantum-cyan));
+  text-shadow: 0 0 20px var(--character-glow, rgba(0, 229, 255, 0.4));
+}
+
+@media (max-width: 768px) {
+  .character-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .character-portrait {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .character-hero .qw-hero-title,
+  .character-hero .qw-hero-subtitle {
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   Discipline tooltip links (used in character narrative prose)
+   ========================================================================== */
+
+.qw-discipline-link {
+  position: relative;
+  color: var(--discipline-color, var(--qw-quantum-cyan));
+  cursor: help;
+  border-bottom: 1px dotted var(--discipline-color, var(--qw-quantum-cyan));
+  transition: text-shadow 0.2s ease;
+}
+
+.qw-discipline-link:hover,
+.qw-discipline-link:focus {
+  text-shadow: 0 0 8px color-mix(in srgb, var(--discipline-color, var(--qw-quantum-cyan)) 60%, transparent);
+}
+
+.qw-discipline-link-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  margin-bottom: 10px;
+  width: 280px;
+  padding: 0.875rem 1rem;
+  background: rgba(13, 13, 13, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: left;
+  display: block;
+  white-space: normal;
+}
+
+.qw-discipline-link:hover .qw-discipline-link-tooltip,
+.qw-discipline-link:focus .qw-discipline-link-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.qw-discipline-link-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(13, 13, 13, 0.96);
+}
+
+.qw-discipline-link-tooltip-title {
+  display: block;
+  font-family: var(--qw-font-display, 'Orbitron', sans-serif);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.qw-discipline-link-tooltip-summary {
+  display: block;
+  color: var(--qw-text-secondary);
+  margin-bottom: 0.625rem;
+}
+
+.qw-discipline-link-tooltip-link {
+  display: inline-block;
+  color: var(--qw-quantum-cyan);
+  font-size: 0.8rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.4);
+  padding-bottom: 1px;
+}
+
+.qw-discipline-link-tooltip-link:hover {
+  color: var(--qw-quantum-blue);
+  border-bottom-color: var(--qw-quantum-blue);
+}
+
+/* ==========================================================================
+   Character cross-links (used in character narrative prose)
+   ========================================================================== */
+
+.qw-character-link {
+  position: relative;
+  color: var(--character-color, var(--qw-text-primary));
+  text-decoration: none;
+  border-bottom: 1px dotted var(--character-color, var(--qw-text-primary));
+  transition: text-shadow 0.2s ease;
+}
+
+.qw-character-link:hover,
+.qw-character-link:focus {
+  text-shadow: 0 0 8px color-mix(in srgb, var(--character-color, currentColor) 60%, transparent);
+}
+
+.qw-character-link-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  margin-bottom: 10px;
+  width: 220px;
+  padding: 0.875rem 1rem;
+  background: rgba(13, 13, 13, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: left;
+  display: block;
+  white-space: normal;
+}
+
+.qw-character-link:hover .qw-character-link-tooltip,
+.qw-character-link:focus .qw-character-link-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.qw-character-link-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(13, 13, 13, 0.96);
+}
+
+.qw-character-link-tooltip-name {
+  display: block;
+  font-family: var(--qw-font-display, 'Orbitron', sans-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.qw-character-link-tooltip-role {
+  display: block;
+  color: var(--qw-text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 0.625rem;
+}
+
+.qw-character-link-tooltip-cta {
+  display: inline-block;
+  color: var(--qw-quantum-cyan);
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.4);
+  padding-bottom: 1px;
+}
+
+/* ==========================================================================
+   Character page two-column layout (sticky portrait + scrolling content)
+   ========================================================================== */
+
+/* The default .post wrapper sets overflow: hidden (for its clip-path corner
+   cut), which prevents position: sticky from working on descendants. Override
+   on character pages so the sticky portrait scrolls. */
+.page.post:has(.character-page-layout),
+.page.post:has(.character-page-layout) .content {
+  overflow: visible;
+}
+
+.character-page-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1fr);
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+  align-items: flex-start;
+}
+
+.character-portrait-column {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+  max-height: calc(100vh - 100px);
+}
+
+.character-portrait-column .character-portrait {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 100px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 16px;
+  border: 1px solid var(--character-color, var(--qw-quantum-cyan));
+  box-shadow: 0 0 80px rgba(0, 229, 255, 0.12);
+  display: block;
+  margin: 0;
+}
+
+.character-main-column {
+  min-width: 0;
+}
+
+/* Neutralize the old hero layout when inside the new wrapper */
+.character-page-layout .character-hero {
+  display: block;
+  grid-template-columns: none;
+  max-width: none;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.character-page-layout .qw-thread-divider {
+  margin: 1.5rem 0 2rem;
+  max-width: none !important;
+}
+
+.character-page-layout .character-narrative {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.character-page-layout > .character-main-column > section:last-child {
+  max-width: none;
+  margin: 3rem 0 1rem;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .character-page-layout {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+  .character-portrait-column {
+    position: static;
+    max-height: none;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .character-portrait-column .character-portrait {
+    aspect-ratio: 1 / 1;
+    max-height: none;
+  }
+}

@@ -274,6 +274,18 @@ permalink: /books/quantum-weave/
 <div class="qw-thread-divider container" style="max-width: 1200px;"></div>
 
 <section class="container" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
+  <h2 class="qw-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--qw-text-primary);">Characters</h2>
+  <p class="qw-body" style="text-align: center; color: var(--qw-text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+    Healers, scholars, spies, and rogues navigating a world where magic is forgotten technology
+  </p>
+  <div style="text-align: center;">
+    <a class="qw-btn qw-btn-primary" href="/books/quantum-weave/characters/">Meet the Cast</a>
+  </div>
+</section>
+
+<div class="qw-thread-divider container" style="max-width: 1200px;"></div>
+
+<section class="container" style="max-width: 1200px; margin: 4rem auto; padding: 0 2rem;">
   <h2 class="qw-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--qw-text-primary);">Tales from the Weave</h2>
   <p class="qw-body" style="text-align: center; color: var(--qw-text-secondary); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
     Explore narratives, world-building, and glimpses into the Quantum Weave universe
