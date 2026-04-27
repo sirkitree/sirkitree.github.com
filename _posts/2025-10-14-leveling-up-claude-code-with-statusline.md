@@ -16,6 +16,8 @@ Yeah, me too. Enter: **statuslines**.
 
 <!--more-->
 
+> **Update (April 2026):** I've since forked this and changed how I install it — see [Forking My Claude Code Statusline](/blog/claude-statusline-fork) for what changed and why.
+
 ## What's a Statusline Anyway?
 
 Think of it like your car's dashboard, but for Claude Code. Instead of speed and fuel, you get real-time info about your AI coding session - context remaining, cost tracking, session timers, token usage, all that good stuff. Right there at the bottom of your terminal, updating in real-time.
