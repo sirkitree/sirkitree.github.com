@@ -5,6 +5,8 @@ date: '2012-02-06 18:33'
 comments: true
 category: poem
 published: true
+tags:
+  - poem
 ---
 ```
 Angel of fire, wings of light

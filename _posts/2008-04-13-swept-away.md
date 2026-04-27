@@ -4,6 +4,8 @@ title : "Swept Away"
 created : 1208127648
 permalink : /poems/swept-away
 category : "poem"
+tags:
+  - poem
 ---
 
 <div class="poem-swept-away">
