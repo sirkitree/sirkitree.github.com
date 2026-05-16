@@ -238,28 +238,28 @@ body::after {
    ================================ */
 
 .qw-display {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
 }
 
 .qw-title {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 .qw-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
   line-height: 1.8;
   font-size: 1.125rem;
 }
 
 .qw-caption {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 500;
   font-size: 0.875rem;
   letter-spacing: 0.01em;
