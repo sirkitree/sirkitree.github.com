@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phi & Pi — Two Constants, One Geometry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0b06;
+    --ink2:#1a140c;
+    --parch:#f4ead2;
+    --gold:#c8a14a;
+    --gold-bright:#e8c870;
+    --gold-deep:#8a6a22;
+    --rose:#b9774e;
+    --line:rgba(200,161,74,0.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(circle at 50% -10%, #241a0c 0%, #14100a 45%, #0b0805 100%);
+    color:var(--parch);
+    font-family:'EB Garamond',Garamond,serif;
+    font-size:19px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Garamond,serif;font-weight:500;letter-spacing:.01em}
+  .gold{color:var(--gold-bright)}
+  .muted{color:rgba(244,234,210,.62)}
+  .glyph{font-family:'Cormorant Garamond',serif;font-style:italic}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:80px 0}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
+  .hero .inner{position:relative;z-index:2}
+  .eyebrow{letter-spacing:.42em;text-transform:uppercase;font-size:13px;color:var(--gold);margin-bottom:26px;font-family:'EB Garamond',serif}
+  .duo{display:flex;align-items:center;justify-content:center;gap:38px;font-family:'Cormorant Garamond',serif;font-style:italic;line-height:.9}
+  .duo span{font-size:clamp(120px,22vw,260px);background:linear-gradient(180deg,#f4e2a8,#c8a14a 55%,#8a6a22);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 60px rgba(200,161,74,.25)}
+  .duo .amp{font-size:clamp(48px,8vw,96px);color:var(--gold);-webkit-text-fill-color:var(--gold);opacity:.7}
+  .hero h1{font-size:clamp(28px,4.4vw,52px);margin-top:18px;font-weight:400}
+  .hero p.lead{max-width:620px;margin:22px auto 0;color:rgba(244,234,210,.78);font-size:21px}
+  .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;color:var(--gold);font-size:13px;letter-spacing:.3em;text-transform:uppercase;animation:bob 2.4s ease-in-out infinite;opacity:.7}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ---------- SECTIONS ---------- */
+  section.chapter{padding:96px 0;border-top:1px solid var(--line);position:relative}
+  .chapter-no{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-deep);font-size:22px;margin-bottom:6px}
+  h2{font-size:clamp(34px,5vw,52px);line-height:1.05;margin-bottom:8px;font-weight:500}
+  h2 .glyph{color:var(--gold-bright)}
+  .kicker{color:var(--gold);letter-spacing:.06em;font-size:20px;margin-bottom:26px;font-style:italic}
+  .prose{max-width:640px;color:rgba(244,234,210,.84)}
+  .prose + .prose{margin-top:18px}
+  .eq{font-family:'Cormorant Garamond',serif;font-size:30px;text-align:center;color:var(--gold-bright);margin:30px 0;letter-spacing:.01em}
+  .eq small{font-size:15px;color:rgba(244,234,210,.55);display:block;margin-top:6px;font-family:'EB Garamond';font-style:italic}
+
+  .stage{display:flex;flex-wrap:wrap;gap:40px;align-items:center;margin-top:36px}
+  .stage .art{flex:1 1 340px;min-width:300px;display:flex;justify-content:center}
+  .stage .text{flex:1 1 320px;min-width:280px}
+  canvas.panel{width:100%;max-width:420px;aspect-ratio:1/1;display:block}
+
+  .controls{margin-top:26px;display:flex;flex-direction:column;gap:18px}
+  .ctl{display:flex;align-items:center;gap:14px}
+  .ctl label{flex:0 0 132px;color:var(--gold);font-style:italic;font-size:17px}
+  input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:2px;background:var(--line);border-radius:2px;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4e2a8,#c8a14a 60%,#8a6a22);cursor:pointer;box-shadow:0 0 12px rgba(200,161,74,.6)}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border:none;border-radius:50%;background:#c8a14a;cursor:pointer}
+  .readout{min-width:64px;text-align:right;font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold-bright)}
+  .btn{background:transparent;border:1px solid var(--gold-deep);color:var(--gold-bright);padding:9px 18px;border-radius:2px;font-family:'EB Garamond',serif;font-size:16px;letter-spacing:.04em;cursor:pointer;transition:all .25s}
+  .btn:hover{background:rgba(200,161,74,.12);border-color:var(--gold)}
+  .btn.on{background:rgba(200,161,74,.18);border-color:var(--gold-bright)}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+
+  .digits{font-variant-numeric:tabular-nums;letter-spacing:.04em}
+  footer{padding:80px 0 110px;text-align:center;border-top:1px solid var(--line);color:rgba(244,234,210,.5)}
+  footer .duo{margin-bottom:24px}
+  footer .duo span{font-size:96px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  @media(max-width:560px){.duo{gap:18px}.ctl label{flex-basis:96px;font-size:15px}}
+</style>
+</head>
+<body>
+<h2 class="sr-only">An interactive art piece on the relationship between the golden ratio phi and pi, exploring pentagon geometry, the golden spiral, and numerical approximations linking the two constants.</h2>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="inner wrap">
+    <div class="eyebrow">Two magic numbers &middot; one hidden pattern</div>
+    <div class="duo"><span>&phi;</span><span class="amp">&amp;</span><span>&pi;</span></div>
+    <h1>The golden ratio and the circle, <span class="glyph">secretly connected</span></h1>
+    <p class="lead">These are two of the most famous numbers in the universe. One hides in flowers, shells, and galaxies. The other lives in every circle ever drawn. For thousands of years people called shapes like these &ldquo;sacred.&rdquo; And inside a single five-pointed star, the two numbers shake hands &mdash; perfectly.</p>
+  </div>
+  <div class="scroll-cue">scroll to begin</div>
+</header>
+
+<!-- ===================== CHAPTER I — the two numbers ===================== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-no">I.</div>
+    <h2>Meet the <span class="glyph">two numbers</span></h2>
+    <div class="kicker">One number for growing, one number for circles</div>
+
+    <div class="stage">
+      <div class="art">
+        <canvas id="phylloCanvas" class="panel" aria-label="An animated sunflower seed head, with seeds placed at the golden angle"></canvas>
+      </div>
+      <div class="text">
+        <p class="prose"><span class="gold">Phi (&phi;)</span> is the <em>golden ratio</em> &mdash; the number for growing in the most balanced way possible. Watch the seed head beside this: a sunflower drops each new seed turned by the same &ldquo;golden angle,&rdquo; and that one rule packs the seeds perfectly, with no gaps. The same swirl shows up in pinecones, snail shells, and whole galaxies.</p>
+        <div class="eq" style="margin:24px 0 0;text-align:left">&phi; = (1 + &radic;5) &divide; 2 = <span class="digits">1.618&hellip;</span><small style="margin-left:0">nature's favorite proportion</small></div>
+      </div>
+    </div>
+
+    <div class="stage" style="margin-top:30px">
+      <div class="text">
+        <p class="prose"><span class="gold">Pi (&pi;)</span> is the <em>circle number</em>. Drop a pebble in a pond and watch the rings spread out &mdash; that's &pi; in action. Take any circle, measure the distance around it, divide by the distance across, and you always get the same number: &pi;. Every wheel, ripple, planet, and orbit carries it.</p>
+        <div class="eq" style="margin:24px 0 0;text-align:left">&pi; = (around) &divide; (across) = <span class="digits">3.141&hellip;</span><small style="margin-left:0">the number hiding in every circle</small></div>
+      </div>
+      <div class="art">
+        <canvas id="rippleCanvas" class="panel" aria-label="An animation of ripples spreading outward in concentric circles"></canvas>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:30px"><p class="muted">A growing number and a circle number. They seem to have nothing to do with each other. And yet&hellip;</p></div>
+  </div>
+</section>
+
+<!-- ===================== CHAPTER II — the pentagon ===================== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-no">II.</div>
+    <h2>The sacred <span class="glyph">five-pointed star</span></h2>
+    <div class="kicker">The pentagram &mdash; an ancient symbol where &phi; and &pi; meet</div>
+    <div class="prose">
+      <p>The five-pointed star is one of the oldest sacred symbols on Earth. The ancient Greek followers of Pythagoras treasured it as their secret sign, and you'll still see it on flags, in churches, and in mystical art everywhere. Here's why it's so special: draw a pentagon (a five-sided shape) and connect all its corners. The lines form a star &mdash; and <span class="gold">every line is sliced by another in the golden ratio &phi;</span>.</p>
+      <p>The really amazing part: all the angles in this star are built from <span class="glyph">&pi;</span> divided by 5. So the circle number (&pi;) and the golden number (&phi;) are locked together by this one rule &mdash; and this time it's not &ldquo;close,&rdquo; it's <em>exactly</em> true:</p>
+    </div>
+    <div class="eq">&phi; = 2 &times; cos(&pi;/5)<small>exactly true &mdash; the golden number written using the circle number</small></div>
+    <div class="stage">
+      <div class="art">
+        <canvas id="pentaCanvas" class="panel" aria-label="An animated regular pentagon with its diagonals forming a pentagram"></canvas>
+      </div>
+      <div class="text">
+        <div class="controls">
+          <div class="ctl">
+            <label for="rot">rotation</label>
+            <input type="range" id="rot" min="0" max="360" value="0" step="1">
+            <span class="readout" id="rotOut">0&deg;</span>
+          </div>
+          <div class="btnrow">
+            <button class="btn on" id="bDiag">diagonals</button>
+            <button class="btn" id="bGolden">golden cut</button>
+            <button class="btn" id="bSpin">spin</button>
+          </div>
+        </div>
+        <p class="prose" style="margin-top:24px" id="pentaNote">A line across the pentagon is exactly &phi; times longer than a side. Tap <em>golden cut</em> to see one line slice another into the magic ratio 1 : &phi;. Hit <em>spin</em> and watch the star turn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHAPTER III — the spiral & circle ===================== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-no">III.</div>
+    <h2>The spiral that <span class="glyph">grows by &phi;</span></h2>
+    <div class="kicker">&phi; makes it grow &middot; &pi; makes it turn</div>
+    <div class="prose">
+      <p>This is the golden spiral &mdash; the exact curve you see in a nautilus shell, a ram's horn, a hurricane, and the arms of a galaxy. Here's the trick that builds it: every time the spiral makes a quarter-turn, it gets &phi; times bigger. The <em>turning</em> is &pi;'s job (a quarter-turn is the angle &pi;/2), and the <em>growing</em> is &phi;'s job. The two numbers trade off, step after step, to draw nature's favorite curve.</p>
+    </div>
+    <div class="stage">
+      <div class="art">
+        <canvas id="spiralCanvas" class="panel" aria-label="An animated golden spiral drawn over nested golden rectangles inside a circle"></canvas>
+      </div>
+      <div class="text">
+        <div class="controls">
+          <div class="ctl">
+            <label for="turns">growth</label>
+            <input type="range" id="turns" min="0" max="100" value="0" step="1">
+            <span class="readout" id="turnsOut">0</span>
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="bRect">golden rectangles</button>
+            <button class="btn" id="bGrow">grow</button>
+          </div>
+        </div>
+        <p class="prose" style="margin-top:24px">Tap <em>golden rectangles</em>: each square is &phi; times bigger than the one before. The curve inside each square is a quarter of a circle &mdash; a clean little slice of &pi;. Growth and turning, &phi; and &pi;, taking turns forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHAPTER IV — sacred geometry / flower of life ===================== -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-no">IV.</div>
+    <h2>The flower made <span class="glyph">of circles</span></h2>
+    <div class="kicker">Sacred geometry &mdash; ancient art built from &pi; and &phi;</div>
+    <div class="prose">
+      <p>People have carved this pattern into temple walls for over 2,000 years &mdash; in Egypt, China, India, and Europe. It's called the <span class="gold">Flower of Life</span>, and the whole thing is made of nothing but overlapping circles. Since every circle <em>is</em> &pi;, this is &pi; repeated again and again into a pattern so balanced that ancient cultures believed it held the blueprint of creation.</p>
+      <p>These circles build up through a famous sequence of figures, each with its own name. Tap through them &mdash; from the <span class="glyph">Vesica Piscis</span> (just two circles) all the way up to <span class="glyph">Metatron's Cube</span>, the figure said to hold every shape in the universe.</p>
+    </div>
+    <div class="stage">
+      <div class="art">
+        <canvas id="florCanvas" class="panel" aria-label="An animated sacred-geometry figure built from overlapping circles, from the Vesica Piscis to Metatron's Cube"></canvas>
+      </div>
+      <div class="text">
+        <div class="controls">
+          <div class="btnrow" id="figRow">
+            <button class="btn" data-fig="vesica">Vesica Piscis</button>
+            <button class="btn" data-fig="seed">Seed of Life</button>
+            <button class="btn on" data-fig="flower">Flower of Life</button>
+            <button class="btn" data-fig="fruit">Fruit of Life</button>
+            <button class="btn" data-fig="metatron">Metatron's Cube</button>
+          </div>
+          <div class="ctl" style="gap:10px">
+            <span class="readout" id="circOut" style="min-width:auto">19</span>
+            <span style="color:var(--gold);font-style:italic;font-size:16px">circles</span>
+          </div>
+          <div class="btnrow" id="solidRow" style="display:none">
+            <button class="btn" data-solid="tetra">Tetrahedron</button>
+            <button class="btn" data-solid="cube">Cube</button>
+            <button class="btn" data-solid="octa">Octahedron</button>
+            <button class="btn" data-solid="dodeca">Dodecahedron</button>
+            <button class="btn" data-solid="icosa">Icosahedron</button>
+          </div>
+          <div class="ctl" id="d3Row" style="display:none;gap:12px">
+            <button class="btn" id="b3d">view in 3D</button>
+            <span class="muted" id="d3hint" style="font-size:14px;font-style:italic">drag the shape to spin it</span>
+          </div>
+          <p class="muted" id="solidNote" style="display:none;font-size:14px;font-style:italic;margin-top:2px">Flat &ldquo;shadows&rdquo; of the 3D solids. The dodecahedron &amp; icosahedron have five-fold shapes that can&rsquo;t sit on these six-fold points &mdash; tap <em>view in 3D</em> to meet all five for real.</p>
+        </div>
+        <p class="prose" style="margin-top:24px" id="florNote"><b>Flower of Life</b> &mdash; the full web of overlapping circles, carved on temples around the world. Pure &pi;, repeated into a perfectly balanced pattern.</p>
+      </div>
+    </div>
+    <div class="eq" style="margin-top:40px">&phi; lives in the dodecahedron &middot; &pi; lives in the sphere<small>the dodecahedron &mdash; 12 pentagons, all built on &phi; &mdash; was Plato's symbol for the whole universe</small></div>
+    <div class="prose"><p>The ancient Greek philosopher Plato imagined the cosmos itself as a <span class="gold">dodecahedron</span>: a ball made of 12 perfect pentagons. Every one of those pentagons is ruled by &phi;, and a ball is ruled by &pi;. So the shape they chose to represent <em>everything</em> is literally &phi; and &pi; built into one object. That's why these patterns felt sacred &mdash; they show up everywhere, from a flower to the night sky.</p></div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="duo"><span>&phi;</span><span class="amp">&amp;</span><span>&pi;</span></div>
+    <p class="serif" style="font-size:26px;color:var(--gold-bright)">Proportion and the circle, two halves of one geometry.</p>
+    <p class="muted" style="margin-top:10px">&phi; = 1.6180339887&hellip;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&pi; = 3.1415926535&hellip;</p>
+  </div>
+</footer>
+
+<script>
+const PHI=(1+Math.sqrt(5))/2, PI=Math.PI, GOLD='#c8a14a', GOLDB='#e8c870', PARCH='#f4ead2', ROSE='#b9774e';
+function fit(c){const r=window.devicePixelRatio||1;const b=c.getBoundingClientRect();c.width=b.width*r;c.height=b.height*r;const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);return {x,w:b.width,h:b.height};}
+
+/* ---------- HERO: drifting golden constellation of pentagrams ---------- */
+(function(){
+  const c=document.getElementById('heroCanvas');
+  function resize(){c.width=innerWidth*(window.devicePixelRatio||1);c.height=c.getBoundingClientRect().height*(window.devicePixelRatio||1);}
+  let stars=[];
+  function init(){
+    resize();
+    stars=[];
+    const n=Math.min(26,Math.floor(innerWidth/55));
+    for(let i=0;i<n;i++)stars.push({x:Math.random(),y:Math.random(),r:8+Math.random()*30,a:Math.random()*PI*2,s:(Math.random()-.5)*0.0006,rot:Math.random()*PI*2,o:0.06+Math.random()*0.18});
+  }
+  function star(ctx,cx,cy,rad,rot,o){
+    ctx.beginPath();
+    for(let i=0;i<5;i++){const ang=rot+i*4*PI/5-PI/2;const px=cx+Math.cos(ang)*rad,py=cy+Math.sin(ang)*rad;i?ctx.lineTo(px,py):ctx.moveTo(px,py);}
+    ctx.closePath();ctx.strokeStyle='rgba(200,161,74,'+o+')';ctx.lineWidth=1;ctx.stroke();
+  }
+  function loop(){
+    const r=window.devicePixelRatio||1;const W=c.width/r,H=c.height/r;
+    const ctx=c.getContext('2d');ctx.setTransform(r,0,0,r,0,0);ctx.clearRect(0,0,W,H);
+    stars.forEach(st=>{st.rot+=st.s*60;star(ctx,st.x*W,st.y*H,st.r,st.rot,st.o);});
+    requestAnimationFrame(loop);
+  }
+  init();loop();addEventListener('resize',init);
+})();
+
+/* ---------- CHAPTER I: PHYLLOTAXIS (phi) ---------- */
+(function(){
+  const c=document.getElementById('phylloCanvas');if(!c)return;
+  const GA=PI*(3-Math.sqrt(5)); // golden angle ≈ 137.5°
+  let t=0;
+  function loop(){
+    const {x,w,h}=fit(c);x.clearRect(0,0,w,h);
+    const cx=w/2,cy=h/2;const N=420;
+    const scale=Math.min(w,h)*0.030;
+    const grown=Math.min(N,Math.floor(t*2.4));
+    const rot=t*0.0016;
+    for(let i=0;i<grown;i++){
+      const a=i*GA+rot, r=scale*Math.sqrt(i);
+      const px=cx+Math.cos(a)*r, py=cy+Math.sin(a)*r;
+      const tt=i/N;
+      const cr=Math.round(232-94*tt), cg=Math.round(200-94*tt), cb=Math.round(112-78*tt);
+      const fade=Math.min(1,(grown-i)/40);
+      x.beginPath();x.arc(px,py,2.6+(1-tt)*1.4,0,2*PI);
+      x.fillStyle='rgba('+cr+','+cg+','+cb+','+(0.9*fade).toFixed(3)+')';x.fill();
+    }
+    t+=1;requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ---------- CHAPTER I: RIPPLES (pi) ---------- */
+(function(){
+  const c=document.getElementById('rippleCanvas');if(!c)return;
+  let t=0;
+  function loop(){
+    const {x,w,h}=fit(c);x.clearRect(0,0,w,h);
+    const cx=w/2,cy=h/2;const maxR=Math.min(w,h)*0.46;
+    const count=5,speed=0.7;
+    for(let k=0;k<count;k++){
+      const rr=((t*speed+k*(maxR/count))%maxR);
+      const o=1-(rr/maxR);
+      x.beginPath();x.arc(cx,cy,rr,0,2*PI);
+      x.strokeStyle='rgba(232,200,112,'+(o*0.8).toFixed(3)+')';
+      x.lineWidth=2*o+0.4;x.stroke();
+    }
+    x.beginPath();x.arc(cx,cy,2.6,0,2*PI);x.fillStyle=GOLDB;x.fill();
+    t+=1;requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ---------- CHAPTER II: PENTAGON / PENTAGRAM ---------- */
+(function(){
+  const c=document.getElementById('pentaCanvas');
+  let rot=0, showDiag=true, showGolden=false, spin=false;
+  const rotIn=document.getElementById('rot'),rotOut=document.getElementById('rotOut');
+  const bDiag=document.getElementById('bDiag'),bGolden=document.getElementById('bGolden'),bSpin=document.getElementById('bSpin');
+  function verts(cx,cy,R,off){const v=[];for(let i=0;i<5;i++){const a=off-PI/2+i*2*PI/5;v.push([cx+Math.cos(a)*R,cy+Math.sin(a)*R]);}return v;}
+  function draw(){
+    const {x,w,h}=fit(c);const cx=w/2,cy=h/2,R=Math.min(w,h)*0.40;
+    x.clearRect(0,0,w,h);
+    const off=rot*PI/180;
+    const v=verts(cx,cy,R,off);
+    // outer pentagon
+    x.beginPath();v.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();
+    x.strokeStyle=GOLD;x.lineWidth=2;x.stroke();
+    x.fillStyle='rgba(200,161,74,0.05)';x.fill();
+    // diagonals -> pentagram
+    if(showDiag){
+      x.strokeStyle='rgba(232,200,112,0.85)';x.lineWidth=1.4;
+      for(let i=0;i<5;i++){x.beginPath();x.moveTo(v[i][0],v[i][1]);x.lineTo(v[(i+2)%5][0],v[(i+2)%5][1]);x.stroke();}
+    }
+    // golden cut: one diagonal split into 1:phi by the crossing diagonals
+    if(showGolden){
+      const A=v[0],C=v[2];
+      // intersection points of diagonal A-C with diagonals from neighbours form inner pentagon
+      // inner pentagon vertices: scale R by 1/phi^2 and rotate by pi/5
+      const innerR=R/(PHI*PHI);const iv=verts(cx,cy,innerR,off+PI/5);
+      // segment along A->C: mark the two interior crossing points
+      function lineInt(p1,p2,p3,p4){const d=(p1[0]-p2[0])*(p3[1]-p4[1])-(p1[1]-p2[1])*(p3[0]-p4[0]);if(!d)return null;const t=((p1[0]-p3[0])*(p3[1]-p4[1])-(p1[1]-p3[1])*(p3[0]-p4[0]))/d;return[p1[0]+t*(p2[0]-p1[0]),p1[1]+t*(p2[1]-p1[1])];}
+      const X=lineInt(v[0],v[2],v[1],v[3]);
+      const Y=lineInt(v[0],v[2],v[4],v[1]);
+      if(X&&Y){
+        // draw the three coloured sub-segments along A-C
+        x.lineWidth=4;x.lineCap='round';
+        x.strokeStyle=ROSE;x.beginPath();x.moveTo(A[0],A[1]);x.lineTo(Y[0],Y[1]);x.stroke();
+        x.strokeStyle=GOLDB;x.beginPath();x.moveTo(Y[0],Y[1]);x.lineTo(X[0],X[1]);x.stroke();
+        x.strokeStyle=ROSE;x.beginPath();x.moveTo(X[0],X[1]);x.lineTo(C[0],C[1]);x.stroke();
+        // labels
+        x.lineCap='butt';
+        function dot(p){x.beginPath();x.arc(p[0],p[1],3.5,0,2*PI);x.fillStyle=PARCH;x.fill();}
+        dot(X);dot(Y);
+        x.font="italic 17px 'Cormorant Garamond', serif";x.fillStyle=GOLDB;x.textAlign='center';
+        const mid=(p,q)=>[(p[0]+q[0])/2,(p[1]+q[1])/2];
+        const m1=mid(A,Y),m2=mid(Y,X);
+        x.fillText('1',m1[0],m1[1]-8);
+        x.fillText('φ',m2[0],m2[1]-8);
+      }
+      // inner pentagon outline
+      x.strokeStyle='rgba(244,234,210,0.25)';x.lineWidth=1;
+      x.beginPath();iv.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.stroke();
+    }
+    // vertices
+    v.forEach(p=>{x.beginPath();x.arc(p[0],p[1],4,0,2*PI);x.fillStyle=GOLDB;x.fill();});
+  }
+  rotIn.addEventListener('input',()=>{rot=+rotIn.value;rotOut.textContent=rot+'°';draw();});
+  bDiag.addEventListener('click',()=>{showDiag=!showDiag;bDiag.classList.toggle('on',showDiag);draw();});
+  bGolden.addEventListener('click',()=>{showGolden=!showGolden;bGolden.classList.toggle('on',showGolden);
+     document.getElementById('pentaNote').innerHTML=showGolden
+       ? 'See it? Each line is cut into two pieces, and the long piece is &phi; times the short one. The crossings make a tiny new pentagon in the middle &mdash; and you could keep zooming in forever, the same pattern repeating like an echo.'
+       : "A line across the pentagon is exactly &phi; times longer than a side. Tap <em>golden cut</em> to see one line slice another into the magic ratio 1 : &phi;. Hit <em>spin</em> and watch the star turn.";
+     draw();});
+  let spinRAF;
+  bSpin.addEventListener('click',()=>{spin=!spin;bSpin.classList.toggle('on',spin);
+    if(spin){const step=()=>{if(!spin)return;rot=(rot+0.35)%360;rotIn.value=Math.round(rot);rotOut.textContent=Math.round(rot)+'°';draw();spinRAF=requestAnimationFrame(step);};step();}
+  });
+  addEventListener('resize',draw);draw();
+})();
+
+/* ---------- CHAPTER III: GOLDEN SPIRAL (arcs aligned to the squares) ---------- */
+(function(){
+  const c=document.getElementById('spiralCanvas');
+  let prog=0, showRect=false, growing=false;
+  const tIn=document.getElementById('turns'),tOut=document.getElementById('turnsOut');
+  const bRect=document.getElementById('bRect'),bGrow=document.getElementById('bGrow');
+  const N=10;
+  // Subdivide a golden rectangle into squares (cut side cycles L,B,R,T) and, in each
+  // square, record the quarter-circle arc whose two ends are square corners — so the
+  // spiral is built FROM the squares and lands exactly on them.
+  function buildGolden(x,y,w,h,n){
+    const sq=[], arcs=[]; const cyc=['L','B','R','T']; let R={x,y,w,h};
+    for(let i=0;i<n;i++){
+      const rx=R.x,ry=R.y,rw=R.w,rh=R.h; let s,square,ctr,st,en,rem; const side=cyc[i%4];
+      // arc centre is the square corner that keeps consecutive arcs tangent (smooth spiral):
+      // L->top-right, B->top-left, R->bottom-left, T->bottom-right
+      if(side==='L'){s=rh;square={x:rx,y:ry,s};ctr=[rx+s,ry];st=[rx,ry];en=[rx+s,ry+s];rem={x:rx+s,y:ry,w:rw-s,h:rh};}
+      else if(side==='B'){s=rw;square={x:rx,y:ry+rh-s,s};ctr=[rx,ry+rh-s];st=[rx,ry+rh];en=[rx+s,ry+rh-s];rem={x:rx,y:ry,w:rw,h:rh-s};}
+      else if(side==='R'){s=rh;square={x:rx+rw-s,y:ry,s};ctr=[rx+rw-s,ry+s];st=[rx+rw,ry+s];en=[rx+rw-s,ry];rem={x:rx,y:ry,w:rw-s,h:rh};}
+      else {s=rw;square={x:rx,y:ry,s};ctr=[rx+rw,ry+s];st=[rx+rw,ry];en=[rx,ry+s];rem={x:rx,y:ry+s,w:rw,h:rh-s};}
+      let a1=Math.atan2(st[1]-ctr[1],st[0]-ctr[0]), a2=Math.atan2(en[1]-ctr[1],en[0]-ctr[0]);
+      let d=a2-a1; while(d>PI)d-=2*PI; while(d<-PI)d+=2*PI;   // short 90° way
+      sq.push(square); arcs.push({cx:ctr[0],cy:ctr[1],r:s,a1,d,st,en});
+      R=rem; if(R.w<0.4||R.h<0.4)break;
+    }
+    return {sq,arcs};
+  }
+  function draw(){
+    const {x,w,h}=fit(c);x.clearRect(0,0,w,h);
+    const cx=w/2,cy=h/2;
+    // outer golden rectangle, centred
+    const Wd=Math.min(w*0.84, h*0.84*PHI), Hd=Wd/PHI;
+    const X=cx-Wd/2, Y=cy-Hd/2;
+    const {sq,arcs}=buildGolden(X,Y,Wd,Hd,N);
+    // squares + outer rectangle
+    if(showRect){
+      x.strokeStyle='rgba(200,161,74,0.40)';x.lineWidth=1;
+      x.strokeRect(X,Y,Wd,Hd);
+      sq.forEach(s=>x.strokeRect(s.x,s.y,s.s,s.s));
+    }
+    // reveal the arcs growing FROM the centre (pole) outward — smallest arc first
+    const M=arcs.length, shown=(prog/100)*M;
+    x.lineCap='round';x.lineJoin='round';
+    let head=null;
+    for(let r=0;r<M;r++){
+      if(r>=shown)break;
+      const a=arcs[M-1-r];           // innermost first
+      const frac=Math.min(1,shown-r);
+      x.beginPath();
+      const steps=18;
+      for(let k=0;k<=steps;k++){
+        const ang=a.a1+a.d*(1-frac*(k/steps));  // from inner end (en) outward toward st
+        const px=a.cx+Math.cos(ang)*a.r, py=a.cy+Math.sin(ang)*a.r;
+        k?x.lineTo(px,py):x.moveTo(px,py);
+      }
+      x.strokeStyle=GOLDB;x.lineWidth=2.6;x.stroke();
+      const tip=a.a1+a.d*(1-frac);   // outer growing tip of the outermost revealed arc
+      head=[a.cx+Math.cos(tip)*a.r, a.cy+Math.sin(tip)*a.r];
+    }
+    if(head&&prog>0){x.beginPath();x.arc(head[0],head[1],4.5,0,2*PI);x.fillStyle=PARCH;x.fill();}
+    x.font="italic 15px 'Cormorant Garamond', serif";x.fillStyle=GOLD;x.textAlign='left';
+    x.fillText('×φ per ¼ turn ( π/2 )',14,h-16);
+  }
+  tIn.addEventListener('input',()=>{prog=+tIn.value;tOut.textContent=(prog/100*N).toFixed(1);draw();});
+  bRect.addEventListener('click',()=>{showRect=!showRect;bRect.classList.toggle('on',showRect);draw();});
+  let graf;
+  bGrow.addEventListener('click',()=>{growing=!growing;bGrow.classList.toggle('on',growing);
+    if(growing){const step=()=>{if(!growing)return;prog+=0.6;if(prog>=100){prog=100;growing=false;bGrow.classList.remove('on');}tIn.value=Math.round(prog);tOut.textContent=(prog/100*N).toFixed(1);draw();if(growing)graf=requestAnimationFrame(step);};step();}
+  });
+  addEventListener('resize',draw);draw();
+})();
+
+/* ---------- CHAPTER IV: FLOWER OF LIFE ---------- */
+(function(){
+  const c=document.getElementById('florCanvas');
+  if(!c)return;
+  let fig='flower', reveal=1, raf, solid=null;
+  let mode3d=false, rotX=-0.45, rotY=0.6, dragging=false, lastX=0, lastY=0, raf3d;
+  const figRow=document.getElementById('figRow');
+  const solidRow=document.getElementById('solidRow');
+  const solidNote=document.getElementById('solidNote');
+  const d3Row=document.getElementById('d3Row');
+  const b3d=document.getElementById('b3d');
+  const circOut=document.getElementById('circOut');
+  const note=document.getElementById('florNote');
+  const SOLIDS={
+    tetra:{c:'#e8c870',flat:true,note:'<b>Tetrahedron</b> &mdash; 4 triangular faces, the simplest of the five. Flat, it points its tip at you: a triangle with three lines to the centre.'},
+    cube:{c:'#74b6d6',flat:true,note:'<b>Cube</b> &mdash; 6 square faces, the one we know best. Seen corner-on, its shadow is a hexagon with a three-spoke Y.'},
+    octa:{c:'#9ec27a',flat:true,note:'<b>Octahedron</b> &mdash; 8 triangular faces, the cube\'s twin (its &ldquo;dual&rdquo;). Same hexagon, but the inside becomes a six-pointed star.'},
+    dodeca:{c:'#d8895f',flat:false,note:'<b>Dodecahedron</b> &mdash; 12 pentagon faces, every one ruled by &phi;. Plato\'s symbol for the whole universe &mdash; and it only exists in true 3D.'},
+    icosa:{c:'#c79bd6',flat:false,note:'<b>Icosahedron</b> &mdash; 20 triangular faces. Its 12 corners trace three golden rectangles, so &phi; is hidden inside it too.'}
+  };
+  // ---- 3D Platonic solid geometry (vertices + edges), built from phi ----
+  function dist3(a,b){return Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);}
+  function buildSolid(name){
+    const f=PHI,g=1/PHI,s=[1,-1];let V=[];
+    if(name==='tetra')V=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]];
+    else if(name==='cube'){for(const a of s)for(const b of s)for(const cc of s)V.push([a,b,cc]);}
+    else if(name==='octa')V=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+    else if(name==='dodeca'){
+      for(const a of s)for(const b of s)for(const cc of s)V.push([a,b,cc]);
+      for(const b of s)for(const cc of s)V.push([0,b*g,cc*f]);
+      for(const a of s)for(const b of s)V.push([a*g,b*f,0]);
+      for(const a of s)for(const cc of s)V.push([a*f,0,cc*g]);
+    } else if(name==='icosa'){
+      for(const b of s)for(const cc of s)V.push([0,b,cc*f]);
+      for(const a of s)for(const b of s)V.push([a,b*f,0]);
+      for(const a of s)for(const cc of s)V.push([a*f,0,cc]);
+    }
+    let mn=Infinity;
+    for(let i=0;i<V.length;i++)for(let j=i+1;j<V.length;j++){const d=dist3(V[i],V[j]);if(d>1e-6&&d<mn)mn=d;}
+    const E=[];
+    for(let i=0;i<V.length;i++)for(let j=i+1;j<V.length;j++){if(Math.abs(dist3(V[i],V[j])-mn)<1e-4)E.push([i,j]);}
+    let rad=0;V.forEach(v=>{rad=Math.max(rad,Math.hypot(v[0],v[1],v[2]));});
+    return {V,E,rad};
+  }
+  const SOLID3D={};['tetra','cube','octa','dodeca','icosa'].forEach(n=>{SOLID3D[n]=buildSolid(n);});
+  function hexA(hex,a){const n=parseInt(hex.slice(1),16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a.toFixed(3)+')';}
+  // build the 19 hex-packed centres, each tagged with a role
+  function build(r){
+    const list=[{x:0,y:0,role:'center'}];
+    for(let k=0;k<6;k++){const a=k*PI/3-PI/2;list.push({x:Math.cos(a)*r,y:Math.sin(a)*r,role:'inner'});}
+    for(let k=0;k<6;k++){
+      const a=k*PI/3-PI/2;
+      list.push({x:Math.cos(a)*2*r,y:Math.sin(a)*2*r,role:'far'});
+      const a2=a+PI/3;
+      list.push({x:Math.cos(a)*r+Math.cos(a2)*r,y:Math.sin(a)*r+Math.sin(a2)*r,role:'between'});
+    }
+    return list;
+  }
+  const FIGS={
+    vesica:{count:2,roles:['center','inner'],
+      note:'<b>Vesica Piscis</b> &mdash; just two circles overlapping. The pointed-oval lens where they meet is one of the oldest sacred shapes, and every figure here grows out of it.'},
+    seed:{count:7,roles:['center','inner'],
+      note:'<b>Seed of Life</b> &mdash; one circle ringed by six more of the same size. Seven circles in all, a starting pattern many cultures tied to the seven days of creation.'},
+    flower:{count:19,roles:['center','inner','far','between'],boundary:true,
+      note:'<b>Flower of Life</b> &mdash; the full web of overlapping circles, carved on temples around the world. Pure &pi;, repeated into a perfectly balanced pattern.'},
+    fruit:{count:13,roles:['center','inner','far'],
+      note:'<b>Fruit of Life</b> &mdash; thirteen circles hiding inside the flower. It looks simple, but it holds the blueprint for the final figure.'},
+    metatron:{count:13,roles:['center','inner','far'],lines:true,
+      note:"<b>Metatron's Cube</b> &mdash; join the centres of the Fruit of Life's 13 circles with straight lines and this appears. Hidden inside are all five Platonic solids &mdash; the shapes ancient thinkers believed build the universe."}
+  };
+  function selected(all){
+    if(fig==='vesica') return [all[0],all[1]];
+    const roles=FIGS[fig].roles;
+    return all.filter(p=>roles.includes(p.role));
+  }
+  function draw(){
+    const {x,w,h}=fit(c);x.clearRect(0,0,w,h);
+    const cx=w/2,cy=h/2,r=Math.min(w,h)*0.135;
+    const sel=selected(build(r));
+    const dim=reveal;
+    // boundary rings (flower only)
+    if(FIGS[fig].boundary){
+      x.strokeStyle='rgba(200,161,74,'+(0.30*dim).toFixed(3)+')';x.lineWidth=1;
+      x.beginPath();x.arc(cx,cy,3*r,0,2*PI);x.stroke();
+      x.beginPath();x.arc(cx,cy,3*r+5,0,2*PI);x.stroke();
+    }
+    // when a solid is highlighted, fade the underlying cube so the solid pops
+    const focus=(FIGS[fig].lines&&solid&&SOLIDS[solid].flat)?0.3:1;
+    // Metatron's Cube: connect every pair of the 13 centres
+    if(FIGS[fig].lines){
+      x.strokeStyle='rgba(232,200,112,'+(0.5*dim*focus).toFixed(3)+')';x.lineWidth=1;
+      for(let i=0;i<sel.length;i++)for(let j=i+1;j<sel.length;j++){
+        x.beginPath();x.moveTo(cx+sel[i].x,cy+sel[i].y);x.lineTo(cx+sel[j].x,cy+sel[j].y);x.stroke();
+      }
+    }
+    // the circles
+    sel.forEach(p=>{
+      x.beginPath();x.arc(cx+p.x,cy+p.y,r,0,2*PI);
+      if(fig==='vesica'){x.strokeStyle='rgba(232,200,112,'+dim.toFixed(3)+')';x.lineWidth=2.2;}
+      else{x.strokeStyle='rgba(232,200,112,'+(0.7*dim*focus).toFixed(3)+')';x.lineWidth=1.3;}
+      x.stroke();
+    });
+    // Metatron: mark the 13 nodes
+    if(FIGS[fig].lines){sel.forEach(p=>{x.beginPath();x.arc(cx+p.x,cy+p.y,3,0,2*PI);x.fillStyle='rgba(232,200,112,'+(dim*Math.max(focus,0.5)).toFixed(3)+')';x.fill();});}
+    // highlight a Platonic solid as a 2D projection over the 13 points (only those that fit)
+    if(FIGS[fig].lines&&solid&&SOLIDS[solid].flat){
+      const P=(d,k)=>{const a=k*PI/3-PI/2;return [cx+Math.cos(a)*d*r,cy+Math.sin(a)*d*r];};
+      const poly=(ps)=>{x.beginPath();ps.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.stroke();};
+      const spoke=(p)=>{x.beginPath();x.moveTo(cx,cy);x.lineTo(p[0],p[1]);x.stroke();};
+      x.strokeStyle=SOLIDS[solid].c;x.lineWidth=2.6;x.lineJoin='round';
+      if(solid==='tetra'){const t=[P(2,1),P(2,3),P(2,5)];poly(t);t.forEach(spoke);}
+      else if(solid==='cube'){poly([P(1,0),P(1,1),P(1,2),P(1,3),P(1,4),P(1,5)]);[0,2,4].forEach(k=>spoke(P(1,k)));}
+      else if(solid==='octa'){poly([P(1,0),P(1,1),P(1,2),P(1,3),P(1,4),P(1,5)]);poly([P(1,0),P(1,2),P(1,4)]);poly([P(1,1),P(1,3),P(1,5)]);}
+      x.fillStyle=SOLIDS[solid].c;
+      const verts=solid==='tetra'?[P(2,1),P(2,3),P(2,5),[cx,cy]]:[P(1,0),P(1,1),P(1,2),P(1,3),P(1,4),P(1,5)];
+      verts.forEach(p=>{x.beginPath();x.arc(p[0],p[1],4,0,2*PI);x.fill();});
+    }
+  }
+  // ---- 3D wireframe renderer ----
+  function draw3D(){
+    const {x,w,h}=fit(c);x.clearRect(0,0,w,h);
+    const cx=w/2,cy=h/2;const S=SOLID3D[solid];if(!S)return;
+    const scale=Math.min(w,h)*0.40/S.rad;
+    const cosx=Math.cos(rotX),sinx=Math.sin(rotX),cosy=Math.cos(rotY),siny=Math.sin(rotY);
+    const proj=S.V.map(v=>{
+      const X=v[0],Y=v[1],Z=v[2];
+      const x1=X*cosy-Z*siny, z1=X*siny+Z*cosy;
+      const y1=Y*cosx-z1*sinx, z2=Y*sinx+z1*cosx;
+      return {x:cx+x1*scale, y:cy-y1*scale, z:z2};
+    });
+    let zmin=Infinity,zmax=-Infinity;proj.forEach(p=>{zmin=Math.min(zmin,p.z);zmax=Math.max(zmax,p.z);});
+    const span=(zmax-zmin)||1, col=SOLIDS[solid].c;
+    x.lineJoin='round';
+    S.E.forEach(([i,j])=>{const a=proj[i],b=proj[j];const t=(((a.z+b.z)/2)-zmin)/span;
+      x.strokeStyle=hexA(col,0.32+0.58*t);x.lineWidth=1.1+1.9*t;
+      x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke();});
+    proj.forEach(p=>{const t=(p.z-zmin)/span;x.beginPath();x.arc(p.x,p.y,2+2.3*t,0,2*PI);x.fillStyle=hexA(col,0.5+0.5*t);x.fill();});
+  }
+  function loop3D(){if(!mode3d)return;if(!dragging)rotY+=0.012;draw3D();raf3d=requestAnimationFrame(loop3D);}
+  function animateIn(){reveal=0;cancelAnimationFrame(raf);const step=()=>{reveal=Math.min(1,reveal+0.09);draw();if(reveal<1)raf=requestAnimationFrame(step);};step();}
+  function metaNote(){return FIGS.metatron.note+' <em>Tap a shape to spotlight it, then view it in 3D.</em>';}
+  function markSolids(){[...solidRow.children].forEach(b=>b.classList.toggle('on',b.dataset.solid===solid));}
+  function enter3d(){
+    if(!solid)solid='tetra';
+    mode3d=true;b3d.classList.add('on');b3d.textContent='back to flat';
+    c.style.cursor='grab';markSolids();
+    note.innerHTML=SOLIDS[solid].note+' <em>Drag to spin it.</em>';
+    cancelAnimationFrame(raf);loop3D();
+  }
+  function exit3d(){
+    mode3d=false;dragging=false;b3d.classList.remove('on');b3d.textContent='view in 3D';
+    c.style.cursor='';cancelAnimationFrame(raf3d);draw();
+  }
+  function setFig(name){
+    if(mode3d)exit3d();
+    fig=name;solid=null;
+    [...figRow.children].forEach(b=>b.classList.toggle('on',b.dataset.fig===name));
+    markSolids();
+    const isMet=(name==='metatron');
+    solidRow.style.display=isMet?'flex':'none';
+    d3Row.style.display=isMet?'flex':'none';
+    solidNote.style.display=isMet?'block':'none';
+    circOut.textContent=FIGS[name].count;
+    note.innerHTML=isMet?metaNote():FIGS[name].note;
+    animateIn();
+  }
+  figRow.addEventListener('click',e=>{const b=e.target.closest('button[data-fig]');if(b)setFig(b.dataset.fig);});
+  solidRow.addEventListener('click',e=>{const b=e.target.closest('button[data-solid]');if(!b)return;
+    const s=b.dataset.solid;
+    if(mode3d){solid=s;markSolids();note.innerHTML=SOLIDS[s].note+' <em>Drag to spin it.</em>';draw3D();return;}
+    if(!SOLIDS[s].flat){solid=s;enter3d();return;}        // dodeca/icosa: jump straight to 3D
+    solid=(solid===s)?null:s;markSolids();
+    note.innerHTML=solid?SOLIDS[solid].note:metaNote();draw();});
+  b3d.addEventListener('click',()=>{mode3d?exit3d():enter3d();});
+  // drag-to-spin (only while in 3D)
+  c.addEventListener('pointerdown',e=>{if(!mode3d)return;dragging=true;lastX=e.clientX;lastY=e.clientY;c.style.cursor='grabbing';try{c.setPointerCapture(e.pointerId);}catch(_){}});
+  c.addEventListener('pointermove',e=>{if(!mode3d||!dragging)return;rotY+=(e.clientX-lastX)*0.01;rotX+=(e.clientY-lastY)*0.01;lastX=e.clientX;lastY=e.clientY;draw3D();});
+  c.addEventListener('pointerup',()=>{if(!mode3d)return;dragging=false;c.style.cursor='grab';});
+  c.addEventListener('pointercancel',()=>{dragging=false;if(mode3d)c.style.cursor='grab';});
+  addEventListener('resize',()=>{mode3d?draw3D():draw();});
+  setFig('flower');
+})();
+
+</script>
+</body>
+</html>
