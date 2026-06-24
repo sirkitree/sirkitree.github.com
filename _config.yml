@@ -1,6 +1,31 @@
 url: https://jeradbitner.com
 name: Jerad Bitner
 author: Jerad Bitner
+description: Personal site and blog of Jerad Bitner, a developer, writer, and creative technologist exploring code, family, fiction, and the web.
+language: en-US
+license: https://creativecommons.org/licenses/by/4.0/
+image: /assets/social-preview.svg
+
+person:
+  name: Jerad Bitner
+  given_name: Jerad
+  family_name: Bitner
+  alternate_name: sirkitree
+  description: Developer, writer, and creative technologist exploring code, family, fiction, and the web.
+  job_title: Developer and Writer
+  image: /assets/jerad-bio.png
+  knows_about:
+    - Web development
+    - Drupal
+    - JavaScript
+    - AI-assisted coding
+    - Creative writing
+    - Interactive art
+  same_as:
+    - https://github.com/sirkitree
+    - https://sirkitree.net
+    - https://twitter.com/sirkitree
+    - https://sketchfab.com/sirkitree
 
 # Change markdown processor from redcarpet to kramdown
 markdown: kramdown

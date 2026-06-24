@@ -11,9 +11,13 @@
         </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% assign raw_description = page.description | default: page.excerpt | default: site.description %}
+        {% assign page_description = raw_description | strip_html | strip_newlines | normalize_whitespace %}
+        {% assign page_image = page.image | default: site.image | default: '/assets/social-preview.svg' | absolute_url %}
         <title>{{ page.title }}</title>
-        <meta name="description" content="{{ page.excerpt | strip_html }}">
+        <meta name="description" content="{{ page_description }}">
         <meta name="author" content="Jerad Bitner" />
+        {% include json-ld.html %}
 
         <!-- Theme initialization -->
         <script>
@@ -26,15 +30,15 @@
         <meta property="og:title" content="{{ page.title }}" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-        <meta property="og:description" content="{{ page.excerpt | strip_html }}" />
-        <meta property="og:image" content="{{ site.url }}/assets/social-preview.svg" />
+        <meta property="og:description" content="{{ page_description }}" />
+        <meta property="og:image" content="{{ page_image }}" />
         <meta property="og:image:type" content="image/svg+xml" />
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="400" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="{{ page.title }}" />
-        <meta name="twitter:description" content="{{ page.excerpt | strip_html }}" />
-        <meta name="twitter:image" content="{{ site.url }}/assets/social-preview.svg" />
+        <meta name="twitter:description" content="{{ page_description }}" />
+        <meta name="twitter:image" content="{{ page_image }}" />
 
         <!-- Favicon -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg">
