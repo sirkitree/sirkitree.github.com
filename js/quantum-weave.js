@@ -273,17 +273,11 @@
       const selectors = [
         '.qw-card',
         '.qw-narrative-card',
-        '.qw-discipline-card',
-        '.qw-hero-content'
+        '.qw-discipline-card'
       ];
 
       selectors.forEach(selector => {
         document.querySelectorAll(selector).forEach(el => {
-          // Skip if already visible (like hero)
-          if (selector === '.qw-hero-content') {
-            return;
-          }
-
           el.style.opacity = '0';
           el.style.transform = 'translateY(30px)';
 
@@ -391,7 +385,7 @@
     const hero = document.querySelector('.qw-hero');
     if (!hero) return;
 
-    let cursorGlow = document.createElement('div');
+    const cursorGlow = document.createElement('div');
     cursorGlow.style.cssText = `
       position: absolute;
       width: 300px;
@@ -463,8 +457,6 @@
         prefersReducedMotion,
         performanceBudget
       });
-    } else {
-      console.log('✨ Quantum Weave interactive enhancements loaded');
     }
   }
 

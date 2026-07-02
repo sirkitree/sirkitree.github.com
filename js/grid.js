@@ -2,9 +2,7 @@
 // Per-row InstancedMesh: one draw call per row instead of one per voxel.
 // 30fps cap; movement uses real delta-time (clamped so RAF resume after a tab/
 // Spaces switch doesn't snap rows forward).
-if (window.DISABLE_GRID) {
-  console.log('Grid disabled for this page');
-} else {
+if (!window.DISABLE_GRID) {
   (async () => {
     const THREE = await import('https://unpkg.com/three@0.136.0/build/three.module.js');
 

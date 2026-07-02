@@ -6,6 +6,9 @@
  *   their character profile (skipping self-references on the active page).
  */
 
+(function() {
+'use strict';
+
 const DISCIPLINE_DATA = {
   infomancy: {
     name: 'Infomancy',
@@ -271,3 +274,5 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+})();

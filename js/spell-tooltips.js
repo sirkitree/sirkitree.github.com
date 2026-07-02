@@ -3,6 +3,9 @@
  * Displays hover information for spell references in narratives
  */
 
+(function() {
+'use strict';
+
 const SPELL_DATA = {
   'thermal-lock': {
     name: 'Thermal-Lock',
@@ -113,3 +116,5 @@ if (document.readyState === 'loading') {
 } else {
   initSpellTooltips();
 }
+
+})();
