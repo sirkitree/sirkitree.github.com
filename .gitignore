@@ -24,3 +24,6 @@ Thumbs.db
 *.swo 
 
 node_modules/
+
+# Raw photo exports (processed copies live in assets/photos/full + thumbs)
+assets/photos/originals/
