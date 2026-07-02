@@ -896,20 +896,26 @@ footer {
   nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: 0;
+    /* Slide in from the LEFT. Parking the closed drawer past the right
+       edge (via right: -100% or translateX(100%)) makes Android Chrome
+       expand the layout viewport to ~2x device width, which breaks
+       position: fixed centering site-wide. Overflow past the left edge
+       is never counted in LTR pages. */
+    transform: translateX(-100%);
     height: 100vh;
     width: 100%;
     max-width: 300px;
     background: var(--bg-color);
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     flex-direction: column;
     padding: 5rem 2rem;
     gap: 1rem;
-    transition: right 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
 
   nav.open {
-    right: 0;
+    transform: translateX(0);
   }
 
   nav a {
