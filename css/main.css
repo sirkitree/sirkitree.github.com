@@ -573,6 +573,93 @@ footer {
   font-size: 0.9rem !important;
 }
 
+/* Jenney Journal book campaign */
+.jenney-book-callout {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 2.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--link-color);
+  border-radius: 12px 12px 0 12px;
+  background: linear-gradient(135deg, var(--card-bg), rgba(227, 24, 24, 0.06));
+  box-shadow: var(--card-shadow);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0 100%
+  );
+}
+
+:root[data-theme="dark"] .jenney-book-callout {
+  background: linear-gradient(135deg, var(--card-bg), rgba(255, 107, 107, 0.08));
+}
+
+.jenney-book-callout__cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+}
+
+.jenney-book-callout__eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--meta-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.jenney-book-callout h2 {
+  margin: 0 0 0.5rem;
+  color: var(--text-color);
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  line-height: 1.18;
+}
+
+.jenney-book-callout p {
+  margin: 0 0 1rem;
+}
+
+.jenney-book-callout__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.jenney-book-callout__actions .btn {
+  margin-right: 0;
+}
+
+@media (max-width: 640px) {
+  .jenney-book-callout {
+    grid-template-columns: 88px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .jenney-book-callout h2 {
+    font-size: 1.25rem;
+  }
+
+  .jenney-book-callout__actions {
+    grid-column: 1 / -1;
+  }
+
+  .jenney-book-callout__actions .btn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
+
 /* Books listing */
 .books-grid { display: grid; gap: 24px; }
 .book-card { display: grid; grid-template-columns: 140px 1fr; gap: 16px; align-items: center; padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--background-color); }

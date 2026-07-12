@@ -21,6 +21,16 @@ layout: default
   <section class="content">
     {{ content }}
   </section>  
+
+  {% assign is_jenney_post = false %}
+  {% if page.title contains 'Jenney Journal' or page.category == 'jenney' or page.categories contains 'jenney' %}
+    {% assign is_jenney_post = true %}
+  {% endif %}
+
+  {% if is_jenney_post %}
+    {% include jenney-book-callout.html %}
+    <script src="/js/jenney-book-campaign.js" defer></script>
+  {% endif %}
   
   {% if page.tags.size > 0 %}
   {% capture related_ids %}{% for post in site.posts %}{% if post.url != page.url and post.tags %}{% for tag in page.tags %}{% if post.tags contains tag %}{{ post.url }}|{% break %}{% endif %}{% endfor %}{% endif %}{% endfor %}{% endcapture %}
