@@ -24,6 +24,15 @@
           // Check for saved theme preference, otherwise default to dark
           const savedTheme = localStorage.getItem('theme') || 'dark';
           document.documentElement.setAttribute('data-theme', savedTheme);
+
+          // If we arrived here via an internal link, start covered and fade in.
+          // Runs before first paint so there is no flash of uncovered content.
+          try {
+            if (sessionStorage.getItem('pageTransition')) {
+              sessionStorage.removeItem('pageTransition');
+              document.documentElement.classList.add('pt-enter');
+            }
+          } catch (e) {}
         </script>
 
         <!-- Meta tags -->
@@ -59,6 +68,7 @@
         <script type="module" src="/js/grid.js"></script>
     </head>
     <body>
+      <div id="page-transition" aria-hidden="true"></div>
       <canvas id="grid-canvas"></canvas>
       <header>
         <div class="container">
@@ -117,6 +127,9 @@
           </div>
         </div>
       </footer>
+
+      <!-- Page transitions -->
+      <script src="/js/page-transition.js"></script>
 
       <!-- Bootstrap JS for dropdown functionality -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

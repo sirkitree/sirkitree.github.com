@@ -1689,3 +1689,46 @@ footer {
   width: 100%;
   display: block;
 }
+
+/* Page transitions */
+:root {
+  --page-transition-duration: 260ms;
+}
+
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-color);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2147483000;
+  will-change: opacity;
+}
+
+/* Leaving: fade up to cover the page before navigating. */
+html.pt-leave #page-transition {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity var(--page-transition-duration) ease-in;
+}
+
+/* Arriving: fade back out. A CSS animation rather than a JS-toggled class, so
+   the overlay always clears itself even if the script fails to load. */
+html.pt-enter #page-transition {
+  animation: page-transition-in var(--page-transition-duration) ease-out forwards;
+}
+
+@keyframes page-transition-in {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.pt-leave #page-transition,
+  html.pt-enter #page-transition {
+    animation: none;
+    transition: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
