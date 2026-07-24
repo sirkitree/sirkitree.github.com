@@ -784,7 +784,8 @@ footer {
    its own header, which is a deliberate sub-theme.
    --------------------------------------------------------------------------- */
 .page-header {
-  max-width: 880px;
+  /* Full container width, so the header's edges line up with the cards and
+     grids below it rather than stopping short of them. */
   margin: 0 0 2.5rem;
   padding: clamp(28px, 5vw, 54px);
   border-radius: 28px;
@@ -795,7 +796,6 @@ footer {
 }
 
 .page-header h1 {
-  max-width: 820px;
   margin: 0;
   font-family: var(--font-serif);
   font-size: clamp(2.25rem, 5vw, 4rem);
