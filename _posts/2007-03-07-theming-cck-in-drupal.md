@@ -4,6 +4,10 @@ title : "Theming CCK in Drupal"
 created : 1173326179
 permalink : /blog/theming-cck-drupal
 category : "blog"
+tags:
+  - drupal
+  - tech
+  - tutorial
 ---
 I recently had a friend ask me how to be able to give CCK fields more user-friendly class names so that they could be styled a little easier. I actually needed to do this myself with a project at work, so I had time to really sit down and figure out a good way to do this.
 

@@ -4,6 +4,9 @@ title : "In the beginning... there was no Drupal."
 created : 1165455296
 permalink : /blog/drupal-beginner
 category : "blog"
+tags:
+  - drupal
+  - tech
 ---
 Don't cry, it's true. But let me tell you about how I first came about <a href="drupal.org" target="_blank">my savior</a>.
 

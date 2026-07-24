@@ -4,6 +4,10 @@ title : "jQuery checkbox goodness"
 created : 1181158685
 permalink : /blog/jquery-checkbox-goodness
 category : "blog"
+tags:
+  - javascript
+  - tech
+  - tutorial
 ---
 I was working on a select all feature today and just wanted to share this with the world. (a.k.a. keep it for later)
 

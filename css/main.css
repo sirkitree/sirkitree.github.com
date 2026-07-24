@@ -1632,42 +1632,204 @@ footer {
 }
 
 /* Archive Page Styling */
-#home .posts {
-  list-style: none !important;
-  padding: 0 !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.5rem !important;
-  margin: 1rem 0 !important;
+.archive-head { margin: 0 0 1.75rem; }
+.archive-head h1 { margin: 0 0 0.25rem; }
+.archive-sub {
+  margin: 0;
+  color: var(--meta-color);
+  font-size: 0.95rem;
 }
 
-#home .posts li {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  display: inline-block !important;
+.archive-controls {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 0.85rem 0;
+  margin-bottom: 0.5rem;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
-#home .posts li a {
-  display: inline-block !important;
-  padding: 0.25rem 0.75rem !important;
-  background-color: var(--code-bg) !important;
-  border-radius: 1rem !important;
-  font-size: 0.875rem !important;
-  text-decoration: none !important;
-  color: var(--text-color) !important;
-  transition: all var(--transition-speed) !important;
+.archive-search input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: border-color var(--transition-speed);
+}
+.archive-search input:focus {
+  outline: none;
+  border-color: var(--link-color);
 }
 
-#home .posts li a:hover {
-  background-color: var(--link-color) !important;
-  color: var(--bg-color) !important;
-  transform: translateY(-2px) !important;
-  text-decoration: none !important;
+.archive-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
 }
 
-#home .posts li span {
-  display: none !important;
+.af-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--meta-color);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed);
+}
+.af-chip:hover { color: var(--text-color); border-color: var(--meta-color); }
+.af-chip.is-active {
+  color: var(--bg-color);
+  background: var(--link-color);
+  border-color: var(--link-color);
+}
+.af-n { font-variant-numeric: tabular-nums; opacity: 0.7; font-size: 0.8em; }
+
+.archive-status {
+  min-height: 1.2em;
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--meta-color);
+}
+.archive-empty { color: var(--meta-color); font-style: italic; }
+
+.archive-series-note {
+  margin: 0.9rem 0 0;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--link-color);
+  background: var(--card-bg);
+  border-radius: 0 8px 8px 0;
+}
+.archive-series-note p { margin: 0; font-size: 0.92rem; }
+
+/* Year groups sit on cards so rows stay legible over the 3D canvas,
+   matching the clipped-corner card language used on the home page. */
+.archive-year {
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  border-radius: 12px 12px 0 12px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+.archive-year h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--meta-color);
+}
+.ay-year { font-variant-numeric: tabular-nums; }
+.ay-rule { flex: 1; height: 1px; background: var(--border-color); }
+.ay-count { font-size: 0.85rem; font-variant-numeric: tabular-nums; opacity: 0.75; }
+
+.archive-list { list-style: none; margin: 0; padding: 0; }
+.archive-item { margin: 0; }
+.archive-item > a {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.45rem 0.6rem;
+  margin: 0 -0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: background-color var(--transition-speed);
+}
+.archive-item > a:hover { background: var(--code-bg); text-decoration: none; }
+.archive-item > a:hover .ai-title { color: var(--link-color); }
+
+.ai-date {
+  font-size: 0.82rem;
+  color: var(--meta-color);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ai-title {
+  font-size: 1rem;
+  line-height: 1.45;
+  transition: color var(--transition-speed);
+}
+.ai-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; justify-content: flex-end; }
+.ai-tag {
+  font-size: 0.72rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  color: var(--meta-color);
+  background: var(--code-bg);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .archive-item > a {
+    grid-template-columns: 3.6rem 1fr;
+    gap: 0.6rem;
+  }
+  .ai-tags { display: none; }
+  .archive-controls { position: static; }
+}
+
+/* Series page (Jenney Journals) */
+.series-head { margin: 0 0 1.5rem; }
+.series-head h1 { margin: 0 0 0.25rem; }
+.series-sub { margin: 0 0 1rem; color: var(--meta-color); font-size: 0.95rem; }
+.series-intro { max-width: 42rem; }
+.series-start { margin: 1.25rem 0 0; }
+
+.series-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  border-radius: 12px 12px 0 12px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+.series-item + .series-item { border-top: 1px solid var(--border-color); }
+.series-item > a {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.7rem 0.6rem;
+  margin: 0 -0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: background-color var(--transition-speed);
+}
+.series-item > a:hover { background: var(--code-bg); text-decoration: none; }
+.series-item > a:hover .si-title { color: var(--link-color); }
+.si-n {
+  min-width: 2rem;
+  font-size: 0.8rem;
+  color: var(--meta-color);
+  font-variant-numeric: tabular-nums;
+}
+.si-body { display: flex; flex-direction: column; gap: 0.15rem; }
+.si-title { font-size: 1.02rem; transition: color var(--transition-speed); }
+.si-date { font-size: 0.82rem; color: var(--meta-color); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Audio player */

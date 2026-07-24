@@ -4,6 +4,9 @@ title : "Drupal Theme Loader"
 created : 1171375552
 permalink : /blog/theme-loader
 category : "blog"
+tags:
+  - drupal
+  - tech
 ---
 I've started a project on <a href="drupal.org">drupal.org</a> to contribute a module that will allow loading of new themes into Drupal from a compressed file (zip, gzip) that is either on your local hard drive, or from a web URL (curl support required?). <a href="http://drupal.org/project/theme-loader">View Project on drupal.org</a>
 

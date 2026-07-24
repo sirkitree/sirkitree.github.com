@@ -4,6 +4,8 @@ title: "New blog command and some style updates"
 date: 2012-02-05 13:39
 comments: true
 category: "blog"
+tags:
+  - tech
 ---
 I love Github. The more I use it, the more I love it. As a form of endearment, I've updated the style of this blog to look a little more like Github than default Octopress. Simple, clean, fun.
 

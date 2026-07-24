@@ -4,6 +4,10 @@ title: "Using Node.js to convert Drupal to Jekkyl"
 date: 2012-01-29 15:54
 comments: true
 category: "blog"
+tags:
+  - drupal
+  - javascript
+  - tech
 ---
 I've gone and revamped my blog again.
 

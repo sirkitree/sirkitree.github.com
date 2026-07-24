@@ -1,0 +1,30 @@
+{%- comment -%}
+Classifies a post into one of four archive collections: tech, fiction, jenney, life.
+
+Outputs a single bare word, so callers should wrap it in a capture:
+  {% capture group %}{% include post-group.html post=post %}{% endcapture %}
+
+Rules are applied in ascending order of authority — later rules override earlier
+ones — because a Quantum Weave story tagged both "ai" and "fiction" is fiction,
+and a Jenney Journal entry is a Jenney Journal entry no matter what else it
+carries. Posts matching nothing fall through to "life".
+{%- endcomment -%}
+{%- assign p = include.post -%}
+{%- assign g = "life" -%}
+
+{%- assign tech_tags = "tech,drupal,ai,tutorial,javascript,threejs,webvr,3d,automation,design,lullabot,links,amazon" | split: "," -%}
+{%- for t in tech_tags -%}
+  {%- if p.tags contains t -%}{%- assign g = "tech" -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{%- if p.category == "drupalmao" -%}{%- assign g = "tech" -%}{%- endif -%}
+
+{%- assign fiction_tags = "fiction,quantum-weave,poem,poetry,narrative,science-fantasy,creative-writing,horror,vampire,short-story,sci-fi,mystery,code-poetry,experimental" | split: "," -%}
+{%- for t in fiction_tags -%}
+  {%- if p.tags contains t -%}{%- assign g = "fiction" -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{%- comment -%} Layout is the only signal on the untagged 2025 story run. {%- endcomment -%}
+{%- if p.layout == "quantum-weave-post" or p.layout == "short-stories-story" -%}{%- assign g = "fiction" -%}{%- endif -%}
+{%- if p.category == "story" or p.category == "poem" or p.category == "books" -%}{%- assign g = "fiction" -%}{%- endif -%}
+
+{%- if p.tags contains "jenney" or p.tags contains "book" or p.category == "jenney" or p.title contains "Jenney" -%}{%- assign g = "jenney" -%}{%- endif -%}
+{{- g -}}

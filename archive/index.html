@@ -1,13 +1,81 @@
 ---
 layout: default
-title: "Archives: Jerad Bitner"
+title: "Archive: Jerad Bitner"
 ---
 
-<div id="home">
-  <h1>Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+{%- comment -%} First pass: tally each collection so the filter chips can show counts. {%- endcomment -%}
+{%- assign n_tech = 0 -%}{%- assign n_fiction = 0 -%}{%- assign n_jenney = 0 -%}{%- assign n_life = 0 -%}
+{%- for post in site.posts -%}
+  {%- capture g %}{% include post-group.html post=post %}{% endcapture -%}
+  {%- case g -%}
+    {%- when "tech" -%}{%- assign n_tech = n_tech | plus: 1 -%}
+    {%- when "fiction" -%}{%- assign n_fiction = n_fiction | plus: 1 -%}
+    {%- when "jenney" -%}{%- assign n_jenney = n_jenney | plus: 1 -%}
+    {%- else -%}{%- assign n_life = n_life | plus: 1 -%}
+  {%- endcase -%}
+{%- endfor -%}
+{%- assign last_post = site.posts | last -%}
+{%- assign first_year = last_post.date | date: "%Y" -%}
+{%- assign latest_year = site.posts.first.date | date: "%Y" -%}
+
+<div class="archive">
+  <header class="archive-head">
+    <h1>Archive</h1>
+    <p class="archive-sub">{{ site.posts.size }} posts &middot; {{ first_year }}&ndash;{{ latest_year }}</p>
+  </header>
+
+  <div class="archive-controls">
+    <div class="archive-search">
+      <label class="visually-hidden" for="archive-search">Search posts</label>
+      <input type="search" id="archive-search" placeholder="Search titles and tags&hellip;" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="archive-filters" role="group" aria-label="Filter by collection">
+      <button type="button" class="af-chip is-active" data-filter="all" aria-pressed="true">All <span class="af-n">{{ site.posts.size }}</span></button>
+      <button type="button" class="af-chip" data-filter="tech" aria-pressed="false">Tech &amp; AI <span class="af-n">{{ n_tech }}</span></button>
+      <button type="button" class="af-chip" data-filter="jenney" aria-pressed="false">Jenney Journals <span class="af-n">{{ n_jenney }}</span></button>
+      <button type="button" class="af-chip" data-filter="fiction" aria-pressed="false">Fiction &amp; Poetry <span class="af-n">{{ n_fiction }}</span></button>
+      <button type="button" class="af-chip" data-filter="life" aria-pressed="false">Life <span class="af-n">{{ n_life }}</span></button>
+    </div>
+  </div>
+
+  <aside class="archive-series-note" data-for-filter="jenney" hidden>
+    <p>These {{ n_jenney }} entries run as one continuous story, oldest first.
+      <a href="/jenney/">Read the Jenney Journals from the beginning &rarr;</a></p>
+  </aside>
+
+  <p class="archive-status" role="status" aria-live="polite"></p>
+  <p class="archive-empty" hidden>No posts match that search.</p>
+
+  {%- assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+  {% for year in years %}
+    <section class="archive-year" data-year="{{ year.name }}">
+      <h2>
+        <span class="ay-year">{{ year.name }}</span>
+        <span class="ay-rule" aria-hidden="true"></span>
+        <span class="ay-count">{{ year.items.size }}</span>
+      </h2>
+      <ul class="archive-list">
+        {%- for post in year.items -%}
+          {%- capture group %}{% include post-group.html post=post %}{% endcapture -%}
+          {%- assign shown_tags = post.tags | where_exp: "t", "t != 'blog'" -%}
+          {%- comment -%} Join before appending — appending an array stringifies it as ["a", "b"]. {%- endcomment -%}
+          {%- assign tag_text = shown_tags | join: " " -%}
+          {%- capture search_text -%}{{ post.title | strip_html }} {{ tag_text }} {{ post.date | date: "%Y" }}{%- endcapture -%}
+          <li class="archive-item" data-group="{{ group }}" data-search="{{ search_text | downcase | normalize_whitespace | escape }}">
+            <a href="{{ post.url }}">
+              <time class="ai-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+              <span class="ai-title">{{ post.title }}</span>
+              {%- if shown_tags.size > 0 -%}
+                <span class="ai-tags">
+                  {%- for t in shown_tags limit: 3 -%}<span class="ai-tag">{{ t }}</span>{%- endfor -%}
+                </span>
+              {%- endif -%}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </section>
+  {% endfor %}
 </div>
+
+<script src="/js/archive.js" defer></script>

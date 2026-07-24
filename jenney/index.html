@@ -1,0 +1,56 @@
+---
+layout: default
+title: "The Jenney Journals: Jerad Bitner"
+description: "A serialized journal of Jenney's diagnosis, treatment, and the years after — written as it happened, collected here in order."
+---
+
+{%- comment -%}
+site.posts is newest-first; reversing gives the reading order the series was
+written in, which is the whole point of this page.
+{%- endcomment -%}
+{%- assign chronological = site.posts | reverse -%}
+{%- assign entries = "" | split: "" -%}
+{%- for post in chronological -%}
+  {%- capture g %}{% include post-group.html post=post %}{% endcapture -%}
+  {%- if g == "jenney" -%}{%- assign entries = entries | push: post -%}{%- endif -%}
+{%- endfor -%}
+{%- assign first_entry = entries | first -%}
+{%- assign last_entry = entries | last -%}
+
+<div class="series">
+  <header class="series-head">
+    <h1>The Jenney Journals</h1>
+    <p class="series-sub">
+      {{ entries.size }} entries &middot;
+      {{ first_entry.date | date: "%B %Y" }} &ndash; {{ last_entry.date | date: "%B %Y" }}
+    </p>
+    <p class="series-intro">
+      I wrote these as things happened &mdash; Jenney's diagnosis, the hospitals, the
+      faith and the fear, and the long stretch afterward. They were never meant to be
+      read backwards, so here they are in order, from the beginning.
+    </p>
+    {%- if first_entry -%}
+      <p class="series-start">
+        <a class="btn btn-primary" href="{{ first_entry.url }}">Start at the beginning &rarr;</a>
+      </p>
+    {%- endif -%}
+  </header>
+
+  {% include jenney-book-callout.html %}
+
+  <ol class="series-list">
+    {%- for post in entries -%}
+      <li class="series-item">
+        <a href="{{ post.url }}">
+          <span class="si-n" aria-hidden="true">{{ forloop.index }}</span>
+          <span class="si-body">
+            <span class="si-title">{{ post.title }}</span>
+            <time class="si-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+          </span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ol>
+</div>
+
+<script src="/js/jenney-book-campaign.js" defer></script>
