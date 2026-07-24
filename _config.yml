@@ -4,7 +4,7 @@ author: Jerad Bitner
 description: Personal site and blog of Jerad Bitner, a developer, writer, and creative technologist exploring code, family, fiction, and the web.
 language: en-US
 license: https://creativecommons.org/licenses/by/4.0/
-image: /assets/social-preview.svg
+image: /assets/social-preview.png
 
 person:
   name: Jerad Bitner
@@ -34,6 +34,7 @@ markdown: kramdown
 plugins:
   - jekyll-paginate
   - jekyll-redirect-from
+  - jekyll-sitemap
 
 # Pagination settings
 paginate: 5

@@ -4,9 +4,9 @@
 {% assign raw_description = page.description | default: page.excerpt | default: site_description %}
 {% assign page_description = raw_description | strip_html | strip_newlines | normalize_whitespace %}
 {% assign page_title = page.title | default: site.name %}
-{% assign site_image = site.image | default: '/assets/social-preview.svg' | absolute_url %}
-{% assign page_image = page.image | default: site.image | default: '/assets/social-preview.svg' | absolute_url %}
-{% assign person_image = site.person.image | default: site.image | default: '/assets/social-preview.svg' | absolute_url %}
+{% assign site_image = site.image | default: '/assets/social-preview.png' | absolute_url %}
+{% assign page_image = page.image | default: site.image | default: '/assets/social-preview.png' | absolute_url %}
+{% assign person_image = site.person.image | default: site.image | default: '/assets/social-preview.png' | absolute_url %}
 {% assign language = site.language | default: 'en-US' %}
 {% assign is_post = false %}
 {% if page.layout == 'post' or page.layout == 'quantum-weave-post' %}

@@ -5,12 +5,12 @@ title: All Tags
 
 <h1>All Tags</h1>
 
-<div class="tag-cloud mb-5">
+<div class="tag-cloud">
   {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
   {% for tag in all_tags %}
     {% if tag != "" %}
       {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
-      <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag me-2 mb-2">
+      <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag">
         {{ tag }} ({{ tag_posts.size }})
       </a>
     {% endif %}
@@ -27,7 +27,7 @@ title: All Tags
         {% for post in tag_posts %}
           <li>
             <a href="{{ post.url }}">{{ post.title }}</a>
-            <span class="date ms-2">({{ post.date | date: "%B %-d, %Y" }})</span>
+            <span class="date">({{ post.date | date: "%B %-d, %Y" }})</span>
           </li>
         {% endfor %}
       </ul>

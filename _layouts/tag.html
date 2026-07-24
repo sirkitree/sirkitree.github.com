@@ -13,7 +13,7 @@ layout: default
       <div class="post-meta">
         <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
         {% if post.tags %}
-          <span class="ms-2 me-2">•</span>
+          <span>•</span>
           <span class="tags">
             {% for tag in post.tags %}
               <a href="/tags/{{ tag | slugify }}.html" class="tag">{{ tag }}</a>
@@ -30,13 +30,13 @@ layout: default
   {% endfor %}
 </div>
 
-<div class="all-tags mt-5">
+<div class="all-tags">
   <h3>Browse other tags:</h3>
   <div class="tag-cloud">
     {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
     {% for tag in all_tags %}
       {% if tag != page.tag and tag != "" %}
-        <a href="/tags/{{ tag | slugify }}.html" class="tag me-2 mb-2">{{ tag }}</a>
+        <a href="/tags/{{ tag | slugify }}.html" class="tag">{{ tag }}</a>
       {% endif %}
     {% endfor %}
   </div>

@@ -9,3 +9,5 @@ gem 'jekyll-gist'
 gem "jekyll-redirect-from", "~> 0.16"
 
 gem "jekyll-paginate", "~> 1.1"
+
+gem "jekyll-sitemap", "~> 1.4"

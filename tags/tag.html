@@ -43,13 +43,13 @@ permalink: /tags/tag/
   <!-- Posts will be loaded by JavaScript -->
 </div>
 
-  <div class="all-tags mt-5">
+  <div class="all-tags">
     <h3 id="browse-tags-title">Browse all tags:</h3>
     <div class="tag-cloud">
       {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
       {% for tag in all_tags %}
         {% if tag != "" %}
-          <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag me-2 mb-2">{{ tag }}</a>
+          <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag">{{ tag }}</a>
         {% endif %}
       {% endfor %}
     </div>
@@ -160,7 +160,7 @@ if (tag) {
           </h2>
           <div class="post-meta">
             <time>${post.date}</time>
-            <span class="ms-2 me-2">•</span>
+            <span>•</span>
             <span class="tags">${tagsHtml}</span>
           </div>
           <div class="post-content">

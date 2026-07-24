@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=JetBrains+Mono:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,500..700&display=block" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: #1c1c1c;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    color: #dddddd;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Hexagonal field, echoing the site's Three.js voxel grid */
+  .hexfield {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+
+  /* Warm vignette pulling focus to the left-hand type */
+  .glow {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    right: -260px;
+    top: -180px;
+    background: radial-gradient(circle, rgba(255,107,107,0.16) 0%, rgba(255,107,107,0.05) 42%, rgba(255,107,107,0) 70%);
+  }
+  .fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, #1c1c1c 24%, rgba(28,28,28,0.86) 46%, rgba(28,28,28,0.35) 74%, rgba(28,28,28,0.62) 100%);
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 86px;
+  }
+
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 40px;
+  }
+  .mark svg { width: 76px; height: 76px; display: block; }
+  .handle {
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 21px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #ff6b6b;
+  }
+
+  h1 {
+    font-size: 96px;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: #ffffff;
+    margin-bottom: 30px;
+  }
+
+  .rule {
+    width: 108px;
+    height: 5px;
+    border-radius: 3px;
+    background: #ff6b6b;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-family: "Source Serif 4", Charter, "Iowan Old Style", Georgia, serif;
+    font-size: 35px;
+    line-height: 1.42;
+    color: #c9c9c9;
+    max-width: 780px;
+  }
+
+  .domain {
+    position: absolute;
+    left: 86px;
+    bottom: 54px;
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 23px;
+    color: #8f8f8f;
+    letter-spacing: 0.02em;
+  }
+</style>
+</head>
+<body>
+  <svg class="hexfield" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Flat-top hexagon tile: width 60, height ~52, staggered by half a row -->
+      <pattern id="hex" width="90" height="104" patternUnits="userSpaceOnUse">
+        <g fill="none" stroke="#ff6b6b" stroke-width="1.1" opacity="0.30">
+          <polygon points="30,0 60,15 60,45 30,60 0,45 0,15"/>
+          <polygon points="75,52 105,67 105,97 75,112 45,97 45,67"/>
+          <polygon points="-15,52 15,67 15,97 -15,112 -45,97 -45,67"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="1200" height="630" fill="url(#hex)"/>
+  </svg>
+  <div class="glow"></div>
+  <div class="fade"></div>
+
+  <div class="content">
+    <div class="mark">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1c1c1c"/>
+            <stop offset="100%" stop-color="#2d2d2d"/>
+          </linearGradient>
+        </defs>
+        <polygon points="16,3 27.3,9.5 27.3,22.5 16,29 4.7,22.5 4.7,9.5"
+                 fill="url(#bg)" stroke="#ff6b6b" stroke-width="2.5"/>
+        <path d="M7 10 h5 v0.5 h-2 v9 q0 2.5 -2.5 2.5 q-1.5 0 -2 -1 l1 -0.8 q0.3 0.6 1 0.6 q1.2 0 1.2 -1.5 v-9.3 h-1.7 z"
+              fill="#ff6b6b"/>
+        <path d="M15 10 h4 q3 0 3 2.8 q0 1.5 -1.5 2.2 q2 0.7 2 2.8 q0 3.2 -3.5 3.2 h-4 z
+                 M17.2 12 v2.8 h1.8 q1.6 0 1.6 -1.4 q0 -1.4 -1.6 -1.4 z
+                 M17.2 16.8 v3.2 h1.8 q1.8 0 1.8 -1.6 q0 -1.6 -1.8 -1.6 z"
+              fill="#ff6b6b"/>
+      </svg>
+      <span class="handle">sirkitree</span>
+    </div>
+
+    <h1>Jerad Bitner</h1>
+    <div class="rule"></div>
+    <p>Developer, writer, and creative technologist exploring code, family, fiction, and the web.</p>
+  </div>
+
+  <div class="domain">jeradbitner.com</div>
+</body>
+</html>
