@@ -1,31 +1,3 @@
----
-layout: post
-title: THREE.js object and material loading
-date: "2015-10-31 05:00"
-comments: true
-published: true
-tags: [threejs, webvr, javascript, 3d]
----
-
-## Messing with some [THREE.js]() and on top of that the excellent [webvr-starter-kit]().
-
-The WebVR starter kit is a library on top of Three.js that allows you to quickly and easily setup a scene without all of the coding required by Three.js.
-
-```js
-VR.floor()
-```
-
-This will get you a basic scene with lighting, rendering, camera, and a checkered plane for a floor.
-
-Since this is based on Three.js, you can then use typical Three.js libraries to do things like load objects and materials. Then you can add them to the existing scene like so:
-
-```js
-VR.scene.add(whatever)
-```
-
-I wrote a basic example that utilizes Three's OBJMTLLoader. You can see the source below and you can see it in action [here](/VR/load-obj.html).
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,4 +51,3 @@ loadObjMtl('https://raw.githubusercontent.com/bitgridio/models/gh-pages/lullabot
 </script>
 </body>
 </html>
-```
