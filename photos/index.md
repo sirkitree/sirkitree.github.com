@@ -16,7 +16,7 @@ Colorado, the Pacific Northwest, and wherever else I end up pointing a camera.
   {% assign fname = t.path | split: "/" | last %}
   {% assign alt = fname | replace: ".jpg", "" | replace: "-", " " %}
   <a href="/assets/photos/full/{{ fname }}" class="photo-item">
-    <img>
+    <img src="{{ t.path }}" alt="{{ alt }}" loading="lazy" decoding="async">
   </a>
 {% endfor %}
 </div>
