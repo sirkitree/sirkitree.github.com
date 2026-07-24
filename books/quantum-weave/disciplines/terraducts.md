@@ -595,7 +595,7 @@ excerpt: "Earth, metal, magnetic, and gravitational manipulation. The most threa
     <section style="max-width: 900px; margin: 4rem 0 2rem;">
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a class="qw-btn qw-btn-primary" href="/books/quantum-weave/">Back to Quantum Weave</a>
-        <a class="qw-btn" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
+        <a class="qw-btn" href="/tags/quantum-weave/">Read Narratives</a>
       </div>
     </section>
   </div>

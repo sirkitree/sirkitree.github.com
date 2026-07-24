@@ -36,6 +36,7 @@
         <title>{{ head_title }}</title>
         <meta name="description" content="{{ page_description }}">
         <meta name="author" content="Jerad Bitner" />
+        {% if page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
         <link rel="canonical" href="{{ page.url | absolute_url }}">
         <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ '/index.xml' | absolute_url }}">
         {% include json-ld.html %}

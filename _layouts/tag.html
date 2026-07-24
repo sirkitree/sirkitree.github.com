@@ -1,43 +1,83 @@
 ---
 layout: default
 ---
-<h1>Posts tagged with "{{ page.tag }}"</h1>
+{%- assign tag_posts = site.posts | where_exp: "post", "post.tags contains page.tag" -%}
+{%- assign is_qw = false -%}
+{%- if page.tag == 'quantum-weave' -%}{%- assign is_qw = true -%}{%- endif -%}
 
-<div class="posts">
-  {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains page.tag" %}
-  {% for post in tag_posts %}
-    <article class="post">
-      <h2 class="post-title">
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </h2>
-      <div class="post-meta">
-        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
-        {% if post.tags %}
-          <span>•</span>
-          <span class="tags">
-            {% for tag in post.tags %}
-              <a href="/tags/{{ tag | slugify }}.html" class="tag">{{ tag }}</a>
-              {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
-            {% endfor %}
-          </span>
-        {% endif %}
-      </div>
-      <div class="post-content">
-        {{ post.excerpt }} 
-        <a href="{{ post.url }}" class="read-more">read on</a>
-      </div>
-    </article>
-  {% endfor %}
-</div>
+{%- if is_qw -%}
+  {%- comment -%}
+    Classic (non-module) script, so it runs during parsing — before the deferred
+    grid.js module in the head gets a chance to start the default background.
+  {%- endcomment -%}
+  <script>window.DISABLE_GRID = true;</script>
+  <link rel="stylesheet" href="/css/quantum-weave.css">
+  <script type="module" src="/js/grid-quantum.js"></script>
+  <script src="/js/quantum-weave.js" defer></script>
+{%- endif -%}
 
-<div class="all-tags">
-  <h3>Browse other tags:</h3>
-  <div class="tag-cloud">
-    {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
-    {% for tag in all_tags %}
-      {% if tag != page.tag and tag != "" %}
-        <a href="/tags/{{ tag | slugify }}.html" class="tag">{{ tag }}</a>
-      {% endif %}
-    {% endfor %}
+<div class="tag-page{% if is_qw %} qw-tag-page{% endif %}">
+  {%- if is_qw %}<div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>{% endif -%}
+
+  <header class="tag-head">
+    <h1{% if is_qw %} class="qw-display qw-title"{% endif %}>Posts tagged &ldquo;{{ page.tag }}&rdquo;</h1>
+    <p class="tag-count">{{ tag_posts.size }} post{% unless tag_posts.size == 1 %}s{% endunless %}</p>
+  </header>
+
+  <div class="posts" id="tag-posts">
+    {%- for post in tag_posts -%}
+      {%- if is_qw -%}
+        <article class="qw-narrative-card">
+          <div class="qw-narrative-meta">
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            {%- if post.discipline -%}
+              <span>&bull;</span>
+              <span class="qw-discipline-badge qw-discipline-{{ post.discipline | slugify }}" style="padding: 0.25rem 0.625rem; font-size: 0.625rem;">{{ post.discipline }}</span>
+            {%- endif -%}
+          </div>
+          <h3 class="qw-narrative-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p class="qw-narrative-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+        </article>
+      {%- else -%}
+        <article class="post">
+          <h2 class="post-title">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </h2>
+          <div class="post-meta">
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
+            {% if post.tags %}
+              <span>•</span>
+              <span class="tags">
+                {% for t in post.tags %}
+                  <a href="/tags/{{ t | slugify }}/" class="tag">{{ t }}</a>
+                  {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
+                {% endfor %}
+              </span>
+            {% endif %}
+          </div>
+          {%- comment -%}
+            Truncated, not the full excerpt: a tag page is an index, and "tech"
+            carries 31 posts. Full excerpts made it a wall of text.
+          {%- endcomment -%}
+          <div class="post-content">
+            <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 30 }}</p>
+            <a href="{{ post.url }}" class="read-more">read on</a>
+          </div>
+        </article>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="all-tags">
+    <h3{% if is_qw %} class="qw-title"{% endif %}>Browse other tags:</h3>
+    <div class="tag-cloud">
+      {%- assign all_tags = site.tags | sort -%}
+      {%- for t in all_tags -%}
+        {%- assign name = t[0] -%}
+        {%- if name != page.tag and name != "" -%}
+          <a href="/tags/{{ name | slugify }}/" class="tag">{{ name }} <span class="tag-count-badge">{{ t[1].size }}</span></a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   </div>
 </div>

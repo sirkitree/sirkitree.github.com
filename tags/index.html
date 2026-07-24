@@ -10,7 +10,7 @@ title: All Tags
   {% for tag in all_tags %}
     {% if tag != "" %}
       {% assign tag_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
-      <a href="/tags/tag/?tag={{ tag | url_encode }}" class="tag">
+      <a href="/tags/{{ tag | slugify }}/" class="tag">
         {{ tag }} ({{ tag_posts.size }})
       </a>
     {% endif %}

@@ -37,7 +37,7 @@ page_class: books-index-page
       <p>A science-fantasy novel where magic is forgotten nanotechnology, and reality itself refuses to stay singular.</p>
       <div class="books-card-actions">
         <a class="btn btn-primary" href="/books/quantum-weave/">Explore the World</a>
-        <a class="btn secondary" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
+        <a class="btn secondary" href="/tags/quantum-weave/">Read Narratives</a>
       </div>
     </div>
   </article>

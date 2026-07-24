@@ -29,6 +29,8 @@ python3 -m venv venv && source venv/bin/activate && pip install beautifulsoup4
 ### Content Automation Scripts
 ```bash
 node scripts/generate_thumbnails.js     # Generate WebSim project thumbnails
+node scripts/generate_tag_pages.js      # Generate a stub page per tag (run after adding a new tag)
+node scripts/generate_social_preview.js # Rebuild the 1200x630 og:image card
 python scripts/rename_websim_files.py   # Slugify WebSim HTML files
 python scripts/websim_to_blog.py        # Import WebSim projects as blog posts
 ```

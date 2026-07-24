@@ -185,6 +185,6 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 <section class="container" style="max-width: 1200px; margin: 4rem auto 2rem; padding: 0 2rem; text-align: center;">
   <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
     <a class="qw-btn qw-btn-primary" href="/books/quantum-weave/">Back to Quantum Weave</a>
-    <a class="qw-btn" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
+    <a class="qw-btn" href="/tags/quantum-weave/">Read Narratives</a>
   </div>
 </section>

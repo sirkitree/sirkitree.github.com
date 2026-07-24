@@ -13,7 +13,7 @@ permalink: /books/quantum-weave/
     <p class="qw-hero-subtitle">A science-fantasy novel where magic is forgotten nanotechnology, and reality itself refuses to stay singular.</p>
     <div class="qw-hero-cta">
       <a class="qw-btn qw-btn-primary" href="#newsletter">Get Updates</a>
-      <a class="qw-btn" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
+      <a class="qw-btn" href="/tags/quantum-weave/">Read Narratives</a>
     </div>
   </div>
 </section>
@@ -315,7 +315,7 @@ permalink: /books/quantum-weave/
 
   {% if qw_posts.size > 6 %}
   <div style="text-align: center; margin-top: 2rem;">
-    <a class="qw-btn" href="/tags/tag/?tag=quantum-weave">View All Narratives</a>
+    <a class="qw-btn" href="/tags/quantum-weave/">View All Narratives</a>
   </div>
   {% endif %}
 
@@ -338,7 +338,7 @@ permalink: /books/quantum-weave/
 
 <section class="container" style="max-width: 1200px; margin: 4rem auto 2rem; padding: 0 2rem; text-align: center;">
   <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-    <a class="qw-btn qw-btn-primary" href="/tags/tag/?tag=quantum-weave">Read Narratives</a>
+    <a class="qw-btn qw-btn-primary" href="/tags/quantum-weave/">Read Narratives</a>
     <a class="qw-btn" href="/books/">Back to Books</a>
   </div>
 </section>

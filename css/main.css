@@ -1904,3 +1904,38 @@ html.pt-enter #page-transition {
     pointer-events: none;
   }
 }
+
+/* Tag pages (/tags/<slug>/) */
+.tag-head {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tag-head h1 {
+  margin-bottom: 0.25rem;
+}
+
+.tag-count {
+  color: var(--meta-color);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.all-tags {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.all-tags h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.tag-count-badge {
+  opacity: 0.6;
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+}
