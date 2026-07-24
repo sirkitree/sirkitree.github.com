@@ -19,10 +19,22 @@ layout: default
 <div class="tag-page{% if is_qw %} qw-tag-page{% endif %}">
   {%- if is_qw %}<div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>{% endif -%}
 
+  {%- comment -%}
+    Quantum Weave keeps its own header treatment; every other tag page uses the
+    shared .page-header pattern.
+  {%- endcomment -%}
+  {%- if is_qw -%}
   <header class="tag-head">
-    <h1{% if is_qw %} class="qw-display qw-title"{% endif %}>Posts tagged &ldquo;{{ page.tag }}&rdquo;</h1>
+    <h1 class="qw-display qw-title">Posts tagged &ldquo;{{ page.tag }}&rdquo;</h1>
     <p class="tag-count">{{ tag_posts.size }} post{% unless tag_posts.size == 1 %}s{% endunless %}</p>
   </header>
+  {%- else -%}
+  <header class="page-header">
+    <p class="page-eyebrow">Tagged</p>
+    <h1>Everything I&rsquo;ve tagged &ldquo;{{ page.tag }}&rdquo;.</h1>
+    <p class="page-header__lede">{{ tag_posts.size }} post{% unless tag_posts.size == 1 %}s{% endunless %}</p>
+  </header>
+  {%- endif -%}
 
   <div class="posts" id="tag-posts">
     {%- for post in tag_posts -%}

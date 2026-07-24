@@ -2,9 +2,10 @@
 layout: page
 title: Photography
 permalink: /photos/
+eyebrow: Photography
+headline: Colorado, the Pacific Northwest, and wherever else I point a camera.
+lede: Mountains, moss, mushrooms, and the occasional field of daffodils.
 ---
-
-Colorado, the Pacific Northwest, and wherever else I end up pointing a camera.
 
 {% assign thumbs = site.static_files | where_exp: "f", "f.path contains 'assets/photos/thumbs'" | sort: "path" | reverse %}
 

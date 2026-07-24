@@ -20,7 +20,10 @@
   --muted-text: #767676;
   --background-color: #ffffff;
   --hover-color: #f2f2f2;
-  --backdrop-filter: saturate(0.5) brightness(1.06);
+  --backdrop-filter: saturate(0.28) brightness(1.18) contrast(0.82);
+  --backdrop-veil: rgba(255, 255, 255, 0.55);
+  --header-glow: rgba(227, 24, 24, 0.14);
+  --header-edge: #b9855f;
 }
 
 :root[data-theme="dark"] {
@@ -45,6 +48,9 @@
   --background-color: #2d2d2d;
   --hover-color: #3a3a3a;
   --backdrop-filter: saturate(0.6) brightness(0.85);
+  --backdrop-veil: rgba(28, 28, 28, 0.35);
+  --header-glow: rgba(255, 107, 107, 0.12);
+  --header-edge: #7a4730;
 }
 
 /* Set dark theme as default */
@@ -53,8 +59,6 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-serif: "Source Serif 4", Charter, "Iowan Old Style", Georgia, serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-  /* Card width that yields a ~75-character line inside 2rem of padding */
-  --reading-width: 704px;
   --bevel: 20px;
 }
 
@@ -123,13 +127,17 @@ body::after {
 }
 
 body::before {
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 200px,
-    var(--gradient-line) 200px,
-    var(--gradient-line) 201px
-  );
+  /* The diagonal hairlines sit on a veil that knocks the voxel grid back so
+     body copy reads as being in front of it rather than inside it. */
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 200px,
+      var(--gradient-line) 200px,
+      var(--gradient-line) 201px
+    ),
+    var(--backdrop-veil);
 }
 
 body::after {
@@ -184,7 +192,6 @@ body::after {
 
 /* Short standing introduction above the post list on page 1 */
 .site-intro {
-  max-width: var(--reading-width);
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -194,27 +201,6 @@ body::after {
   font-size: 1.15rem;
   line-height: 1.6;
   color: var(--meta-color);
-}
-
-/* Reading column: ~70 characters at the current body size. Cards on the
-   home, tag, and post pages all share it so the measure stays constant. */
-.posts,
-main > .post {
-  /* Scoped, not global: normalize.css leaves box-sizing at content-box, so
-     without this a post page's card measures reading-width PLUS its padding
-     and ends up wider than the same card on the home page. */
-  box-sizing: border-box;
-  max-width: var(--reading-width);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Quantum Weave is a deliberate sub-theme with its own composition and its
-   own measure (.qw-post-content caps at 720px). Let it keep the full container
-   so the narrative layout and its inline art are not squeezed. */
-main > .post.qw-post,
-.qw-tag-page .posts {
-  max-width: none;
 }
 
 .post::before {
@@ -784,30 +770,45 @@ footer {
   gap: 42px;
 }
 
-.books-index-hero {
+/* ---------------------------------------------------------------------------
+   Page header — the site's headline pattern.
+
+   Eyebrow (section label) + serif display headline + muted lede. Grown out of
+   the Books index hero, it is now the single header treatment for every
+   section: Books, Photos, WebSim, Archive and tag pages. Quantum Weave keeps
+   its own header, which is a deliberate sub-theme.
+   --------------------------------------------------------------------------- */
+.page-header {
   max-width: 880px;
+  margin: 0 0 2.5rem;
   padding: clamp(28px, 5vw, 54px);
   border-radius: 28px;
   background:
-    radial-gradient(circle at 10% 10%, rgba(227, 24, 24, 0.14), transparent 34%),
+    radial-gradient(circle at 10% 10%, var(--header-glow), transparent 34%),
     linear-gradient(135deg, rgba(122, 71, 48, 0.12), transparent);
-  border: 1px solid color-mix(in srgb, var(--border-color) 72%, #b9855f);
+  border: 1px solid color-mix(in srgb, var(--border-color) 72%, var(--header-edge));
 }
 
-.books-index-hero h1 {
+.page-header h1 {
   max-width: 820px;
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  color: var(--text-color);
 }
 
-.books-index-hero p:last-child {
+.page-header__lede {
   max-width: 700px;
   margin: 22px 0 0;
   color: var(--meta-color);
   font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.page-header__lede a {
+  color: var(--link-color);
 }
 
 .books-showcase {
@@ -1010,7 +1011,7 @@ footer {
     gap: 28px;
   }
 
-  .books-index-hero,
+  .page-header,
   .books-feature-card,
   .books-shelf,
   .story-card {
@@ -1067,6 +1068,9 @@ footer {
   border: 1px solid color-mix(in srgb, var(--border-color) 70%, #b9855f);
 }
 
+/* .book-eyebrow is the original name, still used inside book and story cards.
+   .page-eyebrow is the same treatment at page-header level. */
+.page-eyebrow,
 .book-eyebrow {
   margin: 0 0 10px;
   color: var(--link-color);
@@ -1462,6 +1466,104 @@ footer {
 }
 
 /* Add this to your existing CSS */
+/* ---------------------------------------------------------------------------
+   WebSim grid
+
+   These lived in a <style> block inside websim.md, where `.websim-thumbnail`
+   (0,1,0) lost to `.post .content img` (0,2,1) and its `height: auto`. The
+   thumbnails therefore kept their native aspect ratios and the rows came out
+   ragged. Here the selectors carry enough specificity, and aspect-ratio does
+   the work so a missing thumbnail reserves the same box as a present one.
+   --------------------------------------------------------------------------- */
+.websim-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.websim-item {
+  display: flex;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: var(--card-shadow);
+}
+
+.websim-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.28);
+}
+
+.post .content .websim-link,
+.websim-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.post .content .websim-thumbnail,
+.websim-thumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.websim-thumbnail-fallback {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fallback-content {
+  text-align: center;
+  color: #fff;
+}
+
+.fallback-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.fallback-text {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Titles sit in the remaining space so every card in a row ends level, no
+   matter how many lines the title runs to. */
+.websim-title {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 600px) {
+  .websim-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .fallback-icon {
+    font-size: 2rem;
+  }
+}
+
 .websim-embed {
     position: relative;
     width: 100%;

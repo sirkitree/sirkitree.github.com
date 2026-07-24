@@ -3,13 +3,10 @@ layout: page
 title: Books
 permalink: /books/
 page_class: books-index-page
+eyebrow: Books and stories
+headline: Memoir, speculative fiction, and worlds in progress.
+lede: "These are the larger writing projects: the published memoir, the science-fantasy world I keep building, and shorter pieces that explore stranger corners."
 ---
-
-<section class="books-index-hero">
-  <p class="book-eyebrow">Books and stories</p>
-  <h1>Memoir, speculative fiction, and worlds in progress.</h1>
-  <p>These are the larger writing projects: the published memoir, the science-fantasy world I keep building, and shorter pieces that explore stranger corners.</p>
-</section>
 
 <section class="books-showcase" aria-label="Featured books">
   <article class="books-feature-card books-feature-card--memoir">

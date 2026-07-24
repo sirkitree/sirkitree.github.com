@@ -1,12 +1,18 @@
 ---
 layout: default
 ---
+{%- comment -%}
+  Every section page gets the same header: eyebrow, serif display headline,
+  muted lede. Set `eyebrow`, `headline` and `lede` in front matter. `headline`
+  falls back to `title`, which stays short for the <title> tag and og:title.
+{%- endcomment -%}
+<header class="page-header">
+  {% if page.eyebrow %}<p class="page-eyebrow">{{ page.eyebrow }}</p>{% endif %}
+  <h1>{{ page.headline | default: page.title }}</h1>
+  {% if page.lede %}<p class="page-header__lede">{{ page.lede }}</p>{% endif %}
+</header>
 
 <article class="page post{% if page.page_class %} {{ page.page_class }}{% endif %}">
-  <header>
-    <h1 class="post-title">{{ page.title }}</h1>
-  </header>
-  
   <section class="content">
     {{ content }}
   </section>
