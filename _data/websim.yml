@@ -1,0 +1,37 @@
+# Display titles for the WebSim experiments.
+#
+# The grid used to derive its titles from the filename, which produced things
+# like "3d grid space interactive" — slugs in sentence case, with acronyms
+# flattened. Keys here are the filename without the .html extension; anything
+# missing falls back to the old filename transformation, so dropping a new
+# project into websim-projects/ still works without touching this file.
+
+3d-grid-space-interactive: 3D Grid Space
+3d-particle-simulation: 3D Particle Simulation
+advanced-ai-neural-interface-visualization: AI Neural Interface
+angelic-cosmic-horror-hexagonal-visualizer: Angelic Cosmic Horror Hexagons
+audio-reactive-hexagonal-shader: Audio-Reactive Hexagonal Shader
+biofeedback-mandala-heart-rate-visualizer: Biofeedback Heart-Rate Mandala
+celestial-hyperbolic-julia-fractal-explorer: Hyperbolic Julia Fractal Explorer
+cosmic-horror-fractal-spheres-horizontally-mirrored: Mirrored Fractal Spheres
+cosmic-horror-non-euclidean-kaleidoscopic-quantum-bubble-array: Non-Euclidean Quantum Bubbles
+cosmic-wisdom-of-the-ancients: Cosmic Wisdom of the Ancients
+dynamic-p5-js-visualization-with-enhanced-sound-reactive-zoom: p5.js Sound-Reactive Zoom
+electric-twisting-audio-visualizer: Electric Twisting Audio Visualizer
+enhanced-kaleidoscopic-flowsphere-multicolor-lightning-fluid-streams: Kaleidoscopic Flowsphere
+exploding-and-resetting-higher-dimensional-portal: Higher-Dimensional Portal
+fibonacci-kaleidoscope-webgl-raytraced-mandala-particle-physics-simulator: Fibonacci Kaleidoscope Mandala
+glsl-shader-water-glitch-kaleidoscope: GLSL Water Glitch Kaleidoscope
+hexel-ai-hyperstitional-cosmic-mirroring: Hexel AI Cosmic Mirroring
+hyperdimensional-fractal-kaleidoscope: Hyperdimensional Fractal Kaleidoscope
+interactive-tentacle-art-generator: Tentacle Art Generator
+kaleido-scope: Kaleidoscope
+metatron-s-cube-with-groovy-particle-trails-interactive-light-grid: Metatron's Cube Light Grid
+multi-layer-fractal-flame-studio: Multi-Layer Fractal Flame Studio
+radial-hsb-color-pattern: Radial HSB Color Pattern
+rotating-concentric-circles-spiral-animation: Rotating Concentric Spirals
+ski-free: Ski Free
+subtly-shifting-cosmic-horror-sphere: Shifting Cosmic Horror Sphere
+three-js-growing-paper-lace-mandala-with-bright-cyan-splash-blink-dark-thrum-flimmer-echoes: Paper Lace Mandala
+three-js-reaction-diffusion-simulation-websim: Reaction-Diffusion Simulation
+websim-shader-playground-dynamic-fractal-with-extreme-panning: Shader Playground

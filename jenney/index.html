@@ -18,19 +18,20 @@ written in, which is the whole point of this page.
 {%- assign last_entry = entries | last -%}
 
 <div class="series">
-  <header class="series-head">
-    <h1>The Jenney Journals</h1>
-    <p class="series-sub">
-      {{ entries.size }} entries &middot;
-      {{ first_entry.date | date: "%B %Y" }} &ndash; {{ last_entry.date | date: "%B %Y" }}
-    </p>
-    <p class="series-intro">
+  <header class="page-header">
+    <p class="page-eyebrow">The Jenney Journals</p>
+    <h1>Written as it happened, collected here in order.</h1>
+    <p class="page-header__lede">
       I wrote these as things happened &mdash; Jenney's diagnosis, the hospitals, the
       faith and the fear, and the long stretch afterward. They were never meant to be
       read backwards, so here they are in order, from the beginning.
     </p>
+    <p class="page-header__meta">
+      {{ entries.size }} entries &middot;
+      {{ first_entry.date | date: "%B %Y" }} &ndash; {{ last_entry.date | date: "%B %Y" }}
+    </p>
     {%- if first_entry -%}
-      <p class="series-start">
+      <p class="page-header__actions">
         <a class="btn btn-primary" href="{{ first_entry.url }}">Start at the beginning &rarr;</a>
       </p>
     {%- endif -%}

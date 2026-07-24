@@ -12,7 +12,13 @@ lede: 'A collection of experiments created on <a href="https://websim.ai/@sirkit
 {% for project in projects %}
   {% if project.path contains '.html' %}
     {% assign filename = project.path | split: "/" | last %}
-    {% assign title = filename | replace: ".html", "" | replace: "-", " " | capitalize %}
+    {% assign slug = filename | replace: ".html", "" %}
+    {%- comment -%}
+      Prefer the hand-written title in _data/websim.yml; fall back to the
+      filename so a newly dropped-in project still renders something sane.
+    {%- endcomment -%}
+    {% assign fallback = slug | replace: "-", " " | capitalize %}
+    {% assign title = site.data.websim[slug] | default: fallback %}
     {% assign thumbnail = filename | replace: ".html", ".webp" %}
     {% assign thumbnail_path = "/assets/websim-thumbnails/" | append: thumbnail %}
     {% assign has_thumbnail = false %}

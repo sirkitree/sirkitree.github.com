@@ -10,7 +10,9 @@
   --header-bg: rgba(255, 255, 255, 0.8);
   --footer-bg: #f6f8fa;
   --nav-link-color: #555555;
-  --post-title-color: #e31818;
+  /* Titles are text, not links. The accent is reserved for things you can
+     click — inline links, "read on", buttons, the current nav item. */
+  --post-title-color: #1a1a1a;
   --blockquote-color: #666666;
   --card-bg: #ffffff;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -37,7 +39,7 @@
   --header-bg: rgba(28, 28, 28, 0.8);
   --footer-bg: #2d2d2d;
   --nav-link-color: #ffffff;
-  --post-title-color: #ff6b6b;
+  --post-title-color: #f0f0f0;
   --blockquote-color: #999999;
   --card-bg: #2d2d2d;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -487,11 +489,14 @@ nav a.active::after {
   background-size: 0% 2px;
   background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size var(--transition-speed);
+  transition: background-size var(--transition-speed), color var(--transition-speed);
 }
 
+/* Now that titles sit in the text colour, hover has to carry the whole
+   affordance: the accent underline wipes in and the title takes the accent. */
 .post-title a:hover {
   background-size: 100% 2px;
+  color: var(--link-color);
 }
 
 .post-meta {
@@ -809,6 +814,22 @@ footer {
 
 .page-header__lede a {
   color: var(--link-color);
+}
+
+/* Counts, date ranges — the small print under the headline. Prose belongs in
+   __lede; this is for the "135 posts · 2006-2026" line. */
+.page-header__meta {
+  margin: 18px 0 0;
+  color: var(--muted-text);
+  font-size: 0.95rem;
+}
+
+.page-header__lede + .page-header__meta {
+  margin-top: 10px;
+}
+
+.page-header__actions {
+  margin: 26px 0 0;
 }
 
 .books-showcase {
@@ -1990,11 +2011,8 @@ footer {
 }
 
 /* Series page (Jenney Journals) */
-.series-head { margin: 0 0 1.5rem; }
-.series-head h1 { margin: 0 0 0.25rem; }
-.series-sub { margin: 0 0 1rem; color: var(--meta-color); font-size: 0.95rem; }
-.series-intro { max-width: 42rem; }
-.series-start { margin: 1.25rem 0 0; }
+/* The Jenney Journals header now uses the shared .page-header pattern; the
+   old .series-head / -sub / -intro / -start rules went with it. */
 
 .series-list {
   list-style: none;
