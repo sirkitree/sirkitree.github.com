@@ -11,7 +11,7 @@ tags:
   - drupal
   - tutorial
 ---
-<img src="/assets/legacy/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" />
+<img loading="lazy" decoding="async" src="/assets/legacy/lullabot_cert.jpg" style="float:left; width:250px; height:188px; margin-right:10px;" alt="Lullabot Drupal Certification" />
 <h3>The family side</h3>
 I spent the week of January 15th in Providence, RI with a group known as <a href='http://www.lullabot.com'>Lullabot</a> learning the ins and outs of <a href="http://www.drupal.org">Drupal</a>. I've been working with Drupal for a while now, about 2 years in fact, and had learned quite a lot on my own by reading the <a href="http://www.drupal.org/handbook">Drupal Handbook</a> and hacking the core (which really is a no-no, but a great way to learn). When my buddy <a href='http://thethisorthat.com'>Dave</a> told me about the workshop Lullabot was having, I looked into it and convinced <a href="http://www.improving-home.com">Shawn</a> to get <a href='http://www.c-sgroup.com'>work</a> to pay for it and let me go for the whole week. Since my <a href='http://www.rewardamericaclub.com'>Aunt and Uncle</a> live near Providence, I asked them if I could stay with them and it just so happened that the week was filled with birthdays! Two of my cousins and my Uncle's birthdays were that week. What luck! Carmen and Frank were more then happy to have me up for a week and I was so glad to get to spend some time with them. I lived with them for a summer when I was 17 and I've missed them ever since.
 <h3>The technical side</h3>

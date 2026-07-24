@@ -5,7 +5,7 @@ author: "Jerad Bitner"
 genre: "Sci-Fi / Domestic Horror"
 reading_time: "15 min"
 description: "A suburban dad finds a gecko in self-made robotic armor. It grows. It absorbs. It evolves into something that won't listen."
-cover: /assets/short-stories/tale-of-a-teenage-robot/cover.png
+cover: /assets/short-stories/tale-of-a-teenage-robot/cover.webp
 permalink: /short-stories/tale-of-a-teenage-robot/
 ---
 

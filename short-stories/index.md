@@ -12,7 +12,7 @@ permalink: /short-stories/
 <section class="ss-stories-grid">
   <div class="ss-story-card">
     <div class="ss-story-card-cover">
-      <img src="/assets/short-stories/tale-of-a-teenage-robot/cover.png" alt="Tale of a Teenage Robot cover">
+      <img loading="lazy" decoding="async" src="/assets/short-stories/tale-of-a-teenage-robot/cover.webp" alt="Tale of a Teenage Robot cover">
     </div>
     <div class="ss-story-card-body">
       <div class="ss-story-card-meta">

@@ -19,7 +19,7 @@ page_class: book-landing-page
   </div>
   <div class="book-hero__visual">
     <div class="book-cover-mockup">
-      <img src="/assets/books/learning-your-childrens-names-again/cover-3d.jpg" alt="Learning Your Children's Names Again book cover">
+      <img loading="lazy" decoding="async" src="/assets/books/learning-your-childrens-names-again/cover-3d.jpg" alt="Learning Your Children's Names Again book cover">
     </div>
   </div>
 </section>
@@ -83,7 +83,7 @@ page_class: book-landing-page
 </section>
 
 <section class="book-section book-author">
-  <img src="/assets/books/learning-your-childrens-names-again/author-headshot.jpg" alt="Jerad Bitner">
+  <img loading="lazy" decoding="async" src="/assets/books/learning-your-childrens-names-again/author-headshot.jpg" alt="Jerad Bitner">
   <div>
     <p class="book-eyebrow">About the author</p>
     <h2>Jerad Bitner</h2>

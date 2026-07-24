@@ -13,7 +13,7 @@ excerpt: "Greenwardens Guild Field Practitioner, twelfth-generation Highland Far
 <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
 
 <section class="character-hero" data-character="thera">
-  <img class="character-portrait" src="/assets/books/quantum-weave/characters/thera_moss.png" alt="Thera Moss">
+  <img loading="lazy" decoding="async" class="character-portrait" src="/assets/books/quantum-weave/characters/thera_moss.webp" alt="Thera Moss">
   <div>
     <h1 class="qw-hero-title qw-display" style="font-size: 3rem; margin-bottom: 0.5rem;">Thera Moss</h1>
     <p class="qw-hero-subtitle" style="margin-bottom: 1rem;">Restoration Ecologist of the Greenwardens Guild</p>

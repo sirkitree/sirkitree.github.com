@@ -7,7 +7,7 @@ category : "blog"
 tags:
   - creative-writing
 ---
-<img src="/assets/legacy/medium_macbookpro.jpg" alt="MacBook Pro" title="macbook pro" style="float:right" />I purchased a new Macbook Pro, 15" with 1G RAM and 256VRAM ATI Graphics and it is incredible! Not only does everything look so much better then windoze, but the operating system is just so much better. 
+<img loading="lazy" decoding="async" src="/assets/legacy/medium_macbookpro.jpg" alt="MacBook Pro" title="macbook pro" style="float:right" />I purchased a new Macbook Pro, 15" with 1G RAM and 256VRAM ATI Graphics and it is incredible! Not only does everything look so much better then windoze, but the operating system is just so much better. 
 
 Mac's have historically been favored by the more technically inclined, but the newer ones are definatly taking into account the less technically savvy end-user and catering to their needs as well. Everything from how the system works, to how it runs, to how you install/uninstall applications is just SO much better. What the hell was I thinking when I told my friend he was crazy for being a MacHead. I'm sorry Chris Jones! I've seen the light! Take me to the great <a href="http://www.woz.org" target="_blank">Woz</a>!
 

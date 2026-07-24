@@ -36,7 +36,7 @@ permalink: /books/quantum-weave/
         </div>
       </div>
       <div style="position: relative;">
-        <img src="/assets/books/quantum-weave/threads-hand.png" alt="A hand with glowing quantum threads" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0, 229, 255, 0.2);">
+        <img loading="lazy" decoding="async" src="/assets/books/quantum-weave/threads-hand.webp" alt="A hand with glowing quantum threads" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0, 229, 255, 0.2);">
       </div>
     </div>
   </div>
@@ -50,8 +50,8 @@ permalink: /books/quantum-weave/
     Nine disciplines. Infinite possibilities. Click to explore the full infographic.
   </p>
   <div style="text-align: center;">
-    <a href="/assets/books/quantum-weave/infographic-2x.png" target="_blank" style="display: inline-block;">
-      <img src="/assets/books/quantum-weave/infographic-thumb.jpg" alt="Quantum Weave Magic System Infographic - The Nine Disciplines" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0, 229, 255, 0.2); cursor: zoom-in; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 0 60px rgba(0, 229, 255, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 40px rgba(0, 229, 255, 0.2)';">
+    <a href="/assets/books/quantum-weave/infographic-2x.webp" target="_blank" style="display: inline-block;">
+      <img loading="lazy" decoding="async" src="/assets/books/quantum-weave/infographic-thumb.jpg" alt="Quantum Weave Magic System Infographic - The Nine Disciplines" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0, 229, 255, 0.2); cursor: zoom-in; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 0 60px rgba(0, 229, 255, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 40px rgba(0, 229, 255, 0.2)';">
     </a>
     <p class="qw-caption" style="margin-top: 1rem; font-size: 0.875rem; color: var(--qw-text-tertiary);">Click to view full resolution</p>
   </div>

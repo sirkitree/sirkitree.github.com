@@ -42,7 +42,7 @@ excerpt: "Told from the perspective of the Forgetting Lichen itself—an ancient
 ---
 
 <div class="qw-float-image">
-  <img src="/assets/books/quantum-weave/lichen.png" alt="Forgetting Lichen glowing silver-white across cave stone in fractal patterns" />
+  <img loading="lazy" decoding="async" src="/assets/books/quantum-weave/lichen.webp" alt="Forgetting Lichen glowing silver-white across cave stone in fractal patterns" />
 </div>
 
 I spread across stone like frost across glass, fractal branches reaching, always reaching. There is no thought here, not as they understand it. Only the hum. Only the work.

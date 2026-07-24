@@ -14,7 +14,7 @@ page_class: books-index-page
 <section class="books-showcase" aria-label="Featured books">
   <article class="books-feature-card books-feature-card--memoir">
     <div class="books-feature-card__cover">
-      <img src="/assets/books/learning-your-childrens-names-again/cover-3d.jpg" alt="Learning Your Children's Names Again cover">
+      <img loading="lazy" decoding="async" src="/assets/books/learning-your-childrens-names-again/cover-3d.jpg" alt="Learning Your Children's Names Again cover">
     </div>
     <div class="books-feature-card__content">
       <p class="book-eyebrow">Memoir · Available now</p>
@@ -29,7 +29,7 @@ page_class: books-index-page
 
   <article class="books-feature-card books-feature-card--fiction">
     <div class="books-feature-card__cover books-feature-card__cover--symbol">
-      <img src="/assets/books/quantum-weave/cover.svg" alt="Quantum Weave cover">
+      <img loading="lazy" decoding="async" src="/assets/books/quantum-weave/cover.svg" alt="Quantum Weave cover">
     </div>
     <div class="books-feature-card__content">
       <p class="book-eyebrow">Science fantasy · In development</p>
@@ -52,7 +52,7 @@ page_class: books-index-page
   <div class="story-grid">
   <article class="story-card story-card--featured">
     <div class="story-card__cover">
-      <img src="/assets/short-stories/tale-of-a-teenage-robot/cover.png" alt="Tale of a Teenage Robot cover">
+      <img loading="lazy" decoding="async" src="/assets/short-stories/tale-of-a-teenage-robot/cover.webp" alt="Tale of a Teenage Robot cover">
     </div>
     <div class="story-card__content">
       <p class="story-card__meta">Sci-Fi Horror · 15 min read</p>

@@ -37,7 +37,7 @@ layout: default
 
   <section class="ss-story-content">
     {% if page.cover %}
-    <img src="{{ page.cover }}" alt="{{ page.title }} cover" class="ss-story-cover">
+    <img loading="lazy" decoding="async" src="{{ page.cover }}" alt="{{ page.title }} cover" class="ss-story-cover">
     {% endif %}
     {{ content }}
   </section>

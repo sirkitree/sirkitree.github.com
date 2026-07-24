@@ -13,7 +13,7 @@ excerpt: "Master Artisan of the Forge Masters, ninth-generation Ashwright Carrie
 <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
 
 <section class="character-hero" data-character="torin">
-  <img class="character-portrait" src="/assets/books/quantum-weave/characters/torin_ashwright.png" alt="Torin Ashwright">
+  <img loading="lazy" decoding="async" class="character-portrait" src="/assets/books/quantum-weave/characters/torin_ashwright.webp" alt="Torin Ashwright">
   <div>
     <h1 class="qw-hero-title qw-display" style="font-size: 3rem; margin-bottom: 0.5rem;">Torin Ashwright</h1>
     <p class="qw-hero-subtitle" style="margin-bottom: 1rem;">Master Artisan of the Forge Masters</p>

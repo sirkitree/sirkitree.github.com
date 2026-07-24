@@ -13,7 +13,7 @@ excerpt: "Expelled architect, sixth-generation Greythorne Carrier. Master of Ter
 <div class="qw-hex-pattern" style="position: fixed; inset: 0; z-index: -1; opacity: 0.3;"></div>
 
 <section class="character-hero" data-character="silas">
-  <img class="character-portrait" src="/assets/books/quantum-weave/characters/silas_greythorne.png" alt="Silas Greythorne">
+  <img loading="lazy" decoding="async" class="character-portrait" src="/assets/books/quantum-weave/characters/silas_greythorne.webp" alt="Silas Greythorne">
   <div>
     <h1 class="qw-hero-title qw-display" style="font-size: 3rem; margin-bottom: 0.5rem;">Silas Greythorne</h1>
     <p class="qw-hero-subtitle" style="margin-bottom: 1rem;">Rogue Architect, formerly of the Architect's Guild</p>

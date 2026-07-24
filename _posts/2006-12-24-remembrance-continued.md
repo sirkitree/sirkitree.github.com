@@ -7,7 +7,7 @@ category : "blog"
 tags:
   - personal
 ---
-<img src="/assets/legacy/cody_tattoo.jpg" alt="Cody's tattoo" style="float:left; width: 223px; height: 220px; margin-right:10px;" /> Here's Cody's tattoo. I'm going to schedule mine sometime this week, and Chris has his scheduled for next Saturday. I've also attached the original that Cody based his off of.
+<img loading="lazy" decoding="async" src="/assets/legacy/cody_tattoo.jpg" alt="Cody's tattoo" style="float:left; width: 223px; height: 220px; margin-right:10px;" /> Here's Cody's tattoo. I'm going to schedule mine sometime this week, and Chris has his scheduled for next Saturday. I've also attached the original that Cody based his off of.
 
 From left to right, top to bottom, those are my initials, Bryant's initials, my Dad's initials in the center, Cody's initials, and Chris's initials.
 

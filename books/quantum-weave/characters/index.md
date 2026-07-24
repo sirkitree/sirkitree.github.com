@@ -82,7 +82,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/rowan-marrick/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-infomancy);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/rowan_marrick.png" alt="Rowan Marrick portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/rowan_marrick.webp" alt="Rowan Marrick portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Rowan Marrick</h2>
           <div class="qw-character-role">Truthseeker · Age 29</div>
@@ -93,7 +93,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/torin-ashwright/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-pyrosonics);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/torin_ashwright.png" alt="Torin Ashwright portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/torin_ashwright.webp" alt="Torin Ashwright portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Torin Ashwright</h2>
           <div class="qw-character-role">Forge Master · Age 52</div>
@@ -104,7 +104,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/mira-caldwell/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-corpus);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/mira_caldwell.png" alt="Mira Caldwell portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/mira_caldwell.webp" alt="Mira Caldwell portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Mira Caldwell</h2>
           <div class="qw-character-role">Master Healer · Age 42</div>
@@ -126,7 +126,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/silas-greythorne/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-terraducts);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/silas_greythorne.png" alt="Silas Greythorne portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/silas_greythorne.webp" alt="Silas Greythorne portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Silas Greythorne</h2>
           <div class="qw-character-role">Rogue Architect · Age 37</div>
@@ -137,7 +137,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/yara-venn/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-spectra);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/yara_venn.png" alt="Yara Venn portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/yara_venn.webp" alt="Yara Venn portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Yara Venn</h2>
           <div class="qw-character-role">Young Outlier · Age 19</div>
@@ -148,7 +148,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/vex-mortain/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-infomancy);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/vex_mortain.png" alt="Vex Mortain portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/vex_mortain.webp" alt="Vex Mortain portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Vex Mortain</h2>
           <div class="qw-character-role">Shadow Operative · Age 34 · they/them</div>
@@ -159,7 +159,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/thera-moss/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-floramancy);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/thera_moss.png" alt="Thera Moss portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/thera_moss.webp" alt="Thera Moss portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Thera Moss</h2>
           <div class="qw-character-role">Restoration Ecologist · Age 29</div>
@@ -170,7 +170,7 @@ excerpt: "Notable Weavers in the Quantum Weave universe — healers, scholars, s
 
     <a href="/books/quantum-weave/characters/kael-theron/" style="text-decoration: none; color: inherit;">
       <div class="qw-character-card" style="--character-color: var(--qw-infomancy);">
-        <img class="qw-character-portrait" src="/assets/books/quantum-weave/characters/kael_theron.png" alt="Kael Theron portrait">
+        <img loading="lazy" decoding="async" class="qw-character-portrait" src="/assets/books/quantum-weave/characters/kael_theron.webp" alt="Kael Theron portrait">
         <div class="qw-character-meta">
           <h2 class="qw-character-name">Kael Theron</h2>
           <div class="qw-character-role">Quantum Scholar · Age 48</div>

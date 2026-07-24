@@ -8,7 +8,7 @@ excerpt: "The meadow exists. Does not exist. Both. A deer trapped in a Corrupted
 
 *From the world of [Quantum Weave](/books/quantum-weave/), where magic is forgotten nanotechnology and failed spells leave reality fractured.*
 
-![Phase Deer](/assets/books/quantum-weave/phase-deer.png)
+![Phase Deer](/assets/books/quantum-weave/phase-deer.webp)
 
 ---
 

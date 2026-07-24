@@ -42,7 +42,7 @@ excerpt: "Unit 7-Theta-9 has maintained the abandoned facility for 847 years sin
 ---
 
 <div class="qw-float-image">
-  <img src="/assets/books/quantum-weave/material-processor.png" alt="Unit 7-Theta-9, a Material Processor maintenance construct with a rotating saw maw" />
+  <img loading="lazy" decoding="async" src="/assets/books/quantum-weave/material-processor.webp" alt="Unit 7-Theta-9, a Material Processor maintenance construct with a rotating saw maw" />
 </div>
 
 *Click-click-click.*

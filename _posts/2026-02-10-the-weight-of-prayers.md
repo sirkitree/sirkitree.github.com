@@ -19,7 +19,7 @@ What pulled me in was the angel. Raphael gets sent to answer two desperate praye
 
 I wanted to write a version of that story told from inside Raphael's head. What would it feel like to carry human prayers? To compress yourself into a body that sweats and fidgets? To know that when you finally tell them the truth, they'll fall on their faces for three hours? I co-wrote it with Claude, iterating on voice and theological detail until it felt right. Then I generated a narration of it.
 
-<img src="/assets/books/tobit/raphael_revealed.jpg" alt="Raphael bowing over a golden city, translucent and vast, geometric patterns radiating from his form" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;" />
+<img loading="lazy" decoding="async" src="/assets/books/tobit/raphael_revealed.jpg" alt="Raphael bowing over a golden city, translucent and vast, geometric patterns radiating from his form" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;" />
 
 <div class="audio-player">
   <p class="audio-label">Listen to the narration:</p>

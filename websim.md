@@ -12,7 +12,7 @@ A collection of experiments created on [WebSim.ai](https://websim.ai/@sirkitree)
   {% if project.path contains '.html' %}
     {% assign filename = project.path | split: "/" | last %}
     {% assign title = filename | replace: ".html", "" | replace: "-", " " | capitalize %}
-    {% assign thumbnail = filename | replace: ".html", ".png" %}
+    {% assign thumbnail = filename | replace: ".html", ".webp" %}
     {% assign thumbnail_path = "/assets/websim-thumbnails/" | append: thumbnail %}
     {% assign has_thumbnail = false %}
     {% for static_file in site.static_files %}
@@ -24,7 +24,7 @@ A collection of experiments created on [WebSim.ai](https://websim.ai/@sirkitree)
     <div class="websim-item">
       <a href="{{ project.path }}" class="websim-link">
         {% if has_thumbnail %}
-          <img src="{{ thumbnail_path }}" alt="{{ title }}" class="websim-thumbnail">
+          <img loading="lazy" decoding="async" src="{{ thumbnail_path }}" alt="{{ title }}" class="websim-thumbnail">
         {% else %}
           <div class="websim-thumbnail websim-thumbnail-fallback">
             <div class="fallback-content">

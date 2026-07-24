@@ -16,7 +16,7 @@ Colorado, the Pacific Northwest, and wherever else I end up pointing a camera.
   {% assign fname = t.path | split: "/" | last %}
   {% assign alt = fname | replace: ".jpg", "" | replace: "-", " " %}
   <a href="/assets/photos/full/{{ fname }}" class="photo-item">
-    <img src="{{ t.path }}" alt="{{ alt }}" loading="lazy">
+    <img>
   </a>
 {% endfor %}
 </div>
@@ -25,7 +25,7 @@ Colorado, the Pacific Northwest, and wherever else I end up pointing a camera.
 <div class="photo-lightbox" id="photo-lightbox" hidden>
   <button class="photo-lightbox-close" aria-label="Close">&times;</button>
   <button class="photo-lightbox-prev" aria-label="Previous photo">&#8249;</button>
-  <img class="photo-lightbox-img" alt="">
+  <img loading="lazy" decoding="async" class="photo-lightbox-img" alt="">
   <button class="photo-lightbox-next" aria-label="Next photo">&#8250;</button>
 </div>
 

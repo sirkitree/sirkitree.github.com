@@ -55,7 +55,9 @@ async function generateThumbnails() {
   const files = fs.readdirSync(websimDir).filter(file => file.endsWith('.html'));
   
   for (const file of files) {
-    const thumbnailPath = path.join(thumbnailDir, file.replace('.html', '.png'));
+    // WebP, not PNG: these are shader and fractal renders, which PNG stores
+    // terribly — the grid page was 19MB of thumbnails before the switch.
+    const thumbnailPath = path.join(thumbnailDir, file.replace('.html', '.webp'));
     
     console.log(`Generating thumbnail for ${file}...`);
     
@@ -72,7 +74,8 @@ async function generateThumbnails() {
       // Take the screenshot
       await page.screenshot({
         path: thumbnailPath,
-        type: 'png',
+        type: 'webp',
+        quality: 82,
         omitBackground: true,
         clip: {
           x: 0,

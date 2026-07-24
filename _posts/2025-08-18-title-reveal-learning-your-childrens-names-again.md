@@ -12,7 +12,7 @@ Today, I'm revealing the title and cover of my memoir: **"Learning Your Children
 <a href="https://www.amazon.com/dp/B0FNPS91C2" class="btn btn-primary">Kindle eBook</a>
 <a href="https://www.amazon.com/dp/B0FPB63T63" class="btn secondary">Paperback</a>
 
-<img src="/assets/books/learning-your-childrens-names-again/cover-front.jpg" alt="Book Cover" style="max-width: 300px;">
+<img loading="lazy" decoding="async" src="/assets/books/learning-your-childrens-names-again/cover-front.jpg" alt="Book Cover" style="max-width: 300px;">
 
 ## Why This Title?
 
