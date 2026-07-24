@@ -17,6 +17,10 @@
   --transition-speed: 0.3s;
   --gradient-line: rgba(227, 24, 24, 0.1);
   --gradient-line-bright: rgba(227, 24, 24, 0.2);
+  --muted-text: #767676;
+  --background-color: #ffffff;
+  --hover-color: #f2f2f2;
+  --backdrop-filter: saturate(0.5) brightness(1.06);
 }
 
 :root[data-theme="dark"] {
@@ -37,6 +41,10 @@
   --transition-speed: 0.3s;
   --gradient-line: rgba(255, 107, 107, 0.1);
   --gradient-line-bright: rgba(255, 107, 107, 0.2);
+  --muted-text: #a0a0a0;
+  --background-color: #2d2d2d;
+  --hover-color: #3a3a3a;
+  --backdrop-filter: saturate(0.6) brightness(0.85);
 }
 
 /* Set dark theme as default */
@@ -45,6 +53,9 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-serif: "Source Serif 4", Charter, "Iowan Old Style", Georgia, serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  /* Card width that yields a ~75-character line inside 2rem of padding */
+  --reading-width: 704px;
+  --bevel: 20px;
 }
 
 /* Base Styles */
@@ -61,6 +72,42 @@ body {
   overflow-x: hidden;
 }
 
+
+/* Keyboard access */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 2000;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 8px;
+  background: var(--card-bg);
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--card-shadow);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* One visible focus ring for everything the keyboard can reach. Component
+   rules below may restyle it, but nothing should end up with no indicator. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
 
 /* Background Effects */
 body::before,
@@ -104,6 +151,8 @@ body::after {
   height: 100%;
   z-index: -2;
   background-color: var(--bg-color);
+  /* Desaturate the voxel grid so body copy sits in front of it, not in it */
+  filter: var(--backdrop-filter);
 }
 
 /* Container */
@@ -116,8 +165,8 @@ body::after {
 
 /* Posts */
 .post {
-  margin: 3rem 0;
-  padding: 2rem;
+  margin: 2rem 0;
+  padding: 1.75rem 2rem;
   border-radius: 12px 12px 0 12px;
   background: var(--card-bg);
   box-shadow: var(--card-shadow);
@@ -127,10 +176,45 @@ body::after {
   clip-path: polygon(
     0 0,
     100% 0,
-    100% calc(100% - 20px),
-    calc(100% - 20px) 100%,
+    100% calc(100% - var(--bevel)),
+    calc(100% - var(--bevel)) 100%,
     0 100%
   );
+}
+
+/* Short standing introduction above the post list on page 1 */
+.site-intro {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.site-intro p {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--meta-color);
+}
+
+/* Reading column: ~70 characters at the current body size. Cards on the
+   home, tag, and post pages all share it so the measure stays constant. */
+.posts,
+main > .post {
+  /* Scoped, not global: normalize.css leaves box-sizing at content-box, so
+     without this a post page's card measures reading-width PLUS its padding
+     and ends up wider than the same card on the home page. */
+  box-sizing: border-box;
+  max-width: var(--reading-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Quantum Weave is a deliberate sub-theme with its own composition and its
+   own measure (.qw-post-content caps at 720px). Let it keep the full container
+   so the narrative layout and its inline art are not squeezed. */
+main > .post.qw-post,
+.qw-tag-page .posts {
+  max-width: none;
 }
 
 .post::before {
@@ -153,7 +237,7 @@ body::after {
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 20px;
+  right: var(--bevel);
   height: 1px;
   background: linear-gradient(
     90deg,
@@ -163,17 +247,19 @@ body::after {
   );
 }
 
-/* Add diagonal line in the cut corner */
+/* Hairline along the bevelled corner. Anchored to the right-hand end of the
+   cut — at (right, bottom - bevel) — then swung down 45deg so it lands exactly
+   on the clip-path edge rather than parallel to it. */
 .post > *:last-child::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: var(--bevel);
   right: 0;
-  width: 28px;
+  width: calc(var(--bevel) * 1.4143);
   height: 1px;
   background: var(--gradient-line-bright);
-  transform: rotate(-45deg);
-  transform-origin: bottom right;
+  transform: rotate(45deg);
+  transform-origin: 100% 50%;
 }
 
 .post:hover {
@@ -312,6 +398,16 @@ nav a:focus {
   background: var(--code-bg);
 }
 
+/* Current section */
+nav a.active {
+  color: var(--link-color);
+}
+
+nav a.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 /* Between the hamburger breakpoint and full width the nav has just enough
    items to overflow the header, so tighten it up rather than wrap. */
 @media (min-width: 769px) and (max-width: 980px) {
@@ -385,20 +481,9 @@ nav a:focus {
   background-color: var(--code-bg);
 }
 
-/* Posts */
-.post {
-  margin: 3rem 0;
-  padding: 2rem;
-  border-radius: 12px;
-  background: var(--card-bg);
-  box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.post:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
+/* NOTE: .post and .post:hover are defined once, above, alongside the bevel
+   and hairline rules. A duplicate pair used to sit here and silently won on
+   margin/padding/border-radius, flattening the bevelled corner. */
 
 .post-title {
   font-family: var(--font-serif);
@@ -426,14 +511,15 @@ nav a:focus {
 .post-meta {
   color: var(--meta-color);
   font-size: 0.95rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
-.post-content {
-  font-size: 1.1rem;
+.post-content,
+.post .content {
+  font-size: 1.15rem;
   line-height: 1.7;
 }
 
@@ -490,6 +576,10 @@ pre {
   overflow-x: auto;
   border: 1px solid var(--border-color);
 }
+
+/* Long lines in code blocks scroll horizontally rather than widening the
+   reading column. Bleeding them out to the card edges was tried and reads as
+   a black band splitting the card, so they stay inset. */
 
 code {
   padding: 0.2rem 0.4rem;
@@ -1575,7 +1665,11 @@ footer {
 .tags {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
+  /* No column gap: the comma separator is its own flex item, and any gap
+     lands between the tag and its comma ("blog , family"). Spacing after
+     the comma comes from .tag-separator's right margin instead. */
+  column-gap: 0;
+  row-gap: 0.25rem;
   align-items: center;
 }
 
@@ -1593,7 +1687,8 @@ footer {
 
 .tag-separator {
   color: var(--muted-text);
-  margin: 0 0.125rem;
+  /* Right side only — a left margin reads as a space before the comma */
+  margin-right: 0.25rem;
 }
 
 .post-meta .tags,

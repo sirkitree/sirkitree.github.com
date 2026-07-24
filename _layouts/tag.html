@@ -48,10 +48,7 @@ layout: default
             {% if post.tags %}
               <span>•</span>
               <span class="tags">
-                {% for t in post.tags %}
-                  <a href="/tags/{{ t | slugify }}/" class="tag">{{ t }}</a>
-                  {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
-                {% endfor %}
+                {% for t in post.tags %}<a href="/tags/{{ t | slugify }}/" class="tag">{{ t }}</a>{% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}{% endfor %}
               </span>
             {% endif %}
           </div>

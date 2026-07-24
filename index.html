@@ -7,6 +7,16 @@ redirect_from:
   - /calendar.html
 ---
 
+{% if paginator.page == nil or paginator.page == 1 %}
+<div class="site-intro">
+  <p>
+    I'm Jerad. I write here about code and AI tooling, the fiction I'm building
+    in <a href="/tags/quantum-weave/">Quantum Weave</a>, and family — often in
+    the same week. The <a href="/archive">archive</a> goes back to 2006.
+  </p>
+</div>
+{% endif %}
+
 <div class="posts">
   {% assign posts = paginator.posts | default: site.posts %}
   {% for post in posts %}
@@ -19,10 +29,7 @@ redirect_from:
         {% if post.tags %}
           <span>•</span>
           <span class="tags">
-            {% for tag in post.tags %}
-              <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
-              {% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}
-            {% endfor %}
+            {% for tag in post.tags %}<a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>{% unless forloop.last %}<span class="tag-separator">, </span>{% endunless %}{% endfor %}
           </span>
         {% endif %}
       </div>

@@ -226,7 +226,9 @@ body::after {
   /* Semantic Colors */
   --qw-text-primary: #FFFFFF;
   --qw-text-secondary: #B8B8B8;
-  --qw-text-tertiary: #6E6E73;
+  /* #6E6E73 measured 3.7:1 on the void background — under AA for the 14px
+     post date and tag chips. #8E8E93 lands at ~5.9:1 and reads the same. */
+  --qw-text-tertiary: #8E8E93;
   --qw-bg-primary: var(--qw-quantum-void);
   --qw-bg-secondary: var(--qw-quantum-shimmer);
   --qw-border-subtle: rgba(255, 255, 255, 0.1);
