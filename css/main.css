@@ -26,6 +26,14 @@
   --backdrop-veil: rgba(255, 255, 255, 0.55);
   --header-glow: rgba(227, 24, 24, 0.14);
   --header-edge: #b9855f;
+  /* Hover effects on post cards, borrowed from the websim experiments. The
+     hex lattice is the same six-sided cell js/grid.js extrudes in the
+     background, flattened into a tile. Colour is baked into the data URI
+     because url() can't interpolate a custom property, so each theme carries
+     its own copy. */
+  --hex-wash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='%23e31818' fill-opacity='0.032' fill-rule='evenodd' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l13-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81V33.5zm28 0L15.02 41v8h2v-6.85L28 35.81V33.5zm0-18.5L15.02 7.5V0h2v6.35L28 12.69V15z'/%3E%3C/svg%3E");
+  --sweep-color: rgba(227, 24, 24, 0.55);
+  --corner-glow: rgba(227, 24, 24, 0.16);
 }
 
 :root[data-theme="dark"] {
@@ -53,6 +61,9 @@
   --backdrop-veil: rgba(28, 28, 28, 0.35);
   --header-glow: rgba(255, 107, 107, 0.12);
   --header-edge: #7a4730;
+  --hex-wash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='%23ff6b6b' fill-opacity='0.045' fill-rule='evenodd' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l13-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81V33.5zm28 0L15.02 41v8h2v-6.85L28 35.81V33.5zm0-18.5L15.02 7.5V0h2v6.35L28 12.69V15z'/%3E%3C/svg%3E");
+  --sweep-color: rgba(255, 107, 107, 0.5);
+  --corner-glow: rgba(255, 107, 107, 0.2);
 }
 
 /* Set dark theme as default */
@@ -178,9 +189,21 @@ body::after {
   margin: 2rem 0;
   padding: 1.75rem 2rem;
   border-radius: 12px 12px 0 12px;
-  background: var(--card-bg);
+  /* The two edge hairlines used to live on ::before and ::after. They're
+     static, so they're background layers now and the pseudo-elements are free
+     for the hover effects. Layer 1 is the corner glow, parked at zero size
+     until hover. */
+  background:
+    radial-gradient(circle at bottom right, var(--corner-glow), transparent 70%)
+      right bottom / 0 0 no-repeat,
+    linear-gradient(90deg, transparent, var(--gradient-line-bright), transparent)
+      left top / 100% 1px no-repeat,
+    linear-gradient(90deg, transparent, var(--gradient-line-bright), transparent)
+      left bottom / calc(100% - var(--bevel)) 1px no-repeat,
+    var(--card-bg);
   box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed),
+    background-size 0.45s ease-out;
   position: relative;
   overflow: hidden;
   clip-path: polygon(
@@ -205,34 +228,41 @@ body::after {
   color: var(--meta-color);
 }
 
+/* Hex lattice wash. Invisible until hover, then it fades in and drifts by
+   exactly one tile so the loop is seamless. */
 .post::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--hex-wash);
+  background-size: 44px 77px;
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+  pointer-events: none;
+}
+
+/* A brighter band that travels the top edge once per hover, so the wash
+   fading in reads as deliberate rather than as stray texture. Sized as a
+   fraction of the card, so the travel distance is 240% of its own width. */
+.post::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 45%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gradient-line-bright),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--sweep-color), transparent);
+  transform: translateX(-110%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.post::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: var(--bevel);
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gradient-line-bright),
-    transparent
-  );
+/* The pseudo-elements are positioned, so without this the wash would paint
+   over the title and excerpt. */
+.post > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* There used to be a decorative hairline drawn across the bevelled corner,
@@ -240,13 +270,56 @@ body::after {
    the original rotated about the corner itself, putting the line perpendicular
    to the bevel, and a later pass got the rotation sign backwards, leaving it
    parallel but 20px inside the card — a stray red diagonal floating in the
-   corner. The clip-path silhouette reads perfectly well on its own, and
-   .post::after already stops the bottom edge line where the bevel begins, so
-   the whole thing is gone rather than fixed a third time. */
+   corner. The clip-path silhouette reads perfectly well on its own, and the
+   bottom edge hairline already stops where the bevel begins, so the whole
+   thing is gone rather than fixed a third time. */
 
 .post:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Scoped to the list contexts (home, tag pages). On a single post page the
+   card is the whole article, and lighting it up as the cursor crosses the
+   text would be noise. */
+.posts .post:hover::before {
+  opacity: 1;
+  animation: hex-drift 18s linear infinite;
+}
+
+.posts .post:hover::after {
+  animation: hairline-sweep 1.1s ease-out;
+}
+
+.posts .post:hover {
+  /* Only the corner glow grows; the two hairline layers hold their size. The
+     trailing `auto` is the colour layer — without it the list wraps and the
+     colour layer picks the glow's size back up. */
+  background-size: 165px 165px, 100% 1px, calc(100% - var(--bevel)) 1px, auto;
+}
+
+@keyframes hex-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 44px 77px; }
+}
+
+@keyframes hairline-sweep {
+  0%   { transform: translateX(-110%); opacity: 0; }
+  12%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateX(240%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep the wash and the corner glow — they're state, not motion — but drop
+     the drift and the sweep. */
+  .posts .post:hover::before {
+    animation: none;
+  }
+
+  .posts .post:hover::after {
+    animation: none;
+  }
 }
 
 /* Header Effects */
