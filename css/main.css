@@ -451,6 +451,9 @@ nav a:hover,
 nav a:focus {
   color: var(--link-color);
   background: var(--code-bg);
+  /* The gradient bar in `nav a::after` is the underline here; the generic
+     `a:hover` rule would otherwise stack a second one on top of it. */
+  text-decoration: none;
 }
 
 /* Current section */
