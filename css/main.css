@@ -487,10 +487,14 @@ nav a.active::after {
 }
 
 /* Now that titles sit in the text colour, hover has to carry the whole
-   affordance: the accent underline wipes in and the title takes the accent. */
+   affordance: the accent underline wipes in and the title takes the accent.
+   text-decoration is reset because the generic `a:hover` rule further down
+   matches with equal specificity and would otherwise add a second, static
+   underline underneath the animated one. */
 .post-title a:hover {
   background-size: 100% 2px;
   color: var(--link-color);
+  text-decoration: none;
 }
 
 .post-meta {
