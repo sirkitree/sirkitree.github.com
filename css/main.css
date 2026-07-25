@@ -235,20 +235,14 @@ body::after {
   );
 }
 
-/* Hairline along the bevelled corner. Anchored to the right-hand end of the
-   cut — at (right, bottom - bevel) — then swung down 45deg so it lands exactly
-   on the clip-path edge rather than parallel to it. */
-.post > *:last-child::after {
-  content: '';
-  position: absolute;
-  bottom: var(--bevel);
-  right: 0;
-  width: calc(var(--bevel) * 1.4143);
-  height: 1px;
-  background: var(--gradient-line-bright);
-  transform: rotate(45deg);
-  transform-origin: 100% 50%;
-}
+/* There used to be a decorative hairline drawn across the bevelled corner,
+   hung off .post > *:last-child::after. It never actually landed on the cut:
+   the original rotated about the corner itself, putting the line perpendicular
+   to the bevel, and a later pass got the rotation sign backwards, leaving it
+   parallel but 20px inside the card — a stray red diagonal floating in the
+   corner. The clip-path silhouette reads perfectly well on its own, and
+   .post::after already stops the bottom edge line where the bevel begins, so
+   the whole thing is gone rather than fixed a third time. */
 
 .post:hover {
   transform: translateY(-2px);
