@@ -37,7 +37,7 @@ plugins:
   - jekyll-sitemap
 
 # Pagination settings
-paginate: 5
+paginate: 25
 paginate_path: "/page:num/"
 
 future: false
