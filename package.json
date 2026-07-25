@@ -9,5 +9,8 @@
   "dependencies": {
     "puppeteer": "^22.15.0",
     "serve-handler": "^6.1.7"
+  },
+  "overrides": {
+    "brace-expansion": "1.1.16"
   }
 }
