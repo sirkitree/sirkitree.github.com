@@ -20,11 +20,16 @@ redirect_from:
 <div class="posts">
   {% assign posts = paginator.posts | default: site.posts %}
   {% for post in posts %}
-    <article class="post">
+    {% assign is_qw = false %}
+    {% if post.tags contains 'quantum-weave' or post.layout == 'quantum-weave-post' %}{% assign is_qw = true %}{% endif %}
+    <article class="post{% if is_qw %} post--qw{% endif %}">
       <h2 class="post-title">
         <a href="{{ post.url }}">{{ post.title }}</a>
       </h2>
       <div class="post-meta">
+        {% if is_qw %}
+          <a href="/books/quantum-weave/" class="qw-badge" title="From the world of Quantum Weave">Quantum Weave</a>
+        {% endif %}
         <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date_to_string }}</time>
         {% if post.tags %}
           <span>•</span>

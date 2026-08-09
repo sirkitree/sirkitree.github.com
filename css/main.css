@@ -2228,3 +2228,92 @@ html.pt-enter #page-transition {
   font-size: 0.8em;
   font-variant-numeric: tabular-nums;
 }
+/* Quantum Weave post cards (homepage listing) */
+:root {
+  --qw-cyan: #00E5FF;
+  --qw-blue: #0A84FF;
+  --qw-accent: #00E5FF;
+  --qw-accent-glow: rgba(0, 229, 255, 0.28);
+  --qw-tint: rgba(0, 229, 255, 0.06);
+  --qw-outline: rgba(0, 229, 255, 0.6);
+  --qw-hex-wash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='%2300e5ff' fill-opacity='0.05' fill-rule='evenodd' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l13-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81V33.5zm28 0L15.02 41v8h2v-6.85L28 35.81V33.5zm0-18.5L15.02 7.5V0h2v6.35L28 12.69V15z'/%3E%3C/svg%3E");
+}
+
+:root[data-theme="light"] {
+  /* Cyan all but vanishes on white, so the palette leans on the quantum blue */
+  --qw-accent: #0A84FF;
+  --qw-accent-glow: rgba(10, 132, 255, 0.22);
+  --qw-tint: rgba(10, 132, 255, 0.05);
+  --qw-outline: rgba(10, 132, 255, 0.6);
+  --qw-hex-wash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='%230a84ff' fill-opacity='0.04' fill-rule='evenodd' d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l13-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81V33.5zm28 0L15.02 41v8h2v-6.85L28 35.81V33.5zm0-18.5L15.02 7.5V0h2v6.35L28 12.69V15z'/%3E%3C/svg%3E");
+}
+
+/* Rather than restate the card's background stack and hover choreography, the
+   card just redefines the colour variables those rules already read. Edge
+   hairlines, hex wash, sweep and corner glow all shift to the quantum palette
+   for free. */
+.post--qw {
+  --gradient-line-bright: var(--qw-outline);
+  --sweep-color: var(--qw-accent);
+  --corner-glow: var(--qw-accent-glow);
+  --hex-wash: var(--qw-hex-wash);
+  /* An inset ring rather than a border, so the outline follows the bevelled
+     corner instead of being sliced off by the clip-path. */
+  box-shadow: inset 0 0 0 1px var(--qw-outline), var(--card-shadow);
+}
+
+.post--qw:hover {
+  box-shadow:
+    inset 0 0 0 1px var(--qw-accent),
+    0 8px 28px -6px var(--qw-accent-glow),
+    var(--card-shadow);
+}
+
+.post--qw .post-title a {
+  color: var(--qw-accent);
+  background-image: linear-gradient(to right, var(--qw-accent), var(--qw-accent));
+}
+
+.post--qw .read-more {
+  color: var(--qw-accent);
+}
+
+.qw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--qw-outline);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--qw-accent);
+  background: var(--qw-tint);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.qw-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--qw-accent);
+  box-shadow: 0 0 6px var(--qw-accent);
+}
+
+.qw-badge:hover {
+  background: var(--qw-accent-glow);
+  box-shadow: 0 0 10px -2px var(--qw-accent-glow);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .post-meta {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
