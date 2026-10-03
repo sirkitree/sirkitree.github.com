@@ -14,7 +14,7 @@ const CARD = path.join(__dirname, 'social-card.html');
 const OUT = path.join(__dirname, '..', 'assets', 'social-preview.png');
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: 'new' });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
   await page.goto('file://' + CARD, { waitUntil: 'networkidle0' });
