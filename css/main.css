@@ -1717,24 +1717,18 @@ footer {
   gap: 2rem;
 }
 
+/* These sit inside the post's own card, so an outline separates them;
+   a card-bg fill and shadow would vanish into it */
 .related-post {
   padding: 1.5rem;
-  background: var(--card-bg);
-  border-radius: 12px 12px 0 12px;
-  box-shadow: var(--card-shadow);
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - 15px),
-    calc(100% - 15px) 100%,
-    0 100%
-  );
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: transform var(--transition-speed), border-color var(--transition-speed);
 }
 
 .related-post:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-color: var(--link-color);
 }
 
 .related-post h3 {
