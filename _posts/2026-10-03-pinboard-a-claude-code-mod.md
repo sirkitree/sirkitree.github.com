@@ -26,7 +26,7 @@ So I built [Pinboard](https://github.com/sirkitree/pinboard), a small mod that k
 
 The board has three lists. Open decisions are questions waiting on me. Todos are the session's task list. Links are URLs from things Claude just made, like a PR, an issue or a push. I only capture links from commands that create something, because reads and test runs mention URLs constantly and I don't care about those.
 
-Claude updates the board through a tool, and each update shows up as one dim line in the transcript, like `Pinboard: +4 todo, +1 decision`. The current board also gets appended to the system prompt on every request, so Claude always knows what's open without me reminding it.
+Claude updates the board through a tool, and each update shows up as one dim line in the transcript, like `Pinboard: +4 todo, +1 decision`. The current board also gets appended to the system prompt on every request, so Claude always knows what's open without me reminding it. That also means Pinboard doesn't lean on `TodoWrite` or the Task tools, which newer models don't get by default anyway. Claude Code's own task list isn't something I can count on being there, so the board brings its own.
 
 The pane opens on its own the first time something lands on the board, if the terminal is wide enough. Otherwise `/pinboard` opens it. Everything resets on `/clear`, which is how I want it. It's a whiteboard for this conversation, not a project tracker.
 
