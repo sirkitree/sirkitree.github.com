@@ -7,7 +7,7 @@
     "generate-thumbnails": "node scripts/generate_thumbnails.js"
   },
   "dependencies": {
-    "puppeteer": "^25.12.0",
+    "puppeteer": "^25.16.0",
     "serve-handler": "^6.1.7"
   },
   "overrides": {
